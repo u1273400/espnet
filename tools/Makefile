@@ -3,13 +3,13 @@
 PYTHON :=
 # The python version installed in the conda setup
 # NOTE(kan-bayashi): Use 3.7.3 to avoid sentencepiece installation error
-PYTHON_VERSION := 3.7.3
+PYTHON_VERSION := 3.6.3
 CUPY_VERSION := 6.0.0
-CUDA_VERSION := 10.0
+CUDA_VERSION := 10.1
 # PyTorch version: 0.4.1, 1.0.0, 1.0.1, 1.1.0, 1.2.0, 1.3.0, 1.3.1, 1.4.0, 1.5.0, 1.5.1
 TH_VERSION := 1.0.1
 # Use a prebuild Kaldi to omit the installation
-KALDI :=
+KALDI :=/home/john/src/cpp/kaldi
 WGET := wget --tries=3
 
 
@@ -23,11 +23,16 @@ endif
 
 .PHONY: all clean
 
-all: kaldi.done python check_install
+all: env.done kaldi.done python check_install
 
 python: venv warp-ctc.done warp-transducer.done chainer_ctc.done cupy.done
 
 extra: nkf.done moses.done mwerSegmenter.done pesq kenlm.done
+
+env.done:
+	echo "setting up environment.."
+	. ./env.sh
+	echo "done."
 
 ifneq ($(strip $(KALDI)),)
 kaldi.done:
@@ -48,14 +53,17 @@ venv:
 	test -d venv || $(PYTHON) -m venv venv
 espnet.done: venv
 	. venv/bin/activate; pip install pip --upgrade
-	. venv/bin/activate; pip install torch==$(TH_VERSION)
+#	. venv/bin/activate; conda install torch==$(TH_VERSION)
+	. venv/bin/activate; conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+#conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 	. venv/bin/activate; pip install -e ..
 	touch espnet.done
 else
 venv:
 	./install_anaconda.sh $(PYTHON_VERSION) venv
 espnet.done: venv
-	. venv/bin/activate && conda install -y $(CONDA_PYTORCH) -c pytorch
+#	. venv/bin/activate && conda install -y $(CONDA_PYTORCH) -c pytorch
+	. venv/bin/activate; conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 	. venv/bin/activate && pip install -e ..
 	touch espnet.done
 endif
