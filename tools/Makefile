@@ -31,7 +31,7 @@ extra: nkf.done moses.done mwerSegmenter.done pesq kenlm.done
 
 env.done:
 	echo "setting up environment.."
-	. ./env.sh
+#	. ./env.sh
 	echo "done."
 
 ifneq ($(strip $(KALDI)),)

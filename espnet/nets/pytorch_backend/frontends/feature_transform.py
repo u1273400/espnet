@@ -2,6 +2,8 @@ from typing import List
 from typing import Tuple
 from typing import Union
 
+import logging
+
 import librosa
 import numpy as np
 import torch
@@ -62,6 +64,8 @@ class FeatureTransform(torch.nn.Module):
                 h = x[:, :, 0, :]
         else:
             h = x
+
+        logging.info('getting complex feature ={}'.format(x))
 
         # h: ComplexTensor(B, T, F) -> torch.Tensor(B, T, F)
         h = h.real ** 2 + h.imag ** 2
