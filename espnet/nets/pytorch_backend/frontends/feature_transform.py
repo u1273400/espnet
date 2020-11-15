@@ -49,7 +49,9 @@ class FeatureTransform(torch.nn.Module):
     ) -> Tuple[torch.Tensor, torch.LongTensor]:
         # (B, T, F) or (B, T, C, F)
         if x.dim() not in (3, 4):
-            raise ValueError(f"Input dim must be 3 or 4: {x.dim()}")
+           x = x.unsqueeze(1)
+        if x.dim() not in (3, 4):
+            raise ValueError(f"Input dim must be 3 or 4: {x.dim()} {x.shape} {x}")
         if not torch.is_tensor(ilens):
             ilens = torch.from_numpy(np.asarray(ilens)).to(x.device)
 
@@ -65,10 +67,11 @@ class FeatureTransform(torch.nn.Module):
         else:
             h = x
 
-        logging.info('getting complex feature ={}'.format(x))
+        logging.info('*****getting input data type ={} {}'.format(h.dtype,h.size()))
 
-        # h: ComplexTensor(B, T, F) -> torch.Tensor(B, T, F)
-        h = h.real ** 2 + h.imag ** 2
+        if(h.dtype!=torch.float32):
+            # h: ComplexTensor(B, T, F) -> torch.Tensor(B, T, F)
+            h = h.real ** 2 + h.imag ** 2
 
         h, _ = self.logmel(h, ilens)
         if self.stats_file is not None:

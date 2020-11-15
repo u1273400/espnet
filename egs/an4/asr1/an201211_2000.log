@@ -1,0 +1,61 @@
+./run.sh: invalid option --epoch
+./run.sh: invalid option --epochs
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+stage 5: Decoding
+2020-11-12 21:29:19,542 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/splitjson.py --parts 8 dump/train_dev/deltafalse/data.json
+2020-11-12 21:29:19,542 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/splitjson.py --parts 8 dump/test/deltafalse/data.json
+2020-11-12 21:29:19,557 (splitjson:55) INFO: number of utterances = 100
+2020-11-12 21:29:19,558 (splitjson:55) INFO: number of utterances = 130
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/log/decode.*.log
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_test_decode_ctcweight1.0_lm_word100/log/decode.*.log
+./run.sh: 2 background jobs are failed.
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 2: Dictionary and Json Data Preparation
+28 data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/train_nodev/deltafalse/feats.scp data/train_nodev data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/train_nodev/deltafalse/feats.scp data/train_nodev/tmp-a3O4b/input_1/shape.scp
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/train_dev/deltafalse/feats.scp data/train_dev data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/train_dev/deltafalse/feats.scp data/train_dev/tmp-35RVS/input_1/shape.scp
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/train_dev/deltafalse/feats.scp data/train_dev data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/train_dev/deltafalse/feats.scp data/train_dev/tmp-FBT26/input_1/shape.scp
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/test/deltafalse/feats.scp data/test data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/test/deltafalse/feats.scp data/test/tmp-2PGQw/input_1/shape.scp

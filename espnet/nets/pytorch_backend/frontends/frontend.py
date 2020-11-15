@@ -2,6 +2,7 @@ from typing import List
 from typing import Optional
 from typing import Tuple
 from typing import Union
+import logging
 
 import numpy
 import torch
@@ -91,7 +92,10 @@ class Frontend(nn.Module):
         assert len(x) == len(ilens), (len(x), len(ilens))
         # (B, T, F) or (B, T, C, F)
         if x.dim() not in (3, 4):
-            raise ValueError(f"Input dim must be 3 or 4: {x.dim()}")
+            x = x.unsqueeze(1)
+            logging.info(f'{x.shape} {x}')
+        if x.dim() not in (3, 4):
+            raise ValueError(f"Input dim must be 3 or 4: {x.dim()} {x.shape} {x}")
         if not torch.is_tensor(ilens):
             ilens = torch.from_numpy(numpy.asarray(ilens)).to(x.device)
 
