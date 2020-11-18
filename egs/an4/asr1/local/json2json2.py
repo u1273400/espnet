@@ -27,6 +27,11 @@ from torch_complex import ComplexTensor
 import json
 # import matplotlib.pyplot as plt
 import kaldiio
+from kymatio.numpy import Scattering1D
+import pickle
+
+J = 6
+Q = 16
 
 if len(sys.argv) != 3:
     print("Usage: python json2json.py [target] [outfile]")
@@ -37,7 +42,7 @@ outfile = sys.argv[2]
 
 infile = 'dump/%s/deltafalse/data.json' % in_target
 
-ark = 'data/wavs/%s.mat' % in_target
+ark = 'data/wavs/%s.ark' % in_target
 
 d = {}
 with open("data/%s/wav.scp" % in_target, "r") as f:
@@ -45,40 +50,35 @@ with open("data/%s/wav.scp" % in_target, "r") as f:
         ar = l.split(' ')
         d[ar[0]] = ' '.join(ar[1:len(ar) - 1])
 
+truncated={}
 with open(infile, "r") as f:
     jso = json.load(f)
     js_items = list(jso['utts'].items())
 
-# with WriteHelper('ark,t:%s' % ark) as writer:
 for i, utt in enumerate(js_items):
-    if i % 100 == 0:
-        print("processing %d of %d" % (i, len(js_items)))
-    key, info = utt
     if i % 10 == 0:
-        print(".", end='')
+        print(".", end='', flush=True)
+    if i % 100 == 0:
+        print("total processed = %d of %d " % (i, len(js_items)))
+    key, info = utt
     wav = "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/data" \
           "/wavs/%s.wav" % key
     sz, mat = kaldiio.load_mat(wav)
 
-    #wav = wav.replace('.wav', '.mat').replace(key, in_target)
-    # cwv = fft(mat)
-    # cwv = cwv.real ** 2 + cwv.imag ** 2
-    # mat = torch.from_numpy(mat)
-    # mat.unsqueeze(0)
-    # cwv = torch.from_numpy(cwv)
-    # cwv.unsqueeze(0)
-    jso['utts'][key]["input"][0]["shape"] = [1, 336]
-    # mat = mat.unsqueeze(0)
-    # cwv = cwv.unsqueeze(0)
+    wav = wav.replace('.wav', '.mat')
+    T = mat.shape[-1]
+    sx = Scattering1D(J, T, Q)
+    meta = sx.meta()
+    order1 = np.where(meta['order'] == 1)
+    Sx = sx(mat)
+    mat = Sx[order1].transpose()
+    jso['utts'][key]["input"][0]["shape"] = mat.shape
+    jso['utts'][key]["input"][0]["feat"] = wav
+    truncated[key]=jso['utts'][key]
+    pickle.dump(mat, open(wav, "wb"))
 
-    jso['utts'][key]["input"][0]["feat"] = '%s' % wav
-    # jso['utts'][key]["input"][0]["feat"] = '%s:%d' % (wav, i * 2 + 0)
-    # jso['utts'][key]["input"][0]["raw"] = '%s:%d' % (wav, i * 2 + 1)
-    # cwv = np.array([cwv, np.ones_like(cwv)], dtype=np.float)
+jso['utts'] = truncated
 
-    # writer(str(i * 2 + 0), cwv)
-    # writer(str(i * 2 + 1), mat)
-print('.')
 with open(outfile, "w") as f:
     json.dump(jso, f)
 

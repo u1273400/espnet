@@ -31,7 +31,6 @@ set -e
 set -u
 set -o pipefail
 
-
 echo "stage 0: Initialising.. "
 
 if [ ! -f ${an4_root}/README ]; then
@@ -40,7 +39,7 @@ if [ ! -f ${an4_root}/README ]; then
 fi
 
 for x in $test_set $dev_set $train_set; do
-  local/json2json.py $x ${dumpdir}/${x}/deltafalse/data.json
+  local/json2json2.py $x ${dumpdir}/${x}/deltafalse/scat.json
 done
 
 echo 'Complete!'

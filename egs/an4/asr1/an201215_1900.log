@@ -3,3 +3,14 @@ stage 4: Network Training
 run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
 dictionary: data/lang_1char/train_nodev_units.txt
 stage 4: Network Training
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 2: Dictionary and Json Data Preparation
+28 data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/train_nodev/deltafalse/feats.scp data/train_nodev data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/train_nodev/deltafalse/feats.scp data/train_nodev/tmp-gOY06/input_1/shape.scp
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/train_dev/deltafalse/feats.scp data/train_dev data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/train_dev/deltafalse/feats.scp data/train_dev/tmp-qaDQm/input_1/shape.scp
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/train_dev/deltafalse/feats.scp data/train_dev data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/train_dev/deltafalse/feats.scp data/train_dev/tmp-YiwVt/input_1/shape.scp
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/data2json.sh --feat dump/test/deltafalse/feats.scp data/test data/lang_1char/train_nodev_units.txt
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../utils/feat_to_shape.sh --cmd run.pl --nj 1 --filetype  --preprocess-conf  --verbose 0 dump/test/deltafalse/feats.scp data/test/tmp-8YCQB/input_1/shape.scp

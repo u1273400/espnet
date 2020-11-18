@@ -14,8 +14,10 @@ ngpu=1         # number of gpus ("0" uses cpu, otherwise use gpu)
 debugmode=1
 dumpdir=dump   # directory to dump full features
 N=0            # number of minibatches to be used (mainly for debugging). "0" uses all minibatches.
-verbose=1      # verbose option
+verbose=2      # verbose option
 resume=        # Resume the training from snapshot
+
+
 
 # feature configuration
 do_delta=false
@@ -29,6 +31,9 @@ use_wordlm=true     # false means to train/use a character LM
 lm_vocabsize=100    # effective only for word LMs
 lmtag=              # tag for managing LMs
 lm_resume=          # specify a snapshot file to resume LM training
+
+#scatter related
+do_scatter=false
 
 # decoding parameter
 recog_model=model.loss.best # set a model to be used for decoding: 'model.acc.best' or 'model.loss.best'
@@ -48,6 +53,20 @@ tag="" # tag for managing experiments.
 set -e
 set -u
 set -o pipefail
+
+#do-scatter
+if [ ${do_scatter} = true ]; then
+  echo 'getting scatter data'
+  cp dump/test/deltafalse/scat.json dump/test/deltafalse/data.json
+  cp dump/train_nodev/deltafalse/scat.json dump/train_nodev/deltafalse/data.json
+  cp dump/train_dev/deltafalse/scat.json dump/train_dev/deltafalse/data.json
+else
+  echo 'using original data'
+  cp dump/test/deltafalse/prev.json dump/test/deltafalse/data.json
+  cp dump/train_nodev/deltafalse/prev.json dump/train_nodev/deltafalse/data.json
+  cp dump/train_dev/deltafalse/prev.json dump/train_dev/deltafalse/data.json
+fi
+
 
 train_set="train_nodev"
 train_dev="train_dev"

@@ -25,7 +25,9 @@ for in_target in ['test', 'train']:
             ar = l.split(' ')
             d[ar[0]] = ' '.join(ar[1:len(ar)-1])
 
-for i in d:
+for i, k in enumerate(d):
     if i % 100 == 0:
-        print('exporting %s.wav ..' %i )
-    os.system(d[i]+' > data/wavs/%s.wav' % i)
+        print('exporting %s.wav ..' % k)
+    os.system(d[k]+' > data/wavs/%s.wav' % k)
+
+print('complete!')

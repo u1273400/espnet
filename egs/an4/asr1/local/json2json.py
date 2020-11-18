@@ -67,7 +67,7 @@ for i, utt in enumerate(js_items):
     # mat.unsqueeze(0)
     # cwv = torch.from_numpy(cwv)
     # cwv.unsqueeze(0)
-    jso['utts'][key]["input"][0]["shape"] = [1, mat.size]
+    jso['utts'][key]["input"][0]["shape"] = [1, 336]
     # mat = mat.unsqueeze(0)
     # cwv = cwv.unsqueeze(0)
 
