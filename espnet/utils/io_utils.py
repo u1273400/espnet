@@ -7,6 +7,7 @@ import h5py
 import kaldiio
 import numpy as np
 import soundfile
+import pickle
 
 from espnet.transform.transformation import Transformation
 
@@ -38,16 +39,16 @@ class LoadInputsAndTargets(object):
     """
 
     def __init__(
-        self,
-        mode="asr",
-        preprocess_conf=None,
-        load_input=True,
-        load_output=True,
-        sort_in_input_length=True,
-        use_speaker_embedding=False,
-        use_second_target=False,
-        preprocess_args=None,
-        keep_all_data_on_mem=False,
+            self,
+            mode="asr",
+            preprocess_conf=None,
+            load_input=True,
+            load_output=True,
+            sort_in_input_length=True,
+            use_speaker_embedding=False,
+            use_second_target=False,
+            preprocess_args=None,
+            keep_all_data_on_mem=False,
     ):
         self._loaders = {}
         if mode not in ["asr", "tts", "mt"]:
@@ -435,7 +436,7 @@ class LoadInputsAndTargets(object):
             return loader[key]
         elif filetype == "npy":
             # e.g.
-            #    {"input": [{"feat": "some/path.npy",
+            #    {"input": [{  "feat": "some/path.npy",
             #                "filetype": "npy"},
             if not self.keep_all_data_on_mem:
                 return np.load(filepath)
@@ -449,7 +450,12 @@ class LoadInputsAndTargets(object):
             # In this case, "123" indicates the starting points of the matrix
             # load_mat can load both matrix and vector
             if not self.keep_all_data_on_mem:
-                return kaldiio.load_mat(filepath)
+                logging.info('mine chosen***************')
+                try:
+                    return pickle.load(open(filepath, 'rb'))
+                except:
+                    return kaldiio.load_mat(filepath)
+
             if filepath not in self._loaders:
                 self._loaders[filepath] = kaldiio.load_mat(filepath)
             return self._loaders[filepath]
