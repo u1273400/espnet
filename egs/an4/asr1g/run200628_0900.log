@@ -1,0 +1,87 @@
+++ train_set=train_nodev
+++ train_dev=train_dev
+++ lm_test=test
+++ recog_set='train_dev test'
+++ '[' 3 -le -1 ']'
+++ '[' 3 -le 0 ']'
+++ feat_tr_dir=dump/train_nodev/deltafalse
+++ mkdir -p dump/train_nodev/deltafalse
+++ feat_dt_dir=dump/train_dev/deltafalse
+++ mkdir -p dump/train_dev/deltafalse
+++ '[' 3 -le 1 ']'
+++ dict=data/lang_1char/train_nodev_units.txt
+++ echo 'dictionary: data/lang_1char/train_nodev_units.txt'
+dictionary: data/lang_1char/train_nodev_units.txt
+++ '[' 3 -le 2 ']'
+++ '[' -z ']'
++++ basename conf/lm
+++ lmtag=lm
+++ '[' true = true ']'
+++ lmtag=lm_word100
+++ lmexpname=train_rnnlm_pytorch_lm_word100
+++ lmexpdir=exp/train_rnnlm_pytorch_lm_word100
+++ mkdir -p exp/train_rnnlm_pytorch_lm_word100
+++ '[' 3 -le 3 ']'
+++ '[' 4 -ge 3 ']'
+++ echo 'stage 3: LM Preparation'
+stage 3: LM Preparation
+++ '[' true = true ']'
+++ lmdatadir=data/local/wordlm_train
+++ lmdict=data/local/wordlm_train/wordlist_100.txt
+++ mkdir -p data/local/wordlm_train
+++ cut -f 2- '-d ' data/train_nodev/text
+++ cut -f 2- '-d ' data/train_dev/text
+++ cut -f 2- '-d ' data/test/text
+++ text2vocabulary.py -s 100 -o data/local/wordlm_train/wordlist_100.txt data/local/wordlm_train/train.txt
+WARNING:root:OOV rate = 0.00 %
+++ run.pl --gpu 2 exp/train_rnnlm_pytorch_lm_word100/train.log lm_train.py --config conf/lm.yaml --ngpu 2 --backend pytorch --verbose 1 --outdir exp/train_rnnlm_pytorch_lm_word100 --tensorboard-dir tensorboard/train_rnnlm_pytorch_lm_word100 --train-label data/local/wordlm_train/train.txt --valid-label data/local/wordlm_train/valid.txt --test-label data/local/wordlm_train/test.txt --resume --dict data/local/wordlm_train/wordlist_100.txt
+run.pl: job failed, log is in exp/train_rnnlm_pytorch_lm_word100/train.log
+++ train_set=train_nodev
+++ train_dev=train_dev
+++ lm_test=test
+++ recog_set='train_dev test'
+++ '[' 3 -le -1 ']'
+++ '[' 3 -le 0 ']'
+++ feat_tr_dir=dump/train_nodev/deltafalse
+++ mkdir -p dump/train_nodev/deltafalse
+++ feat_dt_dir=dump/train_dev/deltafalse
+++ mkdir -p dump/train_dev/deltafalse
+++ '[' 3 -le 1 ']'
+++ dict=data/lang_1char/train_nodev_units.txt
+++ echo 'dictionary: data/lang_1char/train_nodev_units.txt'
+dictionary: data/lang_1char/train_nodev_units.txt
+++ '[' 3 -le 2 ']'
+++ '[' -z ']'
++++ basename conf/lm
+++ lmtag=lm
+++ '[' true = true ']'
+++ lmtag=lm_word100
+++ lmexpname=train_rnnlm_pytorch_lm_word100
+++ lmexpdir=exp/train_rnnlm_pytorch_lm_word100
+++ mkdir -p exp/train_rnnlm_pytorch_lm_word100
+++ '[' 3 -le 3 ']'
+++ '[' 4 -ge 3 ']'
+++ echo 'stage 3: LM Preparation'
+stage 3: LM Preparation
+++ '[' true = true ']'
+++ lmdatadir=data/local/wordlm_train
+++ lmdict=data/local/wordlm_train/wordlist_100.txt
+++ mkdir -p data/local/wordlm_train
+++ cut -f 2- '-d ' data/train_nodev/text
+++ cut -f 2- '-d ' data/train_dev/text
+++ cut -f 2- '-d ' data/test/text
+++ text2vocabulary.py -s 100 -o data/local/wordlm_train/wordlist_100.txt data/local/wordlm_train/train.txt
+WARNING:root:OOV rate = 0.00 %
+++ run.pl --gpu 2 exp/train_rnnlm_pytorch_lm_word100/train.log lm_train.py --config conf/lm.yaml --ngpu 2 --backend pytorch --verbose 1 --outdir exp/train_rnnlm_pytorch_lm_word100 --tensorboard-dir tensorboard/train_rnnlm_pytorch_lm_word100 --train-label data/local/wordlm_train/train.txt --valid-label data/local/wordlm_train/valid.txt --test-label data/local/wordlm_train/test.txt --resume --dict data/local/wordlm_train/wordlist_100.txt
+++ '[' -z ']'
++++ basename conf/train_mtlalpha1.0
+++ expname=train_nodev_pytorch_train_mtlalpha1.0
+++ false
+++ expdir=exp/train_nodev_pytorch_train_mtlalpha1.0
+++ mkdir -p exp/train_nodev_pytorch_train_mtlalpha1.0
+++ '[' 3 -le 4 ']'
+++ '[' 4 -ge 4 ']'
+++ echo 'stage 4: Network Training'
+stage 4: Network Training
+++ run.pl --gpu 2 exp/train_nodev_pytorch_train_mtlalpha1.0/train.log asr_train.py --config conf/train_mtlalpha1.0.yaml --ngpu 2 --backend pytorch --outdir exp/train_nodev_pytorch_train_mtlalpha1.0/results --tensorboard-dir tensorboard/train_nodev_pytorch_train_mtlalpha1.0 --debugmode 1 --dict data/lang_1char/train_nodev_units.txt --debugdir exp/train_nodev_pytorch_train_mtlalpha1.0 --minibatches 0 --verbose 1 --resume --train-json dump/train_nodev/deltafalse/data.json --valid-json dump/train_dev/deltafalse/data.json
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
