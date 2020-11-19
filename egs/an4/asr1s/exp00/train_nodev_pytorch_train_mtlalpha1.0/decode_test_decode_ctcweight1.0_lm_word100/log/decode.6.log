@@ -1,0 +1,35 @@
+# asr_recog.py --config conf/decode_ctcweight1.0.yaml --ngpu 0 --backend pytorch --debugmode 1 --verbose 1 --recog-json dump/test/deltafalse/split8utt/data.6.json --result-label exp/train_nodev_pytorch_train_mtlalpha1.0/decode_test_decode_ctcweight1.0_lm_word100/data.6.json --model exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.loss.best --word-rnnlm exp/train_rnnlm_pytorch_lm_word100/rnnlm.model.best 
+# Started at Thu Nov 12 21:29:57 GMT 2020
+#
+2020-11-12 21:30:01,138 (asr_recog:253) INFO: python path = (None)
+2020-11-12 21:30:01,139 (asr_recog:258) INFO: set random seed = 1
+2020-11-12 21:30:01,139 (asr_recog:269) INFO: backend = pytorch
+2020-11-12 21:30:18,057 (deterministic_utils:26) INFO: torch type check is disabled
+2020-11-12 21:30:18,057 (asr_utils:478) INFO: reading a config file from exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.json
+2020-11-12 21:30:18,059 (asr_init:169) WARNING: reading model parameters from exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.loss.best
+2020-11-12 21:30:18,064 (nets_utils:420) INFO: subsample: 1 2 2 1 1
+2020-11-12 21:30:18,449 (encoders:294) INFO: BLSTM with every-layer projection for encoder
+2020-11-12 21:30:18,450 (ctc:34) WARNING: CTC was set to builtin due to PyTorch version.
+2020-11-12 21:30:19,320 (asr:850) INFO:  Total parameter of the model = 8126151
+2020-11-12 21:30:19,321 (asr_utils:478) INFO: reading a config file from exp/train_rnnlm_pytorch_lm_word100/model.json
+2020-11-12 21:30:20,811 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 35.
+2020-11-12 21:30:20,812 (decoders:692) INFO: max output length: 35
+2020-11-12 21:30:20,812 (decoders:693) INFO: min output length: 0
+2020-11-12 21:30:20,813 (decoders:735) INFO: <sos> index: 29
+2020-11-12 21:30:20,814 (decoders:736) INFO: <sos> mark: <eos>
+Traceback (most recent call last):
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/asr_recog.py", line 311, in <module>
+    main(sys.argv[1:])
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/asr_recog.py", line 289, in main
+    recog(args)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 1042, in recog
+    feats, args, train_args.char_list, rnnlm=rnnlm
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/e2e_asr.py", line 575, in recognize_batch
+    normalize_score=normalize_score,
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/rnn/decoders.py", line 853, in recognize_beam_batch
+    yseq = self._index_select_list(yseq, accum_padded_beam_ids)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/rnn/decoders.py", line 1096, in _index_select_list
+    new_yseq.append(yseq[i][:])
+TypeError: list indices must be integers or slices, not float
+# Accounting: time=25 threads=1
+# Ended (code 1) at Thu Nov 12 21:30:22 GMT 2020, elapsed time 25 seconds

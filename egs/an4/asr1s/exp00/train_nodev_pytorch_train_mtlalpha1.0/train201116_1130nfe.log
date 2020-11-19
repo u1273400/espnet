@@ -1,0 +1,246 @@
+# asr_train.py --config conf/train_mtlalpha1.0.yaml --ngpu 0 --backend pytorch --outdir exp/train_nodev_pytorch_train_mtlalpha1.0/results --tensorboard-dir tensorboard/train_nodev_pytorch_train_mtlalpha1.0 --debugmode 1 --dict data/lang_1char/train_nodev_units.txt --debugdir exp/train_nodev_pytorch_train_mtlalpha1.0 --minibatches 0 --verbose 2 --resume --train-json dump/train_nodev/deltafalse/data.json --valid-json dump/train_dev/deltafalse/data.json 
+# Started at Mon Nov 16 11:48:25 GMT 2020
+#
+2020-11-16 11:48:31,404 (asr_train:582) INFO: ngpu: 0
+2020-11-16 11:48:31,404 (asr_train:585) INFO: python path = (None)
+2020-11-16 11:48:31,404 (asr_train:588) INFO: random seed = 1
+2020-11-16 11:48:31,405 (asr_train:604) INFO: backend = pytorch
+2020-11-16 11:48:31,612 (deterministic_utils:26) INFO: torch type check is disabled
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /opt/conda/conda-bld/pytorch_1603728993639/work/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+2020-11-16 11:48:31,615 (asr:401) WARNING: cuda is not available
+2020-11-16 11:48:31,685 (asr:412) INFO: stream1: input dims : 16000
+2020-11-16 11:48:31,685 (asr:413) INFO: #output dims: 30
+2020-11-16 11:48:31,685 (asr:422) INFO: Pure CTC mode
+2020-11-16 11:48:31,687 (nets_utils:420) INFO: subsample: 1 2 2 1 1
+2020-11-16 11:48:31,687 (e2e_asr:279) INFO: prescatter idim=16000 
+2020-11-16 11:48:32,288 (encoders:294) INFO: BLSTM with every-layer projection for encoder
+2020-11-16 11:48:32,288 (ctc:34) WARNING: CTC was set to builtin due to PyTorch version.
+2020-11-16 11:48:32,767 (asr:441) INFO:  Total parameter of the model = 48873671
+2020-11-16 11:48:32,768 (asr:457) INFO: writing a model config file to exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.json
+2020-11-16 11:48:32,776 (asr:467) INFO: ARGS: accum_grad: 1
+2020-11-16 11:48:32,776 (asr:467) INFO: ARGS: aconv_chans: 10
+2020-11-16 11:48:32,776 (asr:467) INFO: ARGS: aconv_filts: 100
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: adim: 320
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: aheads: 4
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: apply_uttmvn: True
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: atype: location
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: awin: 5
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: backend: pytorch
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: badim: 320
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: batch_bins: 0
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: batch_count: auto
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: batch_frames_in: 0
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: batch_frames_inout: 0
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: batch_frames_out: 0
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: batch_size: 30
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: bdropout_rate: 0.0
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: beam_size: 4
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: blayers: 2
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: bnmask: 2
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: bprojs: 300
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: btype: blstmp
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: bunits: 300
+2020-11-16 11:48:32,777 (asr:467) INFO: ARGS: char_list: ['<blank>', '<unk>', '<space>', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '<eos>']
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: config: conf/train_mtlalpha1.0.yaml
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: config2: None
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: config3: None
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: context_residual: False
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: criterion: acc
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: ctc_type: warpctc
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: ctc_weight: 0.3
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: debugdir: exp/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: debugmode: 1
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dec_init: None
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dec_init_mods: ['att.', ' dec.']
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dict: data/lang_1char/train_nodev_units.txt
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dlayers: 1
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dropout_rate: 0.0
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dropout_rate_decoder: 0.0
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dtype: lstm
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: dunits: 300
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: early_stop_criterion: validation/main/acc
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: elayers: 4
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: enc_init: None
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: enc_init_mods: ['enc.enc.']
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: epochs: 1
+2020-11-16 11:48:32,778 (asr:467) INFO: ARGS: eprojs: 320
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: eps: 1e-08
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: eps_decay: 0.01
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: etype: blstmp
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: eunits: 320
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: fbank_fmax: None
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: fbank_fmin: 0.0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: fbank_fs: 16000
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: freeze_mods: None
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: grad_clip: 5
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: grad_noise: False
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: lm_weight: 0.1
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: lsm_type: 
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: lsm_weight: 0.0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: maxlen_in: 800
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: maxlen_out: 150
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: maxlenratio: 0.0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: minibatches: 0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: minlenratio: 0.0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: model_module: espnet.nets.pytorch_backend.e2e_asr:E2E
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: mtlalpha: 1.0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: n_iter_processes: 0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: n_mels: 80
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: nbest: 1
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: ngpu: 0
+2020-11-16 11:48:32,779 (asr:467) INFO: ARGS: num_encs: 1
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: num_save_attention: 3
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: num_spkrs: 1
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: opt: adadelta
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: outdir: exp/train_nodev_pytorch_train_mtlalpha1.0/results
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: patience: 3
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: penalty: 0.0
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: preprocess_conf: None
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: ref_channel: -1
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: report_cer: False
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: report_interval_iters: 100
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: report_wer: False
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: resume: None
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: rnnlm: None
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: rnnlm_conf: None
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: sampling_probability: 0.0
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: save_interval_iters: 0
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: seed: 1
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: sortagrad: 0
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: stats_file: None
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: subsample: 1_2_2_1_1
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: sym_blank: <blank>
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: sym_space: <space>
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: tensorboard_dir: tensorboard/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-16 11:48:32,780 (asr:467) INFO: ARGS: threshold: 0.0001
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: train_dtype: float32
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: train_json: dump/train_nodev/deltafalse/data.json
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: use_beamformer: True
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: use_dnn_mask_for_wpe: False
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: use_frontend: False
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: use_wpe: False
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: uttmvn_norm_means: True
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: uttmvn_norm_vars: False
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: valid_json: dump/train_dev/deltafalse/data.json
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: verbose: 2
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: wdropout_rate: 0.0
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: weight_decay: 0.0
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: wlayers: 2
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: wpe_delay: 3
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: wpe_taps: 5
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: wprojs: 300
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: wtype: blstmp
+2020-11-16 11:48:32,781 (asr:467) INFO: ARGS: wunits: 300
+2020-11-16 11:48:32,792 (batchfy:433) INFO: count is auto detected as seq
+2020-11-16 11:48:32,793 (batchfy:457) INFO: # utts: 848
+2020-11-16 11:48:32,793 (batchfy:502) INFO: # minibatches: 29
+2020-11-16 11:48:32,793 (batchfy:433) INFO: count is auto detected as seq
+2020-11-16 11:48:32,793 (batchfy:457) INFO: # utts: 100
+2020-11-16 11:48:32,793 (batchfy:502) INFO: # minibatches: 4
+2020-11-16 11:48:32,811 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,812 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,814 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,815 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,818 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,819 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,821 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,823 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,825 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,827 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,829 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,831 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,833 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,835 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,837 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,839 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,841 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,843 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,845 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,847 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,850 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,852 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,855 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,856 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,859 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,861 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,863 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,864 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,866 (io_utils:452) INFO: mine chosen***************
+2020-11-16 11:48:32,868 (io_utils:452) INFO: mine chosen***************
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py:301: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  /opt/conda/conda-bld/pytorch_1603728993639/work/torch/csrc/utils/tensor_numpy.cpp:141.)
+  xs_pad = pad_list([torch.from_numpy(x).float() for x in xs], 0).to(
+2020-11-16 11:48:32,897 (e2e_asr:368) INFO: preprocess hlens,ilens (shape)= torch.Size([30]) torch.Size([30]) hlens,ilens=tensor([94400, 70400, 65600, 65600, 62400, 62400, 62400, 59200, 57600, 52800,
+        48000, 46400, 46400, 43200, 41600, 41600, 38400, 36800, 35200, 32000,
+        32000, 28800, 28800, 28800, 28800, 22400, 22400, 16000, 14400, 14400]) tensor([94400, 70400, 65600, 65600, 62400, 62400, 62400, 59200, 57600, 52800,
+        48000, 46400, 46400, 43200, 41600, 41600, 38400, 36800, 35200, 32000,
+        32000, 28800, 28800, 28800, 28800, 22400, 22400, 16000, 14400, 14400])
+[JException in main training loop: input must have 2 dimensions, got 1
+Traceback (most recent call last):
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/trainer.py", line 316, in run
+    update()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 242, in update
+    self.update_core()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 202, in update_core
+    loss = self.model(*x).mean() / self.accum_grad
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/e2e_asr.py", line 371, in forward
+    hs_pad, hlens, _ = self.enc(hs_pad, hlens)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/rnn/encoders.py", line 316, in forward
+    xs_pad, ilens, states = module(xs_pad, ilens, prev_state=prev_state)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/rnn/encoders.py", line 74, in forward
+    xs_pack, hx=None if prev_state is None else prev_state[layer]
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 581, in forward
+    self.check_forward_args(input, hx, batch_sizes)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 532, in check_forward_args
+    self.check_input(input, batch_sizes)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 178, in check_input
+    expected_input_dim, input.dim()))
+Will finalize trainer extensions and updater before reraising the exception.
+Traceback (most recent call last):
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/asr_train.py", line 628, in <module>
+    main(sys.argv[1:])
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/asr_train.py", line 614, in main
+    train(args)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 830, in train
+    trainer.run()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/trainer.py", line 349, in run
+    six.reraise(*exc_info)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/six.py", line 703, in reraise
+    raise value
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/trainer.py", line 316, in run
+    update()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 242, in update
+    self.update_core()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 202, in update_core
+    loss = self.model(*x).mean() / self.accum_grad
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/e2e_asr.py", line 371, in forward
+    hs_pad, hlens, _ = self.enc(hs_pad, hlens)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/rnn/encoders.py", line 316, in forward
+    xs_pad, ilens, states = module(xs_pad, ilens, prev_state=prev_state)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/nets/pytorch_backend/rnn/encoders.py", line 74, in forward
+    xs_pack, hx=None if prev_state is None else prev_state[layer]
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 581, in forward
+    self.check_forward_args(input, hx, batch_sizes)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 532, in check_forward_args
+    self.check_input(input, batch_sizes)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 178, in check_input
+    expected_input_dim, input.dim()))
+RuntimeError: input must have 2 dimensions, got 1
+# Accounting: time=7 threads=1
+# Ended (code 1) at Mon Nov 16 11:48:33 GMT 2020, elapsed time 7 seconds

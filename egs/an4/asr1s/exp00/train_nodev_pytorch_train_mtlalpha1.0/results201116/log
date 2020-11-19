@@ -1,0 +1,34 @@
+[
+    {
+        "main/loss_ctc": 61.03900938034057,
+        "main/cer_ctc": 0.9723458084904347,
+        "main/cer": 0.0,
+        "main/wer": 0.0,
+        "main/loss": 61.03900938034057,
+        "validation/main/loss_ctc": 51.07178529103597,
+        "validation/main/cer_ctc": 0.9309728764290767,
+        "validation/main/cer": 0.0,
+        "validation/main/wer": 0.0,
+        "validation/main/loss": 51.07178529103597,
+        "eps": 1e-08,
+        "epoch": 3,
+        "iteration": 100,
+        "elapsed_time": 14197.4103091
+    },
+    {
+        "main/loss_ctc": 45.35104725837707,
+        "main/cer_ctc": 0.8565376547956143,
+        "main/cer": 0.0,
+        "main/wer": 0.0,
+        "main/loss": 45.35104725837707,
+        "validation/main/loss_ctc": 44.346280892690025,
+        "validation/main/cer_ctc": 0.8758411950074652,
+        "validation/main/cer": 0.0,
+        "validation/main/wer": 0.0,
+        "validation/main/loss": 44.346280892690025,
+        "eps": 1e-08,
+        "epoch": 6,
+        "iteration": 200,
+        "elapsed_time": 39721.81023569999
+    }
+]

@@ -1,0 +1,312 @@
+# asr_train.py --config conf/train_mtlalpha1.0.yaml --ngpu 0 --backend pytorch --outdir exp/train_nodev_pytorch_train_mtlalpha1.0/results --tensorboard-dir tensorboard/train_nodev_pytorch_train_mtlalpha1.0 --debugmode 1 --dict data/lang_1char/train_nodev_units.txt --debugdir exp/train_nodev_pytorch_train_mtlalpha1.0 --minibatches 0 --verbose 2 --resume --train-json dump/train_nodev/deltafalse/data.json --valid-json dump/train_dev/deltafalse/data.json 
+# Started at Wed Nov 18 03:00:58 GMT 2020
+#
+2020-11-18 03:01:03,869 (asr_train:582) INFO: ngpu: 0
+2020-11-18 03:01:03,869 (asr_train:585) INFO: python path = (None)
+2020-11-18 03:01:03,869 (asr_train:588) INFO: random seed = 1
+2020-11-18 03:01:03,870 (asr_train:604) INFO: backend = pytorch
+2020-11-18 03:01:04,042 (deterministic_utils:26) INFO: torch type check is disabled
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /opt/conda/conda-bld/pytorch_1603728993639/work/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+2020-11-18 03:01:04,044 (asr:405) WARNING: cuda is not available
+2020-11-18 03:01:04,107 (asr:416) INFO: stream1: input dims : 83
+2020-11-18 03:01:04,107 (asr:417) INFO: #output dims: 30
+2020-11-18 03:01:04,107 (asr:426) INFO: Pure CTC mode
+2020-11-18 03:01:04,108 (nets_utils:423) INFO: subsample: 1 2 2 1 1
+2020-11-18 03:01:04,108 (e2e_asr:279) INFO: prescatter idim=83 
+2020-11-18 03:01:04,194 (encoders:294) INFO: BLSTM with every-layer projection for encoder
+2020-11-18 03:01:04,195 (ctc:34) WARNING: CTC was set to builtin due to PyTorch version.
+2020-11-18 03:01:04,290 (asr:445) INFO:  Total parameter of the model = 8126151
+2020-11-18 03:01:04,291 (asr:461) INFO: writing a model config file to exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.json
+2020-11-18 03:01:04,303 (asr:471) INFO: ARGS: accum_grad: 1
+2020-11-18 03:01:04,303 (asr:471) INFO: ARGS: aconv_chans: 10
+2020-11-18 03:01:04,303 (asr:471) INFO: ARGS: aconv_filts: 100
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: adim: 320
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: aheads: 4
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: apply_uttmvn: True
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: atype: location
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: awin: 5
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: backend: pytorch
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: badim: 320
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: batch_bins: 0
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: batch_count: auto
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: batch_frames_in: 0
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: batch_frames_inout: 0
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: batch_frames_out: 0
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: batch_size: 30
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: bdropout_rate: 0.0
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: beam_size: 4
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: blayers: 2
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: bnmask: 2
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: bprojs: 300
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: btype: blstmp
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: bunits: 300
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: char_list: ['<blank>', '<unk>', '<space>', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '<eos>']
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: config: conf/train_mtlalpha1.0.yaml
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: config2: None
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: config3: None
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: context_residual: False
+2020-11-18 03:01:04,304 (asr:471) INFO: ARGS: criterion: acc
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: ctc_type: warpctc
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: ctc_weight: 0.3
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: debugdir: exp/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: debugmode: 1
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dec_init: None
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dec_init_mods: ['att.', ' dec.']
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dict: data/lang_1char/train_nodev_units.txt
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dlayers: 1
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dropout_rate: 0.0
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dropout_rate_decoder: 0.0
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dtype: lstm
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: dunits: 300
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: early_stop_criterion: validation/main/acc
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: elayers: 4
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: enc_init: None
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: enc_init_mods: ['enc.enc.']
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: epochs: 1
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: eprojs: 320
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: eps: 1e-08
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: eps_decay: 0.01
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: etype: blstmp
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: eunits: 320
+2020-11-18 03:01:04,305 (asr:471) INFO: ARGS: fbank_fmax: None
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: fbank_fmin: 0.0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: fbank_fs: 16000
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: freeze_mods: None
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: grad_clip: 5
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: grad_noise: False
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: lm_weight: 0.1
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: lsm_type: 
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: lsm_weight: 0.0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: maxlen_in: 800
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: maxlen_out: 150
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: maxlenratio: 0.0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: minibatches: 0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: minlenratio: 0.0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: model_module: espnet.nets.pytorch_backend.e2e_asr:E2E
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: mtlalpha: 1.0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: n_iter_processes: 0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: n_mels: 80
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: nbest: 1
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: ngpu: 0
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: num_encs: 1
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: num_save_attention: 3
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: num_spkrs: 1
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: opt: adadelta
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: outdir: exp/train_nodev_pytorch_train_mtlalpha1.0/results
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: patience: 3
+2020-11-18 03:01:04,306 (asr:471) INFO: ARGS: penalty: 0.0
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: preprocess_conf: None
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: ref_channel: -1
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: report_cer: False
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: report_interval_iters: 100
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: report_wer: False
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: resume: None
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: rnnlm: None
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: rnnlm_conf: None
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: sampling_probability: 0.0
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: save_interval_iters: 0
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: seed: 1
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: sortagrad: 0
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: stats_file: None
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: subsample: 1_2_2_1_1
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: sym_blank: <blank>
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: sym_space: <space>
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: tensorboard_dir: tensorboard/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: threshold: 0.0001
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: train_dtype: float32
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: train_json: dump/train_nodev/deltafalse/data.json
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: use_beamformer: True
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: use_dnn_mask_for_wpe: False
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: use_frontend: False
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: use_wpe: False
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: uttmvn_norm_means: True
+2020-11-18 03:01:04,307 (asr:471) INFO: ARGS: uttmvn_norm_vars: False
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: valid_json: dump/train_dev/deltafalse/data.json
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: verbose: 2
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: wdropout_rate: 0.0
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: weight_decay: 0.0
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: wlayers: 2
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: wpe_delay: 3
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: wpe_taps: 5
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: wprojs: 300
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: wtype: blstmp
+2020-11-18 03:01:04,308 (asr:471) INFO: ARGS: wunits: 300
+2020-11-18 03:01:04,322 (batchfy:433) INFO: count is auto detected as seq
+2020-11-18 03:01:04,324 (batchfy:457) INFO: # utts: 848
+2020-11-18 03:01:04,325 (batchfy:502) INFO: # minibatches: 29
+2020-11-18 03:01:04,325 (batchfy:433) INFO: count is auto detected as seq
+2020-11-18 03:01:04,325 (batchfy:457) INFO: # utts: 100
+2020-11-18 03:01:04,325 (batchfy:502) INFO: # minibatches: 4
+2020-11-18 03:01:04,345 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,360 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,380 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,404 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,408 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,410 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,412 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,414 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,417 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,430 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,432 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,442 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,451 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,460 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,462 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,463 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,464 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,466 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,468 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,469 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,472 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,473 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,475 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,476 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,486 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,488 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,490 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,492 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,494 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,495 (io_utils:453) INFO: mine chosen***************
+2020-11-18 03:01:04,497 (asr:279) INFO: xs, xs[0] lengths in custom converter before sub sampling = 30 (408, 83)
+2020-11-18 03:01:04,497 (asr:287) INFO: xs, xs[0] in custom converter after sub sampling= 30 (408, 83)
+2020-11-18 03:01:04,497 (asr:288) INFO: ilens in custom converter = 30 [408 398 398 398 398 398 398 398 398 398 398 398 398 398 398 398 388 388
+ 388 388 388 388 388 388 388 388 388 388 388 388]
+2020-11-18 03:01:04,503 (nets_utils:52) INFO: padded = torch.Size([30, 408, 83]) 
+2020-11-18 03:01:04,503 (nets_utils:54) INFO: padding arr 0 = torch.Size([408, 83])
+2020-11-18 03:01:04,503 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([408, 83])
+2020-11-18 03:01:04,504 (nets_utils:54) INFO: padding arr 1 = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:54) INFO: padding arr 2 = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:54) INFO: padding arr 3 = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:54) INFO: padding arr 4 = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:54) INFO: padding arr 5 = torch.Size([398, 83])
+2020-11-18 03:01:04,504 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,505 (nets_utils:54) INFO: padding arr 6 = torch.Size([398, 83])
+2020-11-18 03:01:04,505 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,505 (nets_utils:54) INFO: padding arr 7 = torch.Size([398, 83])
+2020-11-18 03:01:04,505 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,505 (nets_utils:54) INFO: padding arr 8 = torch.Size([398, 83])
+2020-11-18 03:01:04,505 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,505 (nets_utils:54) INFO: padding arr 9 = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:54) INFO: padding arr 10 = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:54) INFO: padding arr 11 = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:54) INFO: padding arr 12 = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,506 (nets_utils:54) INFO: padding arr 13 = torch.Size([398, 83])
+2020-11-18 03:01:04,507 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,507 (nets_utils:54) INFO: padding arr 14 = torch.Size([398, 83])
+2020-11-18 03:01:04,507 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,507 (nets_utils:54) INFO: padding arr 15 = torch.Size([398, 83])
+2020-11-18 03:01:04,507 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([398, 83])
+2020-11-18 03:01:04,507 (nets_utils:54) INFO: padding arr 16 = torch.Size([388, 83])
+2020-11-18 03:01:04,507 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,507 (nets_utils:54) INFO: padding arr 17 = torch.Size([388, 83])
+2020-11-18 03:01:04,507 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,507 (nets_utils:54) INFO: padding arr 18 = torch.Size([388, 83])
+2020-11-18 03:01:04,507 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:54) INFO: padding arr 19 = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:54) INFO: padding arr 20 = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:54) INFO: padding arr 21 = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:54) INFO: padding arr 22 = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:54) INFO: padding arr 23 = torch.Size([388, 83])
+2020-11-18 03:01:04,508 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:54) INFO: padding arr 24 = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:54) INFO: padding arr 25 = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:54) INFO: padding arr 26 = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:54) INFO: padding arr 27 = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:54) INFO: padding arr 28 = torch.Size([388, 83])
+2020-11-18 03:01:04,509 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,510 (nets_utils:54) INFO: padding arr 29 = torch.Size([388, 83])
+2020-11-18 03:01:04,510 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([388, 83])
+2020-11-18 03:01:04,510 (nets_utils:52) INFO: padded = torch.Size([30, 51]) 
+2020-11-18 03:01:04,510 (nets_utils:54) INFO: padding arr 0 = torch.Size([51])
+2020-11-18 03:01:04,510 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([51])
+2020-11-18 03:01:04,510 (nets_utils:54) INFO: padding arr 1 = torch.Size([19])
+2020-11-18 03:01:04,510 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([19])
+2020-11-18 03:01:04,510 (nets_utils:54) INFO: padding arr 2 = torch.Size([29])
+2020-11-18 03:01:04,510 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([29])
+2020-11-18 03:01:04,510 (nets_utils:54) INFO: padding arr 3 = torch.Size([28])
+2020-11-18 03:01:04,510 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([28])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 4 = torch.Size([35])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([35])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 5 = torch.Size([21])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([21])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 6 = torch.Size([19])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([19])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 7 = torch.Size([47])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([47])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 8 = torch.Size([33])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([33])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 9 = torch.Size([24])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([24])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 10 = torch.Size([19])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([19])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 11 = torch.Size([32])
+2020-11-18 03:01:04,511 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([32])
+2020-11-18 03:01:04,511 (nets_utils:54) INFO: padding arr 12 = torch.Size([27])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([27])
+2020-11-18 03:01:04,512 (nets_utils:54) INFO: padding arr 13 = torch.Size([19])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([19])
+2020-11-18 03:01:04,512 (nets_utils:54) INFO: padding arr 14 = torch.Size([26])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([26])
+2020-11-18 03:01:04,512 (nets_utils:54) INFO: padding arr 15 = torch.Size([19])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([19])
+2020-11-18 03:01:04,512 (nets_utils:54) INFO: padding arr 16 = torch.Size([46])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([46])
+2020-11-18 03:01:04,512 (nets_utils:54) INFO: padding arr 17 = torch.Size([15])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([15])
+2020-11-18 03:01:04,512 (nets_utils:54) INFO: padding arr 18 = torch.Size([30])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([30])
+2020-11-18 03:01:04,512 (nets_utils:54) INFO: padding arr 19 = torch.Size([22])
+2020-11-18 03:01:04,512 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([22])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 20 = torch.Size([24])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([24])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 21 = torch.Size([19])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([19])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 22 = torch.Size([21])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([21])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 23 = torch.Size([15])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([15])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 24 = torch.Size([32])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([32])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 25 = torch.Size([33])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([33])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 26 = torch.Size([34])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([34])
+2020-11-18 03:01:04,513 (nets_utils:54) INFO: padding arr 27 = torch.Size([24])
+2020-11-18 03:01:04,513 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([24])
+2020-11-18 03:01:04,514 (nets_utils:54) INFO: padding arr 28 = torch.Size([20])
+2020-11-18 03:01:04,514 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([20])
+2020-11-18 03:01:04,514 (nets_utils:54) INFO: padding arr 29 = torch.Size([19])
+2020-11-18 03:01:04,514 (nets_utils:55) INFO: pad[i, : xs[i].size(0)].shape = torch.Size([19])
+2020-11-18 03:01:04,516 (e2e_asr:363) INFO: preprocess hlens,ilens (shape)= torch.Size([30]) torch.Size([30]) hlens,ilens=tensor([408, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398,
+        398, 398, 388, 388, 388, 388, 388, 388, 388, 388, 388, 388, 388, 388,
+        388, 388]) tensor([408, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398, 398,
+        398, 398, 388, 388, 388, 388, 388, 388, 388, 388, 388, 388, 388, 388,
+        388, 388])
+2020-11-18 03:01:04,529 (rnn:581) INFO: rnn param shapes: inp=torch.Size([11810, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([408])
+2020-11-18 03:01:06,049 (rnn:581) INFO: rnn param shapes: inp=torch.Size([5905, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([204])
+2020-11-18 03:01:06,914 (rnn:581) INFO: rnn param shapes: inp=torch.Size([2960, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([102])
+2020-11-18 03:01:07,270 (rnn:581) INFO: rnn param shapes: inp=torch.Size([2960, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([102])
+2020-11-18 03:01:07,629 (e2e_asr:368) INFO: encoder ilens=torch.Size([30]) tensor([102, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+        100, 100,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,
+         97,  97])
+2020-11-18 03:01:07,635 (ctc:92) INFO: CTC input lengths:  tensor([102, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,        100, 100,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,         97,  97], dtype=torch.int32)
+2020-11-18 03:01:07,635 (ctc:97) INFO: CTC output lengths: tensor([51, 19, 29, 28, 35, 21, 19, 47, 33, 24, 19, 32, 27, 19, 26, 19, 46, 15,        30, 22, 24, 19, 21, 15, 32, 33, 34, 24, 20, 19], dtype=torch.int32)
+2020-11-18 03:01:07,642 (ctc:119) INFO: ctc loss:256.3520812988281
+2020-11-18 03:01:07,685 (e2e_asr:56) INFO: mtl loss:256.3520812988281

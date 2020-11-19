@@ -1,0 +1,703 @@
+# asr_train.py --config ./conf/train_mtlalpha1.0.yaml --ngpu 0 --backend pytorch --outdir exp/train_nodev_pytorch_train_mtlalpha1.0/results --tensorboard-dir tensorboard/train_nodev_pytorch_train_mtlalpha1.0 --debugmode 1 --dict data/lang_1char/train_nodev_units.txt --debugdir exp/train_nodev_pytorch_train_mtlalpha1.0 --minibatches 0 --verbose 1 --resume --train-json dump/train_nodev/deltafalse/data.json --valid-json dump/train_dev/deltafalse/data.json 
+# Started at Tue Nov 10 06:53:46 GMT 2020
+#
+2020-11-10 06:53:54,274 (asr_train:582) INFO: ngpu: 0
+2020-11-10 06:53:54,274 (asr_train:585) INFO: python path = (None)
+2020-11-10 06:53:54,275 (asr_train:588) INFO: random seed = 1
+2020-11-10 06:53:54,275 (asr_train:604) INFO: backend = pytorch
+2020-11-10 06:53:54,831 (deterministic_utils:26) INFO: torch type check is disabled
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /opt/conda/conda-bld/pytorch_1603728993639/work/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+2020-11-10 06:53:54,834 (asr:401) WARNING: cuda is not available
+2020-11-10 06:53:54,836 (asr:412) INFO: stream1: input dims : 83
+2020-11-10 06:53:54,837 (asr:413) INFO: #output dims: 30
+2020-11-10 06:53:54,837 (asr:422) INFO: Pure CTC mode
+2020-11-10 06:53:54,839 (nets_utils:420) INFO: subsample: 1 2 2 1 1
+2020-11-10 06:53:54,997 (encoders:294) INFO: BLSTM with every-layer projection for encoder
+2020-11-10 06:53:54,998 (ctc:34) WARNING: CTC was set to builtin due to PyTorch version.
+2020-11-10 06:53:55,157 (asr:441) INFO:  Total parameter of the model = 8126151
+2020-11-10 06:53:55,158 (asr:457) INFO: writing a model config file to exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.json
+2020-11-10 06:53:55,168 (asr:467) INFO: ARGS: accum_grad: 1
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: aconv_chans: 10
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: aconv_filts: 100
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: adim: 320
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: aheads: 4
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: apply_uttmvn: True
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: atype: location
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: awin: 5
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: backend: pytorch
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: badim: 320
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: batch_bins: 0
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: batch_count: auto
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: batch_frames_in: 0
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: batch_frames_inout: 0
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: batch_frames_out: 0
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: batch_size: 30
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: bdropout_rate: 0.0
+2020-11-10 06:53:55,169 (asr:467) INFO: ARGS: beam_size: 4
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: blayers: 2
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: bnmask: 2
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: bprojs: 300
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: btype: blstmp
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: bunits: 300
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: char_list: ['<blank>', '<unk>', '<space>', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '<eos>']
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: config: ./conf/train_mtlalpha1.0.yaml
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: config2: None
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: config3: None
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: context_residual: False
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: criterion: acc
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: ctc_type: warpctc
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: ctc_weight: 0.3
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: debugdir: exp/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: debugmode: 1
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: dec_init: None
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: dec_init_mods: ['att.', ' dec.']
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: dict: data/lang_1char/train_nodev_units.txt
+2020-11-10 06:53:55,170 (asr:467) INFO: ARGS: dlayers: 1
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: dropout_rate: 0.0
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: dropout_rate_decoder: 0.0
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: dtype: lstm
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: dunits: 300
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: early_stop_criterion: validation/main/acc
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: elayers: 4
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: enc_init: None
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: enc_init_mods: ['enc.enc.']
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: epochs: 20
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: eprojs: 320
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: eps: 1e-08
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: eps_decay: 0.01
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: etype: blstmp
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: eunits: 320
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: fbank_fmax: None
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: fbank_fmin: 0.0
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: fbank_fs: 16000
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: freeze_mods: None
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: grad_clip: 5
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: grad_noise: False
+2020-11-10 06:53:55,171 (asr:467) INFO: ARGS: lm_weight: 0.1
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: lsm_type: 
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: lsm_weight: 0.0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: maxlen_in: 800
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: maxlen_out: 150
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: maxlenratio: 0.0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: minibatches: 0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: minlenratio: 0.0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: model_module: espnet.nets.pytorch_backend.e2e_asr:E2E
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: mtlalpha: 1.0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: n_iter_processes: 0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: n_mels: 80
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: nbest: 1
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: ngpu: 0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: num_encs: 1
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: num_save_attention: 3
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: num_spkrs: 1
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: opt: adadelta
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: outdir: exp/train_nodev_pytorch_train_mtlalpha1.0/results
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: patience: 3
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: penalty: 0.0
+2020-11-10 06:53:55,172 (asr:467) INFO: ARGS: preprocess_conf: None
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: ref_channel: -1
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: report_cer: False
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: report_interval_iters: 100
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: report_wer: False
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: resume: None
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: rnnlm: None
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: rnnlm_conf: None
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: sampling_probability: 0.0
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: save_interval_iters: 0
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: seed: 1
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: sortagrad: 0
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: stats_file: None
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: subsample: 1_2_2_1_1
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: sym_blank: <blank>
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: sym_space: <space>
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: tensorboard_dir: tensorboard/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: threshold: 0.0001
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: train_dtype: float32
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: train_json: dump/train_nodev/deltafalse/data.json
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: use_beamformer: True
+2020-11-10 06:53:55,173 (asr:467) INFO: ARGS: use_dnn_mask_for_wpe: False
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: use_frontend: False
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: use_wpe: False
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: uttmvn_norm_means: True
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: uttmvn_norm_vars: False
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: valid_json: dump/train_dev/deltafalse/data.json
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: verbose: 1
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: wdropout_rate: 0.0
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: weight_decay: 0.0
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: wlayers: 2
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: wpe_delay: 3
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: wpe_taps: 5
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: wprojs: 300
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: wtype: blstmp
+2020-11-10 06:53:55,174 (asr:467) INFO: ARGS: wunits: 300
+2020-11-10 06:53:55,281 (batchfy:433) INFO: count is auto detected as seq
+2020-11-10 06:53:55,283 (batchfy:457) INFO: # utts: 848
+2020-11-10 06:53:55,283 (batchfy:502) INFO: # minibatches: 29
+2020-11-10 06:53:55,283 (batchfy:433) INFO: count is auto detected as seq
+2020-11-10 06:53:55,283 (batchfy:457) INFO: # utts: 100
+2020-11-10 06:53:55,283 (batchfy:502) INFO: # minibatches: 4
+2020-11-10 06:53:59,523 (ctc:92) INFO: CTC input lengths:  tensor([102, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,        100, 100,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,         97,  97], dtype=torch.int32)
+2020-11-10 06:53:59,524 (ctc:97) INFO: CTC output lengths: tensor([51, 19, 29, 28, 35, 21, 19, 47, 33, 24, 19, 32, 27, 19, 26, 19, 46, 15,        30, 22, 24, 19, 21, 15, 32, 33, 34, 24, 20, 19], dtype=torch.int32)
+2020-11-10 06:53:59,535 (ctc:119) INFO: ctc loss:256.3520812988281
+2020-11-10 06:53:59,598 (e2e_asr:55) INFO: mtl loss:256.3520812988281
+2020-11-10 06:57:47,003 (asr:234) INFO: grad norm=76.76959228515625
+2020-11-10 06:57:50,674 (ctc:92) INFO: CTC input lengths:  tensor([105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105,        105, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102,        102, 102], dtype=torch.int32)
+2020-11-10 06:57:50,675 (ctc:97) INFO: CTC output lengths: tensor([21, 17, 31, 19, 11, 50, 21, 19, 29, 24, 34, 15, 26, 21, 50, 26, 24, 17,        29, 19, 35, 13, 21, 38, 15, 31, 33, 17, 24, 28], dtype=torch.int32)
+2020-11-10 06:57:50,683 (ctc:119) INFO: ctc loss:259.74725341796875
+2020-11-10 06:57:50,764 (e2e_asr:55) INFO: mtl loss:259.74725341796875
+2020-11-10 07:01:53,741 (asr:234) INFO: grad norm=112.03160095214844
+2020-11-10 07:01:55,280 (ctc:92) INFO: CTC input lengths:  tensor([52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 50, 50, 50,        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50], dtype=torch.int32)
+2020-11-10 07:01:55,281 (ctc:97) INFO: CTC output lengths: tensor([30, 37, 11, 22, 22, 15,  7, 22,  9, 22, 15, 23,  9, 22, 21, 15,  9, 17,        19, 23,  9, 23, 22, 17, 14, 11, 21, 22, 11, 26], dtype=torch.int32)
+2020-11-10 07:01:55,284 (ctc:119) INFO: ctc loss:106.50115203857422
+2020-11-10 07:01:55,333 (e2e_asr:55) INFO: mtl loss:106.50115203857422
+2020-11-10 07:02:05,833 (asr:234) INFO: grad norm=97.28619384765625
+2020-11-10 07:02:06,616 (ctc:92) INFO: CTC input lengths:  tensor([32, 30, 30, 30, 30, 30, 30, 30, 30, 27, 27, 27, 27, 27, 27, 27, 27, 27,        27, 27, 27, 27, 27, 27, 25, 25, 25, 25, 25, 25], dtype=torch.int32)
+2020-11-10 07:02:06,616 (ctc:97) INFO: CTC output lengths: tensor([ 9,  4,  5,  3,  5, 10,  4, 12,  6, 12,  6,  4, 10,  3,  7,  4,  6,  4,         5,  6,  6,  5,  3,  9,  3,  4,  6,  4,  3,  6], dtype=torch.int32)
+2020-11-10 07:02:06,617 (ctc:119) INFO: ctc loss:25.204153060913086
+2020-11-10 07:02:06,646 (e2e_asr:55) INFO: mtl loss:25.204153060913086
+2020-11-10 07:02:10,351 (asr:234) INFO: grad norm=52.47917938232422
+2020-11-10 07:02:11,842 (ctc:92) INFO: CTC input lengths:  tensor([57, 57, 57, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,        55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55], dtype=torch.int32)
+2020-11-10 07:02:11,843 (ctc:97) INFO: CTC output lengths: tensor([17, 19, 20, 33, 22, 30, 21,  7, 19, 10, 11,  9, 19,  9, 20, 14, 29, 23,        11,  9, 11, 11, 22, 14, 12, 11, 29, 15, 35, 35], dtype=torch.int32)
+2020-11-10 07:02:11,847 (ctc:119) INFO: ctc loss:99.0936050415039
+2020-11-10 07:02:11,881 (e2e_asr:55) INFO: mtl loss:99.0936050415039
+2020-11-10 07:03:24,429 (asr:234) INFO: grad norm=221.1867218017578
+2020-11-10 07:03:27,771 (ctc:92) INFO: CTC input lengths:  tensor([112, 112, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 107, 107,        107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 105,        105, 105], dtype=torch.int32)
+2020-11-10 07:03:27,772 (ctc:97) INFO: CTC output lengths: tensor([19, 19, 36, 21, 15, 17, 41, 23,  9, 17, 52, 25, 29, 13, 34, 34, 19, 17,        32, 17, 20, 13, 15, 26, 13, 19, 25, 21, 19, 17], dtype=torch.int32)
+2020-11-10 07:03:27,783 (ctc:119) INFO: ctc loss:79.36616516113281
+2020-11-10 07:03:27,856 (e2e_asr:55) INFO: mtl loss:79.36616516113281
+2020-11-10 07:07:53,723 (asr:234) INFO: grad norm=183.4918670654297
+2020-11-10 07:07:55,303 (ctc:92) INFO: CTC input lengths:  tensor([62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62,        62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-10 07:07:55,304 (ctc:97) INFO: CTC output lengths: tensor([20,  9, 29, 24, 11,  9, 30, 11,  9, 19, 24, 14, 11, 13,  7, 35,  9, 11,        17, 13,  5, 40, 32, 39, 21, 23, 25, 11, 20, 13], dtype=torch.int32)
+2020-11-10 07:07:55,307 (ctc:119) INFO: ctc loss:90.86361694335938
+2020-11-10 07:07:55,357 (e2e_asr:55) INFO: mtl loss:90.86361694335938
+2020-11-10 07:09:18,210 (asr:234) INFO: grad norm=213.15536499023438
+2020-11-10 07:09:19,667 (ctc:92) INFO: CTC input lengths:  tensor([60, 60, 60, 60, 60, 60, 60, 60, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57,        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-10 07:09:19,668 (ctc:97) INFO: CTC output lengths: tensor([ 9, 22, 13,  9, 26,  9, 25, 17, 22, 22, 19, 21, 22, 29, 28, 22, 17, 11,        22, 23, 15, 27, 23, 24, 29, 19, 17, 22, 13, 11], dtype=torch.int32)
+2020-11-10 07:09:19,673 (ctc:119) INFO: ctc loss:60.83613204956055
+2020-11-10 07:09:19,721 (e2e_asr:55) INFO: mtl loss:60.83613204956055
+2020-11-10 07:10:33,788 (asr:234) INFO: grad norm=40.6237907409668
+2020-11-10 07:10:36,328 (ctc:92) INFO: CTC input lengths:  tensor([90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 87, 87, 87, 87, 87,        87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87], dtype=torch.int32)
+2020-11-10 07:10:36,329 (ctc:97) INFO: CTC output lengths: tensor([23, 11, 27, 31, 15, 19, 20, 34, 13, 13, 32, 15, 17, 25, 24, 48, 33, 39,        18, 29, 19, 28, 19, 23, 22, 19, 17, 23, 23, 33], dtype=torch.int32)
+2020-11-10 07:10:36,334 (ctc:119) INFO: ctc loss:76.89999389648438
+2020-11-10 07:10:36,400 (e2e_asr:55) INFO: mtl loss:76.89999389648438
+2020-11-10 07:13:24,291 (asr:234) INFO: grad norm=70.2822494506836
+2020-11-10 07:13:26,354 (ctc:92) INFO: CTC input lengths:  tensor([82, 82, 82, 82, 82, 82, 82, 82, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,        80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], dtype=torch.int32)
+2020-11-10 07:13:26,355 (ctc:97) INFO: CTC output lengths: tensor([15, 18, 19, 21, 35, 23, 30, 19, 22, 32, 24, 13, 13, 24, 13, 13, 29, 37,        20, 29, 18, 18, 36, 25, 22, 21, 19, 27, 13, 38], dtype=torch.int32)
+2020-11-10 07:13:26,360 (ctc:119) INFO: ctc loss:78.90068054199219
+2020-11-10 07:13:26,422 (e2e_asr:55) INFO: mtl loss:78.90068054199219
+2020-11-10 07:15:46,871 (asr:234) INFO: grad norm=172.91758728027344
+2020-11-10 07:15:48,089 (ctc:92) INFO: CTC input lengths:  tensor([50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 47, 47, 47, 47,        47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47], dtype=torch.int32)
+2020-11-10 07:15:48,090 (ctc:97) INFO: CTC output lengths: tensor([17, 12, 21, 20,  7, 17,  7, 11, 28, 15, 11, 13, 20, 27, 21,  9, 15,  9,        10, 13, 20, 22,  9, 17, 20, 24, 13,  9, 17,  9], dtype=torch.int32)
+2020-11-10 07:15:48,093 (ctc:119) INFO: ctc loss:54.68838882446289
+2020-11-10 07:15:48,137 (e2e_asr:55) INFO: mtl loss:54.68838882446289
+2020-11-10 07:15:55,945 (asr:234) INFO: grad norm=114.29330444335938
+2020-11-10 07:15:57,610 (ctc:92) INFO: CTC input lengths:  tensor([62, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,        60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60], dtype=torch.int32)
+2020-11-10 07:15:57,611 (ctc:97) INFO: CTC output lengths: tensor([31, 19, 27, 11, 18, 19, 34,  7, 25, 20, 24, 21, 23, 22, 13, 36, 31, 13,        29, 20, 22, 32, 13, 16, 15, 19, 21, 23, 11, 20], dtype=torch.int32)
+2020-11-10 07:15:57,617 (ctc:119) INFO: ctc loss:64.39968872070312
+2020-11-10 07:15:57,670 (e2e_asr:55) INFO: mtl loss:64.39968872070312
+2020-11-10 07:17:17,931 (asr:234) INFO: grad norm=78.33953857421875
+2020-11-10 07:17:21,219 (ctc:92) INFO: CTC input lengths:  tensor([130, 130, 127, 127, 127, 127, 125, 125, 125, 122, 122, 120, 120, 120,        120, 120, 120, 120, 117, 117, 117, 117, 117, 117, 115, 115, 115, 115,        115, 112], dtype=torch.int32)
+2020-11-10 07:17:21,220 (ctc:97) INFO: CTC output lengths: tensor([17, 17, 19, 35, 19, 29, 15, 15, 34, 30, 33, 55, 48, 15, 17, 35, 19, 46,        17, 17,  9, 11, 25, 17, 28, 13, 28, 33, 27, 19], dtype=torch.int32)
+2020-11-10 07:17:21,230 (ctc:119) INFO: ctc loss:78.20215606689453
+2020-11-10 07:17:21,315 (e2e_asr:55) INFO: mtl loss:78.20215606689453
+2020-11-10 07:24:08,518 (asr:234) INFO: grad norm=154.9304656982422
+2020-11-10 07:24:10,455 (ctc:92) INFO: CTC input lengths:  tensor([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67,        67, 67, 67, 67, 67, 67, 67, 65, 65, 65, 65, 65], dtype=torch.int32)
+2020-11-10 07:24:10,455 (ctc:97) INFO: CTC output lengths: tensor([13, 13, 13, 12, 19, 17, 20, 13, 30, 30, 46, 17, 21, 13, 19, 15, 13, 24,        21, 19,  7, 17, 33,  9, 41, 18, 26, 26, 29, 22], dtype=torch.int32)
+2020-11-10 07:24:10,460 (ctc:119) INFO: ctc loss:63.85207748413086
+2020-11-10 07:24:10,522 (e2e_asr:55) INFO: mtl loss:63.85207748413086
+2020-11-10 07:25:49,521 (asr:234) INFO: grad norm=95.46932983398438
+2020-11-10 07:25:50,225 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,        25, 25, 25, 25, 25, 25, 22, 22, 22, 22, 22, 22], dtype=torch.int32)
+2020-11-10 07:25:50,225 (ctc:97) INFO: CTC output lengths: tensor([ 5,  6,  5,  3,  6,  2,  2,  5,  3,  4,  3,  4,  5,  6,  5,  3,  3,  4,         3,  4,  3,  3, 11,  5,  6,  2,  2,  4,  5,  2], dtype=torch.int32)
+2020-11-10 07:25:50,227 (ctc:119) INFO: ctc loss:15.280499458312988
+2020-11-10 07:25:50,255 (e2e_asr:55) INFO: mtl loss:15.280499458312988
+2020-11-10 07:25:53,019 (asr:234) INFO: grad norm=13.018089294433594
+2020-11-10 07:25:54,365 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 52, 52, 52, 52, 52,        52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52], dtype=torch.int32)
+2020-11-10 07:25:54,366 (ctc:97) INFO: CTC output lengths: tensor([29, 34, 21, 16, 30, 11, 12, 21, 11, 22,  9, 21, 26, 11, 22, 21, 15, 32,        13, 19, 20, 33, 32, 26, 11, 19, 11, 21, 13, 20], dtype=torch.int32)
+2020-11-10 07:25:54,371 (ctc:119) INFO: ctc loss:63.0713005065918
+2020-11-10 07:25:54,412 (e2e_asr:55) INFO: mtl loss:63.0713005065918
+2020-11-10 07:26:05,388 (asr:234) INFO: grad norm=32.54966354370117
+2020-11-10 07:26:07,216 (ctc:92) INFO: CTC input lengths:  tensor([65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,        65, 65, 65, 65, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-10 07:26:07,217 (ctc:97) INFO: CTC output lengths: tensor([29, 26, 25, 13, 25, 36, 23, 33, 21, 13,  9, 28, 11, 19, 13,  9, 26, 11,        21, 26,  9, 11, 15, 32, 18, 11, 29, 24, 17, 12], dtype=torch.int32)
+2020-11-10 07:26:07,223 (ctc:119) INFO: ctc loss:60.77420425415039
+2020-11-10 07:26:07,269 (e2e_asr:55) INFO: mtl loss:60.77420425415039
+2020-11-10 07:27:51,703 (asr:234) INFO: grad norm=76.81087493896484
+2020-11-10 07:27:52,359 (ctc:92) INFO: CTC input lengths:  tensor([22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 20,        20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], dtype=torch.int32)
+2020-11-10 07:27:52,359 (ctc:97) INFO: CTC output lengths: tensor([4, 6, 6, 4, 4, 4, 3, 4, 2, 2, 4, 4, 3, 6, 6, 5, 2, 2, 2, 2, 2, 2, 2, 2,        4, 4, 6, 2, 2, 4], dtype=torch.int32)
+2020-11-10 07:27:52,362 (ctc:119) INFO: ctc loss:13.190520286560059
+2020-11-10 07:27:52,401 (e2e_asr:55) INFO: mtl loss:13.190520286560059
+2020-11-10 07:27:55,138 (asr:234) INFO: grad norm=12.430654525756836
+2020-11-10 07:27:58,457 (ctc:92) INFO: CTC input lengths:  tensor([85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 82, 82, 82, 82, 82,        82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82], dtype=torch.int32)
+2020-11-10 07:27:58,457 (ctc:97) INFO: CTC output lengths: tensor([11, 13, 38, 32, 18, 15, 32, 46, 23, 20,  9, 29, 14, 22, 23, 17, 45, 30,        18, 32, 38, 36, 44, 23, 19, 11, 32, 19, 21, 42], dtype=torch.int32)
+2020-11-10 07:27:58,470 (ctc:119) INFO: ctc loss:80.04524230957031
+2020-11-10 07:27:58,526 (e2e_asr:55) INFO: mtl loss:80.04524230957031
+2020-11-10 07:31:07,157 (asr:234) INFO: grad norm=44.868133544921875
+2020-11-10 07:31:09,884 (ctc:92) INFO: CTC input lengths:  tensor([40, 40, 40, 40, 40, 40, 40, 40, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37,        37, 37, 37, 37, 37, 37, 37, 37, 37, 35, 35, 35], dtype=torch.int32)
+2020-11-10 07:31:09,885 (ctc:97) INFO: CTC output lengths: tensor([ 7, 18, 18,  9, 20, 22, 20,  7,  7, 13, 14, 12, 11,  7, 16,  7, 19, 17,        11,  7, 10,  9, 18, 16,  9, 13, 16, 13, 11, 17], dtype=torch.int32)
+2020-11-10 07:31:09,893 (ctc:119) INFO: ctc loss:40.2098274230957
+2020-11-10 07:31:09,999 (e2e_asr:55) INFO: mtl loss:40.2098274230957
+2020-11-10 07:31:19,046 (asr:234) INFO: grad norm=43.44813537597656
+2020-11-10 07:31:20,528 (ctc:92) INFO: CTC input lengths:  tensor([35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 32, 32, 32, 32,        32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32], dtype=torch.int32)
+2020-11-10 07:31:20,529 (ctc:97) INFO: CTC output lengths: tensor([ 5,  7,  6, 12, 11, 15, 11, 11,  9, 15, 17, 11,  5, 11,  4, 10,  6, 11,         8,  5, 18,  5, 10,  5, 10,  3,  7, 15, 14,  2], dtype=torch.int32)
+2020-11-10 07:31:20,531 (ctc:119) INFO: ctc loss:36.058780670166016
+2020-11-10 07:31:20,567 (e2e_asr:55) INFO: mtl loss:36.058780670166016
+2020-11-10 07:31:26,067 (asr:234) INFO: grad norm=79.2288818359375
+2020-11-10 07:31:27,679 (ctc:92) INFO: CTC input lengths:  tensor([47, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45,        45, 45, 45, 45, 45, 45, 45, 42, 42, 42, 42, 42], dtype=torch.int32)
+2020-11-10 07:31:27,680 (ctc:97) INFO: CTC output lengths: tensor([21, 13, 22, 21, 22,  9, 22, 22, 10, 22, 20, 22, 21, 22, 11, 20, 16, 22,        15, 17, 22, 22, 10, 20,  7, 13, 23, 21,  9, 22], dtype=torch.int32)
+2020-11-10 07:31:27,685 (ctc:119) INFO: ctc loss:53.82624816894531
+2020-11-10 07:31:27,764 (e2e_asr:55) INFO: mtl loss:53.82624816894531
+2020-11-10 07:31:40,569 (asr:234) INFO: grad norm=83.7710189819336
+2020-11-10 07:31:43,777 (ctc:92) INFO: CTC input lengths:  tensor([72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 70, 70, 70, 70, 70, 70, 70, 70,        70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 67, 67], dtype=torch.int32)
+2020-11-10 07:31:43,778 (ctc:97) INFO: CTC output lengths: tensor([25, 20, 15, 19, 24, 11, 23, 21, 20, 30, 20, 11,  9, 13, 22, 19, 17, 17,        19, 34, 39, 11, 36, 19, 11, 18, 35, 19,  9, 11], dtype=torch.int32)
+2020-11-10 07:31:43,784 (ctc:119) INFO: ctc loss:70.2747573852539
+2020-11-10 07:31:43,833 (e2e_asr:55) INFO: mtl loss:70.2747573852539
+2020-11-10 07:34:44,106 (asr:234) INFO: grad norm=153.11837768554688
+2020-11-10 07:34:47,238 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77,        77, 77, 77, 77, 77, 77, 77, 75, 75, 75, 75, 75], dtype=torch.int32)
+2020-11-10 07:34:47,238 (ctc:97) INFO: CTC output lengths: tensor([26, 19, 11, 11, 13, 23, 15, 13,  5, 13, 25, 13,  9, 17, 25, 33, 25, 11,        22, 13, 28, 24, 15, 25, 15, 15, 28, 16, 39, 26], dtype=torch.int32)
+2020-11-10 07:34:47,243 (ctc:119) INFO: ctc loss:54.52019119262695
+2020-11-10 07:34:47,343 (e2e_asr:55) INFO: mtl loss:54.52019119262695
+2020-11-10 07:37:25,834 (asr:234) INFO: grad norm=31.97671127319336
+2020-11-10 07:37:26,924 (ctc:92) INFO: CTC input lengths:  tensor([42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42,        42, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40], dtype=torch.int32)
+2020-11-10 07:37:26,924 (ctc:97) INFO: CTC output lengths: tensor([16, 17, 15, 21, 19, 22, 22, 18, 22,  7, 22, 20,  5, 19, 14, 15, 10, 19,        19,  9, 20,  2, 15,  9, 17, 15, 17, 11, 24,  9], dtype=torch.int32)
+2020-11-10 07:37:26,927 (ctc:119) INFO: ctc loss:48.900753021240234
+2020-11-10 07:37:26,969 (e2e_asr:55) INFO: mtl loss:48.900753021240234
+2020-11-10 07:37:33,486 (asr:234) INFO: grad norm=58.36024475097656
+2020-11-10 07:37:35,500 (ctc:92) INFO: CTC input lengths:  tensor([75, 75, 75, 75, 75, 75, 75, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72,        72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72], dtype=torch.int32)
+2020-11-10 07:37:35,500 (ctc:97) INFO: CTC output lengths: tensor([21, 19, 23, 17, 25, 26, 33,  9, 33, 17, 11, 19, 26, 11, 34,  9, 29, 29,        15, 17, 34, 21, 45, 32, 11, 31, 13, 13,  9, 22], dtype=torch.int32)
+2020-11-10 07:37:35,505 (ctc:119) INFO: ctc loss:64.79743957519531
+2020-11-10 07:37:35,552 (e2e_asr:55) INFO: mtl loss:64.79743957519531
+2020-11-10 07:40:02,652 (asr:234) INFO: grad norm=56.29845428466797
+2020-11-10 07:40:03,108 (ctc:92) INFO: CTC input lengths:  tensor([20, 20, 20, 20, 20, 20, 20, 17], dtype=torch.int32)
+2020-11-10 07:40:03,109 (ctc:97) INFO: CTC output lengths: tensor([2, 2, 4, 2, 3, 3, 4, 4], dtype=torch.int32)
+2020-11-10 07:40:03,109 (ctc:119) INFO: ctc loss:19.12177276611328
+2020-11-10 07:40:03,132 (e2e_asr:55) INFO: mtl loss:19.12177276611328
+2020-11-10 07:40:04,191 (asr:234) INFO: grad norm=62.03755187988281
+2020-11-10 07:40:08,773 (ctc:92) INFO: CTC input lengths:  tensor([157, 157, 157, 157, 155, 155, 152, 152, 152, 152, 150, 150, 150, 147,        145, 145, 145, 142, 142, 140, 137, 137, 137, 137, 137, 135, 135, 135,        132, 130], dtype=torch.int32)
+2020-11-10 07:40:08,775 (ctc:97) INFO: CTC output lengths: tensor([30, 15, 19, 49, 29, 42, 19, 57, 19, 23, 34, 29, 19, 44, 44, 37, 25, 19,        34, 17, 21, 36, 23, 19, 32, 47, 23, 19, 21, 19], dtype=torch.int32)
+2020-11-10 07:40:08,788 (ctc:119) INFO: ctc loss:79.4929428100586
+2020-11-10 07:40:08,864 (e2e_asr:55) INFO: mtl loss:79.4929428100586
+2020-11-10 07:51:18,015 (asr:234) INFO: grad norm=29.24553108215332
+2020-11-10 07:51:20,468 (ctc:92) INFO: CTC input lengths:  tensor([97, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 92, 92, 92, 92,        92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 90], dtype=torch.int32)
+2020-11-10 07:51:20,469 (ctc:97) INFO: CTC output lengths: tensor([46, 15, 50, 30, 51, 20, 25, 19, 47, 32, 17, 47, 19, 18, 49, 35, 17, 34,        19, 19, 34, 26, 15, 15, 15, 22, 33, 18, 28, 32], dtype=torch.int32)
+2020-11-10 07:51:20,478 (ctc:119) INFO: ctc loss:106.71234893798828
+2020-11-10 07:51:20,558 (e2e_asr:55) INFO: mtl loss:106.71234893798828
+2020-11-10 07:55:22,032 (asr:234) INFO: grad norm=226.15814208984375
+2020-11-10 07:55:28,970 (ctc:92) INFO: CTC input lengths:  tensor([160, 132, 125, 122, 122, 117, 117, 112, 110, 107, 107, 107, 107, 102,        100,  95,  92,  92,  90,  90,  87,  87,  87,  85,  85,  85,  82,  82,         82,  77], dtype=torch.int32)
+2020-11-10 07:55:29,044 (ctc:97) INFO: CTC output lengths: tensor([40, 23, 21, 19, 46, 25, 27, 19, 17, 34, 15, 19, 15, 19, 27, 26, 17, 19,        15, 23, 11, 39, 21, 11, 24, 27, 15, 13, 19, 33], dtype=torch.int32)
+2020-11-10 07:55:29,122 (ctc:119) INFO: ctc loss:67.13805389404297
+2020-11-10 07:55:30,162 (e2e_asr:55) INFO: mtl loss:67.13805389404297
+2020-11-10 07:55:34,526 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 75, 75, 75, 72, 72, 72, 72, 70, 70, 70, 67, 67, 67, 67, 65,        65, 62, 62, 60, 60, 60, 60, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-10 07:55:34,527 (ctc:97) INFO: CTC output lengths: tensor([21, 32, 30, 13, 35, 34, 15, 11, 27, 24, 33, 17, 15, 34, 12, 21, 27, 13,        43, 33,  9, 11, 21, 13, 33, 19, 22,  7, 22, 15], dtype=torch.int32)
+2020-11-10 07:55:34,539 (ctc:119) INFO: ctc loss:66.00444030761719
+2020-11-10 07:55:34,656 (e2e_asr:55) INFO: mtl loss:66.00444030761719
+2020-11-10 07:55:36,295 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 52, 52, 50, 50, 50, 50, 47, 45, 45, 45, 45, 42, 42, 42,        40, 40, 40, 37, 37, 37, 37, 37, 32, 32, 27, 25], dtype=torch.int32)
+2020-11-10 07:55:36,296 (ctc:97) INFO: CTC output lengths: tensor([21, 26, 28, 23, 22, 31, 20, 20, 12, 25, 20, 16, 15, 19, 19, 18, 19, 32,        24, 17,  9, 10,  9, 11,  9, 21,  5, 16, 13,  3], dtype=torch.int32)
+2020-11-10 07:55:36,301 (ctc:119) INFO: ctc loss:54.39326477050781
+2020-11-10 07:55:36,359 (e2e_asr:55) INFO: mtl loss:54.39326477050781
+2020-11-10 07:55:36,789 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 22, 22, 22, 20, 20, 17, 17], dtype=torch.int32)
+2020-11-10 07:55:36,790 (ctc:97) INFO: CTC output lengths: tensor([ 2, 12,  7,  3,  3,  4,  2,  2,  2,  4], dtype=torch.int32)
+2020-11-10 07:55:36,791 (ctc:119) INFO: ctc loss:17.214763641357422
+2020-11-10 07:55:36,800 (e2e_asr:55) INFO: mtl loss:17.214763641357422
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/triggers/early_stopping_trigger.py:102: UserWarning: validation/main/acc is not in observation
+  warnings.warn('{} is not in observation'.format(self.monitor))
+2020-11-10 07:55:40,573 (ctc:92) INFO: CTC input lengths:  tensor([42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42,        42, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40], dtype=torch.int32)
+2020-11-10 07:55:40,574 (ctc:97) INFO: CTC output lengths: tensor([16, 17, 15, 21, 19, 22, 22, 18, 22,  7, 22, 20,  5, 19, 14, 15, 10, 19,        19,  9, 20,  2, 15,  9, 17, 15, 17, 11, 24,  9], dtype=torch.int32)
+2020-11-10 07:55:40,586 (ctc:119) INFO: ctc loss:47.5364875793457
+2020-11-10 07:55:40,632 (e2e_asr:55) INFO: mtl loss:47.5364875793457
+2020-11-10 07:55:48,272 (asr:234) INFO: grad norm=35.797950744628906
+2020-11-10 07:55:49,882 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 52, 52, 52, 52, 52,        52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52], dtype=torch.int32)
+2020-11-10 07:55:49,883 (ctc:97) INFO: CTC output lengths: tensor([29, 34, 21, 16, 30, 11, 12, 21, 11, 22,  9, 21, 26, 11, 22, 21, 15, 32,        13, 19, 20, 33, 32, 26, 11, 19, 11, 21, 13, 20], dtype=torch.int32)
+2020-11-10 07:55:49,893 (ctc:119) INFO: ctc loss:59.73889923095703
+2020-11-10 07:55:49,982 (e2e_asr:55) INFO: mtl loss:59.73889923095703
+2020-11-10 07:56:00,169 (asr:234) INFO: grad norm=36.80276107788086
+2020-11-10 07:56:00,472 (ctc:92) INFO: CTC input lengths:  tensor([20, 20, 20, 20, 20, 20, 20, 17], dtype=torch.int32)
+2020-11-10 07:56:00,472 (ctc:97) INFO: CTC output lengths: tensor([2, 2, 4, 2, 3, 3, 4, 4], dtype=torch.int32)
+2020-11-10 07:56:00,473 (ctc:119) INFO: ctc loss:11.056447982788086
+2020-11-10 07:56:00,485 (e2e_asr:55) INFO: mtl loss:11.056447982788086
+2020-11-10 07:56:01,452 (asr:234) INFO: grad norm=9.94021987915039
+2020-11-10 07:56:03,635 (ctc:92) INFO: CTC input lengths:  tensor([72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 70, 70, 70, 70, 70, 70, 70, 70,        70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 67, 67], dtype=torch.int32)
+2020-11-10 07:56:03,636 (ctc:97) INFO: CTC output lengths: tensor([25, 20, 15, 19, 24, 11, 23, 21, 20, 30, 20, 11,  9, 13, 22, 19, 17, 17,        19, 34, 39, 11, 36, 19, 11, 18, 35, 19,  9, 11], dtype=torch.int32)
+2020-11-10 07:56:03,640 (ctc:119) INFO: ctc loss:66.3449478149414
+2020-11-10 07:56:03,705 (e2e_asr:55) INFO: mtl loss:66.3449478149414
+2020-11-10 07:58:05,257 (asr:234) INFO: grad norm=98.48695373535156
+2020-11-10 07:58:07,584 (ctc:92) INFO: CTC input lengths:  tensor([85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 82, 82, 82, 82, 82,        82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82], dtype=torch.int32)
+2020-11-10 07:58:07,584 (ctc:97) INFO: CTC output lengths: tensor([11, 13, 38, 32, 18, 15, 32, 46, 23, 20,  9, 29, 14, 22, 23, 17, 45, 30,        18, 32, 38, 36, 44, 23, 19, 11, 32, 19, 21, 42], dtype=torch.int32)
+2020-11-10 07:58:07,590 (ctc:119) INFO: ctc loss:78.8367919921875
+2020-11-10 07:58:07,667 (e2e_asr:55) INFO: mtl loss:78.8367919921875
+2020-11-10 08:01:06,072 (asr:234) INFO: grad norm=84.22251892089844
+2020-11-10 08:01:09,778 (ctc:92) INFO: CTC input lengths:  tensor([105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105,        105, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102,        102, 102], dtype=torch.int32)
+2020-11-10 08:01:09,779 (ctc:97) INFO: CTC output lengths: tensor([21, 17, 31, 19, 11, 50, 21, 19, 29, 24, 34, 15, 26, 21, 50, 26, 24, 17,        29, 19, 35, 13, 21, 38, 15, 31, 33, 17, 24, 28], dtype=torch.int32)
+2020-11-10 08:01:09,792 (ctc:119) INFO: ctc loss:76.98628997802734
+2020-11-10 08:01:09,890 (e2e_asr:55) INFO: mtl loss:76.98628997802734
+2020-11-10 08:06:14,485 (asr:234) INFO: grad norm=122.66941833496094
+2020-11-10 08:06:16,096 (ctc:92) INFO: CTC input lengths:  tensor([52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 50, 50, 50,        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50], dtype=torch.int32)
+2020-11-10 08:06:16,097 (ctc:97) INFO: CTC output lengths: tensor([30, 37, 11, 22, 22, 15,  7, 22,  9, 22, 15, 23,  9, 22, 21, 15,  9, 17,        19, 23,  9, 23, 22, 17, 14, 11, 21, 22, 11, 26], dtype=torch.int32)
+2020-11-10 08:06:16,100 (ctc:119) INFO: ctc loss:52.49850845336914
+2020-11-10 08:06:16,166 (e2e_asr:55) INFO: mtl loss:52.49850845336914
+2020-11-10 08:06:28,828 (asr:234) INFO: grad norm=30.317514419555664
+2020-11-10 08:06:31,389 (ctc:92) INFO: CTC input lengths:  tensor([57, 57, 57, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,        55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55], dtype=torch.int32)
+2020-11-10 08:06:31,390 (ctc:97) INFO: CTC output lengths: tensor([17, 19, 20, 33, 22, 30, 21,  7, 19, 10, 11,  9, 19,  9, 20, 14, 29, 23,        11,  9, 11, 11, 22, 14, 12, 11, 29, 15, 35, 35], dtype=torch.int32)
+2020-11-10 08:06:31,394 (ctc:119) INFO: ctc loss:57.04615783691406
+2020-11-10 08:06:31,440 (e2e_asr:55) INFO: mtl loss:57.04615783691406
+2020-11-10 08:07:56,818 (asr:234) INFO: grad norm=87.78793334960938
+2020-11-10 08:07:58,619 (ctc:92) INFO: CTC input lengths:  tensor([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67,        67, 67, 67, 67, 67, 67, 67, 65, 65, 65, 65, 65], dtype=torch.int32)
+2020-11-10 08:07:58,620 (ctc:97) INFO: CTC output lengths: tensor([13, 13, 13, 12, 19, 17, 20, 13, 30, 30, 46, 17, 21, 13, 19, 15, 13, 24,        21, 19,  7, 17, 33,  9, 41, 18, 26, 26, 29, 22], dtype=torch.int32)
+2020-11-10 08:07:58,628 (ctc:119) INFO: ctc loss:62.846134185791016
+2020-11-10 08:07:58,694 (e2e_asr:55) INFO: mtl loss:62.846134185791016
+2020-11-10 08:09:41,926 (asr:234) INFO: grad norm=78.58882141113281
+2020-11-10 08:09:44,199 (ctc:92) INFO: CTC input lengths:  tensor([75, 75, 75, 75, 75, 75, 75, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72,        72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72], dtype=torch.int32)
+2020-11-10 08:09:44,200 (ctc:97) INFO: CTC output lengths: tensor([21, 19, 23, 17, 25, 26, 33,  9, 33, 17, 11, 19, 26, 11, 34,  9, 29, 29,        15, 17, 34, 21, 45, 32, 11, 31, 13, 13,  9, 22], dtype=torch.int32)
+2020-11-10 08:09:44,206 (ctc:119) INFO: ctc loss:66.47489929199219
+2020-11-10 08:09:44,259 (e2e_asr:55) INFO: mtl loss:66.47489929199219
+2020-11-10 08:11:55,615 (asr:234) INFO: grad norm=87.89488983154297
+2020-11-10 08:12:00,603 (ctc:92) INFO: CTC input lengths:  tensor([157, 157, 157, 157, 155, 155, 152, 152, 152, 152, 150, 150, 150, 147,        145, 145, 145, 142, 142, 140, 137, 137, 137, 137, 137, 135, 135, 135,        132, 130], dtype=torch.int32)
+2020-11-10 08:12:00,604 (ctc:97) INFO: CTC output lengths: tensor([30, 15, 19, 49, 29, 42, 19, 57, 19, 23, 34, 29, 19, 44, 44, 37, 25, 19,        34, 17, 21, 36, 23, 19, 32, 47, 23, 19, 21, 19], dtype=torch.int32)
+2020-11-10 08:12:00,619 (ctc:119) INFO: ctc loss:99.21965026855469
+2020-11-10 08:12:00,742 (e2e_asr:55) INFO: mtl loss:99.21965026855469
+2020-11-10 08:22:43,175 (asr:234) INFO: grad norm=273.5103454589844
+2020-11-10 08:22:45,927 (ctc:92) INFO: CTC input lengths:  tensor([65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,        65, 65, 65, 65, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-10 08:22:45,928 (ctc:97) INFO: CTC output lengths: tensor([29, 26, 25, 13, 25, 36, 23, 33, 21, 13,  9, 28, 11, 19, 13,  9, 26, 11,        21, 26,  9, 11, 15, 32, 18, 11, 29, 24, 17, 12], dtype=torch.int32)
+2020-11-10 08:22:45,932 (ctc:119) INFO: ctc loss:60.2166633605957
+2020-11-10 08:22:46,019 (e2e_asr:55) INFO: mtl loss:60.2166633605957
+2020-11-10 08:24:29,977 (asr:234) INFO: grad norm=72.83826446533203
+2020-11-10 08:24:32,424 (ctc:92) INFO: CTC input lengths:  tensor([90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 87, 87, 87, 87, 87,        87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87], dtype=torch.int32)
+2020-11-10 08:24:32,425 (ctc:97) INFO: CTC output lengths: tensor([23, 11, 27, 31, 15, 19, 20, 34, 13, 13, 32, 15, 17, 25, 24, 48, 33, 39,        18, 29, 19, 28, 19, 23, 22, 19, 17, 23, 23, 33], dtype=torch.int32)
+2020-11-10 08:24:32,434 (ctc:119) INFO: ctc loss:74.24734497070312
+2020-11-10 08:24:32,512 (e2e_asr:55) INFO: mtl loss:74.24734497070312
+2020-11-10 08:27:38,162 (asr:234) INFO: grad norm=121.18630981445312
+2020-11-10 08:27:38,998 (ctc:92) INFO: CTC input lengths:  tensor([32, 30, 30, 30, 30, 30, 30, 30, 30, 27, 27, 27, 27, 27, 27, 27, 27, 27,        27, 27, 27, 27, 27, 27, 25, 25, 25, 25, 25, 25], dtype=torch.int32)
+2020-11-10 08:27:38,999 (ctc:97) INFO: CTC output lengths: tensor([ 9,  4,  5,  3,  5, 10,  4, 12,  6, 12,  6,  4, 10,  3,  7,  4,  6,  4,         5,  6,  6,  5,  3,  9,  3,  4,  6,  4,  3,  6], dtype=torch.int32)
+2020-11-10 08:27:39,000 (ctc:119) INFO: ctc loss:19.535472869873047
+2020-11-10 08:27:39,040 (e2e_asr:55) INFO: mtl loss:19.535472869873047
+2020-11-10 08:27:43,060 (asr:234) INFO: grad norm=11.83649730682373
+2020-11-10 08:27:44,689 (ctc:92) INFO: CTC input lengths:  tensor([60, 60, 60, 60, 60, 60, 60, 60, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57,        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-10 08:27:44,690 (ctc:97) INFO: CTC output lengths: tensor([ 9, 22, 13,  9, 26,  9, 25, 17, 22, 22, 19, 21, 22, 29, 28, 22, 17, 11,        22, 23, 15, 27, 23, 24, 29, 19, 17, 22, 13, 11], dtype=torch.int32)
+2020-11-10 08:27:44,695 (ctc:119) INFO: ctc loss:57.77191162109375
+2020-11-10 08:27:44,765 (e2e_asr:55) INFO: mtl loss:57.77191162109375
+2020-11-10 08:29:03,246 (asr:234) INFO: grad norm=31.50598907470703
+2020-11-10 08:29:07,012 (ctc:92) INFO: CTC input lengths:  tensor([130, 130, 127, 127, 127, 127, 125, 125, 125, 122, 122, 120, 120, 120,        120, 120, 120, 120, 117, 117, 117, 117, 117, 117, 115, 115, 115, 115,        115, 112], dtype=torch.int32)
+2020-11-10 08:29:07,014 (ctc:97) INFO: CTC output lengths: tensor([17, 17, 19, 35, 19, 29, 15, 15, 34, 30, 33, 55, 48, 15, 17, 35, 19, 46,        17, 17,  9, 11, 25, 17, 28, 13, 28, 33, 27, 19], dtype=torch.int32)
+2020-11-10 08:29:07,027 (ctc:119) INFO: ctc loss:85.6693344116211
+2020-11-10 08:29:07,133 (e2e_asr:55) INFO: mtl loss:85.6693344116211
+2020-11-10 08:36:03,547 (asr:234) INFO: grad norm=210.16305541992188
+2020-11-10 08:36:06,045 (ctc:92) INFO: CTC input lengths:  tensor([97, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 92, 92, 92, 92,        92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 90], dtype=torch.int32)
+2020-11-10 08:36:06,045 (ctc:97) INFO: CTC output lengths: tensor([46, 15, 50, 30, 51, 20, 25, 19, 47, 32, 17, 47, 19, 18, 49, 35, 17, 34,        19, 19, 34, 26, 15, 15, 15, 22, 33, 18, 28, 32], dtype=torch.int32)
+2020-11-10 08:36:06,056 (ctc:119) INFO: ctc loss:87.12248992919922
+2020-11-10 08:36:06,130 (e2e_asr:55) INFO: mtl loss:87.12248992919922
+2020-11-10 08:39:24,430 (asr:234) INFO: grad norm=124.61906433105469
+2020-11-10 08:39:25,282 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,        25, 25, 25, 25, 25, 25, 22, 22, 22, 22, 22, 22], dtype=torch.int32)
+2020-11-10 08:39:25,283 (ctc:97) INFO: CTC output lengths: tensor([ 5,  6,  5,  3,  6,  2,  2,  5,  3,  4,  3,  4,  5,  6,  5,  3,  3,  4,         3,  4,  3,  3, 11,  5,  6,  2,  2,  4,  5,  2], dtype=torch.int32)
+2020-11-10 08:39:25,284 (ctc:119) INFO: ctc loss:18.858579635620117
+2020-11-10 08:39:25,331 (e2e_asr:55) INFO: mtl loss:18.858579635620117
+2020-11-10 08:39:28,406 (asr:234) INFO: grad norm=51.903682708740234
+2020-11-10 08:39:29,847 (ctc:92) INFO: CTC input lengths:  tensor([47, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45,        45, 45, 45, 45, 45, 45, 45, 42, 42, 42, 42, 42], dtype=torch.int32)
+2020-11-10 08:39:29,848 (ctc:97) INFO: CTC output lengths: tensor([21, 13, 22, 21, 22,  9, 22, 22, 10, 22, 20, 22, 21, 22, 11, 20, 16, 22,        15, 17, 22, 22, 10, 20,  7, 13, 23, 21,  9, 22], dtype=torch.int32)
+2020-11-10 08:39:29,853 (ctc:119) INFO: ctc loss:54.57417297363281
+2020-11-10 08:39:29,899 (e2e_asr:55) INFO: mtl loss:54.57417297363281
+2020-11-10 08:39:38,797 (asr:234) INFO: grad norm=80.69538879394531
+2020-11-10 08:39:42,358 (ctc:92) INFO: CTC input lengths:  tensor([102, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,        100, 100,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,         97,  97], dtype=torch.int32)
+2020-11-10 08:39:42,359 (ctc:97) INFO: CTC output lengths: tensor([51, 19, 29, 28, 35, 21, 19, 47, 33, 24, 19, 32, 27, 19, 26, 19, 46, 15,        30, 22, 24, 19, 21, 15, 32, 33, 34, 24, 20, 19], dtype=torch.int32)
+2020-11-10 08:39:42,365 (ctc:119) INFO: ctc loss:84.38893127441406
+2020-11-10 08:39:42,432 (e2e_asr:55) INFO: mtl loss:84.38893127441406
+2020-11-10 08:43:11,210 (asr:234) INFO: grad norm=134.44259643554688
+2020-11-10 08:43:12,351 (ctc:92) INFO: CTC input lengths:  tensor([50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 47, 47, 47, 47,        47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47], dtype=torch.int32)
+2020-11-10 08:43:12,352 (ctc:97) INFO: CTC output lengths: tensor([17, 12, 21, 20,  7, 17,  7, 11, 28, 15, 11, 13, 20, 27, 21,  9, 15,  9,        10, 13, 20, 22,  9, 17, 20, 24, 13,  9, 17,  9], dtype=torch.int32)
+2020-11-10 08:43:12,355 (ctc:119) INFO: ctc loss:45.80874252319336
+2020-11-10 08:43:12,408 (e2e_asr:55) INFO: mtl loss:45.80874252319336
+2020-11-10 08:43:20,117 (asr:234) INFO: grad norm=59.69525909423828
+2020-11-10 08:43:20,651 (ctc:92) INFO: CTC input lengths:  tensor([22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 20,        20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], dtype=torch.int32)
+2020-11-10 08:43:20,651 (ctc:97) INFO: CTC output lengths: tensor([4, 6, 6, 4, 4, 4, 3, 4, 2, 2, 4, 4, 3, 6, 6, 5, 2, 2, 2, 2, 2, 2, 2, 2,        4, 4, 6, 2, 2, 4], dtype=torch.int32)
+2020-11-10 08:43:20,653 (ctc:119) INFO: ctc loss:16.271345138549805
+2020-11-10 08:43:20,682 (e2e_asr:55) INFO: mtl loss:16.271345138549805
+2020-11-10 08:43:22,796 (asr:234) INFO: grad norm=44.736793518066406
+2020-11-10 08:43:23,603 (ctc:92) INFO: CTC input lengths:  tensor([35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 32, 32, 32, 32,        32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32], dtype=torch.int32)
+2020-11-10 08:43:23,604 (ctc:97) INFO: CTC output lengths: tensor([ 5,  7,  6, 12, 11, 15, 11, 11,  9, 15, 17, 11,  5, 11,  4, 10,  6, 11,         8,  5, 18,  5, 10,  5, 10,  3,  7, 15, 14,  2], dtype=torch.int32)
+2020-11-10 08:43:23,606 (ctc:119) INFO: ctc loss:27.626300811767578
+2020-11-10 08:43:23,628 (e2e_asr:55) INFO: mtl loss:27.626300811767578
+2020-11-10 08:43:27,985 (asr:234) INFO: grad norm=21.060863494873047
+2020-11-10 08:43:30,168 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77,        77, 77, 77, 77, 77, 77, 77, 75, 75, 75, 75, 75], dtype=torch.int32)
+2020-11-10 08:43:30,168 (ctc:97) INFO: CTC output lengths: tensor([26, 19, 11, 11, 13, 23, 15, 13,  5, 13, 25, 13,  9, 17, 25, 33, 25, 11,        22, 13, 28, 24, 15, 25, 15, 15, 28, 16, 39, 26], dtype=torch.int32)
+2020-11-10 08:43:30,174 (ctc:119) INFO: ctc loss:62.97298049926758
+2020-11-10 08:43:30,225 (e2e_asr:55) INFO: mtl loss:62.97298049926758
+2020-11-10 08:45:36,013 (asr:234) INFO: grad norm=122.8392333984375
+2020-11-10 08:45:38,919 (ctc:92) INFO: CTC input lengths:  tensor([112, 112, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 107, 107,        107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 105,        105, 105], dtype=torch.int32)
+2020-11-10 08:45:38,919 (ctc:97) INFO: CTC output lengths: tensor([19, 19, 36, 21, 15, 17, 41, 23,  9, 17, 52, 25, 29, 13, 34, 34, 19, 17,        32, 17, 20, 13, 15, 26, 13, 19, 25, 21, 19, 17], dtype=torch.int32)
+2020-11-10 08:45:38,926 (ctc:119) INFO: ctc loss:63.96348571777344
+2020-11-10 08:45:39,002 (e2e_asr:55) INFO: mtl loss:63.96348571777344
+2020-11-10 08:49:54,152 (asr:234) INFO: grad norm=54.741695404052734
+2020-11-10 08:49:55,648 (ctc:92) INFO: CTC input lengths:  tensor([62, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,        60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60], dtype=torch.int32)
+2020-11-10 08:49:55,649 (ctc:97) INFO: CTC output lengths: tensor([31, 19, 27, 11, 18, 19, 34,  7, 25, 20, 24, 21, 23, 22, 13, 36, 31, 13,        29, 20, 22, 32, 13, 16, 15, 19, 21, 23, 11, 20], dtype=torch.int32)
+2020-11-10 08:49:55,654 (ctc:119) INFO: ctc loss:60.93299102783203
+2020-11-10 08:49:55,714 (e2e_asr:55) INFO: mtl loss:60.93299102783203
+2020-11-10 08:51:13,846 (asr:234) INFO: grad norm=41.797454833984375
+2020-11-10 08:51:15,861 (ctc:92) INFO: CTC input lengths:  tensor([82, 82, 82, 82, 82, 82, 82, 82, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,        80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], dtype=torch.int32)
+2020-11-10 08:51:15,861 (ctc:97) INFO: CTC output lengths: tensor([15, 18, 19, 21, 35, 23, 30, 19, 22, 32, 24, 13, 13, 24, 13, 13, 29, 37,        20, 29, 18, 18, 36, 25, 22, 21, 19, 27, 13, 38], dtype=torch.int32)
+2020-11-10 08:51:15,867 (ctc:119) INFO: ctc loss:64.72969818115234
+2020-11-10 08:51:15,931 (e2e_asr:55) INFO: mtl loss:64.72969818115234
+2020-11-10 08:53:33,258 (asr:234) INFO: grad norm=37.634010314941406
+2020-11-10 08:53:34,223 (ctc:92) INFO: CTC input lengths:  tensor([40, 40, 40, 40, 40, 40, 40, 40, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37,        37, 37, 37, 37, 37, 37, 37, 37, 37, 35, 35, 35], dtype=torch.int32)
+2020-11-10 08:53:34,224 (ctc:97) INFO: CTC output lengths: tensor([ 7, 18, 18,  9, 20, 22, 20,  7,  7, 13, 14, 12, 11,  7, 16,  7, 19, 17,        11,  7, 10,  9, 18, 16,  9, 13, 16, 13, 11, 17], dtype=torch.int32)
+2020-11-10 08:53:34,226 (ctc:119) INFO: ctc loss:38.25057601928711
+2020-11-10 08:53:34,263 (e2e_asr:55) INFO: mtl loss:38.25057601928711
+2020-11-10 08:53:39,453 (asr:234) INFO: grad norm=37.552425384521484
+2020-11-10 08:53:41,139 (ctc:92) INFO: CTC input lengths:  tensor([62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62,        62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-10 08:53:41,140 (ctc:97) INFO: CTC output lengths: tensor([20,  9, 29, 24, 11,  9, 30, 11,  9, 19, 24, 14, 11, 13,  7, 35,  9, 11,        17, 13,  5, 40, 32, 39, 21, 23, 25, 11, 20, 13], dtype=torch.int32)
+2020-11-10 08:53:41,146 (ctc:119) INFO: ctc loss:54.99983596801758
+2020-11-10 08:53:41,187 (e2e_asr:55) INFO: mtl loss:54.99983596801758
+2020-11-10 08:55:02,287 (asr:234) INFO: grad norm=41.70561218261719
+2020-11-10 08:55:05,079 (ctc:92) INFO: CTC input lengths:  tensor([160, 132, 125, 122, 122, 117, 117, 112, 110, 107, 107, 107, 107, 102,        100,  95,  92,  92,  90,  90,  87,  87,  87,  85,  85,  85,  82,  82,         82,  77], dtype=torch.int32)
+2020-11-10 08:55:05,079 (ctc:97) INFO: CTC output lengths: tensor([40, 23, 21, 19, 46, 25, 27, 19, 17, 34, 15, 19, 15, 19, 27, 26, 17, 19,        15, 23, 11, 39, 21, 11, 24, 27, 15, 13, 19, 33], dtype=torch.int32)
+2020-11-10 08:55:05,086 (ctc:119) INFO: ctc loss:74.82381439208984
+2020-11-10 08:55:05,178 (e2e_asr:55) INFO: mtl loss:74.82381439208984
+2020-11-10 08:55:06,892 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 75, 75, 75, 72, 72, 72, 72, 70, 70, 70, 67, 67, 67, 67, 65,        65, 62, 62, 60, 60, 60, 60, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-10 08:55:06,892 (ctc:97) INFO: CTC output lengths: tensor([21, 32, 30, 13, 35, 34, 15, 11, 27, 24, 33, 17, 15, 34, 12, 21, 27, 13,        43, 33,  9, 11, 21, 13, 33, 19, 22,  7, 22, 15], dtype=torch.int32)
+2020-11-10 08:55:06,897 (ctc:119) INFO: ctc loss:65.58185577392578
+2020-11-10 08:55:06,942 (e2e_asr:55) INFO: mtl loss:65.58185577392578
+2020-11-10 08:55:07,937 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 52, 52, 50, 50, 50, 50, 47, 45, 45, 45, 45, 42, 42, 42,        40, 40, 40, 37, 37, 37, 37, 37, 32, 32, 27, 25], dtype=torch.int32)
+2020-11-10 08:55:07,938 (ctc:97) INFO: CTC output lengths: tensor([21, 26, 28, 23, 22, 31, 20, 20, 12, 25, 20, 16, 15, 19, 19, 18, 19, 32,        24, 17,  9, 10,  9, 11,  9, 21,  5, 16, 13,  3], dtype=torch.int32)
+2020-11-10 08:55:07,942 (ctc:119) INFO: ctc loss:50.82543182373047
+2020-11-10 08:55:07,969 (e2e_asr:55) INFO: mtl loss:50.82543182373047
+2020-11-10 08:55:08,195 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 22, 22, 22, 20, 20, 17, 17], dtype=torch.int32)
+2020-11-10 08:55:08,195 (ctc:97) INFO: CTC output lengths: tensor([ 2, 12,  7,  3,  3,  4,  2,  2,  2,  4], dtype=torch.int32)
+2020-11-10 08:55:08,196 (ctc:119) INFO: ctc loss:17.715906143188477
+2020-11-10 08:55:08,202 (e2e_asr:55) INFO: mtl loss:17.715906143188477
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/triggers/early_stopping_trigger.py:102: UserWarning: validation/main/acc is not in observation
+  warnings.warn('{} is not in observation'.format(self.monitor))
+2020-11-10 08:55:10,929 (ctc:92) INFO: CTC input lengths:  tensor([65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,        65, 65, 65, 65, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-10 08:55:10,930 (ctc:97) INFO: CTC output lengths: tensor([29, 26, 25, 13, 25, 36, 23, 33, 21, 13,  9, 28, 11, 19, 13,  9, 26, 11,        21, 26,  9, 11, 15, 32, 18, 11, 29, 24, 17, 12], dtype=torch.int32)
+2020-11-10 08:55:10,936 (ctc:119) INFO: ctc loss:60.297630310058594
+2020-11-10 08:55:10,982 (e2e_asr:55) INFO: mtl loss:60.297630310058594
+2020-11-10 08:56:36,837 (asr:234) INFO: grad norm=72.99745178222656
+2020-11-10 08:56:38,532 (ctc:92) INFO: CTC input lengths:  tensor([72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 70, 70, 70, 70, 70, 70, 70, 70,        70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 67, 67], dtype=torch.int32)
+2020-11-10 08:56:38,532 (ctc:97) INFO: CTC output lengths: tensor([25, 20, 15, 19, 24, 11, 23, 21, 20, 30, 20, 11,  9, 13, 22, 19, 17, 17,        19, 34, 39, 11, 36, 19, 11, 18, 35, 19,  9, 11], dtype=torch.int32)
+2020-11-10 08:56:38,537 (ctc:119) INFO: ctc loss:58.7852668762207
+2020-11-10 08:56:38,584 (e2e_asr:55) INFO: mtl loss:58.7852668762207
+2020-11-10 08:58:27,157 (asr:234) INFO: grad norm=57.56044006347656
+2020-11-10 08:58:28,701 (ctc:92) INFO: CTC input lengths:  tensor([62, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,        60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60], dtype=torch.int32)
+2020-11-10 08:58:28,702 (ctc:97) INFO: CTC output lengths: tensor([31, 19, 27, 11, 18, 19, 34,  7, 25, 20, 24, 21, 23, 22, 13, 36, 31, 13,        29, 20, 22, 32, 13, 16, 15, 19, 21, 23, 11, 20], dtype=torch.int32)
+2020-11-10 08:58:28,707 (ctc:119) INFO: ctc loss:60.03230667114258
+2020-11-10 08:58:28,753 (e2e_asr:55) INFO: mtl loss:60.03230667114258
+2020-11-10 08:59:46,009 (asr:234) INFO: grad norm=45.71848678588867
+2020-11-10 08:59:46,600 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,        25, 25, 25, 25, 25, 25, 22, 22, 22, 22, 22, 22], dtype=torch.int32)
+2020-11-10 08:59:46,600 (ctc:97) INFO: CTC output lengths: tensor([ 5,  6,  5,  3,  6,  2,  2,  5,  3,  4,  3,  4,  5,  6,  5,  3,  3,  4,         3,  4,  3,  3, 11,  5,  6,  2,  2,  4,  5,  2], dtype=torch.int32)
+2020-11-10 08:59:46,601 (ctc:119) INFO: ctc loss:14.673542022705078
+2020-11-10 08:59:46,625 (e2e_asr:55) INFO: mtl loss:14.673542022705078
+2020-11-10 08:59:49,100 (asr:234) INFO: grad norm=15.297759056091309
+2020-11-10 08:59:50,533 (ctc:92) INFO: CTC input lengths:  tensor([60, 60, 60, 60, 60, 60, 60, 60, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57,        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-10 08:59:50,533 (ctc:97) INFO: CTC output lengths: tensor([ 9, 22, 13,  9, 26,  9, 25, 17, 22, 22, 19, 21, 22, 29, 28, 22, 17, 11,        22, 23, 15, 27, 23, 24, 29, 19, 17, 22, 13, 11], dtype=torch.int32)
+2020-11-10 08:59:50,537 (ctc:119) INFO: ctc loss:64.91129302978516
+2020-11-10 08:59:50,570 (e2e_asr:55) INFO: mtl loss:64.91129302978516
+2020-11-10 09:01:03,104 (asr:234) INFO: grad norm=117.69859313964844
+2020-11-10 09:01:05,250 (ctc:92) INFO: CTC input lengths:  tensor([90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 87, 87, 87, 87, 87,        87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87], dtype=torch.int32)
+2020-11-10 09:01:05,250 (ctc:97) INFO: CTC output lengths: tensor([23, 11, 27, 31, 15, 19, 20, 34, 13, 13, 32, 15, 17, 25, 24, 48, 33, 39,        18, 29, 19, 28, 19, 23, 22, 19, 17, 23, 23, 33], dtype=torch.int32)
+2020-11-10 09:01:05,256 (ctc:119) INFO: ctc loss:69.2237319946289
+2020-11-10 09:01:05,310 (e2e_asr:55) INFO: mtl loss:69.2237319946289
+2020-11-10 09:03:49,814 (asr:234) INFO: grad norm=48.8899040222168
+2020-11-10 09:03:52,989 (ctc:92) INFO: CTC input lengths:  tensor([130, 130, 127, 127, 127, 127, 125, 125, 125, 122, 122, 120, 120, 120,        120, 120, 120, 120, 117, 117, 117, 117, 117, 117, 115, 115, 115, 115,        115, 112], dtype=torch.int32)
+2020-11-10 09:03:52,990 (ctc:97) INFO: CTC output lengths: tensor([17, 17, 19, 35, 19, 29, 15, 15, 34, 30, 33, 55, 48, 15, 17, 35, 19, 46,        17, 17,  9, 11, 25, 17, 28, 13, 28, 33, 27, 19], dtype=torch.int32)
+2020-11-10 09:03:52,997 (ctc:119) INFO: ctc loss:71.13616180419922
+2020-11-10 09:03:53,078 (e2e_asr:55) INFO: mtl loss:71.13616180419922
+2020-11-10 09:10:53,950 (asr:234) INFO: grad norm=78.6881332397461
+2020-11-10 09:10:55,399 (ctc:92) INFO: CTC input lengths:  tensor([50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 47, 47, 47, 47,        47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47], dtype=torch.int32)
+2020-11-10 09:10:55,400 (ctc:97) INFO: CTC output lengths: tensor([17, 12, 21, 20,  7, 17,  7, 11, 28, 15, 11, 13, 20, 27, 21,  9, 15,  9,        10, 13, 20, 22,  9, 17, 20, 24, 13,  9, 17,  9], dtype=torch.int32)
+2020-11-10 09:10:55,406 (ctc:119) INFO: ctc loss:44.337154388427734
+2020-11-10 09:10:55,463 (e2e_asr:55) INFO: mtl loss:44.337154388427734
+2020-11-10 09:11:05,360 (asr:234) INFO: grad norm=36.56772994995117
+2020-11-10 09:11:07,994 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77,        77, 77, 77, 77, 77, 77, 77, 75, 75, 75, 75, 75], dtype=torch.int32)
+2020-11-10 09:11:07,994 (ctc:97) INFO: CTC output lengths: tensor([26, 19, 11, 11, 13, 23, 15, 13,  5, 13, 25, 13,  9, 17, 25, 33, 25, 11,        22, 13, 28, 24, 15, 25, 15, 15, 28, 16, 39, 26], dtype=torch.int32)
+2020-11-10 09:11:08,002 (ctc:119) INFO: ctc loss:54.70231246948242
+2020-11-10 09:11:08,058 (e2e_asr:55) INFO: mtl loss:54.70231246948242
+2020-11-10 09:13:31,086 (asr:234) INFO: grad norm=51.7900276184082
+2020-11-10 09:13:33,677 (ctc:92) INFO: CTC input lengths:  tensor([102, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,        100, 100,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,         97,  97], dtype=torch.int32)
+2020-11-10 09:13:33,678 (ctc:97) INFO: CTC output lengths: tensor([51, 19, 29, 28, 35, 21, 19, 47, 33, 24, 19, 32, 27, 19, 26, 19, 46, 15,        30, 22, 24, 19, 21, 15, 32, 33, 34, 24, 20, 19], dtype=torch.int32)
+2020-11-10 09:13:33,689 (ctc:119) INFO: ctc loss:78.75088500976562
+2020-11-10 09:13:33,782 (e2e_asr:55) INFO: mtl loss:78.75088500976562
+2020-11-10 09:17:16,196 (asr:234) INFO: grad norm=96.89820098876953
+2020-11-10 09:17:17,471 (ctc:92) INFO: CTC input lengths:  tensor([42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42,        42, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40], dtype=torch.int32)
+2020-11-10 09:17:17,472 (ctc:97) INFO: CTC output lengths: tensor([16, 17, 15, 21, 19, 22, 22, 18, 22,  7, 22, 20,  5, 19, 14, 15, 10, 19,        19,  9, 20,  2, 15,  9, 17, 15, 17, 11, 24,  9], dtype=torch.int32)
+2020-11-10 09:17:17,476 (ctc:119) INFO: ctc loss:47.962913513183594
+2020-11-10 09:17:17,531 (e2e_asr:55) INFO: mtl loss:47.962913513183594
+2020-11-10 09:17:24,056 (asr:234) INFO: grad norm=66.10974884033203
+2020-11-10 09:17:25,408 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 52, 52, 52, 52, 52,        52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52], dtype=torch.int32)
+2020-11-10 09:17:25,409 (ctc:97) INFO: CTC output lengths: tensor([29, 34, 21, 16, 30, 11, 12, 21, 11, 22,  9, 21, 26, 11, 22, 21, 15, 32,        13, 19, 20, 33, 32, 26, 11, 19, 11, 21, 13, 20], dtype=torch.int32)
+2020-11-10 09:17:25,412 (ctc:119) INFO: ctc loss:57.79637908935547
+2020-11-10 09:17:25,453 (e2e_asr:55) INFO: mtl loss:57.79637908935547
+2020-11-10 09:17:34,969 (asr:234) INFO: grad norm=37.3577766418457
+2020-11-10 09:17:36,765 (ctc:92) INFO: CTC input lengths:  tensor([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67,        67, 67, 67, 67, 67, 67, 67, 65, 65, 65, 65, 65], dtype=torch.int32)
+2020-11-10 09:17:36,766 (ctc:97) INFO: CTC output lengths: tensor([13, 13, 13, 12, 19, 17, 20, 13, 30, 30, 46, 17, 21, 13, 19, 15, 13, 24,        21, 19,  7, 17, 33,  9, 41, 18, 26, 26, 29, 22], dtype=torch.int32)
+2020-11-10 09:17:36,774 (ctc:119) INFO: ctc loss:59.776451110839844
+2020-11-10 09:17:36,819 (e2e_asr:55) INFO: mtl loss:59.776451110839844
+2020-11-10 09:19:14,180 (asr:234) INFO: grad norm=42.18522644042969
+2020-11-10 09:19:16,776 (ctc:92) INFO: CTC input lengths:  tensor([105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105,        105, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102,        102, 102], dtype=torch.int32)
+2020-11-10 09:19:16,776 (ctc:97) INFO: CTC output lengths: tensor([21, 17, 31, 19, 11, 50, 21, 19, 29, 24, 34, 15, 26, 21, 50, 26, 24, 17,        29, 19, 35, 13, 21, 38, 15, 31, 33, 17, 24, 28], dtype=torch.int32)
+2020-11-10 09:19:16,784 (ctc:119) INFO: ctc loss:83.44984436035156
+2020-11-10 09:19:16,847 (e2e_asr:55) INFO: mtl loss:83.44984436035156
+2020-11-10 09:23:12,793 (asr:234) INFO: grad norm=159.1588592529297
+2020-11-10 09:23:17,176 (ctc:92) INFO: CTC input lengths:  tensor([157, 157, 157, 157, 155, 155, 152, 152, 152, 152, 150, 150, 150, 147,        145, 145, 145, 142, 142, 140, 137, 137, 137, 137, 137, 135, 135, 135,        132, 130], dtype=torch.int32)
+2020-11-10 09:23:17,176 (ctc:97) INFO: CTC output lengths: tensor([30, 15, 19, 49, 29, 42, 19, 57, 19, 23, 34, 29, 19, 44, 44, 37, 25, 19,        34, 17, 21, 36, 23, 19, 32, 47, 23, 19, 21, 19], dtype=torch.int32)
+2020-11-10 09:23:17,190 (ctc:119) INFO: ctc loss:78.09585571289062
+2020-11-10 09:23:17,307 (e2e_asr:55) INFO: mtl loss:78.09585571289062
+2020-11-10 09:33:17,892 (asr:234) INFO: grad norm=29.472810745239258
+2020-11-10 09:33:18,463 (ctc:92) INFO: CTC input lengths:  tensor([22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 20,        20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], dtype=torch.int32)
+2020-11-10 09:33:18,464 (ctc:97) INFO: CTC output lengths: tensor([4, 6, 6, 4, 4, 4, 3, 4, 2, 2, 4, 4, 3, 6, 6, 5, 2, 2, 2, 2, 2, 2, 2, 2,        4, 4, 6, 2, 2, 4], dtype=torch.int32)
+2020-11-10 09:33:18,465 (ctc:119) INFO: ctc loss:14.78089427947998
+2020-11-10 09:33:18,508 (e2e_asr:55) INFO: mtl loss:14.78089427947998
+2020-11-10 09:33:20,833 (asr:234) INFO: grad norm=30.473718643188477
+2020-11-10 09:33:21,948 (ctc:92) INFO: CTC input lengths:  tensor([40, 40, 40, 40, 40, 40, 40, 40, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37,        37, 37, 37, 37, 37, 37, 37, 37, 37, 35, 35, 35], dtype=torch.int32)
+2020-11-10 09:33:21,949 (ctc:97) INFO: CTC output lengths: tensor([ 7, 18, 18,  9, 20, 22, 20,  7,  7, 13, 14, 12, 11,  7, 16,  7, 19, 17,        11,  7, 10,  9, 18, 16,  9, 13, 16, 13, 11, 17], dtype=torch.int32)
+2020-11-10 09:33:21,951 (ctc:119) INFO: ctc loss:38.36405563354492
+2020-11-10 09:33:21,982 (e2e_asr:55) INFO: mtl loss:38.36405563354492
+2020-11-10 09:33:27,692 (asr:234) INFO: grad norm=42.64745330810547
+2020-11-10 09:33:28,547 (ctc:92) INFO: CTC input lengths:  tensor([35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 32, 32, 32, 32,        32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32], dtype=torch.int32)
+2020-11-10 09:33:28,548 (ctc:97) INFO: CTC output lengths: tensor([ 5,  7,  6, 12, 11, 15, 11, 11,  9, 15, 17, 11,  5, 11,  4, 10,  6, 11,         8,  5, 18,  5, 10,  5, 10,  3,  7, 15, 14,  2], dtype=torch.int32)
+2020-11-10 09:33:28,550 (ctc:119) INFO: ctc loss:30.238378524780273
+2020-11-10 09:33:28,580 (e2e_asr:55) INFO: mtl loss:30.238378524780273
+2020-11-10 09:33:33,076 (asr:234) INFO: grad norm=41.81438064575195
+2020-11-10 09:33:35,915 (ctc:92) INFO: CTC input lengths:  tensor([112, 112, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 107, 107,        107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 105,        105, 105], dtype=torch.int32)
+2020-11-10 09:33:35,915 (ctc:97) INFO: CTC output lengths: tensor([19, 19, 36, 21, 15, 17, 41, 23,  9, 17, 52, 25, 29, 13, 34, 34, 19, 17,        32, 17, 20, 13, 15, 26, 13, 19, 25, 21, 19, 17], dtype=torch.int32)
+2020-11-10 09:33:35,924 (ctc:119) INFO: ctc loss:61.1467399597168
+2020-11-10 09:33:35,996 (e2e_asr:55) INFO: mtl loss:61.1467399597168
+2020-11-10 09:38:35,719 (asr:234) INFO: grad norm=36.7158317565918
+2020-11-10 09:38:38,124 (ctc:92) INFO: CTC input lengths:  tensor([97, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 92, 92, 92, 92,        92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 90], dtype=torch.int32)
+2020-11-10 09:38:38,124 (ctc:97) INFO: CTC output lengths: tensor([46, 15, 50, 30, 51, 20, 25, 19, 47, 32, 17, 47, 19, 18, 49, 35, 17, 34,        19, 19, 34, 26, 15, 15, 15, 22, 33, 18, 28, 32], dtype=torch.int32)
+2020-11-10 09:38:38,131 (ctc:119) INFO: ctc loss:82.9771499633789
+2020-11-10 09:38:38,206 (e2e_asr:55) INFO: mtl loss:82.9771499633789
+2020-11-10 09:42:15,919 (asr:234) INFO: grad norm=71.77620697021484
+2020-11-10 09:42:17,124 (ctc:92) INFO: CTC input lengths:  tensor([47, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45,        45, 45, 45, 45, 45, 45, 45, 42, 42, 42, 42, 42], dtype=torch.int32)
+2020-11-10 09:42:17,125 (ctc:97) INFO: CTC output lengths: tensor([21, 13, 22, 21, 22,  9, 22, 22, 10, 22, 20, 22, 21, 22, 11, 20, 16, 22,        15, 17, 22, 22, 10, 20,  7, 13, 23, 21,  9, 22], dtype=torch.int32)
+2020-11-10 09:42:17,128 (ctc:119) INFO: ctc loss:52.06025695800781
+2020-11-10 09:42:17,179 (e2e_asr:55) INFO: mtl loss:52.06025695800781
+2020-11-10 09:42:24,682 (asr:234) INFO: grad norm=64.40132141113281
+2020-11-10 09:42:26,369 (ctc:92) INFO: CTC input lengths:  tensor([57, 57, 57, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,        55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55], dtype=torch.int32)
+2020-11-10 09:42:26,369 (ctc:97) INFO: CTC output lengths: tensor([17, 19, 20, 33, 22, 30, 21,  7, 19, 10, 11,  9, 19,  9, 20, 14, 29, 23,        11,  9, 11, 11, 22, 14, 12, 11, 29, 15, 35, 35], dtype=torch.int32)
+2020-11-10 09:42:26,373 (ctc:119) INFO: ctc loss:53.562564849853516
+2020-11-10 09:42:26,419 (e2e_asr:55) INFO: mtl loss:53.562564849853516
+2020-11-10 09:43:35,601 (asr:234) INFO: grad norm=47.4007682800293
+2020-11-10 09:43:37,632 (ctc:92) INFO: CTC input lengths:  tensor([75, 75, 75, 75, 75, 75, 75, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72,        72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72], dtype=torch.int32)
+2020-11-10 09:43:37,632 (ctc:97) INFO: CTC output lengths: tensor([21, 19, 23, 17, 25, 26, 33,  9, 33, 17, 11, 19, 26, 11, 34,  9, 29, 29,        15, 17, 34, 21, 45, 32, 11, 31, 13, 13,  9, 22], dtype=torch.int32)
+2020-11-10 09:43:37,637 (ctc:119) INFO: ctc loss:62.95905685424805
+2020-11-10 09:43:37,707 (e2e_asr:55) INFO: mtl loss:62.95905685424805
+2020-11-10 09:45:41,687 (asr:234) INFO: grad norm=51.41099548339844
+2020-11-10 09:45:43,044 (ctc:92) INFO: CTC input lengths:  tensor([52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 50, 50, 50,        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50], dtype=torch.int32)
+2020-11-10 09:45:43,045 (ctc:97) INFO: CTC output lengths: tensor([30, 37, 11, 22, 22, 15,  7, 22,  9, 22, 15, 23,  9, 22, 21, 15,  9, 17,        19, 23,  9, 23, 22, 17, 14, 11, 21, 22, 11, 26], dtype=torch.int32)
+2020-11-10 09:45:43,048 (ctc:119) INFO: ctc loss:50.53018569946289
+2020-11-10 09:45:43,098 (e2e_asr:55) INFO: mtl loss:50.53018569946289
+2020-11-10 09:45:51,925 (asr:234) INFO: grad norm=28.70336151123047
+2020-11-10 09:45:52,710 (ctc:92) INFO: CTC input lengths:  tensor([32, 30, 30, 30, 30, 30, 30, 30, 30, 27, 27, 27, 27, 27, 27, 27, 27, 27,        27, 27, 27, 27, 27, 27, 25, 25, 25, 25, 25, 25], dtype=torch.int32)
+2020-11-10 09:45:52,711 (ctc:97) INFO: CTC output lengths: tensor([ 9,  4,  5,  3,  5, 10,  4, 12,  6, 12,  6,  4, 10,  3,  7,  4,  6,  4,         5,  6,  6,  5,  3,  9,  3,  4,  6,  4,  3,  6], dtype=torch.int32)
+2020-11-10 09:45:52,713 (ctc:119) INFO: ctc loss:18.859838485717773
+2020-11-10 09:45:52,746 (e2e_asr:55) INFO: mtl loss:18.859838485717773
+2020-11-10 09:45:56,376 (asr:234) INFO: grad norm=12.31727123260498
+2020-11-10 09:45:58,590 (ctc:92) INFO: CTC input lengths:  tensor([85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 82, 82, 82, 82, 82,        82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82], dtype=torch.int32)
+2020-11-10 09:45:58,591 (ctc:97) INFO: CTC output lengths: tensor([11, 13, 38, 32, 18, 15, 32, 46, 23, 20,  9, 29, 14, 22, 23, 17, 45, 30,        18, 32, 38, 36, 44, 23, 19, 11, 32, 19, 21, 42], dtype=torch.int32)
+2020-11-10 09:45:58,597 (ctc:119) INFO: ctc loss:74.08522033691406
+2020-11-10 09:45:58,648 (e2e_asr:55) INFO: mtl loss:74.08522033691406
+2020-11-10 09:48:45,220 (asr:234) INFO: grad norm=36.244258880615234
+2020-11-10 09:48:46,979 (ctc:92) INFO: CTC input lengths:  tensor([62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62,        62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-10 09:48:46,979 (ctc:97) INFO: CTC output lengths: tensor([20,  9, 29, 24, 11,  9, 30, 11,  9, 19, 24, 14, 11, 13,  7, 35,  9, 11,        17, 13,  5, 40, 32, 39, 21, 23, 25, 11, 20, 13], dtype=torch.int32)
+2020-11-10 09:48:46,984 (ctc:119) INFO: ctc loss:52.9959831237793
+2020-11-10 09:48:47,036 (e2e_asr:55) INFO: mtl loss:52.9959831237793
+2020-11-10 09:50:17,561 (asr:234) INFO: grad norm=42.567928314208984
+2020-11-10 09:50:17,861 (ctc:92) INFO: CTC input lengths:  tensor([20, 20, 20, 20, 20, 20, 20, 17], dtype=torch.int32)
+2020-11-10 09:50:17,861 (ctc:97) INFO: CTC output lengths: tensor([2, 2, 4, 2, 3, 3, 4, 4], dtype=torch.int32)
+2020-11-10 09:50:17,862 (ctc:119) INFO: ctc loss:11.239053726196289
+2020-11-10 09:50:17,878 (e2e_asr:55) INFO: mtl loss:11.239053726196289
+2020-11-10 09:50:18,756 (asr:234) INFO: grad norm=23.14130401611328
+2020-11-10 09:50:20,948 (ctc:92) INFO: CTC input lengths:  tensor([82, 82, 82, 82, 82, 82, 82, 82, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,        80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], dtype=torch.int32)
+2020-11-10 09:50:20,949 (ctc:97) INFO: CTC output lengths: tensor([15, 18, 19, 21, 35, 23, 30, 19, 22, 32, 24, 13, 13, 24, 13, 13, 29, 37,        20, 29, 18, 18, 36, 25, 22, 21, 19, 27, 13, 38], dtype=torch.int32)
+2020-11-10 09:50:20,956 (ctc:119) INFO: ctc loss:63.024436950683594
+2020-11-10 09:50:21,011 (e2e_asr:55) INFO: mtl loss:63.024436950683594
+2020-11-10 09:53:26,627 (asr:234) INFO: grad norm=21.976451873779297
+2020-11-10 09:53:34,261 (ctc:92) INFO: CTC input lengths:  tensor([160, 132, 125, 122, 122, 117, 117, 112, 110, 107, 107, 107, 107, 102,        100,  95,  92,  92,  90,  90,  87,  87,  87,  85,  85,  85,  82,  82,         82,  77], dtype=torch.int32)
+2020-11-10 09:53:34,262 (ctc:97) INFO: CTC output lengths: tensor([40, 23, 21, 19, 46, 25, 27, 19, 17, 34, 15, 19, 15, 19, 27, 26, 17, 19,        15, 23, 11, 39, 21, 11, 24, 27, 15, 13, 19, 33], dtype=torch.int32)
+2020-11-10 09:53:34,280 (ctc:119) INFO: ctc loss:67.86717224121094
+2020-11-10 09:53:34,591 (e2e_asr:55) INFO: mtl loss:67.86717224121094
+2020-11-10 09:53:38,978 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 75, 75, 75, 72, 72, 72, 72, 70, 70, 70, 67, 67, 67, 67, 65,        65, 62, 62, 60, 60, 60, 60, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-10 09:53:38,980 (ctc:97) INFO: CTC output lengths: tensor([21, 32, 30, 13, 35, 34, 15, 11, 27, 24, 33, 17, 15, 34, 12, 21, 27, 13,        43, 33,  9, 11, 21, 13, 33, 19, 22,  7, 22, 15], dtype=torch.int32)
+2020-11-10 09:53:38,998 (ctc:119) INFO: ctc loss:64.73397064208984
+2020-11-10 09:53:39,159 (e2e_asr:55) INFO: mtl loss:64.73397064208984
+2020-11-10 09:53:41,919 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 52, 52, 50, 50, 50, 50, 47, 45, 45, 45, 45, 42, 42, 42,        40, 40, 40, 37, 37, 37, 37, 37, 32, 32, 27, 25], dtype=torch.int32)
+2020-11-10 09:53:41,921 (ctc:97) INFO: CTC output lengths: tensor([21, 26, 28, 23, 22, 31, 20, 20, 12, 25, 20, 16, 15, 19, 19, 18, 19, 32,        24, 17,  9, 10,  9, 11,  9, 21,  5, 16, 13,  3], dtype=torch.int32)
+2020-11-10 09:53:41,929 (ctc:119) INFO: ctc loss:52.325382232666016
+2020-11-10 09:53:42,034 (e2e_asr:55) INFO: mtl loss:52.325382232666016
+2020-11-10 09:53:42,787 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 22, 22, 22, 20, 20, 17, 17], dtype=torch.int32)
+2020-11-10 09:53:42,788 (ctc:97) INFO: CTC output lengths: tensor([ 2, 12,  7,  3,  3,  4,  2,  2,  2,  4], dtype=torch.int32)
+2020-11-10 09:53:42,790 (ctc:119) INFO: ctc loss:14.237367630004883
+2020-11-10 09:53:42,812 (e2e_asr:55) INFO: mtl loss:14.237367630004883
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/triggers/early_stopping_trigger.py:102: UserWarning: validation/main/acc is not in observation
+  warnings.warn('{} is not in observation'.format(self.monitor))
+2020-11-10 09:53:49,136 (ctc:92) INFO: CTC input lengths:  tensor([32, 30, 30, 30, 30, 30, 30, 30, 30, 27, 27, 27, 27, 27, 27, 27, 27, 27,        27, 27, 27, 27, 27, 27, 25, 25, 25, 25, 25, 25], dtype=torch.int32)
+2020-11-10 09:53:49,137 (ctc:97) INFO: CTC output lengths: tensor([ 9,  4,  5,  3,  5, 10,  4, 12,  6, 12,  6,  4, 10,  3,  7,  4,  6,  4,         5,  6,  6,  5,  3,  9,  3,  4,  6,  4,  3,  6], dtype=torch.int32)
+2020-11-10 09:53:49,139 (ctc:119) INFO: ctc loss:20.103506088256836
+2020-11-10 09:53:49,192 (e2e_asr:55) INFO: mtl loss:20.103506088256836
+2020-11-10 09:53:56,140 (asr:234) INFO: grad norm=20.66068458557129
+2020-11-10 09:53:58,324 (ctc:92) INFO: CTC input lengths:  tensor([35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 32, 32, 32, 32,        32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32], dtype=torch.int32)
+2020-11-10 09:53:58,324 (ctc:97) INFO: CTC output lengths: tensor([ 5,  7,  6, 12, 11, 15, 11, 11,  9, 15, 17, 11,  5, 11,  4, 10,  6, 11,         8,  5, 18,  5, 10,  5, 10,  3,  7, 15, 14,  2], dtype=torch.int32)
+2020-11-10 09:53:58,328 (ctc:119) INFO: ctc loss:26.690027236938477
+2020-11-10 09:53:58,397 (e2e_asr:55) INFO: mtl loss:26.690027236938477
+2020-11-10 09:54:07,458 (asr:234) INFO: grad norm=23.319307327270508
+2020-11-10 09:54:11,751 (ctc:92) INFO: CTC input lengths:  tensor([65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,        65, 65, 65, 65, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-10 09:54:11,753 (ctc:97) INFO: CTC output lengths: tensor([29, 26, 25, 13, 25, 36, 23, 33, 21, 13,  9, 28, 11, 19, 13,  9, 26, 11,        21, 26,  9, 11, 15, 32, 18, 11, 29, 24, 17, 12], dtype=torch.int32)
+2020-11-10 09:54:11,768 (ctc:119) INFO: ctc loss:59.760440826416016
+2020-11-10 09:54:11,913 (e2e_asr:55) INFO: mtl loss:59.760440826416016
+2020-11-10 09:58:00,996 (asr:234) INFO: grad norm=71.50241088867188
+2020-11-10 09:58:06,530 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77,        77, 77, 77, 77, 77, 77, 77, 75, 75, 75, 75, 75], dtype=torch.int32)
+2020-11-10 09:58:06,531 (ctc:97) INFO: CTC output lengths: tensor([26, 19, 11, 11, 13, 23, 15, 13,  5, 13, 25, 13,  9, 17, 25, 33, 25, 11,        22, 13, 28, 24, 15, 25, 15, 15, 28, 16, 39, 26], dtype=torch.int32)
+2020-11-10 09:58:06,548 (ctc:119) INFO: ctc loss:51.2449951171875
+2020-11-10 09:58:06,686 (e2e_asr:55) INFO: mtl loss:51.2449951171875
+2020-11-10 10:03:25,269 (asr:234) INFO: grad norm=20.45557403564453
+2020-11-10 10:03:29,231 (ctc:92) INFO: CTC input lengths:  tensor([57, 57, 57, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,        55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55], dtype=torch.int32)
+2020-11-10 10:03:29,232 (ctc:97) INFO: CTC output lengths: tensor([17, 19, 20, 33, 22, 30, 21,  7, 19, 10, 11,  9, 19,  9, 20, 14, 29, 23,        11,  9, 11, 11, 22, 14, 12, 11, 29, 15, 35, 35], dtype=torch.int32)
+2020-11-10 10:03:29,238 (ctc:119) INFO: ctc loss:53.27345275878906
+2020-11-10 10:03:29,401 (e2e_asr:55) INFO: mtl loss:53.27345275878906
+2020-11-10 10:06:24,099 (asr:234) INFO: grad norm=37.69187545776367
+2020-11-10 10:06:27,294 (ctc:92) INFO: CTC input lengths:  tensor([42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42,        42, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40], dtype=torch.int32)
+2020-11-10 10:06:27,296 (ctc:97) INFO: CTC output lengths: tensor([16, 17, 15, 21, 19, 22, 22, 18, 22,  7, 22, 20,  5, 19, 14, 15, 10, 19,        19,  9, 20,  2, 15,  9, 17, 15, 17, 11, 24,  9], dtype=torch.int32)
+2020-11-10 10:06:27,304 (ctc:119) INFO: ctc loss:46.97761917114258
+2020-11-10 10:06:27,409 (e2e_asr:55) INFO: mtl loss:46.97761917114258
+2020-11-10 10:06:39,031 (asr:234) INFO: grad norm=56.64905548095703
+2020-11-10 10:06:48,442 (ctc:92) INFO: CTC input lengths:  tensor([130, 130, 127, 127, 127, 127, 125, 125, 125, 122, 122, 120, 120, 120,        120, 120, 120, 120, 117, 117, 117, 117, 117, 117, 115, 115, 115, 115,        115, 112], dtype=torch.int32)
+2020-11-10 10:06:48,444 (ctc:97) INFO: CTC output lengths: tensor([17, 17, 19, 35, 19, 29, 15, 15, 34, 30, 33, 55, 48, 15, 17, 35, 19, 46,        17, 17,  9, 11, 25, 17, 28, 13, 28, 33, 27, 19], dtype=torch.int32)
+2020-11-10 10:06:48,473 (ctc:119) INFO: ctc loss:75.7259292602539
+2020-11-10 10:06:48,722 (e2e_asr:55) INFO: mtl loss:75.7259292602539
+2020-11-10 10:23:58,618 (asr:234) INFO: grad norm=136.28880310058594
+2020-11-10 10:24:03,015 (ctc:92) INFO: CTC input lengths:  tensor([60, 60, 60, 60, 60, 60, 60, 60, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57,        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-10 10:24:03,017 (ctc:97) INFO: CTC output lengths: tensor([ 9, 22, 13,  9, 26,  9, 25, 17, 22, 22, 19, 21, 22, 29, 28, 22, 17, 11,        22, 23, 15, 27, 23, 24, 29, 19, 17, 22, 13, 11], dtype=torch.int32)
+2020-11-10 10:24:03,029 (ctc:119) INFO: ctc loss:57.077945709228516
+2020-11-10 10:24:03,215 (e2e_asr:55) INFO: mtl loss:57.077945709228516
+2020-11-10 10:27:30,634 (asr:234) INFO: grad norm=67.07059478759766
+2020-11-10 10:27:36,457 (ctc:92) INFO: CTC input lengths:  tensor([85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 82, 82, 82, 82, 82,        82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82], dtype=torch.int32)
+2020-11-10 10:27:36,459 (ctc:97) INFO: CTC output lengths: tensor([11, 13, 38, 32, 18, 15, 32, 46, 23, 20,  9, 29, 14, 22, 23, 17, 45, 30,        18, 32, 38, 36, 44, 23, 19, 11, 32, 19, 21, 42], dtype=torch.int32)
+2020-11-10 10:27:36,474 (ctc:119) INFO: ctc loss:72.8446273803711
+2020-11-10 10:27:36,639 (e2e_asr:55) INFO: mtl loss:72.8446273803711
+2020-11-10 10:33:59,082 (asr:234) INFO: grad norm=59.64192581176758
+2020-11-10 10:34:06,013 (ctc:92) INFO: CTC input lengths:  tensor([97, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 92, 92, 92, 92,        92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 90], dtype=torch.int32)
+2020-11-10 10:34:06,015 (ctc:97) INFO: CTC output lengths: tensor([46, 15, 50, 30, 51, 20, 25, 19, 47, 32, 17, 47, 19, 18, 49, 35, 17, 34,        19, 19, 34, 26, 15, 15, 15, 22, 33, 18, 28, 32], dtype=torch.int32)
+2020-11-10 10:34:06,048 (ctc:119) INFO: ctc loss:81.64215850830078
+2020-11-10 10:34:06,265 (e2e_asr:55) INFO: mtl loss:81.64215850830078
+2020-11-10 10:42:39,523 (asr:234) INFO: grad norm=94.31365966796875
+2020-11-10 10:42:46,587 (ctc:92) INFO: CTC input lengths:  tensor([90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 87, 87, 87, 87, 87,        87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87], dtype=torch.int32)
+2020-11-10 10:42:46,589 (ctc:97) INFO: CTC output lengths: tensor([23, 11, 27, 31, 15, 19, 20, 34, 13, 13, 32, 15, 17, 25, 24, 48, 33, 39,        18, 29, 19, 28, 19, 23, 22, 19, 17, 23, 23, 33], dtype=torch.int32)
+2020-11-10 10:42:46,609 (ctc:119) INFO: ctc loss:67.60317993164062
+2020-11-10 10:42:46,893 (e2e_asr:55) INFO: mtl loss:67.60317993164062
+2020-11-10 10:50:03,168 (asr:234) INFO: grad norm=77.57611846923828
+2020-11-10 10:50:07,337 (ctc:92) INFO: CTC input lengths:  tensor([52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 50, 50, 50,        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50], dtype=torch.int32)
+2020-11-10 10:50:07,338 (ctc:97) INFO: CTC output lengths: tensor([30, 37, 11, 22, 22, 15,  7, 22,  9, 22, 15, 23,  9, 22, 21, 15,  9, 17,        19, 23,  9, 23, 22, 17, 14, 11, 21, 22, 11, 26], dtype=torch.int32)
+2020-11-10 10:50:07,354 (ctc:119) INFO: ctc loss:50.8913688659668
+2020-11-10 10:50:07,536 (e2e_asr:55) INFO: mtl loss:50.8913688659668
+2020-11-10 10:50:30,037 (asr:234) INFO: grad norm=56.2425422668457
+2020-11-10 10:50:30,709 (ctc:92) INFO: CTC input lengths:  tensor([20, 20, 20, 20, 20, 20, 20, 17], dtype=torch.int32)
+2020-11-10 10:50:30,710 (ctc:97) INFO: CTC output lengths: tensor([2, 2, 4, 2, 3, 3, 4, 4], dtype=torch.int32)
+2020-11-10 10:50:30,714 (ctc:119) INFO: ctc loss:11.600098609924316
+2020-11-10 10:50:30,756 (e2e_asr:55) INFO: mtl loss:11.600098609924316
+2020-11-10 10:50:32,586 (asr:234) INFO: grad norm=27.722017288208008
+epoch       iteration   main/loss   main/loss_ctc  main/loss_att  validation/main/loss  validation/main/loss_ctc  validation/main/loss_att  main/acc    validation/main/acc  main/cer_ctc  validation/main/cer_ctc  elapsed_time  eps       
+[J3           100         61.039      61.039                        51.0718               51.0718                                                                              0.972346      0.930973                 14197.4       1e-08       
+[J     total [########..........................................] 17.24%
+this epoch [######################............................] 44.83%
+       100 iter, 3 epoch / 20 epochs
+       inf iters/sec. Estimated time to finish: 0:00:00.
+[4A2020-11-10 10:50:37,937 (ctc:92) INFO: CTC input lengths:  tensor([75, 75, 75, 75, 75, 75, 75, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72,        72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72], dtype=torch.int32)
+2020-11-10 10:50:37,938 (ctc:97) INFO: CTC output lengths: tensor([21, 19, 23, 17, 25, 26, 33,  9, 33, 17, 11, 19, 26, 11, 34,  9, 29, 29,        15, 17, 34, 21, 45, 32, 11, 31, 13, 13,  9, 22], dtype=torch.int32)
+2020-11-10 10:50:37,975 (ctc:119) INFO: ctc loss:59.72722625732422
+2020-11-10 10:50:38,116 (e2e_asr:55) INFO: mtl loss:59.72722625732422

@@ -1,0 +1,7 @@
+# apply-cmvn --norm-vars=true data/train_nodev/cmvn.ark scp:exp/dump_feats/recog/train_dev/feats.1.scp ark:- | copy-feats.py --verbose 0 --out-filetype mat --compress=true --compression-method=2 --write-num-frames=ark,t:/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/dump/train_dev/deltafalse/utt2num_frames.1 ark:- ark,scp:/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/dump/train_dev/deltafalse/feats.1.ark,/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/dump/train_dev/deltafalse/feats.1.scp 
+# Started at Wed Nov 11 18:55:32 GMT 2020
+#
+apply-cmvn --norm-vars=true data/train_nodev/cmvn.ark scp:exp/dump_feats/recog/train_dev/feats.1.scp ark:- 
+LOG (apply-cmvn[5.5.0~1-29b3]:main():apply-cmvn.cc:159) Applied cepstral mean and variance normalization to 13 utterances, errors on 0
+# Accounting: time=3 threads=1
+# Ended (code 0) at Wed Nov 11 18:55:35 GMT 2020, elapsed time 3 seconds

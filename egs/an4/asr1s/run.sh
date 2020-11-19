@@ -33,7 +33,7 @@ lmtag=              # tag for managing LMs
 lm_resume=          # specify a snapshot file to resume LM training
 
 #scatter related
-do_scatter=false
+do_scatter=true
 
 # decoding parameter
 recog_model=model.loss.best # set a model to be used for decoding: 'model.acc.best' or 'model.loss.best'
