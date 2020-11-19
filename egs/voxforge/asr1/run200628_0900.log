@@ -1,0 +1,137 @@
+stage -1: Data Download
+--- Starting VoxForge data download (may take some time) ...
+--2020-06-28 09:08:18--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit
+Resolving www.repository.voxforge1.org (www.repository.voxforge1.org)... 74.208.236.70, 2607:f1c0:100f:f000::2f3
+Connecting to www.repository.voxforge1.org (www.repository.voxforge1.org)|74.208.236.70|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/ [following]
+--2020-06-28 09:08:18--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'downloads/it/tgz/16kHz_16bit.tmp'
+
+     0K .......... .......... .......... .......... ..........  236K
+    50K .......... .......... .......... .......... ..........  489K
+   100K .......... .......... .......... .......... ..........  887K
+   150K .........                                               865K=0.4s
+
+Last-modified header missing -- time-stamps turned off.
+2020-06-28 09:08:19 (419 KB/s) - 'downloads/it/tgz/16kHz_16bit.tmp' saved [163393]
+
+Removing downloads/it/tgz/16kHz_16bit.tmp since it should be rejected.
+
+--2020-06-28 09:08:19--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/?C=N;O=D
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'downloads/it/tgz/index.html?C=N;O=D.tmp'
+
+     0K .......... .......... .......... .......... .......... 2.35M
+    50K .......... .......... .......... .......... .......... 1.98M
+   100K .......... .......... .......... .......... .......... 2.09M
+   150K .........                                              1.65M=0.07s
+
+Last-modified header missing -- time-stamps turned off.
+2020-06-28 09:08:20 (2.09 MB/s) - 'downloads/it/tgz/index.html?C=N;O=D.tmp' saved [163393]
+
+Removing downloads/it/tgz/index.html?C=N;O=D.tmp since it should be rejected.
+
+--2020-06-28 09:08:20--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/?C=M;O=A
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'downloads/it/tgz/index.html?C=M;O=A.tmp'
+
+     0K .......... .......... .......... .......... .......... 2.87M
+    50K .......... .......... .......... .......... .......... 2.42M
+   100K .......... .......... .......... .......... .......... 2.56M
+   150K .........                                              2.19M=0.06s
+
+Last-modified header missing -- time-stamps turned off.
+2020-06-28 09:08:20 (2.57 MB/s) - 'downloads/it/tgz/index.html?C=M;O=A.tmp' saved [163393]
+
+Removing downloads/it/tgz/index.html?C=M;O=A.tmp since it should be rejected.
+
+--2020-06-28 09:08:20--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/?C=S;O=A
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'downloads/it/tgz/index.html?C=S;O=A.tmp'
+
+     0K .......... .......... .......... .......... .......... 3.12M
+    50K .......... .......... .......... .......... .......... 2.75M
+   100K .......... .......... .......... .......... .......... 2.63M
+   150K .........                                              2.84M=0.06s
+
+Last-modified header missing -- time-stamps turned off.
+2020-06-28 09:08:20 (2.82 MB/s) - 'downloads/it/tgz/index.html?C=S;O=A.tmp' saved [163393]
+
+Removing downloads/it/tgz/index.html?C=S;O=A.tmp since it should be rejected.
+
+--2020-06-28 09:08:20--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'downloads/it/tgz/index.html.tmp'
+
+     0K ...                                                     102M=0s
+
+Last-modified header missing -- time-stamps turned off.
+2020-06-28 09:08:20 (102 MB/s) - 'downloads/it/tgz/index.html.tmp' saved [3575]
+
+Removing downloads/it/tgz/index.html.tmp since it should be rejected.
+
+--2020-06-28 09:08:20--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130328-lki.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130328-lki.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:21--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130328-mma.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130328-mma.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:21--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130328-xut.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130328-xut.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:21--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130328-zgu.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130328-zgu.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:21--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130329-fki.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130329-fki.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:21--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130329-wsf.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130329-wsf.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:22--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130330-xas.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130330-xas.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:22--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130401-edl.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130401-edl.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:22--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130401-gok.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130401-gok.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:22--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130401-nzh.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 304 Not Modified
+File 'downloads/it/tgz/AR4CAD-20130401-nzh.tgz' not modified on server. Omitting download.
+
+--2020-06-28 09:08:22--  http://www.repository.voxforge1.org/downloads/it/Trunk/Audio/Main/16kHz_16bit/AR4CAD-20130403-aqa.tgz
+Reusing existing connection to www.repository.voxforge1.org:80.
+HTTP request sent, awaiting response... 

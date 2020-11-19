@@ -1,0 +1,6 @@
+stage 0: Data preparation
+local/wsj_data_prep.sh: Error: the IRSTLM is not available or compiled
+local/wsj_data_prep.sh: Error: We used to install it by default, but.
+local/wsj_data_prep.sh: Error: this is no longer the case.
+local/wsj_data_prep.sh: Error: To install it, go to /home/john/src/python/espnet/egs/wsj/asr1/../../../tools/kaldi/tools
+local/wsj_data_prep.sh: Error: and run extras/install_irstlm.sh
