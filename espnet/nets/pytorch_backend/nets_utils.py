@@ -49,7 +49,10 @@ def pad_list(xs, pad_value):
     max_len = max(x.size(0) for x in xs)
     pad = xs[0].new(n_batch, max_len, *xs[0].size()[1:]).fill_(pad_value)
 
+    logging.info(f'padded = {pad.shape} ')
     for i in range(n_batch):
+        # logging.info(f'padding arr {i} = {xs[i].shape}')
+        # logging.info(f'pad[i, : xs[i].size(0)].shape = {pad[i, : xs[i].size(0)].shape}')
         pad[i, : xs[i].size(0)] = xs[i]
 
     return pad

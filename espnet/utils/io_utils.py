@@ -450,7 +450,7 @@ class LoadInputsAndTargets(object):
             # In this case, "123" indicates the starting points of the matrix
             # load_mat can load both matrix and vector
             if not self.keep_all_data_on_mem:
-                logging.info('mine chosen***************')
+                # logging.info('mine chosen***************')
                 try:
                     return pickle.load(open(filepath, 'rb'))
                 except:

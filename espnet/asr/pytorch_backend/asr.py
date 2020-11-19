@@ -276,12 +276,16 @@ class CustomConverter(object):
         assert len(batch) == 1
         xs, ys = batch[0]
 
+        logging.info('xs, xs[0] lengths in custom converter before sub sampling = {} {}'.format(len(xs), xs[0].shape))
         # perform subsampling
         if self.subsampling_factor > 1:
             xs = [x[:: self.subsampling_factor, :] for x in xs]
 
         # get batch of lengths of input sequences
         ilens = np.array([x.shape[0] for x in xs])
+
+        logging.info('xs, xs[0] in custom converter after sub sampling= {} {}'.format(len(xs), xs[0].shape))
+        logging.info('ilens in custom converter = {} {}'.format(len(ilens), ilens))
 
         # perform padding and convert to tensor
         # currently only support real number
@@ -558,7 +562,7 @@ def train(args):
         valid_json = json.load(f)["utts"]
 
     use_sortagrad = args.sortagrad == -1 or args.sortagrad > 0
-    # make minibatch list (variable length)
+    # make minibatch list (variable length)*******this is important*
     train = make_batchset(
         train_json,
         args.batch_size,

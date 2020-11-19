@@ -25,6 +25,7 @@ from espnet.nets.pytorch_backend.ctc import ctc_for
 from espnet.nets.pytorch_backend.frontends.feature_transform import (
     feature_transform_for,  # noqa: H301
 )
+from espnet.nets.pytorch_backend.frontends.scatter_transform import scatter_for
 from espnet.nets.pytorch_backend.frontends.frontend import frontend_for
 from espnet.nets.pytorch_backend.initialization import lecun_normal_init_parameters
 from espnet.nets.pytorch_backend.initialization import set_forget_bias_to_one
@@ -37,7 +38,7 @@ from espnet.nets.pytorch_backend.rnn.decoders import decoder_for
 from espnet.nets.pytorch_backend.rnn.encoders import encoder_for
 from espnet.nets.scorers.ctc import CTCPrefixScorer
 from espnet.utils.fill_missing_args import fill_missing_args
-
+from espnet.nets.pytorch_backend.frontends.scatter_transform import ScatterTransform
 CTC_LOSS_THRESHOLD = 10000
 
 
@@ -264,6 +265,8 @@ class E2E(ASRInterface, torch.nn.Module):
         # subsample info
         self.subsample = get_subsample(args, mode="asr", arch="rnn")
 
+        self.args=args
+
         # label smoothing info
         if args.lsm_type and os.path.isfile(args.train_json):
             logging.info("Use label smoothing with " + args.lsm_type)
@@ -273,15 +276,19 @@ class E2E(ASRInterface, torch.nn.Module):
         else:
             labeldist = None
 
+        logging.info("prescatter idim={} ".format(idim.shape if torch.is_tensor(idim) else idim))
+
         if getattr(args, "use_frontend", False):  # use getattr to keep compatibility
             self.frontend = frontend_for(args, idim)
-            self.feature_transform = feature_transform_for(args, (idim - 1) * 2)
+            # self.feature_transform = feature_transform_for(args, (idim - 1) * 2)
+            self.feature_transform = scatter_for()
             idim = args.n_mels
         else:
             self.frontend = None
 
         # encoder
         self.enc = encoder_for(args, idim, self.subsample)
+
         # ctc
         self.ctc = ctc_for(args, odim)
         # attention
@@ -353,8 +360,12 @@ class E2E(ASRInterface, torch.nn.Module):
         else:
             hs_pad, hlens = xs_pad, ilens
 
+        logging.info("preprocess hlens,ilens (shape)= {} {} hlens,ilens={} {}".format(hlens.shape, ilens.shape, hlens, ilens))
+
         # 1. Encoder
         hs_pad, hlens, _ = self.enc(hs_pad, hlens)
+
+        logging.info("encoder ilens={} {}".format(hlens.shape, hlens))
 
         # 2. CTC loss
         if self.mtlalpha == 0:
