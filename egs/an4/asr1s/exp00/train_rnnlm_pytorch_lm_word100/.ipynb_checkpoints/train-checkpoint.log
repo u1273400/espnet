@@ -1,0 +1,50 @@
+# lm_train.py --config conf/lm.yaml --ngpu 1 --backend pytorch --verbose 1 --outdir exp/train_rnnlm_pytorch_lm_word100 --tensorboard-dir tensorboard/train_rnnlm_pytorch_lm_word100 --train-label data/local/wordlm_train/train.txt --valid-label data/local/wordlm_train/valid.txt --test-label data/local/wordlm_train/test.txt --resume --dict data/local/wordlm_train/wordlist_100.txt 
+# Started at Tue Nov 10 06:39:54 GMT 2020
+#
+2020-11-10 06:40:22,556 (lm_train:250) INFO: ngpu: 1
+2020-11-10 06:40:22,557 (lm_train:253) INFO: python path = (None)
+2020-11-10 06:40:22,559 (lm_train:270) INFO: backend = pytorch
+2020-11-10 06:40:23,923 (lm:222) INFO: torch version = 1.7.0
+2020-11-10 06:40:23,953 (deterministic_utils:26) INFO: torch type check is disabled
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /opt/conda/conda-bld/pytorch_1603728993639/work/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+2020-11-10 06:40:23,964 (lm:228) WARNING: cuda is not available
+2020-11-10 06:40:23,964 (lm_utils:44) INFO: skip dump/load HDF5 because the output dir is not specified
+2020-11-10 06:40:23,964 (lm_utils:45) INFO: reading text dataset: data/local/wordlm_train/valid.txt
+0it [00:00, ?it/s]100it [00:00, 70021.77it/s]
+2020-11-10 06:40:23,979 (lm_utils:44) INFO: skip dump/load HDF5 because the output dir is not specified
+2020-11-10 06:40:23,979 (lm_utils:45) INFO: reading text dataset: data/local/wordlm_train/train.txt
+0it [00:00, ?it/s]848it [00:00, 97528.58it/s]
+2020-11-10 06:40:23,992 (lm:240) INFO: #vocab = 100
+2020-11-10 06:40:23,992 (lm:241) INFO: #sentences in the training data = 848
+2020-11-10 06:40:23,992 (lm:242) INFO: #tokens in the training data = 4851
+2020-11-10 06:40:23,992 (lm:245) INFO: oov rate in the training data = 0.00 %
+2020-11-10 06:40:23,992 (lm:247) INFO: #sentences in the validation data = 100
+2020-11-10 06:40:23,992 (lm:248) INFO: #tokens in the validation data = 591
+2020-11-10 06:40:23,992 (lm:250) INFO: oov rate in the validation data = 0.34 %
+2020-11-10 06:40:23,994 (lm:273) INFO: #iterations per epoch = 3
+2020-11-10 06:40:23,994 (lm:274) INFO: #total iterations = 60
+Traceback (most recent call last):
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/lm_train.py", line 284, in <module>
+    main(sys.argv[1:])
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/lm_train.py", line 278, in main
+    train(args)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/lm/pytorch_backend/lm.py", line 282, in train
+    model.to("cuda")
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 612, in to
+    return self._apply(convert)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 359, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 359, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 359, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 381, in _apply
+    param_applied = fn(param)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/nn/modules/module.py", line 610, in convert
+    return t.to(device, dtype if t.is_floating_point() else None, non_blocking)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/cuda/__init__.py", line 172, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+# Accounting: time=30 threads=1
+# Ended (code 1) at Tue Nov 10 06:40:24 GMT 2020, elapsed time 30 seconds

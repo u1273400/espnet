@@ -1,0 +1,52 @@
+./run.sh: line 49: utils/parse_options.sh: Not a directory
+bash: ./run: No such file or directory
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+using original data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+run.pl: job failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/train.log
+getting scatter data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+getting scatter data
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training

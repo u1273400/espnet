@@ -1,0 +1,1383 @@
+# asr_train.py --config conf/train_mtlalpha1.0.yaml --ngpu 0 --backend pytorch --outdir exp/train_nodev_pytorch_train_mtlalpha1.0/results --tensorboard-dir tensorboard/train_nodev_pytorch_train_mtlalpha1.0 --debugmode 1 --dict data/lang_1char/train_nodev_units.txt --debugdir exp/train_nodev_pytorch_train_mtlalpha1.0 --minibatches 0 --verbose 2 --resume --train-json dump/train_nodev/deltafalse/data.json --valid-json dump/train_dev/deltafalse/data.json 
+# Started at Mon Nov 16 09:51:46 GMT 2020
+#
+2020-11-16 09:51:53,523 (asr_train:582) INFO: ngpu: 0
+2020-11-16 09:51:53,523 (asr_train:585) INFO: python path = (None)
+2020-11-16 09:51:53,524 (asr_train:588) INFO: random seed = 1
+2020-11-16 09:51:53,524 (asr_train:604) INFO: backend = pytorch
+2020-11-16 09:51:53,675 (deterministic_utils:26) INFO: torch type check is disabled
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /opt/conda/conda-bld/pytorch_1603728993639/work/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+2020-11-16 09:51:53,678 (asr:401) WARNING: cuda is not available
+2020-11-16 09:51:53,739 (asr:412) INFO: stream1: input dims : 83
+2020-11-16 09:51:53,739 (asr:413) INFO: #output dims: 30
+2020-11-16 09:51:53,740 (asr:422) INFO: Pure CTC mode
+2020-11-16 09:51:53,741 (nets_utils:420) INFO: subsample: 1 2 2 1 1
+2020-11-16 09:51:53,741 (e2e_asr:279) INFO: prescatter idim=83 
+2020-11-16 09:51:53,823 (encoders:294) INFO: BLSTM with every-layer projection for encoder
+2020-11-16 09:51:53,824 (ctc:34) WARNING: CTC was set to builtin due to PyTorch version.
+2020-11-16 09:51:53,912 (asr:441) INFO:  Total parameter of the model = 8126151
+2020-11-16 09:51:53,913 (asr:457) INFO: writing a model config file to exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.json
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: accum_grad: 1
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: aconv_chans: 10
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: aconv_filts: 100
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: adim: 320
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: aheads: 4
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: apply_uttmvn: True
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: atype: location
+2020-11-16 09:51:53,923 (asr:467) INFO: ARGS: awin: 5
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: backend: pytorch
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: badim: 320
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: batch_bins: 0
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: batch_count: auto
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: batch_frames_in: 0
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: batch_frames_inout: 0
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: batch_frames_out: 0
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: batch_size: 30
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: bdropout_rate: 0.0
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: beam_size: 4
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: blayers: 2
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: bnmask: 2
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: bprojs: 300
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: btype: blstmp
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: bunits: 300
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: char_list: ['<blank>', '<unk>', '<space>', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '<eos>']
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: config: conf/train_mtlalpha1.0.yaml
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: config2: None
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: config3: None
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: context_residual: False
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: criterion: acc
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: ctc_type: warpctc
+2020-11-16 09:51:53,924 (asr:467) INFO: ARGS: ctc_weight: 0.3
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: debugdir: exp/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: debugmode: 1
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dec_init: None
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dec_init_mods: ['att.', ' dec.']
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dict: data/lang_1char/train_nodev_units.txt
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dlayers: 1
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dropout_rate: 0.0
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dropout_rate_decoder: 0.0
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dtype: lstm
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: dunits: 300
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: early_stop_criterion: validation/main/acc
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: elayers: 4
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: enc_init: None
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: enc_init_mods: ['enc.enc.']
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: epochs: 1
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: eprojs: 320
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: eps: 1e-08
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: eps_decay: 0.01
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: etype: blstmp
+2020-11-16 09:51:53,925 (asr:467) INFO: ARGS: eunits: 320
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: fbank_fmax: None
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: fbank_fmin: 0.0
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: fbank_fs: 16000
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: freeze_mods: None
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: grad_clip: 5
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: grad_noise: False
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: lm_weight: 0.1
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: lsm_type: 
+2020-11-16 09:51:53,926 (asr:467) INFO: ARGS: lsm_weight: 0.0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: maxlen_in: 800
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: maxlen_out: 150
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: maxlenratio: 0.0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: minibatches: 0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: minlenratio: 0.0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: model_module: espnet.nets.pytorch_backend.e2e_asr:E2E
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: mtlalpha: 1.0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: n_iter_processes: 0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: n_mels: 80
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: nbest: 1
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: ngpu: 0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: num_encs: 1
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: num_save_attention: 3
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: num_spkrs: 1
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: opt: adadelta
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: outdir: exp/train_nodev_pytorch_train_mtlalpha1.0/results
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: patience: 3
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: penalty: 0.0
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: preprocess_conf: None
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: ref_channel: -1
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: report_cer: False
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: report_interval_iters: 100
+2020-11-16 09:51:53,927 (asr:467) INFO: ARGS: report_wer: False
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: resume: None
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: rnnlm: None
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: rnnlm_conf: None
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: sampling_probability: 0.0
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: save_interval_iters: 0
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: seed: 1
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: sortagrad: 0
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: stats_file: None
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: subsample: 1_2_2_1_1
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: sym_blank: <blank>
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: sym_space: <space>
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: tensorboard_dir: tensorboard/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: threshold: 0.0001
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: train_dtype: float32
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: train_json: dump/train_nodev/deltafalse/data.json
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: use_beamformer: True
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: use_dnn_mask_for_wpe: False
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: use_frontend: False
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: use_wpe: False
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: uttmvn_norm_means: True
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: uttmvn_norm_vars: False
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: valid_json: dump/train_dev/deltafalse/data.json
+2020-11-16 09:51:53,928 (asr:467) INFO: ARGS: verbose: 2
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: wdropout_rate: 0.0
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: weight_decay: 0.0
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: wlayers: 2
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: wpe_delay: 3
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: wpe_taps: 5
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: wprojs: 300
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: wtype: blstmp
+2020-11-16 09:51:53,929 (asr:467) INFO: ARGS: wunits: 300
+2020-11-16 09:51:53,941 (batchfy:433) INFO: count is auto detected as seq
+2020-11-16 09:51:53,942 (batchfy:457) INFO: # utts: 848
+2020-11-16 09:51:53,942 (batchfy:502) INFO: # minibatches: 29
+2020-11-16 09:51:53,942 (batchfy:433) INFO: count is auto detected as seq
+2020-11-16 09:51:53,943 (batchfy:457) INFO: # utts: 100
+2020-11-16 09:51:53,943 (batchfy:502) INFO: # minibatches: 4
+2020-11-16 09:51:53,959 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,960 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,961 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,962 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,963 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,963 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,965 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,966 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,967 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,968 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,969 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,970 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,971 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,973 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,974 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,975 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,976 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,977 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,978 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,979 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,980 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,981 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,981 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,983 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,984 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,985 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,986 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,987 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,989 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:53,990 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:51:54,014 (rnn:583) INFO: rnn param shapes: inp=torch.Size([11810, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([408])
+2020-11-16 09:51:55,542 (rnn:583) INFO: rnn param shapes: inp=torch.Size([5905, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([204])
+2020-11-16 09:51:56,328 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2960, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([102])
+2020-11-16 09:51:56,752 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2960, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([102])
+2020-11-16 09:51:57,120 (ctc:92) INFO: CTC input lengths:  tensor([102, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,        100, 100,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,         97,  97], dtype=torch.int32)
+2020-11-16 09:51:57,120 (ctc:97) INFO: CTC output lengths: tensor([51, 19, 29, 28, 35, 21, 19, 47, 33, 24, 19, 32, 27, 19, 26, 19, 46, 15,        30, 22, 24, 19, 21, 15, 32, 33, 34, 24, 20, 19], dtype=torch.int32)
+2020-11-16 09:51:57,153 (ctc:119) INFO: ctc loss:256.3520812988281
+2020-11-16 09:51:57,209 (e2e_asr:56) INFO: mtl loss:256.3520812988281
+2020-11-16 09:54:48,365 (asr:234) INFO: grad norm=76.76959228515625
+2020-11-16 09:54:49,851 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,853 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,854 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,855 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,856 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,857 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,857 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,858 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,859 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,860 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,861 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,862 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,864 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,865 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,866 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,866 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,867 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,868 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,869 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,870 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,871 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,872 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,873 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,873 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,874 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,875 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,876 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,877 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,878 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,879 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:54:49,885 (rnn:583) INFO: rnn param shapes: inp=torch.Size([12390, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([418])
+2020-11-16 09:54:50,813 (rnn:583) INFO: rnn param shapes: inp=torch.Size([6195, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([209])
+2020-11-16 09:54:51,306 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3105, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([105])
+2020-11-16 09:54:51,546 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3105, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([105])
+2020-11-16 09:54:51,844 (ctc:92) INFO: CTC input lengths:  tensor([105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105,        105, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102,        102, 102], dtype=torch.int32)
+2020-11-16 09:54:51,844 (ctc:97) INFO: CTC output lengths: tensor([21, 17, 31, 19, 11, 50, 21, 19, 29, 24, 34, 15, 26, 21, 50, 26, 24, 17,        29, 19, 35, 13, 21, 38, 15, 31, 33, 17, 24, 28], dtype=torch.int32)
+2020-11-16 09:54:51,851 (ctc:119) INFO: ctc loss:259.74725341796875
+2020-11-16 09:54:51,902 (e2e_asr:56) INFO: mtl loss:259.74725341796875
+2020-11-16 09:57:47,005 (asr:234) INFO: grad norm=112.03160095214844
+2020-11-16 09:57:47,049 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,051 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,052 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,053 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,054 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,056 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,057 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,058 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,059 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,060 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,060 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,062 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,063 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,064 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,065 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,066 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,067 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,068 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,068 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,069 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,070 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,071 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,071 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,072 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,073 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,074 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,075 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,075 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,076 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,077 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:47,083 (rnn:583) INFO: rnn param shapes: inp=torch.Size([6090, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([208])
+2020-11-16 09:57:47,395 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3045, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([104])
+2020-11-16 09:57:47,599 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1530, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([52])
+2020-11-16 09:57:47,703 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1530, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([52])
+2020-11-16 09:57:47,810 (ctc:92) INFO: CTC input lengths:  tensor([52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 50, 50, 50,        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50], dtype=torch.int32)
+2020-11-16 09:57:47,810 (ctc:97) INFO: CTC output lengths: tensor([30, 37, 11, 22, 22, 15,  7, 22,  9, 22, 15, 23,  9, 22, 21, 15,  9, 17,        19, 23,  9, 23, 22, 17, 14, 11, 21, 22, 11, 26], dtype=torch.int32)
+2020-11-16 09:57:47,812 (ctc:119) INFO: ctc loss:106.50115203857422
+2020-11-16 09:57:47,844 (e2e_asr:56) INFO: mtl loss:106.50115203857422
+2020-11-16 09:57:54,246 (asr:234) INFO: grad norm=97.28619384765625
+2020-11-16 09:57:54,288 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,289 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,289 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,290 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,291 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,291 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,292 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,292 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,293 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,293 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,294 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,295 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,295 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,296 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,297 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,297 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,298 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,299 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,299 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,300 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,300 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,301 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,302 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,302 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,303 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,304 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,304 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,305 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,305 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,306 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:54,309 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3280, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([128])
+2020-11-16 09:57:54,484 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1640, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([64])
+2020-11-16 09:57:54,596 (rnn:583) INFO: rnn param shapes: inp=torch.Size([827, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([32])
+2020-11-16 09:57:54,658 (rnn:583) INFO: rnn param shapes: inp=torch.Size([827, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([32])
+2020-11-16 09:57:54,747 (ctc:92) INFO: CTC input lengths:  tensor([32, 30, 30, 30, 30, 30, 30, 30, 30, 27, 27, 27, 27, 27, 27, 27, 27, 27,        27, 27, 27, 27, 27, 27, 25, 25, 25, 25, 25, 25], dtype=torch.int32)
+2020-11-16 09:57:54,747 (ctc:97) INFO: CTC output lengths: tensor([ 9,  4,  5,  3,  5, 10,  4, 12,  6, 12,  6,  4, 10,  3,  7,  4,  6,  4,         5,  6,  6,  5,  3,  9,  3,  4,  6,  4,  3,  6], dtype=torch.int32)
+2020-11-16 09:57:54,748 (ctc:119) INFO: ctc loss:25.204153060913086
+2020-11-16 09:57:54,770 (e2e_asr:56) INFO: mtl loss:25.204153060913086
+2020-11-16 09:57:57,312 (asr:234) INFO: grad norm=52.47917938232422
+2020-11-16 09:57:57,353 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,355 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,355 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,356 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,357 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,358 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,359 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,360 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,361 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,361 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,362 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,363 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,363 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,364 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,365 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,365 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,366 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,367 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,367 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,368 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,369 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,370 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,370 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,371 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,372 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,373 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,373 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,375 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,375 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,376 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:57:57,380 (rnn:583) INFO: rnn param shapes: inp=torch.Size([6570, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([228])
+2020-11-16 09:57:57,792 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3285, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([114])
+2020-11-16 09:57:58,000 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1656, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([57])
+2020-11-16 09:57:58,114 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1656, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([57])
+2020-11-16 09:57:58,228 (ctc:92) INFO: CTC input lengths:  tensor([57, 57, 57, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,        55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55], dtype=torch.int32)
+2020-11-16 09:57:58,228 (ctc:97) INFO: CTC output lengths: tensor([17, 19, 20, 33, 22, 30, 21,  7, 19, 10, 11,  9, 19,  9, 20, 14, 29, 23,        11,  9, 11, 11, 22, 14, 12, 11, 29, 15, 35, 35], dtype=torch.int32)
+2020-11-16 09:57:58,231 (ctc:119) INFO: ctc loss:99.0936050415039
+2020-11-16 09:57:58,256 (e2e_asr:56) INFO: mtl loss:99.0936050415039
+2020-11-16 09:58:50,780 (asr:234) INFO: grad norm=221.1867218017578
+2020-11-16 09:58:50,825 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,827 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,828 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,830 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,831 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,832 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,833 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,834 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,835 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,836 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,836 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,837 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,838 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,839 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,840 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,841 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,842 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,843 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,844 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,846 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,847 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,848 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,848 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,849 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,850 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,851 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,852 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,853 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,854 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,855 (io_utils:452) INFO: mine chosen***************
+2020-11-16 09:58:50,864 (rnn:583) INFO: rnn param shapes: inp=torch.Size([12950, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([448])
+2020-11-16 09:58:51,818 (rnn:583) INFO: rnn param shapes: inp=torch.Size([6475, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([224])
+2020-11-16 09:58:52,342 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3244, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([112])
+2020-11-16 09:58:52,584 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3244, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([112])
+2020-11-16 09:58:52,841 (ctc:92) INFO: CTC input lengths:  tensor([112, 112, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 107, 107,        107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 105,        105, 105], dtype=torch.int32)
+2020-11-16 09:58:52,842 (ctc:97) INFO: CTC output lengths: tensor([19, 19, 36, 21, 15, 17, 41, 23,  9, 17, 52, 25, 29, 13, 34, 34, 19, 17,        32, 17, 20, 13, 15, 26, 13, 19, 25, 21, 19, 17], dtype=torch.int32)
+2020-11-16 09:58:52,849 (ctc:119) INFO: ctc loss:79.36616516113281
+2020-11-16 09:58:52,893 (e2e_asr:56) INFO: mtl loss:79.36616516113281
+2020-11-16 10:02:06,501 (asr:234) INFO: grad norm=183.4918670654297
+2020-11-16 10:02:06,548 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,549 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,550 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,551 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,552 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,552 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,553 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,554 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,555 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,556 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,556 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,557 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,558 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,559 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,559 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,560 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,561 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,562 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,562 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,563 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,564 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,565 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,565 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,566 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,567 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,567 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,568 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,569 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,570 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,570 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:02:06,575 (rnn:583) INFO: rnn param shapes: inp=torch.Size([7440, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([248])
+2020-11-16 10:02:07,068 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3720, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([124])
+2020-11-16 10:02:07,307 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1860, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([62])
+2020-11-16 10:02:07,485 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1860, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([62])
+2020-11-16 10:02:07,645 (ctc:92) INFO: CTC input lengths:  tensor([62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62,        62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-16 10:02:07,646 (ctc:97) INFO: CTC output lengths: tensor([20,  9, 29, 24, 11,  9, 30, 11,  9, 19, 24, 14, 11, 13,  7, 35,  9, 11,        17, 13,  5, 40, 32, 39, 21, 23, 25, 11, 20, 13], dtype=torch.int32)
+2020-11-16 10:02:07,649 (ctc:119) INFO: ctc loss:90.86361694335938
+2020-11-16 10:02:07,688 (e2e_asr:56) INFO: mtl loss:90.86361694335938
+2020-11-16 10:03:10,387 (asr:234) INFO: grad norm=213.15536499023438
+2020-11-16 10:03:10,428 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,429 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,430 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,430 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,431 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,432 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,432 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,433 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,434 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,435 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,436 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,436 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,437 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,438 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,438 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,439 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,440 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,440 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,441 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,442 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,442 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,443 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,444 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,445 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,445 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,446 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,447 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,447 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,448 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,449 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:03:10,455 (rnn:583) INFO: rnn param shapes: inp=torch.Size([6920, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([238])
+2020-11-16 10:03:11,006 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3460, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([119])
+2020-11-16 10:03:11,245 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1734, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([60])
+2020-11-16 10:03:11,359 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1734, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([60])
+2020-11-16 10:03:11,478 (ctc:92) INFO: CTC input lengths:  tensor([60, 60, 60, 60, 60, 60, 60, 60, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57,        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-16 10:03:11,479 (ctc:97) INFO: CTC output lengths: tensor([ 9, 22, 13,  9, 26,  9, 25, 17, 22, 22, 19, 21, 22, 29, 28, 22, 17, 11,        22, 23, 15, 27, 23, 24, 29, 19, 17, 22, 13, 11], dtype=torch.int32)
+2020-11-16 10:03:11,481 (ctc:119) INFO: ctc loss:60.83613204956055
+2020-11-16 10:03:11,511 (e2e_asr:56) INFO: mtl loss:60.83613204956055
+2020-11-16 10:04:08,860 (asr:234) INFO: grad norm=40.6237907409668
+2020-11-16 10:04:08,906 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,907 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,908 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,909 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,909 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,910 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,911 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,912 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,913 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,914 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,915 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,916 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,917 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,918 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,919 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,920 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,920 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,921 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,922 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,923 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,924 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,924 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,925 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,926 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,927 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,928 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,929 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,929 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,930 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,932 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:04:08,938 (rnn:583) INFO: rnn param shapes: inp=torch.Size([10570, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([358])
+2020-11-16 10:04:09,651 (rnn:583) INFO: rnn param shapes: inp=torch.Size([5285, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([179])
+2020-11-16 10:04:10,031 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2649, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([90])
+2020-11-16 10:04:10,225 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2649, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([90])
+2020-11-16 10:04:10,407 (ctc:92) INFO: CTC input lengths:  tensor([90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 87, 87, 87, 87, 87,        87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87], dtype=torch.int32)
+2020-11-16 10:04:10,408 (ctc:97) INFO: CTC output lengths: tensor([23, 11, 27, 31, 15, 19, 20, 34, 13, 13, 32, 15, 17, 25, 24, 48, 33, 39,        18, 29, 19, 28, 19, 23, 22, 19, 17, 23, 23, 33], dtype=torch.int32)
+2020-11-16 10:04:10,412 (ctc:119) INFO: ctc loss:76.89999389648438
+2020-11-16 10:04:10,451 (e2e_asr:56) INFO: mtl loss:76.89999389648438
+2020-11-16 10:06:16,658 (asr:234) INFO: grad norm=70.2822494506836
+2020-11-16 10:06:16,698 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,699 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,700 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,702 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,703 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,704 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,704 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,705 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,706 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,707 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,708 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,708 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,709 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,710 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,711 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,711 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,712 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,713 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,714 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,715 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,715 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,716 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,717 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,718 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,719 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,720 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,720 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,721 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,722 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,723 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:06:16,729 (rnn:583) INFO: rnn param shapes: inp=torch.Size([9620, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([328])
+2020-11-16 10:06:17,354 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4810, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([164])
+2020-11-16 10:06:17,657 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2416, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([82])
+2020-11-16 10:06:17,812 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2416, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([82])
+2020-11-16 10:06:17,979 (ctc:92) INFO: CTC input lengths:  tensor([82, 82, 82, 82, 82, 82, 82, 82, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,        80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], dtype=torch.int32)
+2020-11-16 10:06:17,979 (ctc:97) INFO: CTC output lengths: tensor([15, 18, 19, 21, 35, 23, 30, 19, 22, 32, 24, 13, 13, 24, 13, 13, 29, 37,        20, 29, 18, 18, 36, 25, 22, 21, 19, 27, 13, 38], dtype=torch.int32)
+2020-11-16 10:06:17,983 (ctc:119) INFO: ctc loss:78.90068054199219
+2020-11-16 10:06:18,023 (e2e_asr:56) INFO: mtl loss:78.90068054199219
+2020-11-16 10:08:06,831 (asr:234) INFO: grad norm=172.91758728027344
+2020-11-16 10:08:06,879 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,880 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,882 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,883 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,884 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,885 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,886 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,886 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,887 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,888 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,889 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,890 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,890 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,891 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,892 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,892 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,893 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,894 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,895 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,896 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,897 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,898 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,898 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,899 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,900 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,900 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,901 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,901 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,902 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,903 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:06,907 (rnn:583) INFO: rnn param shapes: inp=torch.Size([5780, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([198])
+2020-11-16 10:08:07,202 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2890, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([99])
+2020-11-16 10:08:07,387 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1452, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([50])
+2020-11-16 10:08:07,484 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1452, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([50])
+2020-11-16 10:08:07,582 (ctc:92) INFO: CTC input lengths:  tensor([50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 47, 47, 47, 47,        47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47], dtype=torch.int32)
+2020-11-16 10:08:07,582 (ctc:97) INFO: CTC output lengths: tensor([17, 12, 21, 20,  7, 17,  7, 11, 28, 15, 11, 13, 20, 27, 21,  9, 15,  9,        10, 13, 20, 22,  9, 17, 20, 24, 13,  9, 17,  9], dtype=torch.int32)
+2020-11-16 10:08:07,584 (ctc:119) INFO: ctc loss:54.68838882446289
+2020-11-16 10:08:07,615 (e2e_asr:56) INFO: mtl loss:54.68838882446289
+2020-11-16 10:08:13,431 (asr:234) INFO: grad norm=114.29330444335938
+2020-11-16 10:08:13,474 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,475 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,476 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,477 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,478 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,479 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,480 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,481 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,481 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,482 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,483 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,483 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,484 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,485 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,486 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,486 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,487 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,488 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,488 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,490 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,491 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,492 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,492 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,493 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,494 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,495 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,495 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,496 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,497 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,497 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:08:13,502 (rnn:583) INFO: rnn param shapes: inp=torch.Size([7150, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([248])
+2020-11-16 10:08:13,956 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3575, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([124])
+2020-11-16 10:08:14,211 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1802, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([62])
+2020-11-16 10:08:14,338 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1802, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([62])
+2020-11-16 10:08:14,464 (ctc:92) INFO: CTC input lengths:  tensor([62, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,        60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60], dtype=torch.int32)
+2020-11-16 10:08:14,464 (ctc:97) INFO: CTC output lengths: tensor([31, 19, 27, 11, 18, 19, 34,  7, 25, 20, 24, 21, 23, 22, 13, 36, 31, 13,        29, 20, 22, 32, 13, 16, 15, 19, 21, 23, 11, 20], dtype=torch.int32)
+2020-11-16 10:08:14,467 (ctc:119) INFO: ctc loss:64.39968872070312
+2020-11-16 10:08:14,496 (e2e_asr:56) INFO: mtl loss:64.39968872070312
+2020-11-16 10:09:13,591 (asr:234) INFO: grad norm=78.33953857421875
+2020-11-16 10:09:13,632 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,634 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,635 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,636 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,637 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,638 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,639 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,640 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,641 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,642 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,643 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,644 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,645 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,646 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,647 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,648 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,649 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,650 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,651 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,652 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,653 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,654 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,655 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,656 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,656 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,657 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,658 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,659 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,660 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,661 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:09:13,669 (rnn:583) INFO: rnn param shapes: inp=torch.Size([14430, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([518])
+2020-11-16 10:09:14,695 (rnn:583) INFO: rnn param shapes: inp=torch.Size([7215, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([259])
+2020-11-16 10:09:15,303 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3616, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([130])
+2020-11-16 10:09:15,550 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3616, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([130])
+2020-11-16 10:09:15,791 (ctc:92) INFO: CTC input lengths:  tensor([130, 130, 127, 127, 127, 127, 125, 125, 125, 122, 122, 120, 120, 120,        120, 120, 120, 120, 117, 117, 117, 117, 117, 117, 115, 115, 115, 115,        115, 112], dtype=torch.int32)
+2020-11-16 10:09:15,791 (ctc:97) INFO: CTC output lengths: tensor([17, 17, 19, 35, 19, 29, 15, 15, 34, 30, 33, 55, 48, 15, 17, 35, 19, 46,        17, 17,  9, 11, 25, 17, 28, 13, 28, 33, 27, 19], dtype=torch.int32)
+2020-11-16 10:09:15,797 (ctc:119) INFO: ctc loss:78.20215606689453
+2020-11-16 10:09:15,854 (e2e_asr:56) INFO: mtl loss:78.20215606689453
+2020-11-16 10:14:23,096 (asr:234) INFO: grad norm=154.9304656982422
+2020-11-16 10:14:23,135 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,136 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,137 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,138 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,139 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,140 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,141 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,141 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,142 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,143 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,144 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,145 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,145 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,146 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,147 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,148 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,149 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,150 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,150 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,151 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,152 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,153 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,154 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,155 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,156 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,157 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,157 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,158 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,159 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,160 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:14:23,165 (rnn:583) INFO: rnn param shapes: inp=torch.Size([7990, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([268])
+2020-11-16 10:14:23,712 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3995, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([134])
+2020-11-16 10:14:23,991 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2000, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([67])
+2020-11-16 10:14:24,147 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2000, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([67])
+2020-11-16 10:14:24,311 (ctc:92) INFO: CTC input lengths:  tensor([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67,        67, 67, 67, 67, 67, 67, 67, 65, 65, 65, 65, 65], dtype=torch.int32)
+2020-11-16 10:14:24,311 (ctc:97) INFO: CTC output lengths: tensor([13, 13, 13, 12, 19, 17, 20, 13, 30, 30, 46, 17, 21, 13, 19, 15, 13, 24,        21, 19,  7, 17, 33,  9, 41, 18, 26, 26, 29, 22], dtype=torch.int32)
+2020-11-16 10:14:24,316 (ctc:119) INFO: ctc loss:63.85207748413086
+2020-11-16 10:14:24,360 (e2e_asr:56) INFO: mtl loss:63.85207748413086
+2020-11-16 10:15:36,262 (asr:234) INFO: grad norm=95.46932983398438
+2020-11-16 10:15:36,306 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,307 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,308 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,308 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,309 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,310 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,310 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,311 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,311 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,312 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,313 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,313 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,314 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,314 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,315 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,316 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,317 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,318 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,319 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,320 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,320 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,321 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,322 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,322 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,323 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,323 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,324 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,324 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,325 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,326 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:36,329 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2880, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([98])
+2020-11-16 10:15:36,487 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1440, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([49])
+2020-11-16 10:15:36,606 (rnn:583) INFO: rnn param shapes: inp=torch.Size([732, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([25])
+2020-11-16 10:15:36,659 (rnn:583) INFO: rnn param shapes: inp=torch.Size([732, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([25])
+2020-11-16 10:15:36,713 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,        25, 25, 25, 25, 25, 25, 22, 22, 22, 22, 22, 22], dtype=torch.int32)
+2020-11-16 10:15:36,714 (ctc:97) INFO: CTC output lengths: tensor([ 5,  6,  5,  3,  6,  2,  2,  5,  3,  4,  3,  4,  5,  6,  5,  3,  3,  4,         3,  4,  3,  3, 11,  5,  6,  2,  2,  4,  5,  2], dtype=torch.int32)
+2020-11-16 10:15:36,715 (ctc:119) INFO: ctc loss:15.280499458312988
+2020-11-16 10:15:36,735 (e2e_asr:56) INFO: mtl loss:15.280499458312988
+2020-11-16 10:15:38,613 (asr:234) INFO: grad norm=13.018089294433594
+2020-11-16 10:15:38,663 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,665 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,666 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,667 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,668 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,669 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,669 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,670 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,671 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,672 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,672 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,673 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,674 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,674 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,675 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,676 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,677 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,677 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,678 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,679 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,679 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,680 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,682 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,682 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,683 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,684 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,685 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,685 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,686 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,687 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:38,691 (rnn:583) INFO: rnn param shapes: inp=torch.Size([6370, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([218])
+2020-11-16 10:15:39,051 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3185, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([109])
+2020-11-16 10:15:39,263 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1599, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([55])
+2020-11-16 10:15:39,370 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1599, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([55])
+2020-11-16 10:15:39,483 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 52, 52, 52, 52, 52,        52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52], dtype=torch.int32)
+2020-11-16 10:15:39,483 (ctc:97) INFO: CTC output lengths: tensor([29, 34, 21, 16, 30, 11, 12, 21, 11, 22,  9, 21, 26, 11, 22, 21, 15, 32,        13, 19, 20, 33, 32, 26, 11, 19, 11, 21, 13, 20], dtype=torch.int32)
+2020-11-16 10:15:39,485 (ctc:119) INFO: ctc loss:63.0713005065918
+2020-11-16 10:15:39,510 (e2e_asr:56) INFO: mtl loss:63.0713005065918
+2020-11-16 10:15:46,494 (asr:234) INFO: grad norm=32.54966354370117
+2020-11-16 10:15:46,535 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,536 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,537 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,538 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,538 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,539 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,540 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,541 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,541 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,542 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,543 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,544 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,545 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,546 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,546 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,547 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,548 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,549 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,549 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,550 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,551 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,551 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,552 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,553 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,554 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,554 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,555 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,556 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,557 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,557 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:15:46,563 (rnn:583) INFO: rnn param shapes: inp=torch.Size([7660, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([258])
+2020-11-16 10:15:47,147 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3830, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([129])
+2020-11-16 10:15:47,398 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1926, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([65])
+2020-11-16 10:15:47,531 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1926, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([65])
+2020-11-16 10:15:47,665 (ctc:92) INFO: CTC input lengths:  tensor([65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,        65, 65, 65, 65, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-16 10:15:47,665 (ctc:97) INFO: CTC output lengths: tensor([29, 26, 25, 13, 25, 36, 23, 33, 21, 13,  9, 28, 11, 19, 13,  9, 26, 11,        21, 26,  9, 11, 15, 32, 18, 11, 29, 24, 17, 12], dtype=torch.int32)
+2020-11-16 10:15:47,668 (ctc:119) INFO: ctc loss:60.77420425415039
+2020-11-16 10:15:47,697 (e2e_asr:56) INFO: mtl loss:60.77420425415039
+2020-11-16 10:16:54,742 (asr:234) INFO: grad norm=76.81087493896484
+2020-11-16 10:16:54,789 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,790 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,790 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,791 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,791 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,792 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,792 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,793 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,793 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,794 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,795 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,796 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,796 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,797 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,798 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,798 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,799 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,799 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,800 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,801 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,801 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,802 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,802 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,803 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,804 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,804 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,805 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,805 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,806 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,807 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:54,810 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2510, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([88])
+2020-11-16 10:16:54,953 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1255, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([44])
+2020-11-16 10:16:55,040 (rnn:583) INFO: rnn param shapes: inp=torch.Size([634, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([22])
+2020-11-16 10:16:55,087 (rnn:583) INFO: rnn param shapes: inp=torch.Size([634, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([22])
+2020-11-16 10:16:55,136 (ctc:92) INFO: CTC input lengths:  tensor([22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 20,        20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], dtype=torch.int32)
+2020-11-16 10:16:55,137 (ctc:97) INFO: CTC output lengths: tensor([4, 6, 6, 4, 4, 4, 3, 4, 2, 2, 4, 4, 3, 6, 6, 5, 2, 2, 2, 2, 2, 2, 2, 2,        4, 4, 6, 2, 2, 4], dtype=torch.int32)
+2020-11-16 10:16:55,137 (ctc:119) INFO: ctc loss:13.190520286560059
+2020-11-16 10:16:55,154 (e2e_asr:56) INFO: mtl loss:13.190520286560059
+2020-11-16 10:16:56,832 (asr:234) INFO: grad norm=12.430654525756836
+2020-11-16 10:16:56,884 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,886 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,887 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,888 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,889 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,890 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,891 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,892 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,893 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,894 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,895 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,896 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,898 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,899 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,900 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,901 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,902 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,903 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,904 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,905 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,906 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,907 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,908 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,909 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,911 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,912 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,913 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,914 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,915 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,915 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:16:56,923 (rnn:583) INFO: rnn param shapes: inp=torch.Size([9970, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([338])
+2020-11-16 10:16:57,736 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4985, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([169])
+2020-11-16 10:16:58,083 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2499, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([85])
+2020-11-16 10:16:58,268 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2499, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([85])
+2020-11-16 10:16:58,447 (ctc:92) INFO: CTC input lengths:  tensor([85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 82, 82, 82, 82, 82,        82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82], dtype=torch.int32)
+2020-11-16 10:16:58,448 (ctc:97) INFO: CTC output lengths: tensor([11, 13, 38, 32, 18, 15, 32, 46, 23, 20,  9, 29, 14, 22, 23, 17, 45, 30,        18, 32, 38, 36, 44, 23, 19, 11, 32, 19, 21, 42], dtype=torch.int32)
+2020-11-16 10:16:58,453 (ctc:119) INFO: ctc loss:80.04524230957031
+2020-11-16 10:16:58,490 (e2e_asr:56) INFO: mtl loss:80.04524230957031
+2020-11-16 10:18:52,150 (asr:234) INFO: grad norm=44.868133544921875
+2020-11-16 10:18:52,192 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,194 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,195 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,195 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,196 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,196 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,197 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,198 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,198 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,199 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,200 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,200 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,201 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,202 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,202 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,203 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,204 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,204 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,205 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,205 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,206 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,207 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,207 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,208 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,209 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,209 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,210 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,211 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,211 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,212 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:52,216 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4490, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([158])
+2020-11-16 10:18:52,445 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2245, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([79])
+2020-11-16 10:18:52,598 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1128, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([40])
+2020-11-16 10:18:52,674 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1128, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([40])
+2020-11-16 10:18:52,755 (ctc:92) INFO: CTC input lengths:  tensor([40, 40, 40, 40, 40, 40, 40, 40, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37,        37, 37, 37, 37, 37, 37, 37, 37, 37, 35, 35, 35], dtype=torch.int32)
+2020-11-16 10:18:52,755 (ctc:97) INFO: CTC output lengths: tensor([ 7, 18, 18,  9, 20, 22, 20,  7,  7, 13, 14, 12, 11,  7, 16,  7, 19, 17,        11,  7, 10,  9, 18, 16,  9, 13, 16, 13, 11, 17], dtype=torch.int32)
+2020-11-16 10:18:52,758 (ctc:119) INFO: ctc loss:40.2098274230957
+2020-11-16 10:18:52,784 (e2e_asr:56) INFO: mtl loss:40.2098274230957
+2020-11-16 10:18:56,693 (asr:234) INFO: grad norm=43.44813537597656
+2020-11-16 10:18:56,735 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,736 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,737 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,737 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,738 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,739 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,739 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,740 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,740 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,741 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,742 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,743 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,744 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,745 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,746 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,747 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,747 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,748 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,749 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,749 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,750 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,750 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,751 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,752 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,753 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,754 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,755 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,756 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,757 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,758 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:18:56,762 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3980, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([138])
+2020-11-16 10:18:57,051 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1990, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([69])
+2020-11-16 10:18:57,189 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1002, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([35])
+2020-11-16 10:18:57,259 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1002, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([35])
+2020-11-16 10:18:57,332 (ctc:92) INFO: CTC input lengths:  tensor([35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 32, 32, 32, 32,        32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32], dtype=torch.int32)
+2020-11-16 10:18:57,333 (ctc:97) INFO: CTC output lengths: tensor([ 5,  7,  6, 12, 11, 15, 11, 11,  9, 15, 17, 11,  5, 11,  4, 10,  6, 11,         8,  5, 18,  5, 10,  5, 10,  3,  7, 15, 14,  2], dtype=torch.int32)
+2020-11-16 10:18:57,334 (ctc:119) INFO: ctc loss:36.058780670166016
+2020-11-16 10:18:57,351 (e2e_asr:56) INFO: mtl loss:36.058780670166016
+2020-11-16 10:19:00,505 (asr:234) INFO: grad norm=79.2288818359375
+2020-11-16 10:19:00,547 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,548 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,549 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,550 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,551 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,552 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,552 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,553 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,554 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,555 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,555 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,556 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,557 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,558 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,558 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,559 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,560 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,560 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,561 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,562 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,563 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,564 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,565 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,565 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,566 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,566 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,567 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,568 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,568 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,569 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:00,573 (rnn:583) INFO: rnn param shapes: inp=torch.Size([5300, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([188])
+2020-11-16 10:19:00,858 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2650, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([94])
+2020-11-16 10:19:01,026 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1337, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([47])
+2020-11-16 10:19:01,123 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1337, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([47])
+2020-11-16 10:19:01,212 (ctc:92) INFO: CTC input lengths:  tensor([47, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45,        45, 45, 45, 45, 45, 45, 45, 42, 42, 42, 42, 42], dtype=torch.int32)
+2020-11-16 10:19:01,213 (ctc:97) INFO: CTC output lengths: tensor([21, 13, 22, 21, 22,  9, 22, 22, 10, 22, 20, 22, 21, 22, 11, 20, 16, 22,        15, 17, 22, 22, 10, 20,  7, 13, 23, 21,  9, 22], dtype=torch.int32)
+2020-11-16 10:19:01,215 (ctc:119) INFO: ctc loss:53.82624816894531
+2020-11-16 10:19:01,241 (e2e_asr:56) INFO: mtl loss:53.82624816894531
+2020-11-16 10:19:06,492 (asr:234) INFO: grad norm=83.7710189819336
+2020-11-16 10:19:06,533 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,534 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,535 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,536 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,537 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,537 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,539 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,540 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,541 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,542 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,542 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,543 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,544 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,545 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,545 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,546 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,547 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,547 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,548 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,549 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,549 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,550 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,551 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,552 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,552 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,553 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,555 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,556 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,557 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,557 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:19:06,562 (rnn:583) INFO: rnn param shapes: inp=torch.Size([8420, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([288])
+2020-11-16 10:19:07,119 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4210, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([144])
+2020-11-16 10:19:07,376 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2114, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([72])
+2020-11-16 10:19:07,518 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2114, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([72])
+2020-11-16 10:19:07,660 (ctc:92) INFO: CTC input lengths:  tensor([72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 70, 70, 70, 70, 70, 70, 70, 70,        70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 67, 67], dtype=torch.int32)
+2020-11-16 10:19:07,660 (ctc:97) INFO: CTC output lengths: tensor([25, 20, 15, 19, 24, 11, 23, 21, 20, 30, 20, 11,  9, 13, 22, 19, 17, 17,        19, 34, 39, 11, 36, 19, 11, 18, 35, 19,  9, 11], dtype=torch.int32)
+2020-11-16 10:19:07,663 (ctc:119) INFO: ctc loss:70.2747573852539
+2020-11-16 10:19:07,695 (e2e_asr:56) INFO: mtl loss:70.2747573852539
+2020-11-16 10:20:28,844 (asr:234) INFO: grad norm=153.11837768554688
+2020-11-16 10:20:28,890 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,891 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,892 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,892 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,893 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,894 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,895 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,896 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,897 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,897 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,898 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,899 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,900 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,901 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,901 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,902 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,903 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,904 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,904 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,905 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,906 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,907 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,907 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,908 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,909 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,910 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,911 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,911 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,913 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,914 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:20:28,920 (rnn:583) INFO: rnn param shapes: inp=torch.Size([9190, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([308])
+2020-11-16 10:20:29,488 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4595, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([154])
+2020-11-16 10:20:29,771 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2300, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([77])
+2020-11-16 10:20:29,918 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2300, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([77])
+2020-11-16 10:20:30,070 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77,        77, 77, 77, 77, 77, 77, 77, 75, 75, 75, 75, 75], dtype=torch.int32)
+2020-11-16 10:20:30,070 (ctc:97) INFO: CTC output lengths: tensor([26, 19, 11, 11, 13, 23, 15, 13,  5, 13, 25, 13,  9, 17, 25, 33, 25, 11,        22, 13, 28, 24, 15, 25, 15, 15, 28, 16, 39, 26], dtype=torch.int32)
+2020-11-16 10:20:30,074 (ctc:119) INFO: ctc loss:54.52019119262695
+2020-11-16 10:20:30,110 (e2e_asr:56) INFO: mtl loss:54.52019119262695
+2020-11-16 10:22:05,440 (asr:234) INFO: grad norm=31.97671127319336
+2020-11-16 10:22:05,491 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,492 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,493 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,494 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,494 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,495 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,496 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,496 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,497 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,498 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,498 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,499 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,500 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,500 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,501 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,502 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,503 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,503 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,504 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,505 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,505 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,506 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,507 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,507 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,508 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,509 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,509 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,510 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,511 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,511 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:05,515 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4930, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([168])
+2020-11-16 10:22:05,761 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2465, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([84])
+2020-11-16 10:22:05,930 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1238, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([42])
+2020-11-16 10:22:06,012 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1238, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([42])
+2020-11-16 10:22:06,099 (ctc:92) INFO: CTC input lengths:  tensor([42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42,        42, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40], dtype=torch.int32)
+2020-11-16 10:22:06,100 (ctc:97) INFO: CTC output lengths: tensor([16, 17, 15, 21, 19, 22, 22, 18, 22,  7, 22, 20,  5, 19, 14, 15, 10, 19,        19,  9, 20,  2, 15,  9, 17, 15, 17, 11, 24,  9], dtype=torch.int32)
+2020-11-16 10:22:06,101 (ctc:119) INFO: ctc loss:48.900753021240234
+2020-11-16 10:22:06,127 (e2e_asr:56) INFO: mtl loss:48.900753021240234
+2020-11-16 10:22:10,590 (asr:234) INFO: grad norm=58.36024475097656
+2020-11-16 10:22:10,630 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,631 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,632 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,633 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,633 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,634 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,635 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,636 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,636 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,637 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,638 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,639 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,640 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,641 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,642 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,642 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,643 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,644 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,645 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,645 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,646 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,647 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,647 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,648 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,649 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,650 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,650 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,651 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,652 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,652 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:22:10,660 (rnn:583) INFO: rnn param shapes: inp=torch.Size([8710, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([298])
+2020-11-16 10:22:11,235 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4355, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([149])
+2020-11-16 10:22:11,516 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2181, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([75])
+2020-11-16 10:22:11,659 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2181, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([75])
+2020-11-16 10:22:11,810 (ctc:92) INFO: CTC input lengths:  tensor([75, 75, 75, 75, 75, 75, 75, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72,        72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72], dtype=torch.int32)
+2020-11-16 10:22:11,810 (ctc:97) INFO: CTC output lengths: tensor([21, 19, 23, 17, 25, 26, 33,  9, 33, 17, 11, 19, 26, 11, 34,  9, 29, 29,        15, 17, 34, 21, 45, 32, 11, 31, 13, 13,  9, 22], dtype=torch.int32)
+2020-11-16 10:22:11,814 (ctc:119) INFO: ctc loss:64.79743957519531
+2020-11-16 10:22:11,849 (e2e_asr:56) INFO: mtl loss:64.79743957519531
+2020-11-16 10:23:39,133 (asr:234) INFO: grad norm=56.29845428466797
+2020-11-16 10:23:39,185 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,186 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,187 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,187 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,188 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,188 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,189 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,189 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,191 (rnn:583) INFO: rnn param shapes: inp=torch.Size([614, 83]),hxa=[torch.Size([2, 8, 320]), torch.Size([2, 8, 320])],batch_sizes= torch.Size([78])
+2020-11-16 10:23:39,251 (rnn:583) INFO: rnn param shapes: inp=torch.Size([307, 320]),hxa=[torch.Size([2, 8, 320]), torch.Size([2, 8, 320])],batch_sizes= torch.Size([39])
+2020-11-16 10:23:39,299 (rnn:583) INFO: rnn param shapes: inp=torch.Size([157, 320]),hxa=[torch.Size([2, 8, 320]), torch.Size([2, 8, 320])],batch_sizes= torch.Size([20])
+2020-11-16 10:23:39,315 (rnn:583) INFO: rnn param shapes: inp=torch.Size([157, 320]),hxa=[torch.Size([2, 8, 320]), torch.Size([2, 8, 320])],batch_sizes= torch.Size([20])
+2020-11-16 10:23:39,335 (ctc:92) INFO: CTC input lengths:  tensor([20, 20, 20, 20, 20, 20, 20, 17], dtype=torch.int32)
+2020-11-16 10:23:39,335 (ctc:97) INFO: CTC output lengths: tensor([2, 2, 4, 2, 3, 3, 4, 4], dtype=torch.int32)
+2020-11-16 10:23:39,336 (ctc:119) INFO: ctc loss:19.12177276611328
+2020-11-16 10:23:39,348 (e2e_asr:56) INFO: mtl loss:19.12177276611328
+2020-11-16 10:23:39,946 (asr:234) INFO: grad norm=62.03755187988281
+2020-11-16 10:23:39,986 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,988 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,989 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,990 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,992 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,993 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,994 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,995 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,997 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:39,998 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,000 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,001 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,002 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,003 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,004 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,005 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,006 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,007 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,008 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,009 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,010 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,011 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,012 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,013 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,014 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,015 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,016 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,017 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,018 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,019 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:23:40,027 (rnn:583) INFO: rnn param shapes: inp=torch.Size([17390, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([628])
+2020-11-16 10:23:41,237 (rnn:583) INFO: rnn param shapes: inp=torch.Size([8695, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([314])
+2020-11-16 10:23:41,939 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4354, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([157])
+2020-11-16 10:23:42,256 (rnn:583) INFO: rnn param shapes: inp=torch.Size([4354, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([157])
+2020-11-16 10:23:42,548 (ctc:92) INFO: CTC input lengths:  tensor([157, 157, 157, 157, 155, 155, 152, 152, 152, 152, 150, 150, 150, 147,        145, 145, 145, 142, 142, 140, 137, 137, 137, 137, 137, 135, 135, 135,        132, 130], dtype=torch.int32)
+2020-11-16 10:23:42,548 (ctc:97) INFO: CTC output lengths: tensor([30, 15, 19, 49, 29, 42, 19, 57, 19, 23, 34, 29, 19, 44, 44, 37, 25, 19,        34, 17, 21, 36, 23, 19, 32, 47, 23, 19, 21, 19], dtype=torch.int32)
+2020-11-16 10:23:42,556 (ctc:119) INFO: ctc loss:79.4929428100586
+2020-11-16 10:23:42,611 (e2e_asr:56) INFO: mtl loss:79.4929428100586
+2020-11-16 10:31:03,176 (asr:234) INFO: grad norm=29.24553108215332
+2020-11-16 10:31:03,221 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,223 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,224 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,225 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,226 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,227 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,228 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,229 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,229 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,230 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,231 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,232 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,233 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,234 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,234 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,235 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,236 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,237 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,238 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,239 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,240 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,241 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,241 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,242 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,243 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,244 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,245 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,246 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,246 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,247 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:31:03,253 (rnn:583) INFO: rnn param shapes: inp=torch.Size([11180, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([388])
+2020-11-16 10:31:04,023 (rnn:583) INFO: rnn param shapes: inp=torch.Size([5590, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([194])
+2020-11-16 10:31:04,402 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2802, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([97])
+2020-11-16 10:31:04,616 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2802, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([97])
+2020-11-16 10:31:04,837 (ctc:92) INFO: CTC input lengths:  tensor([97, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 92, 92, 92, 92,        92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 90], dtype=torch.int32)
+2020-11-16 10:31:04,837 (ctc:97) INFO: CTC output lengths: tensor([46, 15, 50, 30, 51, 20, 25, 19, 47, 32, 17, 47, 19, 18, 49, 35, 17, 34,        19, 19, 34, 26, 15, 15, 15, 22, 33, 18, 28, 32], dtype=torch.int32)
+2020-11-16 10:31:04,843 (ctc:119) INFO: ctc loss:106.71234893798828
+2020-11-16 10:31:04,898 (e2e_asr:56) INFO: mtl loss:106.71234893798828
+2020-11-16 10:33:40,084 (asr:234) INFO: grad norm=226.15814208984375
+2020-11-16 10:33:40,123 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,125 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,126 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,127 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,128 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,129 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,130 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,131 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,132 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,133 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,134 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,135 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,136 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,137 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,138 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,139 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,140 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,141 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,141 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,142 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,143 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,144 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,145 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,145 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,146 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,147 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,148 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,149 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,149 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,150 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:40,158 (rnn:583) INFO: rnn param shapes: inp=torch.Size([12160, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([638])
+2020-11-16 10:33:41,581 (rnn:583) INFO: rnn param shapes: inp=torch.Size([6080, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([319])
+2020-11-16 10:33:42,354 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3045, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([160])
+2020-11-16 10:33:42,701 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3045, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([160])
+2020-11-16 10:33:42,928 (ctc:92) INFO: CTC input lengths:  tensor([160, 132, 125, 122, 122, 117, 117, 112, 110, 107, 107, 107, 107, 102,        100,  95,  92,  92,  90,  90,  87,  87,  87,  85,  85,  85,  82,  82,         82,  77], dtype=torch.int32)
+2020-11-16 10:33:42,928 (ctc:97) INFO: CTC output lengths: tensor([40, 23, 21, 19, 46, 25, 27, 19, 17, 34, 15, 19, 15, 19, 27, 26, 17, 19,        15, 23, 11, 39, 21, 11, 24, 27, 15, 13, 19, 33], dtype=torch.int32)
+2020-11-16 10:33:42,934 (ctc:119) INFO: ctc loss:67.13805389404297
+2020-11-16 10:33:42,998 (e2e_asr:56) INFO: mtl loss:67.13805389404297
+2020-11-16 10:33:42,998 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,000 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,000 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,001 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,002 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,003 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,003 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,004 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,005 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,006 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,007 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,008 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,009 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,010 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,011 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,012 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,013 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,014 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,015 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,016 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,017 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,018 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,019 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,021 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,022 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,023 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,024 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,025 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,026 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,027 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:43,036 (rnn:583) INFO: rnn param shapes: inp=torch.Size([7980, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([308])
+2020-11-16 10:33:43,666 (rnn:583) INFO: rnn param shapes: inp=torch.Size([3990, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([154])
+2020-11-16 10:33:43,995 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2001, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([77])
+2020-11-16 10:33:44,202 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2001, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([77])
+2020-11-16 10:33:44,387 (ctc:92) INFO: CTC input lengths:  tensor([77, 77, 77, 75, 75, 75, 72, 72, 72, 72, 70, 70, 70, 67, 67, 67, 67, 65,        65, 62, 62, 60, 60, 60, 60, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-16 10:33:44,388 (ctc:97) INFO: CTC output lengths: tensor([21, 32, 30, 13, 35, 34, 15, 11, 27, 24, 33, 17, 15, 34, 12, 21, 27, 13,        43, 33,  9, 11, 21, 13, 33, 19, 22,  7, 22, 15], dtype=torch.int32)
+2020-11-16 10:33:44,392 (ctc:119) INFO: ctc loss:66.00444030761719
+2020-11-16 10:33:44,421 (e2e_asr:56) INFO: mtl loss:66.00444030761719
+2020-11-16 10:33:44,421 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,422 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,423 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,424 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,425 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,426 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,427 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,428 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,428 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,429 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,429 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,430 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,431 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,431 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,432 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,433 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,434 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,435 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,435 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,436 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,436 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,437 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,438 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,438 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,439 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,439 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,440 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,441 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,442 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,442 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:44,446 (rnn:583) INFO: rnn param shapes: inp=torch.Size([5160, 83]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([218])
+2020-11-16 10:33:44,716 (rnn:583) INFO: rnn param shapes: inp=torch.Size([2580, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([109])
+2020-11-16 10:33:45,560 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1298, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([55])
+2020-11-16 10:33:45,775 (rnn:583) INFO: rnn param shapes: inp=torch.Size([1298, 320]),hxa=[torch.Size([2, 30, 320]), torch.Size([2, 30, 320])],batch_sizes= torch.Size([55])
+2020-11-16 10:33:45,934 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 52, 52, 50, 50, 50, 50, 47, 45, 45, 45, 45, 42, 42, 42,        40, 40, 40, 37, 37, 37, 37, 37, 32, 32, 27, 25], dtype=torch.int32)
+2020-11-16 10:33:45,934 (ctc:97) INFO: CTC output lengths: tensor([21, 26, 28, 23, 22, 31, 20, 20, 12, 25, 20, 16, 15, 19, 19, 18, 19, 32,        24, 17,  9, 10,  9, 11,  9, 21,  5, 16, 13,  3], dtype=torch.int32)
+2020-11-16 10:33:45,937 (ctc:119) INFO: ctc loss:54.39326477050781
+2020-11-16 10:33:45,958 (e2e_asr:56) INFO: mtl loss:54.39326477050781
+2020-11-16 10:33:45,958 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,960 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,961 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,962 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,963 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,964 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,965 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,966 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,967 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,967 (io_utils:452) INFO: mine chosen***************
+2020-11-16 10:33:45,970 (rnn:583) INFO: rnn param shapes: inp=torch.Size([850, 83]),hxa=[torch.Size([2, 10, 320]), torch.Size([2, 10, 320])],batch_sizes= torch.Size([98])
+2020-11-16 10:33:46,084 (rnn:583) INFO: rnn param shapes: inp=torch.Size([425, 320]),hxa=[torch.Size([2, 10, 320]), torch.Size([2, 10, 320])],batch_sizes= torch.Size([49])
+2020-11-16 10:33:46,152 (rnn:583) INFO: rnn param shapes: inp=torch.Size([215, 320]),hxa=[torch.Size([2, 10, 320]), torch.Size([2, 10, 320])],batch_sizes= torch.Size([25])
+2020-11-16 10:33:46,180 (rnn:583) INFO: rnn param shapes: inp=torch.Size([215, 320]),hxa=[torch.Size([2, 10, 320]), torch.Size([2, 10, 320])],batch_sizes= torch.Size([25])
+2020-11-16 10:33:46,219 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 22, 22, 22, 20, 20, 17, 17], dtype=torch.int32)
+2020-11-16 10:33:46,220 (ctc:97) INFO: CTC output lengths: tensor([ 2, 12,  7,  3,  3,  4,  2,  2,  2,  4], dtype=torch.int32)
+2020-11-16 10:33:46,221 (ctc:119) INFO: ctc loss:17.214763641357422
+2020-11-16 10:33:46,227 (e2e_asr:56) INFO: mtl loss:17.214763641357422
+[J# Accounting: time=2521 threads=1
+# Ended (code 0) at Mon Nov 16 10:33:47 GMT 2020, elapsed time 2521 seconds

@@ -1,0 +1,325 @@
+# asr_train.py --config conf/train_mtlalpha1.0.yaml --ngpu 0 --backend pytorch --outdir exp/train_nodev_pytorch_train_mtlalpha1.0/results --tensorboard-dir tensorboard/train_nodev_pytorch_train_mtlalpha1.0 --debugmode 1 --dict data/lang_1char/train_nodev_units.txt --debugdir exp/train_nodev_pytorch_train_mtlalpha1.0 --minibatches 0 --verbose 1 --resume --train-json dump/train_nodev/deltafalse/data.json --valid-json dump/train_dev/deltafalse/data.json 
+# Started at Fri Nov 13 20:56:49 GMT 2020
+#
+2020-11-13 20:56:54,484 (asr_train:582) INFO: ngpu: 0
+2020-11-13 20:56:54,484 (asr_train:585) INFO: python path = (None)
+2020-11-13 20:56:54,484 (asr_train:588) INFO: random seed = 1
+2020-11-13 20:56:54,485 (asr_train:604) INFO: backend = pytorch
+2020-11-13 20:56:54,636 (deterministic_utils:26) INFO: torch type check is disabled
+/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /opt/conda/conda-bld/pytorch_1603728993639/work/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+2020-11-13 20:56:54,639 (asr:401) WARNING: cuda is not available
+2020-11-13 20:56:54,642 (asr:412) INFO: stream1: input dims : 83
+2020-11-13 20:56:54,642 (asr:413) INFO: #output dims: 30
+2020-11-13 20:56:54,642 (asr:422) INFO: Pure CTC mode
+2020-11-13 20:56:54,643 (nets_utils:420) INFO: subsample: 1 2 2 1 1
+2020-11-13 20:56:54,719 (encoders:294) INFO: BLSTM with every-layer projection for encoder
+2020-11-13 20:56:54,719 (ctc:34) WARNING: CTC was set to builtin due to PyTorch version.
+2020-11-13 20:56:54,896 (asr:441) INFO:  Total parameter of the model = 8126151
+2020-11-13 20:56:54,897 (asr:457) INFO: writing a model config file to exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.json
+2020-11-13 20:56:54,903 (asr:467) INFO: ARGS: accum_grad: 1
+2020-11-13 20:56:54,903 (asr:467) INFO: ARGS: aconv_chans: 10
+2020-11-13 20:56:54,903 (asr:467) INFO: ARGS: aconv_filts: 100
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: adim: 320
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: aheads: 4
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: apply_uttmvn: True
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: atype: location
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: awin: 5
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: backend: pytorch
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: badim: 320
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: batch_bins: 0
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: batch_count: auto
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: batch_frames_in: 0
+2020-11-13 20:56:54,904 (asr:467) INFO: ARGS: batch_frames_inout: 0
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: batch_frames_out: 0
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: batch_size: 30
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: bdropout_rate: 0.0
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: beam_size: 4
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: blayers: 2
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: bnmask: 2
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: bprojs: 300
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: btype: blstmp
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: bunits: 300
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: char_list: ['<blank>', '<unk>', '<space>', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '<eos>']
+2020-11-13 20:56:54,905 (asr:467) INFO: ARGS: config: conf/train_mtlalpha1.0.yaml
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: config2: None
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: config3: None
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: context_residual: False
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: criterion: acc
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: ctc_type: warpctc
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: ctc_weight: 0.3
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: debugdir: exp/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: debugmode: 1
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: dec_init: None
+2020-11-13 20:56:54,906 (asr:467) INFO: ARGS: dec_init_mods: ['att.', ' dec.']
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: dict: data/lang_1char/train_nodev_units.txt
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: dlayers: 1
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: dropout_rate: 0.0
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: dropout_rate_decoder: 0.0
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: dtype: lstm
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: dunits: 300
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: early_stop_criterion: validation/main/acc
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: elayers: 4
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: enc_init: None
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: enc_init_mods: ['enc.enc.']
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: epochs: 2
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: eprojs: 320
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: eps: 1e-08
+2020-11-13 20:56:54,907 (asr:467) INFO: ARGS: eps_decay: 0.01
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: etype: blstmp
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: eunits: 320
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: fbank_fmax: None
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: fbank_fmin: 0.0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: fbank_fs: 16000
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: freeze_mods: None
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: grad_clip: 5
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: grad_noise: False
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: lm_weight: 0.1
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: lsm_type: 
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: lsm_weight: 0.0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: maxlen_in: 800
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: maxlen_out: 150
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: maxlenratio: 0.0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: minibatches: 0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: minlenratio: 0.0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: model_module: espnet.nets.pytorch_backend.e2e_asr:E2E
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: mtlalpha: 1.0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: n_iter_processes: 0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: n_mels: 80
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: nbest: 1
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: ngpu: 0
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: num_encs: 1
+2020-11-13 20:56:54,908 (asr:467) INFO: ARGS: num_save_attention: 3
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: num_spkrs: 1
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: opt: adadelta
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: outdir: exp/train_nodev_pytorch_train_mtlalpha1.0/results
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: patience: 3
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: penalty: 0.0
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: preprocess_conf: None
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: ref_channel: -1
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: report_cer: False
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: report_interval_iters: 100
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: report_wer: False
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: resume: None
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: rnnlm: None
+2020-11-13 20:56:54,909 (asr:467) INFO: ARGS: rnnlm_conf: None
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: sampling_probability: 0.0
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: save_interval_iters: 0
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: seed: 1
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: sortagrad: 0
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: stats_file: None
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: subsample: 1_2_2_1_1
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: sym_blank: <blank>
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: sym_space: <space>
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: tensorboard_dir: tensorboard/train_nodev_pytorch_train_mtlalpha1.0
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: threshold: 0.0001
+2020-11-13 20:56:54,910 (asr:467) INFO: ARGS: train_dtype: float32
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: train_json: dump/train_nodev/deltafalse/data.json
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: use_beamformer: True
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: use_dnn_mask_for_wpe: False
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: use_frontend: False
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: use_wpe: False
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: uttmvn_norm_means: True
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: uttmvn_norm_vars: False
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: valid_json: dump/train_dev/deltafalse/data.json
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: verbose: 1
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: wdropout_rate: 0.0
+2020-11-13 20:56:54,911 (asr:467) INFO: ARGS: weight_decay: 0.0
+2020-11-13 20:56:54,912 (asr:467) INFO: ARGS: wlayers: 2
+2020-11-13 20:56:54,912 (asr:467) INFO: ARGS: wpe_delay: 3
+2020-11-13 20:56:54,912 (asr:467) INFO: ARGS: wpe_taps: 5
+2020-11-13 20:56:54,912 (asr:467) INFO: ARGS: wprojs: 300
+2020-11-13 20:56:54,912 (asr:467) INFO: ARGS: wtype: blstmp
+2020-11-13 20:56:54,912 (asr:467) INFO: ARGS: wunits: 300
+2020-11-13 20:56:54,929 (batchfy:433) INFO: count is auto detected as seq
+2020-11-13 20:56:54,930 (batchfy:457) INFO: # utts: 848
+2020-11-13 20:56:54,930 (batchfy:502) INFO: # minibatches: 29
+2020-11-13 20:56:54,930 (batchfy:433) INFO: count is auto detected as seq
+2020-11-13 20:56:54,931 (batchfy:457) INFO: # utts: 100
+2020-11-13 20:56:54,931 (batchfy:502) INFO: # minibatches: 4
+2020-11-13 20:56:58,680 (ctc:92) INFO: CTC input lengths:  tensor([102, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,        100, 100,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,  97,         97,  97], dtype=torch.int32)
+2020-11-13 20:56:58,681 (ctc:97) INFO: CTC output lengths: tensor([51, 19, 29, 28, 35, 21, 19, 47, 33, 24, 19, 32, 27, 19, 26, 19, 46, 15,        30, 22, 24, 19, 21, 15, 32, 33, 34, 24, 20, 19], dtype=torch.int32)
+2020-11-13 20:56:58,700 (ctc:119) INFO: ctc loss:256.3520812988281
+2020-11-13 20:56:58,750 (e2e_asr:55) INFO: mtl loss:256.3520812988281
+2020-11-13 20:59:48,399 (asr:234) INFO: grad norm=76.76959228515625
+2020-11-13 20:59:51,748 (ctc:92) INFO: CTC input lengths:  tensor([105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105, 105,        105, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102, 102,        102, 102], dtype=torch.int32)
+2020-11-13 20:59:51,748 (ctc:97) INFO: CTC output lengths: tensor([21, 17, 31, 19, 11, 50, 21, 19, 29, 24, 34, 15, 26, 21, 50, 26, 24, 17,        29, 19, 35, 13, 21, 38, 15, 31, 33, 17, 24, 28], dtype=torch.int32)
+2020-11-13 20:59:51,753 (ctc:119) INFO: ctc loss:259.74725341796875
+2020-11-13 20:59:51,803 (e2e_asr:55) INFO: mtl loss:259.74725341796875
+2020-11-13 21:02:51,759 (asr:234) INFO: grad norm=112.03160095214844
+2020-11-13 21:02:52,791 (ctc:92) INFO: CTC input lengths:  tensor([52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 50, 50, 50,        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50], dtype=torch.int32)
+2020-11-13 21:02:52,792 (ctc:97) INFO: CTC output lengths: tensor([30, 37, 11, 22, 22, 15,  7, 22,  9, 22, 15, 23,  9, 22, 21, 15,  9, 17,        19, 23,  9, 23, 22, 17, 14, 11, 21, 22, 11, 26], dtype=torch.int32)
+2020-11-13 21:02:52,794 (ctc:119) INFO: ctc loss:106.50115203857422
+2020-11-13 21:02:52,832 (e2e_asr:55) INFO: mtl loss:106.50115203857422
+2020-11-13 21:03:00,697 (asr:234) INFO: grad norm=97.28619384765625
+2020-11-13 21:03:01,503 (ctc:92) INFO: CTC input lengths:  tensor([32, 30, 30, 30, 30, 30, 30, 30, 30, 27, 27, 27, 27, 27, 27, 27, 27, 27,        27, 27, 27, 27, 27, 27, 25, 25, 25, 25, 25, 25], dtype=torch.int32)
+2020-11-13 21:03:01,504 (ctc:97) INFO: CTC output lengths: tensor([ 9,  4,  5,  3,  5, 10,  4, 12,  6, 12,  6,  4, 10,  3,  7,  4,  6,  4,         5,  6,  6,  5,  3,  9,  3,  4,  6,  4,  3,  6], dtype=torch.int32)
+2020-11-13 21:03:01,506 (ctc:119) INFO: ctc loss:25.204153060913086
+2020-11-13 21:03:01,562 (e2e_asr:55) INFO: mtl loss:25.204153060913086
+2020-11-13 21:03:05,143 (asr:234) INFO: grad norm=52.47917938232422
+2020-11-13 21:03:06,520 (ctc:92) INFO: CTC input lengths:  tensor([57, 57, 57, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,        55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55], dtype=torch.int32)
+2020-11-13 21:03:06,520 (ctc:97) INFO: CTC output lengths: tensor([17, 19, 20, 33, 22, 30, 21,  7, 19, 10, 11,  9, 19,  9, 20, 14, 29, 23,        11,  9, 11, 11, 22, 14, 12, 11, 29, 15, 35, 35], dtype=torch.int32)
+2020-11-13 21:03:06,524 (ctc:119) INFO: ctc loss:99.0936050415039
+2020-11-13 21:03:06,556 (e2e_asr:55) INFO: mtl loss:99.0936050415039
+2020-11-13 21:03:59,107 (asr:234) INFO: grad norm=221.1867218017578
+2020-11-13 21:04:01,121 (ctc:92) INFO: CTC input lengths:  tensor([112, 112, 110, 110, 110, 110, 110, 110, 110, 110, 110, 110, 107, 107,        107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 105,        105, 105], dtype=torch.int32)
+2020-11-13 21:04:01,122 (ctc:97) INFO: CTC output lengths: tensor([19, 19, 36, 21, 15, 17, 41, 23,  9, 17, 52, 25, 29, 13, 34, 34, 19, 17,        32, 17, 20, 13, 15, 26, 13, 19, 25, 21, 19, 17], dtype=torch.int32)
+2020-11-13 21:04:01,127 (ctc:119) INFO: ctc loss:79.36616516113281
+2020-11-13 21:04:01,172 (e2e_asr:55) INFO: mtl loss:79.36616516113281
+2020-11-13 21:07:20,302 (asr:234) INFO: grad norm=183.4918670654297
+2020-11-13 21:07:21,379 (ctc:92) INFO: CTC input lengths:  tensor([62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62,        62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-13 21:07:21,380 (ctc:97) INFO: CTC output lengths: tensor([20,  9, 29, 24, 11,  9, 30, 11,  9, 19, 24, 14, 11, 13,  7, 35,  9, 11,        17, 13,  5, 40, 32, 39, 21, 23, 25, 11, 20, 13], dtype=torch.int32)
+2020-11-13 21:07:21,383 (ctc:119) INFO: ctc loss:90.86361694335938
+2020-11-13 21:07:21,429 (e2e_asr:55) INFO: mtl loss:90.86361694335938
+2020-11-13 21:08:24,014 (asr:234) INFO: grad norm=213.15536499023438
+2020-11-13 21:08:25,043 (ctc:92) INFO: CTC input lengths:  tensor([60, 60, 60, 60, 60, 60, 60, 60, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57,        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57], dtype=torch.int32)
+2020-11-13 21:08:25,043 (ctc:97) INFO: CTC output lengths: tensor([ 9, 22, 13,  9, 26,  9, 25, 17, 22, 22, 19, 21, 22, 29, 28, 22, 17, 11,        22, 23, 15, 27, 23, 24, 29, 19, 17, 22, 13, 11], dtype=torch.int32)
+2020-11-13 21:08:25,046 (ctc:119) INFO: ctc loss:60.83613204956055
+2020-11-13 21:08:25,076 (e2e_asr:55) INFO: mtl loss:60.83613204956055
+2020-11-13 21:09:23,089 (asr:234) INFO: grad norm=40.6237907409668
+2020-11-13 21:09:24,585 (ctc:92) INFO: CTC input lengths:  tensor([90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 87, 87, 87, 87, 87,        87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87], dtype=torch.int32)
+2020-11-13 21:09:24,585 (ctc:97) INFO: CTC output lengths: tensor([23, 11, 27, 31, 15, 19, 20, 34, 13, 13, 32, 15, 17, 25, 24, 48, 33, 39,        18, 29, 19, 28, 19, 23, 22, 19, 17, 23, 23, 33], dtype=torch.int32)
+2020-11-13 21:09:24,590 (ctc:119) INFO: ctc loss:76.89999389648438
+2020-11-13 21:09:24,630 (e2e_asr:55) INFO: mtl loss:76.89999389648438
+2020-11-13 21:11:41,057 (asr:234) INFO: grad norm=70.2822494506836
+2020-11-13 21:11:42,451 (ctc:92) INFO: CTC input lengths:  tensor([82, 82, 82, 82, 82, 82, 82, 82, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80,        80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80], dtype=torch.int32)
+2020-11-13 21:11:42,451 (ctc:97) INFO: CTC output lengths: tensor([15, 18, 19, 21, 35, 23, 30, 19, 22, 32, 24, 13, 13, 24, 13, 13, 29, 37,        20, 29, 18, 18, 36, 25, 22, 21, 19, 27, 13, 38], dtype=torch.int32)
+2020-11-13 21:11:42,455 (ctc:119) INFO: ctc loss:78.90068054199219
+2020-11-13 21:11:42,496 (e2e_asr:55) INFO: mtl loss:78.90068054199219
+2020-11-13 21:13:31,270 (asr:234) INFO: grad norm=172.91758728027344
+2020-11-13 21:13:32,055 (ctc:92) INFO: CTC input lengths:  tensor([50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 47, 47, 47, 47,        47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47], dtype=torch.int32)
+2020-11-13 21:13:32,055 (ctc:97) INFO: CTC output lengths: tensor([17, 12, 21, 20,  7, 17,  7, 11, 28, 15, 11, 13, 20, 27, 21,  9, 15,  9,        10, 13, 20, 22,  9, 17, 20, 24, 13,  9, 17,  9], dtype=torch.int32)
+2020-11-13 21:13:32,058 (ctc:119) INFO: ctc loss:54.68838882446289
+2020-11-13 21:13:32,086 (e2e_asr:55) INFO: mtl loss:54.68838882446289
+2020-11-13 21:13:37,972 (asr:234) INFO: grad norm=114.29330444335938
+2020-11-13 21:13:39,012 (ctc:92) INFO: CTC input lengths:  tensor([62, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60,        60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60], dtype=torch.int32)
+2020-11-13 21:13:39,013 (ctc:97) INFO: CTC output lengths: tensor([31, 19, 27, 11, 18, 19, 34,  7, 25, 20, 24, 21, 23, 22, 13, 36, 31, 13,        29, 20, 22, 32, 13, 16, 15, 19, 21, 23, 11, 20], dtype=torch.int32)
+2020-11-13 21:13:39,016 (ctc:119) INFO: ctc loss:64.39968872070312
+2020-11-13 21:13:39,045 (e2e_asr:55) INFO: mtl loss:64.39968872070312
+2020-11-13 21:14:39,439 (asr:234) INFO: grad norm=78.33953857421875
+2020-11-13 21:14:41,687 (ctc:92) INFO: CTC input lengths:  tensor([130, 130, 127, 127, 127, 127, 125, 125, 125, 122, 122, 120, 120, 120,        120, 120, 120, 120, 117, 117, 117, 117, 117, 117, 115, 115, 115, 115,        115, 112], dtype=torch.int32)
+2020-11-13 21:14:41,687 (ctc:97) INFO: CTC output lengths: tensor([17, 17, 19, 35, 19, 29, 15, 15, 34, 30, 33, 55, 48, 15, 17, 35, 19, 46,        17, 17,  9, 11, 25, 17, 28, 13, 28, 33, 27, 19], dtype=torch.int32)
+2020-11-13 21:14:41,696 (ctc:119) INFO: ctc loss:78.20215606689453
+2020-11-13 21:14:41,754 (e2e_asr:55) INFO: mtl loss:78.20215606689453
+2020-11-13 21:19:47,155 (asr:234) INFO: grad norm=154.9304656982422
+2020-11-13 21:19:48,382 (ctc:92) INFO: CTC input lengths:  tensor([67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67,        67, 67, 67, 67, 67, 67, 67, 65, 65, 65, 65, 65], dtype=torch.int32)
+2020-11-13 21:19:48,382 (ctc:97) INFO: CTC output lengths: tensor([13, 13, 13, 12, 19, 17, 20, 13, 30, 30, 46, 17, 21, 13, 19, 15, 13, 24,        21, 19,  7, 17, 33,  9, 41, 18, 26, 26, 29, 22], dtype=torch.int32)
+2020-11-13 21:19:48,386 (ctc:119) INFO: ctc loss:63.85207748413086
+2020-11-13 21:19:48,430 (e2e_asr:55) INFO: mtl loss:63.85207748413086
+2020-11-13 21:21:00,497 (asr:234) INFO: grad norm=95.46932983398438
+2020-11-13 21:21:00,933 (ctc:92) INFO: CTC input lengths:  tensor([25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,        25, 25, 25, 25, 25, 25, 22, 22, 22, 22, 22, 22], dtype=torch.int32)
+2020-11-13 21:21:00,933 (ctc:97) INFO: CTC output lengths: tensor([ 5,  6,  5,  3,  6,  2,  2,  5,  3,  4,  3,  4,  5,  6,  5,  3,  3,  4,         3,  4,  3,  3, 11,  5,  6,  2,  2,  4,  5,  2], dtype=torch.int32)
+2020-11-13 21:21:00,934 (ctc:119) INFO: ctc loss:15.280499458312988
+2020-11-13 21:21:00,955 (e2e_asr:55) INFO: mtl loss:15.280499458312988
+2020-11-13 21:21:02,929 (asr:234) INFO: grad norm=13.018089294433594
+2020-11-13 21:21:03,795 (ctc:92) INFO: CTC input lengths:  tensor([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 52, 52, 52, 52, 52,        52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52, 52], dtype=torch.int32)
+2020-11-13 21:21:03,795 (ctc:97) INFO: CTC output lengths: tensor([29, 34, 21, 16, 30, 11, 12, 21, 11, 22,  9, 21, 26, 11, 22, 21, 15, 32,        13, 19, 20, 33, 32, 26, 11, 19, 11, 21, 13, 20], dtype=torch.int32)
+2020-11-13 21:21:03,798 (ctc:119) INFO: ctc loss:63.0713005065918
+2020-11-13 21:21:03,824 (e2e_asr:55) INFO: mtl loss:63.0713005065918
+2020-11-13 21:21:10,757 (asr:234) INFO: grad norm=32.54966354370117
+2020-11-13 21:21:11,900 (ctc:92) INFO: CTC input lengths:  tensor([65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,        65, 65, 65, 65, 62, 62, 62, 62, 62, 62, 62, 62], dtype=torch.int32)
+2020-11-13 21:21:11,901 (ctc:97) INFO: CTC output lengths: tensor([29, 26, 25, 13, 25, 36, 23, 33, 21, 13,  9, 28, 11, 19, 13,  9, 26, 11,        21, 26,  9, 11, 15, 32, 18, 11, 29, 24, 17, 12], dtype=torch.int32)
+2020-11-13 21:21:11,904 (ctc:119) INFO: ctc loss:60.77420425415039
+2020-11-13 21:21:11,938 (e2e_asr:55) INFO: mtl loss:60.77420425415039
+2020-11-13 21:22:19,837 (asr:234) INFO: grad norm=76.81087493896484
+2020-11-13 21:22:20,206 (ctc:92) INFO: CTC input lengths:  tensor([22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 20,        20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20], dtype=torch.int32)
+2020-11-13 21:22:20,206 (ctc:97) INFO: CTC output lengths: tensor([4, 6, 6, 4, 4, 4, 3, 4, 2, 2, 4, 4, 3, 6, 6, 5, 2, 2, 2, 2, 2, 2, 2, 2,        4, 4, 6, 2, 2, 4], dtype=torch.int32)
+2020-11-13 21:22:20,207 (ctc:119) INFO: ctc loss:13.190520286560059
+2020-11-13 21:22:20,223 (e2e_asr:55) INFO: mtl loss:13.190520286560059
+2020-11-13 21:22:21,717 (asr:234) INFO: grad norm=12.430654525756836
+2020-11-13 21:22:23,115 (ctc:92) INFO: CTC input lengths:  tensor([85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 82, 82, 82, 82, 82,        82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82], dtype=torch.int32)
+2020-11-13 21:22:23,116 (ctc:97) INFO: CTC output lengths: tensor([11, 13, 38, 32, 18, 15, 32, 46, 23, 20,  9, 29, 14, 22, 23, 17, 45, 30,        18, 32, 38, 36, 44, 23, 19, 11, 32, 19, 21, 42], dtype=torch.int32)
+2020-11-13 21:22:23,120 (ctc:119) INFO: ctc loss:80.04524230957031
+2020-11-13 21:22:23,153 (e2e_asr:55) INFO: mtl loss:80.04524230957031
+2020-11-13 21:24:20,838 (asr:234) INFO: grad norm=44.868133544921875
+2020-11-13 21:24:21,445 (ctc:92) INFO: CTC input lengths:  tensor([40, 40, 40, 40, 40, 40, 40, 40, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37,        37, 37, 37, 37, 37, 37, 37, 37, 37, 35, 35, 35], dtype=torch.int32)
+2020-11-13 21:24:21,445 (ctc:97) INFO: CTC output lengths: tensor([ 7, 18, 18,  9, 20, 22, 20,  7,  7, 13, 14, 12, 11,  7, 16,  7, 19, 17,        11,  7, 10,  9, 18, 16,  9, 13, 16, 13, 11, 17], dtype=torch.int32)
+2020-11-13 21:24:21,447 (ctc:119) INFO: ctc loss:40.2098274230957
+2020-11-13 21:24:21,472 (e2e_asr:55) INFO: mtl loss:40.2098274230957
+2020-11-13 21:24:25,356 (asr:234) INFO: grad norm=43.44813537597656
+2020-11-13 21:24:25,917 (ctc:92) INFO: CTC input lengths:  tensor([35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 32, 32, 32, 32,        32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32], dtype=torch.int32)
+2020-11-13 21:24:25,917 (ctc:97) INFO: CTC output lengths: tensor([ 5,  7,  6, 12, 11, 15, 11, 11,  9, 15, 17, 11,  5, 11,  4, 10,  6, 11,         8,  5, 18,  5, 10,  5, 10,  3,  7, 15, 14,  2], dtype=torch.int32)
+2020-11-13 21:24:25,919 (ctc:119) INFO: ctc loss:36.058780670166016
+2020-11-13 21:24:25,936 (e2e_asr:55) INFO: mtl loss:36.058780670166016
+2020-11-13 21:24:29,024 (asr:234) INFO: grad norm=79.2288818359375
+2020-11-13 21:24:29,735 (ctc:92) INFO: CTC input lengths:  tensor([47, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45,        45, 45, 45, 45, 45, 45, 45, 42, 42, 42, 42, 42], dtype=torch.int32)
+2020-11-13 21:24:29,735 (ctc:97) INFO: CTC output lengths: tensor([21, 13, 22, 21, 22,  9, 22, 22, 10, 22, 20, 22, 21, 22, 11, 20, 16, 22,        15, 17, 22, 22, 10, 20,  7, 13, 23, 21,  9, 22], dtype=torch.int32)
+2020-11-13 21:24:29,737 (ctc:119) INFO: ctc loss:53.82624816894531
+2020-11-13 21:24:29,761 (e2e_asr:55) INFO: mtl loss:53.82624816894531
+2020-11-13 21:24:35,564 (asr:234) INFO: grad norm=83.7710189819336
+2020-11-13 21:24:36,817 (ctc:92) INFO: CTC input lengths:  tensor([72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 70, 70, 70, 70, 70, 70, 70, 70,        70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 67, 67], dtype=torch.int32)
+2020-11-13 21:24:36,817 (ctc:97) INFO: CTC output lengths: tensor([25, 20, 15, 19, 24, 11, 23, 21, 20, 30, 20, 11,  9, 13, 22, 19, 17, 17,        19, 34, 39, 11, 36, 19, 11, 18, 35, 19,  9, 11], dtype=torch.int32)
+2020-11-13 21:24:36,821 (ctc:119) INFO: ctc loss:70.2747573852539
+2020-11-13 21:24:36,853 (e2e_asr:55) INFO: mtl loss:70.2747573852539
+2020-11-13 21:26:07,048 (asr:234) INFO: grad norm=153.11837768554688
+[JException in main training loop: [Errno 2] No such file or directory: '/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet2/egs/an4/asr1/dump/train_nodev/deltafalse/feats.1.ark'
+Traceback (most recent call last):
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/trainer.py", line 316, in run
+    update()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 242, in update
+    self.update_core()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 190, in update_core
+    batch = train_iter.next()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/dataset.py", line 58, in next
+    ret = next(self.iter)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/dataloader.py", line 435, in __next__
+    data = self._next_data()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/dataloader.py", line 475, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/dataset.py", line 33, in __getitem__
+    return self.transform(self.data[idx])
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 611, in <lambda>
+    dataset=TransformDataset(train, lambda data: converter([load_tr(data)])),
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/io_utils.py", line 117, in __call__
+    filepath=inp["feat"], filetype=inp.get("filetype", "mat")
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/io_utils.py", line 452, in _get_from_loader
+    return kaldiio.load_mat(filepath)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/kaldiio/matio.py", line 240, in load_mat
+    with open_like_kaldi(ark, "rb") as fd:
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/kaldiio/utils.py", line 208, in open_like_kaldi
+    return io.open(name, mode, encoding=encoding)
+Will finalize trainer extensions and updater before reraising the exception.
+Traceback (most recent call last):
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/asr_train.py", line 628, in <module>
+    main(sys.argv[1:])
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/../../../espnet/bin/asr_train.py", line 614, in main
+    train(args)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 830, in train
+    trainer.run()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/trainer.py", line 349, in run
+    six.reraise(*exc_info)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/six.py", line 703, in reraise
+    raise value
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/chainer/training/trainer.py", line 316, in run
+    update()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 242, in update
+    self.update_core()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 190, in update_core
+    batch = train_iter.next()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/dataset.py", line 58, in next
+    ret = next(self.iter)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/dataloader.py", line 435, in __next__
+    data = self._next_data()
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/dataloader.py", line 475, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/dataset.py", line 33, in __getitem__
+    return self.transform(self.data[idx])
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/asr/pytorch_backend/asr.py", line 611, in <lambda>
+    dataset=TransformDataset(train, lambda data: converter([load_tr(data)])),
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/io_utils.py", line 117, in __call__
+    filepath=inp["feat"], filetype=inp.get("filetype", "mat")
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/espnet/utils/io_utils.py", line 452, in _get_from_loader
+    return kaldiio.load_mat(filepath)
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/kaldiio/matio.py", line 240, in load_mat
+    with open_like_kaldi(ark, "rb") as fd:
+  File "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/lib/python3.6/site-packages/kaldiio/utils.py", line 208, in open_like_kaldi
+    return io.open(name, mode, encoding=encoding)
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet2/egs/an4/asr1/dump/train_nodev/deltafalse/feats.1.ark'

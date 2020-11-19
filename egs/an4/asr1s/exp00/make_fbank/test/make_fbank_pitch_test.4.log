@@ -1,0 +1,32 @@
+# paste-feats --length-tolerance=2 "ark:compute-fbank-feats  --write-utt2dur=ark,t:exp/make_fbank/test/utt2dur.4    --verbose=2 --config=conf/fbank.conf scp,p:exp/make_fbank/test/wav_test.4.scp ark:- |" "ark,s,cs:compute-kaldi-pitch-feats --verbose=2       --config=conf/pitch.conf scp,p:exp/make_fbank/test/wav_test.4.scp ark:- |     process-kaldi-pitch-feats  ark:- ark:- |" ark:- | copy-feats --compress=true --write-num-frames=ark,t:exp/make_fbank/test/utt2num_frames.4 ark:- ark,scp:/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/fbank/raw_fbank_pitch_test.4.ark,/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/fbank/raw_fbank_pitch_test.4.scp 
+# Started at Wed Nov 11 18:54:03 GMT 2020
+#
+paste-feats --length-tolerance=2 'ark:compute-fbank-feats  --write-utt2dur=ark,t:exp/make_fbank/test/utt2dur.4    --verbose=2 --config=conf/fbank.conf scp,p:exp/make_fbank/test/wav_test.4.scp ark:- |' 'ark,s,cs:compute-kaldi-pitch-feats --verbose=2       --config=conf/pitch.conf scp,p:exp/make_fbank/test/wav_test.4.scp ark:- |     process-kaldi-pitch-feats  ark:- ark:- |' ark:- 
+copy-feats --compress=true --write-num-frames=ark,t:exp/make_fbank/test/utt2num_frames.4 ark:- ark,scp:/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/fbank/raw_fbank_pitch_test.4.ark,/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/fbank/raw_fbank_pitch_test.4.scp 
+compute-fbank-feats --write-utt2dur=ark,t:exp/make_fbank/test/utt2dur.4 --verbose=2 --config=conf/fbank.conf scp,p:exp/make_fbank/test/wav_test.4.scp ark:- 
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key marh-cen7-b
+process-kaldi-pitch-feats ark:- ark:- 
+compute-kaldi-pitch-feats --verbose=2 --config=conf/pitch.conf scp,p:exp/make_fbank/test/wav_test.4.scp ark:- 
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key marh-cen8-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-an401-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-an402-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-an403-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-an404-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-an405-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen1-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen2-b
+LOG (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:181) Processed 10 utterances
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen3-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen4-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen5-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen6-b
+LOG (compute-kaldi-pitch-feats[5.5.0~1-29b3]:main():compute-kaldi-pitch-feats.cc:110) Done 16 utterances, 0 with errors.
+LOG (process-kaldi-pitch-feats[5.5.0~1-29b3]:main():process-kaldi-pitch-feats.cc:85) Post-processed pitch for 16 utterances.
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen7-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key mdms2-cen8-b
+VLOG[2] (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:182) Processed features for key menk-an421-b
+LOG (compute-fbank-feats[5.5.0~1-29b3]:main():compute-fbank-feats.cc:185)  Done 16 out of 16 utterances.
+LOG (paste-feats[5.5.0~1-29b3]:main():paste-feats.cc:158) Done 16 utts, errors on 0
+LOG (copy-feats[5.5.0~1-29b3]:main():copy-feats.cc:143) Copied 16 feature matrices.
+# Accounting: time=3 threads=1
+# Ended (code 0) at Wed Nov 11 18:54:06 GMT 2020, elapsed time 3 seconds
