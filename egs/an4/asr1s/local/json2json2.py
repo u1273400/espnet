@@ -22,10 +22,7 @@ from kaldiio import WriteHelper
 from scipy.fftpack import fft
 import sys
 import torch
-from torch_complex import ComplexTensor
-
 import json
-# import matplotlib.pyplot as plt
 import kaldiio
 from kymatio.numpy import Scattering1D
 import pickle
@@ -61,7 +58,7 @@ for i, utt in enumerate(js_items):
     if i % 100 == 0:
         print("total processed = %d of %d " % (i, len(js_items)))
     key, info = utt
-    wav = "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1/data" \
+    wav = "/home/john/src/python/espnet/egs/an4/asr1s/data" \
           "/wavs/%s.wav" % key
     sz, mat = kaldiio.load_mat(wav)
 

@@ -1,0 +1,251 @@
+{
+    "utts": {
+        "fclc-an150-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE SEVEN<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> S E V E N <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 21 7 24 7 16 29",
+                    "score": -49.14783477783203,
+                    "shape": [
+                        34,
+                        30
+                    ],
+                    "text": "ERASE C K C W FOURTEEN EIGHTY FIVE",
+                    "token": "E R A S E <space> C <space> K <space> C <space> W <space> F O U R T E E N <space> E I G H T Y <space> F I V E",
+                    "tokenid": "7 20 3 21 7 2 5 2 13 2 5 2 25 2 8 17 23 20 22 7 7 16 2 7 11 9 10 22 27 2 8 11 24 7"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen1-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE FIVE TWO ONE<eos>",
+                    "rec_token": "O N E <space> F I V E <space> T W O <space> O N E <eos>",
+                    "rec_tokenid": "17 16 7 2 8 11 24 7 2 22 25 17 2 17 16 7 29",
+                    "score": -51.80582809448242,
+                    "shape": [
+                        15,
+                        30
+                    ],
+                    "text": "C O N N E L L Y",
+                    "token": "C <space> O <space> N <space> N <space> E <space> L <space> L <space> Y",
+                    "tokenid": "5 2 17 2 16 2 16 2 7 2 14 2 14 2 27"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen2-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE ONE<eos>",
+                    "rec_token": "O N E <space> O N E <eos>",
+                    "rec_tokenid": "17 16 7 2 17 16 7 29",
+                    "score": -27.494590759277344,
+                    "shape": [
+                        9,
+                        30
+                    ],
+                    "text": "C I N D Y",
+                    "token": "C <space> I <space> N <space> D <space> Y",
+                    "tokenid": "5 2 11 2 16 2 6 2 27"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen3-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -17.032024383544922,
+                    "shape": [
+                        20,
+                        30
+                    ],
+                    "text": "FIVE FIVE THREE FIVE",
+                    "token": "F I V E <space> F I V E <space> T H R E E <space> F I V E",
+                    "tokenid": "8 11 24 7 2 8 11 24 7 2 22 10 20 7 7 2 8 11 24 7"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen4-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 17 16 7 29",
+                    "score": -43.24397277832031,
+                    "shape": [
+                        17,
+                        30
+                    ],
+                    "text": "A Y L E S B O R O",
+                    "token": "A <space> Y <space> L <space> E <space> S <space> B <space> O <space> R <space> O",
+                    "tokenid": "3 2 27 2 14 2 7 2 21 2 4 2 17 2 20 2 17"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen5-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE SEVEN<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> S E V E N <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 21 7 24 7 16 29",
+                    "score": -48.927452087402344,
+                    "shape": [
+                        19,
+                        30
+                    ],
+                    "text": "P I T T S B U R G H",
+                    "token": "P <space> I <space> T <space> T <space> S <space> B <space> U <space> R <space> G <space> H",
+                    "tokenid": "18 2 11 2 22 2 22 2 21 2 4 2 23 2 20 2 9 2 10"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen6-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -17.881145477294922,
+                    "shape": [
+                        22,
+                        30
+                    ],
+                    "text": "ONE FIVE TWO ONE SEVEN",
+                    "token": "O N E <space> F I V E <space> T W O <space> O N E <space> S E V E N",
+                    "tokenid": "17 16 7 2 8 11 24 7 2 22 25 17 2 17 16 7 2 21 7 24 7 16"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen7-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.73431968688965,
+                    "shape": [
+                        35,
+                        30
+                    ],
+                    "text": "SIX EIGHT SEVEN FIVE EIGHT OH EIGHT",
+                    "token": "S I X <space> E I G H T <space> S E V E N <space> F I V E <space> E I G H T <space> O H <space> E I G H T",
+                    "tokenid": "21 11 26 2 7 11 9 10 22 2 21 7 24 7 16 2 8 11 24 7 2 7 11 9 10 22 2 17 10 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fclc-cen8-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE ONE<eos>",
+                    "rec_token": "O N E <space> O N E <eos>",
+                    "rec_tokenid": "17 16 7 2 17 16 7 29",
+                    "score": -28.20589256286621,
+                    "shape": [
+                        34,
+                        30
+                    ],
+                    "text": "JUNE ELEVENTH NINETEEN SIXTY SEVEN",
+                    "token": "J U N E <space> E L E V E N T H <space> N I N E T E E N <space> S I X T Y <space> S E V E N",
+                    "tokenid": "12 23 16 7 2 7 14 7 24 7 16 22 10 2 16 11 16 7 22 7 7 16 2 21 11 26 22 27 2 21 7 24 7 16"
+                }
+            ],
+            "utt2spk": "fclc"
+        },
+        "fejs-an36-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 17 16 7 29",
+                    "score": -43.586029052734375,
+                    "shape": [
+                        26,
+                        30
+                    ],
+                    "text": "RUBOUT C Y R B SEVEN EIGHT",
+                    "token": "R U B O U T <space> C <space> Y <space> R <space> B <space> S E V E N <space> E I G H T",
+                    "tokenid": "20 23 4 17 23 22 2 5 2 27 2 20 2 4 2 21 7 24 7 16 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-an37-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE TWO ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> T W O <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 22 25 17 2 17 16 7 29",
+                    "score": -54.823951721191406,
+                    "shape": [
+                        27,
+                        30
+                    ],
+                    "text": "ERASE J G Q Y EIGHT SIX ONE",
+                    "token": "E R A S E <space> J <space> G <space> Q <space> Y <space> E I G H T <space> S I X <space> O N E",
+                    "tokenid": "7 20 3 21 7 2 12 2 9 2 19 2 27 2 7 11 9 10 22 2 21 11 26 2 17 16 7"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-an38-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -13.44766616821289,
+                    "shape": [
+                        2,
+                        30
+                    ],
+                    "text": "GO",
+                    "token": "G O",
+                    "tokenid": "9 17"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-an39-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE ONE<eos>",
+                    "rec_token": "O N E <space> O N E <eos>",
+                    "rec_tokenid": "17 16 7 2 17 16 7 29",
+                    "score": -28.052452087402344,
+                    "shape": [
+                        12,
+                        30
+                    ],
+                    "text": "G C D O FOUR",
+                    "token": "G <space> C <space> D <space> O <space> F O U R",
+                    "tokenid": "9 2 5 2 6 2 17 2 8 17 23 20"
+                }
+            ],
+            "utt2spk": "fejs"
+        }
+    }
+}

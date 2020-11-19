@@ -1,0 +1,251 @@
+{
+    "utts": {
+        "fejs-an40-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 29",
+                    "score": -32.59052658081055,
+                    "shape": [
+                        21,
+                        30
+                    ],
+                    "text": "Z I R K SIX FOUR FOUR",
+                    "token": "Z <space> I <space> R <space> K <space> S I X <space> F O U R <space> F O U R",
+                    "tokenid": "28 2 11 2 20 2 13 2 21 11 26 2 8 17 23 20 2 8 17 23 20"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen1-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE SEVEN<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> S E V E N <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 21 7 24 7 16 29",
+                    "score": -49.163814544677734,
+                    "shape": [
+                        17,
+                        30
+                    ],
+                    "text": "S C A V I N C K Y",
+                    "token": "S <space> C <space> A <space> V <space> I <space> N <space> C <space> K <space> Y",
+                    "tokenid": "21 2 5 2 3 2 24 2 11 2 16 2 5 2 13 2 27"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen2-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -21.98598861694336,
+                    "shape": [
+                        7,
+                        30
+                    ],
+                    "text": "J E A N",
+                    "token": "J <space> E <space> A <space> N",
+                    "tokenid": "12 2 7 2 3 2 16"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen3-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.085142135620117,
+                    "shape": [
+                        17,
+                        30
+                    ],
+                    "text": "ONE ZERO SIX FIVE",
+                    "token": "O N E <space> Z E R O <space> S I X <space> F I V E",
+                    "tokenid": "17 16 7 2 28 7 20 17 2 21 11 26 2 8 11 24 7"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen4-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE SEVEN ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> S E V E N <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 21 7 24 7 16 2 17 16 7 29",
+                    "score": -60.488983154296875,
+                    "shape": [
+                        23,
+                        30
+                    ],
+                    "text": "F I N D L E Y D R I V E",
+                    "token": "F <space> I <space> N <space> D <space> L <space> E <space> Y <space> D <space> R <space> I <space> V <space> E",
+                    "tokenid": "8 2 11 2 16 2 6 2 14 2 7 2 27 2 6 2 20 2 11 2 24 2 7"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen5-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 17 16 7 29",
+                    "score": -44.181434631347656,
+                    "shape": [
+                        19,
+                        30
+                    ],
+                    "text": "P I T T S B U R G H",
+                    "token": "P <space> I <space> T <space> T <space> S <space> B <space> U <space> R <space> G <space> H",
+                    "tokenid": "18 2 11 2 22 2 22 2 21 2 4 2 23 2 20 2 9 2 10"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen6-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -17.361095428466797,
+                    "shape": [
+                        20,
+                        30
+                    ],
+                    "text": "ONE FIVE TWO TWO ONE",
+                    "token": "O N E <space> F I V E <space> T W O <space> T W O <space> O N E",
+                    "tokenid": "17 16 7 2 8 11 24 7 2 22 25 17 2 22 25 17 2 17 16 7"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen7-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.567110061645508,
+                    "shape": [
+                        34,
+                        30
+                    ],
+                    "text": "TWO SIX EIGHT THREE EIGHT ZERO TWO",
+                    "token": "T W O <space> S I X <space> E I G H T <space> T H R E E <space> E I G H T <space> Z E R O <space> T W O",
+                    "tokenid": "22 25 17 2 21 11 26 2 7 11 9 10 22 2 22 10 20 7 7 2 7 11 9 10 22 2 28 7 20 17 2 22 25 17"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "fejs-cen8-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -21.817790985107422,
+                    "shape": [
+                        21,
+                        30
+                    ],
+                    "text": "TWO FIFTEEN SIXTY TWO",
+                    "token": "T W O <space> F I F T E E N <space> S I X T Y <space> T W O",
+                    "tokenid": "22 25 17 2 8 11 8 22 7 7 16 2 21 11 26 22 27 2 22 25 17"
+                }
+            ],
+            "utt2spk": "fejs"
+        },
+        "ffmm-an291-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -15.601122856140137,
+                    "shape": [
+                        10,
+                        30
+                    ],
+                    "text": "ENTER FIVE",
+                    "token": "E N T E R <space> F I V E",
+                    "tokenid": "7 16 22 7 20 2 8 11 24 7"
+                }
+            ],
+            "utt2spk": "ffmm"
+        },
+        "ffmm-an292-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -16.43328285217285,
+                    "shape": [
+                        19,
+                        30
+                    ],
+                    "text": "ENTER SEVENTY EIGHT",
+                    "token": "E N T E R <space> S E V E N T Y <space> E I G H T",
+                    "tokenid": "7 16 22 7 20 2 21 7 24 7 16 22 27 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "ffmm"
+        },
+        "ffmm-an293-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER SEVEN<eos>",
+                    "rec_token": "E N T E R <space> S E V E N <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 21 7 24 7 16 29",
+                    "score": -37.97684097290039,
+                    "shape": [
+                        27,
+                        30
+                    ],
+                    "text": "K L M U FIVE TWO SEVEN FOUR",
+                    "token": "K <space> L <space> M <space> U <space> F I V E <space> T W O <space> S E V E N <space> F O U R",
+                    "tokenid": "13 2 14 2 15 2 23 2 8 11 24 7 2 22 25 17 2 21 7 24 7 16 2 8 17 23 20"
+                }
+            ],
+            "utt2spk": "ffmm"
+        },
+        "ffmm-an294-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE ONE<eos>",
+                    "rec_token": "O N E <space> O N E <eos>",
+                    "rec_tokenid": "17 16 7 2 17 16 7 29",
+                    "score": -28.141752243041992,
+                    "shape": [
+                        21,
+                        30
+                    ],
+                    "text": "H B G L SEVENTY SEVEN",
+                    "token": "H <space> B <space> G <space> L <space> S E V E N T Y <space> S E V E N",
+                    "tokenid": "10 2 4 2 9 2 14 2 21 7 24 7 16 22 27 2 21 7 24 7 16"
+                }
+            ],
+            "utt2spk": "ffmm"
+        }
+    }
+}

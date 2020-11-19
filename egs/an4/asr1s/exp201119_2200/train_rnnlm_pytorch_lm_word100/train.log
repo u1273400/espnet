@@ -1,0 +1,48 @@
+# lm_train.py --config conf/lm.yaml --ngpu 2 --backend pytorch --verbose 1 --outdir exp/train_rnnlm_pytorch_lm_word100 --tensorboard-dir tensorboard/train_rnnlm_pytorch_lm_word100 --train-label data/local/wordlm_train/train.txt --valid-label data/local/wordlm_train/valid.txt --test-label data/local/wordlm_train/test.txt --resume --dict data/local/wordlm_train/wordlist_100.txt 
+# Started at Thu Nov 19 21:10:48 GMT 2020
+#
+/home/john/anaconda3/lib/python3.7/site-packages/librosa/util/decorators.py:9: NumbaDeprecationWarning: An import was requested from a module that has moved location.
+Import requested from: 'numba.decorators', please update to use 'numba.core.decorators' or pin to Numba version 0.48.0. This alias will not be present in Numba version 0.50.0.
+  from numba.decorators import jit as optional_jit
+/home/john/anaconda3/lib/python3.7/site-packages/librosa/util/decorators.py:9: NumbaDeprecationWarning: An import was requested from a module that has moved location.
+Import of 'jit' requested from: 'numba.decorators', please update to use 'numba.core.decorators' or pin to Numba version 0.48.0. This alias will not be present in Numba version 0.50.0.
+  from numba.decorators import jit as optional_jit
+2020-11-19 21:10:58,865 (lm_train:250) INFO: ngpu: 2
+2020-11-19 21:10:58,865 (lm_train:253) INFO: python path = (None)
+2020-11-19 21:10:58,866 (lm_train:270) INFO: backend = pytorch
+2020-11-19 21:10:59,803 (lm:222) INFO: torch version = 1.1.0
+2020-11-19 21:10:59,846 (deterministic_utils:26) INFO: torch type check is disabled
+2020-11-19 21:11:00,223 (lm_utils:44) INFO: skip dump/load HDF5 because the output dir is not specified
+2020-11-19 21:11:00,223 (lm_utils:45) INFO: reading text dataset: data/local/wordlm_train/valid.txt
+0it [00:00, ?it/s]100it [00:00, 51546.07it/s]
+2020-11-19 21:11:00,229 (lm_utils:44) INFO: skip dump/load HDF5 because the output dir is not specified
+2020-11-19 21:11:00,230 (lm_utils:45) INFO: reading text dataset: data/local/wordlm_train/train.txt
+0it [00:00, ?it/s]848it [00:00, 77589.27it/s]
+2020-11-19 21:11:00,245 (lm:240) INFO: #vocab = 100
+2020-11-19 21:11:00,246 (lm:241) INFO: #sentences in the training data = 848
+2020-11-19 21:11:00,246 (lm:242) INFO: #tokens in the training data = 4851
+2020-11-19 21:11:00,246 (lm:245) INFO: oov rate in the training data = 0.00 %
+2020-11-19 21:11:00,246 (lm:247) INFO: #sentences in the validation data = 100
+2020-11-19 21:11:00,246 (lm:248) INFO: #tokens in the validation data = 591
+2020-11-19 21:11:00,246 (lm:250) INFO: oov rate in the validation data = 0.34 %
+2020-11-19 21:11:00,246 (lm:258) INFO: batch size is automatically increased (300 -> 600)
+2020-11-19 21:11:00,247 (lm:273) INFO: #iterations per epoch = 2
+2020-11-19 21:11:00,247 (lm:274) INFO: #total iterations = 40
+2020-11-19 21:11:14,947 (lm:290) INFO: writing a model config file to exp/train_rnnlm_pytorch_lm_word100/model.json
+/home/john/anaconda3/lib/python3.7/site-packages/torch/nn/parallel/_functions.py:61: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+2020-11-19 21:11:48,142 (lm_utils:255) INFO: best model is rnnlm.model.1
+2020-11-19 21:11:51,726 (lm_utils:255) INFO: best model is rnnlm.model.2
+2020-11-19 21:11:54,807 (lm_utils:255) INFO: best model is rnnlm.model.5
+2020-11-19 21:11:59,055 (lm_utils:255) INFO: best model is rnnlm.model.8
+2020-11-19 21:12:00,705 (lm_utils:255) INFO: best model is rnnlm.model.10
+[J2020-11-19 21:12:05,152 (train_utils:16) WARNING: Hit early stop at epoch 13
+You can change the patience or set it to 0 to run all epochs
+2020-11-19 21:12:05,152 (lm:385) INFO: test the best model
+0it [00:00, ?it/s]130it [00:00, 1375.84it/s]
+2020-11-19 21:12:07,517 (lm:389) INFO: #sentences in the test data = 130
+2020-11-19 21:12:07,517 (lm:390) INFO: #tokens in the test data = 773
+2020-11-19 21:12:07,518 (lm:392) INFO: oov rate in the test data = 0.26 %
+2020-11-19 21:12:07,641 (lm:400) INFO: test perplexity: 18.70017788868984
+# Accounting: time=120 threads=1
+# Ended (code 0) at Thu Nov 19 21:12:48 GMT 2020, elapsed time 120 seconds

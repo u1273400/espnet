@@ -1,0 +1,500 @@
+# asr_recog.py --config conf/decode_ctcweight1.0.yaml --ngpu 0 --backend pytorch --debugmode 1 --verbose 2 --recog-json dump/test/deltafalse/split8utt/data.1.json --result-label exp/train_nodev_pytorch_train_mtlalpha1.0/decode_test_decode_ctcweight1.0_lm_word100/data.1.json --model exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.loss.best --word-rnnlm exp/train_rnnlm_pytorch_lm_word100/rnnlm.model.best 
+# Started at Thu Nov 19 21:51:07 GMT 2020
+#
+2020-11-19 21:51:08,068 (asr_recog:253) INFO: python path = (None)
+2020-11-19 21:51:08,068 (asr_recog:258) INFO: set random seed = 1
+2020-11-19 21:51:08,072 (asr_recog:269) INFO: backend = pytorch
+2020-11-19 21:51:09,249 (__init__:278) DEBUG: CONFIGDIR=/home/john/.config/matplotlib
+2020-11-19 21:51:09,249 (__init__:278) DEBUG: (private) matplotlib data path: /home/john/anaconda3/lib/python3.7/site-packages/matplotlib/mpl-data
+2020-11-19 21:51:09,253 (__init__:278) DEBUG: matplotlib data path: /home/john/anaconda3/lib/python3.7/site-packages/matplotlib/mpl-data
+2020-11-19 21:51:09,253 (__init__:1009) DEBUG: loaded rc file /home/john/anaconda3/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
+2020-11-19 21:51:09,255 (__init__:1598) DEBUG: matplotlib version 3.2.2
+2020-11-19 21:51:09,255 (__init__:1599) DEBUG: interactive is False
+2020-11-19 21:51:09,255 (__init__:1600) DEBUG: platform is linux
+2020-11-19 21:51:09,255 (__init__:1601) DEBUG: loaded modules: ['sys', 'builtins', '_frozen_importlib', '_imp', '_thread', '_warnings', '_weakref', 'zipimport', '_frozen_importlib_external', '_io', 'marshal', 'posix', 'encodings', 'codecs', '_codecs', 'encodings.aliases', 'encodings.utf_8', '_signal', '__main__', 'encodings.latin_1', 'io', 'abc', '_abc', 'site', 'os', 'stat', '_stat', '_collections_abc', 'posixpath', 'genericpath', 'os.path', '_sitebuiltins', '_bootlocale', '_locale', 'types', 'importlib', 'importlib._bootstrap', 'importlib._bootstrap_external', 'warnings', 'importlib.util', 'importlib.abc', 'importlib.machinery', 'contextlib', 'collections', 'operator', '_operator', 'keyword', 'heapq', '_heapq', 'itertools', 'reprlib', '_collections', 'functools', '_functools', 'google', 'mpl_toolkits', 'configargparse', 'argparse', 're', 'enum', 'sre_compile', '_sre', 'sre_parse', 'sre_constants', 'copyreg', 'gettext', 'locale', 'glob', 'fnmatch', 'logging', 'time', 'traceback', 'linecache', 'tokenize', 'token', 'weakref', '_weakrefset', 'collections.abc', 'string', '_string', 'threading', 'atexit', 'random', 'math', 'hashlib', '_hashlib', '_blake2', '_sha3', 'bisect', '_bisect', '_random', 'numpy', 'numpy._globals', 'numpy.__config__', 'numpy.version', 'numpy._distributor_init', 'numpy.core', 'numpy.core.multiarray', 'numpy.core.overrides', 'textwrap', 'datetime', '_datetime', 'numpy.core._multiarray_umath', 'numpy.compat', 'numpy.compat._inspect', 'numpy.compat.py3k', 'pathlib', 'ntpath', 'errno', 'urllib', 'urllib.parse', 'pickle', 'struct', '_struct', '_compat_pickle', '_pickle', 'numpy.core.umath', 'numpy.core.numerictypes', 'numbers', 'numpy.core._string_helpers', 'numpy.core._type_aliases', 'numpy.core._dtype', 'numpy.core.numeric', 'numpy.core.shape_base', 'numpy.core._asarray', 'numpy.core.fromnumeric', 'numpy.core._methods', 'numpy.core._exceptions', 'numpy.core._ufunc_config', 'numpy.core.arrayprint', 'numpy.core.defchararray', 'numpy.core.records', 'numpy.core.memmap', 'numpy.core.function_base', 'numpy.core.machar', 'numpy.core.getlimits', 'numpy.core.einsumfunc', 'numpy.core._add_newdocs', 'numpy.core._multiarray_tests', 'numpy.core._dtype_ctypes', 'numpy.core._internal', 'ast', '_ast', 'platform', 'subprocess', 'signal', '_posixsubprocess', 'select', 'selectors', 'ctypes', '_ctypes', 'ctypes._endian', 'numpy._pytesttester', 'numpy.lib', 'numpy.lib.mixins', 'numpy.lib.scimath', 'numpy.lib.type_check', 'numpy.lib.ufunclike', 'numpy.lib.index_tricks', 'numpy.matrixlib', 'numpy.matrixlib.defmatrix', 'numpy.linalg', 'numpy.linalg.linalg', 'numpy.lib.twodim_base', 'numpy.linalg.lapack_lite', 'numpy.linalg._umath_linalg', 'numpy.lib.function_base', 'numpy.lib.histograms', 'numpy.lib.stride_tricks', 'numpy.lib.nanfunctions', 'numpy.lib.shape_base', 'numpy.lib.polynomial', 'numpy.lib.utils', 'numpy.lib.arraysetops', 'numpy.lib.npyio', 'numpy.lib.format', 'numpy.lib._datasource', 'shutil', 'zlib', 'bz2', '_compression', '_bz2', 'lzma', '_lzma', 'pwd', 'grp', 'numpy.lib._iotools', 'numpy.lib.financial', 'decimal', '_decimal', 'numpy.lib.arrayterator', 'numpy.lib.arraypad', 'numpy.lib._version', 'numpy.fft', 'numpy.fft._pocketfft', 'numpy.fft._pocketfft_internal', 'numpy.fft.helper', 'numpy.polynomial', 'numpy.polynomial.polynomial', 'numpy.polynomial.polyutils', 'numpy.polynomial._polybase', 'numpy.polynomial.chebyshev', 'numpy.polynomial.legendre', 'numpy.polynomial.hermite', 'numpy.polynomial.hermite_e', 'numpy.polynomial.laguerre', 'numpy.random', 'numpy.random._pickle', 'numpy.random.mtrand', 'cython_runtime', 'numpy.random.bit_generator', '_cython_0_29_16', 'numpy.random._common', 'secrets', 'base64', 'binascii', 'hmac', 'numpy.random._bounded_integers', 'numpy.random._mt19937', 'numpy.random._philox', 'numpy.random._pcg64', 'numpy.random._sfc64', 'numpy.random._generator', 'numpy.ctypeslib', 'numpy.ma', 'numpy.ma.core', 'numpy.ma.extras', 'espnet', 'pkg_resources', '__future__', 'zipfile', 'pkgutil', 'plistlib', 'xml', 'xml.parsers', 'xml.parsers.expat', 'pyexpat.errors', 'pyexpat.model', 'pyexpat', 'xml.parsers.expat.model', 'xml.parsers.expat.errors', 'email', 'email.parser', 'email.feedparser', 'email.errors', 'email._policybase', 'email.header', 'email.quoprimime', 'email.base64mime', 'email.charset', 'email.encoders', 'quopri', 'email.utils', 'socket', '_socket', 'email._parseaddr', 'calendar', 'tempfile', 'inspect', 'dis', 'opcode', '_opcode', 'pkg_resources.extern', 'pkg_resources._vendor', 'pkg_resources._vendor.six', 'pkg_resources.extern.six', 'pkg_resources._vendor.six.moves', 'pkg_resources.extern.six.moves', 'pkg_resources.py31compat', 'pkg_resources._vendor.appdirs', 'pkg_resources.extern.appdirs', 'pkg_resources._vendor.packaging', 'pkg_resources._vendor.packaging.__about__', 'pkg_resources.extern.packaging', 'pkg_resources.extern.packaging.version', 'pkg_resources.extern.packaging._structures', 'pkg_resources.extern.packaging.specifiers', 'pkg_resources.extern.packaging._compat', 'pkg_resources.extern.packaging.requirements', 'pkg_resources._vendor.pyparsing', 'copy', 'pprint', 'pkg_resources.extern.pyparsing', 'pkg_resources._vendor.six.moves.urllib', 'pkg_resources.extern.six.moves.urllib', 'pkg_resources.extern.packaging.markers', 'pkg_resources.py2_warn', 'sysconfig', 'espnet.utils', 'espnet.utils.cli_utils', 'distutils', 'distutils.util', 'distutils.errors', 'distutils.dep_util', 'distutils.spawn', 'distutils.debug', 'distutils.log', 'yaml', 'yaml.error', 'yaml.tokens', 'yaml.events', 'yaml.nodes', 'yaml.loader', 'yaml.reader', 'yaml.scanner', 'yaml.parser', 'yaml.composer', 'yaml.constructor', 'yaml.resolver', 'yaml.dumper', 'yaml.emitter', 'yaml.serializer', 'yaml.representer', 'yaml.cyaml', '_yaml', 'espnet.asr', 'espnet.asr.pytorch_backend', 'espnet.asr.pytorch_backend.asr', 'json', 'json.decoder', 'json.scanner', '_json', 'json.encoder', 'chainer', 'chainer._version', 'chainer.backends', 'chainer.backends.cuda', 'typing', 'typing.io', 'typing.re', 'six', 'chainer._backend', 'chainer.backends._cpu', 'chainerx', 'chainer.backends.intel64', 'chainer.configuration', 'chainer.types', 'typing_extensions', 'chainer.dataset', 'chainer.dataset.convert', 'chainer.backend', 'chainer.backends._chainerx', 'chainer.dataset.dataset_mixin', 'chainer.dataset.download', 'filelock', 'fcntl', 'six.moves', 'six.moves.urllib', 'chainer.utils', 'chainer.utils.array', 'chainer.utils.conv', 'chainer.utils.error', 'chainer.utils.experimental', 'chainer.utils.meta', 'chainer.utils.nondeterministic', 'chainer.utils.sparse', 'chainer.dataset.iterator', 'chainer.datasets', 'chainer.datasets.cifar', 'tarfile', 'six.moves.cPickle', 'chainer.datasets.tuple_dataset', 'chainer.datasets.concatenated_dataset', 'chainer.datasets.dict_dataset', 'chainer.datasets.fashion_mnist', 'chainer.datasets._mnist_helper', 'gzip', 'chainer.datasets.image_dataset', 'PIL', 'PIL._version', 'PIL.Image', 'PIL.ImageMode', 'PIL.TiffTags', 'PIL._binary', 'PIL._util', 'PIL._imaging', 'cffi', 'cffi.api', 'cffi.lock', 'cffi.error', 'cffi.model', 'chainer.datasets.kuzushiji_mnist', 'chainer.datasets.mnist', 'chainer.datasets.pickle_dataset', 'chainer.datasets.ptb', 'chainer.datasets.sub_dataset', 'chainer.datasets.svhn', 'scipy', 'scipy._lib', 'scipy._lib._testutils', 'scipy._lib.deprecation', 'scipy._distributor_init', 'scipy.__config__', 'scipy.version', 'scipy._lib._pep440', 'scipy._lib._ccallback', 'scipy._lib._ccallback_c', 'scipy.fft', 'scipy.fft._basic', 'scipy._lib.uarray', 'scipy._lib._uarray', 'scipy._lib._uarray._backend', 'scipy._lib._uarray._uarray', 'scipy.fft._realtransforms', 'scipy.fft._helper', 'scipy.fft._pocketfft', 'scipy.fft._pocketfft.basic', 'scipy.fft._pocketfft.pypocketfft', 'scipy.fft._pocketfft.helper', 'scipy.fft._pocketfft.realtransforms', 'scipy.fft._backend', 'scipy.io', 'scipy.io.matlab', 'scipy.io.matlab.mio', 'scipy.io.matlab.miobase', 'scipy._lib.doccer', 'scipy.io.matlab.byteordercodes', 'scipy.io.matlab.mio4', 'scipy.sparse', 'scipy.sparse.base', 'scipy.sparse.sputils', 'scipy._lib._util', 'multiprocessing', 'multiprocessing.context', 'multiprocessing.process', 'multiprocessing.reduction', 'array', '__mp_main__', 'scipy.sparse.csr', 'scipy.sparse._sparsetools', 'scipy.sparse.compressed', 'scipy.sparse.data', 'scipy.sparse.dia', 'scipy.sparse._index', 'scipy.sparse.csc', 'scipy.sparse.lil', 'scipy.sparse._csparsetools', 'scipy.sparse.dok', 'scipy.sparse.coo', 'scipy.sparse.bsr', 'scipy.sparse.construct', 'scipy.sparse.extract', 'scipy.sparse._matrix_io', 'scipy.sparse.csgraph', 'scipy.sparse.csgraph._laplacian', 'scipy.sparse.csgraph._shortest_path', '_cython_0_29_20', 'scipy.sparse.csgraph._validation', 'scipy.sparse.csgraph._tools', 'scipy.sparse.csgraph._traversal', 'scipy.sparse.csgraph._min_spanning_tree', 'scipy.sparse.csgraph._flow', 'scipy.sparse.csgraph._matching', 'scipy.sparse.csgraph._reordering', 'scipy.io.matlab.mio_utils', 'scipy.io.matlab.mio5', 'scipy.io.matlab.mio5_utils', 'scipy.io.matlab.streams', 'scipy.io.matlab.mio5_params', 'scipy.io.netcdf', 'mmap', 'scipy.io._fortran', 'scipy.io.mmio', 'scipy.io.idl', 'scipy.io.harwell_boeing', 'scipy.io.harwell_boeing.hb', 'scipy.io.harwell_boeing._fortran_format_parser', 'chainer.datasets.text_dataset', 'chainer.datasets.transform_dataset', 'chainer.distributions', 'chainer.distributions.bernoulli', 'chainer.distribution', 'chainer.distributions.utils', 'chainer.functions', 'chainer.functions.activation', 'chainer.functions.activation.clipped_relu', 'chainer.function_node', 'chainer._backprop_utils', 'chainer.function_hook', 'chainer.graph_optimizations', 'chainer.graph_optimizations.static_graph_utilities', 'chainer.utils.type_check', 'chainer.variable', 'chainer.initializers', 'chainer.initializers.constant', 'chainer.initializer', 'chainer.initializers.normal', 'chainer.initializers.orthogonal', 'chainer.initializers.uniform', 'chainer.utils._collections', 'chainer.utils.argument', 'chainer.functions.activation.crelu', 'chainer.functions.activation.elu', 'chainer.functions.activation.hard_sigmoid', 'chainer.functions.activation.leaky_relu', 'chainer.functions.activation.log_softmax', 'chainer.functions.activation.lstm', 'chainer.function', 'chainer.functions.activation.maxout', 'chainer.functions.array', 'chainer.functions.array.reshape', 'chainer.functions.math', 'chainer.functions.math.minmax', 'chainer.functions.activation.prelu', 'chainer.functions.activation.relu', 'chainer.functions.activation.rrelu', 'chainer.functions.activation.selu', 'chainer.functions.activation.sigmoid', 'chainer.functions.activation.slstm', 'chainer.functions.activation.softmax', 'chainer.functions.activation.softplus', 'chainer.functions.activation.swish', 'chainer.functions.activation.tanh', 'chainer.functions.activation.tree_lstm', 'chainer.functions.array.as_strided', 'chainer.functions.array.broadcast', 'chainer.functions.array.cast', 'chainer.functions.array.concat', 'chainer.functions.array.copy', 'chainer.functions.array.depth2space', 'chainer.functions.array.diagonal', 'chainer.functions.array.dstack', 'chainer.functions.array.expand_dims', 'chainer.functions.array.flatten', 'chainer.functions.array.flip', 'chainer.functions.array.fliplr', 'chainer.functions.array.flipud', 'chainer.functions.array.get_item', 'chainer.functions.array.hstack', 'chainer.functions.array.im2col', 'chainer.functions.array.moveaxis', 'chainer.functions.array.pad', 'chainer.functions.array.pad_sequence', 'chainer.functions.array.permutate', 'chainer.functions.array.repeat', 'chainer.functions.array.resize_images', 'chainer.functions.array.rollaxis', 'chainer.functions.array.scatter_add', 'chainer.functions.array.select_item', 'chainer.functions.array.separate', 'chainer.functions.array.stack', 'chainer.functions.array.space2depth', 'chainer.functions.array.spatial_transformer_grid', 'chainer.functions.array.spatial_transformer_sampler', 'chainer.functions.array.split_axis', 'chainer.functions.array.squeeze', 'chainer.functions.array.swapaxes', 'chainer.functions.array.tile', 'chainer.functions.array.transpose', 'chainer.functions.array.transpose_sequence', 'chainer.functions.array.vstack', 'chainer.functions.array.where', 'chainer.functions.connection', 'chainer.functions.connection.bilinear', 'chainer.functions.connection.convolution_2d', 'chainer.functions.connection.convolution_nd', 'chainer.utils.conv_nd', 'chainer.utils.conv_nd_kernel', 'chainer.functions.connection.deconvolution_2d', 'chainer.functions.connection.deconvolution_nd', 'chainer.functions.connection.deformable_convolution_2d_sampler', 'chainer.functions.math.matmul', 'chainer.functions.connection.depthwise_convolution_2d', 'chainer.functions.connection.dilated_convolution_2d', 'chainer.functions.connection.embed_id', 'chainer.functions.connection.linear', 'chainer.functions.connection.local_convolution_2d', 'chainer.functions.connection.n_step_gru', 'chainer.functions.connection.n_step_rnn', 'chainer.functions.noise', 'chainer.functions.noise.dropout', 'chainer.functions.connection.n_step_lstm', 'chainer.functions.connection.shift', 'chainer.functions.evaluation', 'chainer.functions.evaluation.accuracy', 'chainer.functions.evaluation.binary_accuracy', 'chainer.functions.evaluation.classification_summary', 'chainer.functions.evaluation.r2_score', 'chainer.functions.loss', 'chainer.functions.loss.absolute_error', 'chainer.functions.loss.black_out', 'chainer.functions.math.average', 'chainer.functions.math.sum', 'chainer.functions.math.exponential', 'chainer.functions.math.logsumexp', 'chainer.functions.loss.contrastive', 'chainer.functions.loss.crf1d', 'chainer.functions.loss.cross_covariance', 'chainer.functions.loss.ctc', 'chainer.functions.loss.decov', 'chainer.functions.loss.discriminative_loss', 'chainer.functions.math.basic_math', 'chainer.functions.math.floor', 'chainer.functions.math.sqrt', 'chainer.functions.loss.hinge', 'chainer.functions.loss.huber_loss', 'chainer.functions.loss.mean_absolute_error', 'chainer.functions.loss.mean_squared_error', 'chainer.functions.loss.negative_sampling', 'chainer.functions.loss.sigmoid_cross_entropy', 'chainer.functions.loss.softmax_cross_entropy', 'chainer.functions.loss.squared_error', 'chainer.functions.loss.triplet', 'chainer.functions.loss.vae', 'chainer.functions.math.batch_l2_norm_squared', 'chainer.functions.math.bias', 'chainer.functions.math.ceil', 'chainer.functions.math.clip', 'chainer.functions.math.cumprod', 'chainer.functions.math.cumsum', 'chainer.functions.math.det', 'chainer.utils.precision', 'chainer.functions.math.digamma', 'chainer.functions.math.einsum', 'chainer.functions.math.erf', 'chainer.functions.math.erfc', 'chainer.functions.math.erfcinv', 'scipy.special', 'scipy.special.sf_error', 'scipy.special._ufuncs', 'scipy.special._ufuncs_cxx', 'scipy.special._basic', 'scipy.special.specfun', 'scipy.special.orthogonal', 'scipy.linalg', 'scipy.linalg.misc', 'scipy.linalg.blas', 'scipy.linalg._fblas', 'scipy.linalg.lapack', 'scipy.linalg._flapack', 'scipy.linalg.basic', 'scipy.linalg.flinalg', 'scipy.linalg._flinalg', 'scipy.linalg.decomp', 'scipy.linalg.decomp_svd', 'scipy.linalg._solve_toeplitz', 'scipy.linalg.decomp_lu', 'scipy.linalg._decomp_ldl', 'scipy.linalg.decomp_cholesky', 'scipy.linalg.decomp_qr', 'scipy.linalg._decomp_qz', 'scipy.linalg.decomp_schur', 'scipy.linalg._decomp_polar', 'scipy.linalg.matfuncs', 'scipy.linalg.special_matrices', 'scipy.linalg._expm_frechet', 'scipy.linalg._matfuncs_sqrtm', 'scipy.linalg._solvers', 'scipy.linalg._procrustes', 'scipy.linalg._decomp_update', 'scipy.linalg.cython_blas', 'scipy.linalg.cython_lapack', 'scipy.linalg._sketches', 'scipy.linalg._decomp_cossin', 'scipy.special._comb', 'scipy.special._logsumexp', 'scipy.special.spfun_stats', 'scipy.special._ellip_harm', 'scipy.special._ellip_harm_2', 'scipy.special._lambertw', 'scipy.special._spherical_bessel', 'chainer.functions.math.erfcx', 'chainer.functions.math.erfinv', 'chainer.functions.math.exponential_m1', 'chainer.functions.math.fft', 'chainer.functions.math.fix', 'chainer.functions.math.fmod', 'chainer.functions.math.hyperbolic', 'chainer.functions.math.identity', 'chainer.functions.math.inv', 'chainer.functions.math.lgamma', 'chainer.functions.math.linear_interpolate', 'chainer.functions.math.log_ndtr', 'chainer.functions.math.logarithm_1p', 'chainer.functions.math.maximum', 'chainer.functions.math.minimum', 'chainer.functions.math.ndtr', 'chainer.functions.math.ndtri', 'chainer.functions.math.polygamma', 'chainer.functions.math.prod', 'chainer.functions.math.scale', 'chainer.functions.math.sign', 'chainer.functions.math.sparse_matmul', 'chainer.functions.math.square', 'chainer.functions.math.squared_difference', 'chainer.functions.math.tensordot', 'chainer.functions.math.trigonometric', 'chainer.functions.noise.gaussian', 'chainer.functions.noise.gumbel_softmax', 'chainer.functions.noise.simplified_dropconnect', 'chainer.functions.noise.zoneout', 'chainer.functions.normalization', 'chainer.functions.normalization.batch_normalization', 'chainer.functions.normalization.batch_renormalization', 'chainer.functions.normalization.decorrelated_batch_normalization', 'chainer.functions.normalization.group_normalization', 'chainer.functions.normalization.l2_normalization', 'chainer.functions.normalization.layer_normalization', 'chainer.functions.normalization.local_response_normalization', 'chainer.functions.pooling', 'chainer.functions.pooling.average_pooling_2d', 'chainer.functions.pooling.average_pooling_nd', 'chainer.functions.pooling.average_pooling_nd_kernel', 'chainer.functions.pooling.pooling_nd_kernel', 'chainer.functions.pooling.pooling_nd', 'chainer.functions.pooling.pooling_2d', 'chainer.functions.pooling.max_pooling_2d', 'chainer.functions.pooling.max_pooling_nd', 'chainer.functions.pooling.max_pooling_nd_kernel', 'chainer.functions.pooling.roi_average_align_2d', 'chainer.functions.pooling.roi_average_pooling_2d', 'chainer.functions.pooling.roi_pooling_2d', 'chainer.functions.pooling.roi_max_align_2d', 'chainer.functions.pooling.roi_max_pooling_2d', 'chainer.functions.pooling.spatial_pyramid_pooling_2d', 'chainer.functions.pooling.unpooling_2d', 'chainer.functions.pooling.unpooling_nd', 'chainer.functions.pooling.upsampling_2d', 'chainer.functions.util', 'chainer.functions.util.forget', 'chainer.utils.cache', 'chainer.distributions.beta', 'chainer.distributions.categorical', 'chainer.distributions.cauchy', 'chainer.distributions.chisquare', 'chainer.distributions.dirichlet', 'chainer.distributions.exponential', 'chainer.distributions.gamma', 'chainer.distributions.geometric', 'chainer.distributions.gumbel', 'chainer.distributions.independent', 'chainer.distributions.laplace', 'chainer.distributions.log_normal', 'chainer.distributions.multivariate_normal', 'chainer.distributions.normal', 'chainer.distributions.one_hot_categorical', 'chainer.distributions.pareto', 'chainer.distributions.poisson', 'chainer.distributions.uniform', 'chainer.function_hooks', 'chainer.function_hooks.cuda_profile', 'chainer.function_hooks.cupy_memory_profile', 'chainer.function_hooks.debug_print', 'chainer.function_hooks.timer', 'chainer.iterators', 'chainer.iterators.multiprocess_iterator', 'multiprocessing.sharedctypes', 'multiprocessing.heap', 'multiprocessing.util', 'chainer.iterators._statemachine', 'chainer.iterators.order_samplers', 'chainer.iterators.multithread_iterator', 'multiprocessing.pool', 'queue', '_queue', 'chainer.iterators.serial_iterator', 'chainer.iterators.dali_iterator', 'chainer.links', 'chainer.links.activation', 'chainer.links.activation.maxout', 'chainer.link', 'chainer.device_resident', 'chainer.link_hook', 'chainer.links.connection', 'chainer.links.connection.linear', 'chainer.links.activation.prelu', 'chainer.links.activation.simplified_dropconnect', 'chainer.links.activation.swish', 'chainer.links.connection.bias', 'chainer.links.connection.bilinear', 'chainer.links.connection.convolution_2d', 'chainer.links.connection.convolution_nd', 'chainer.links.connection.deconvolution_2d', 'chainer.links.connection.deconvolution_nd', 'chainer.links.connection.deformable_convolution_2d', 'chainer.links.connection.depthwise_convolution_2d', 'chainer.links.connection.dilated_convolution_2d', 'chainer.links.connection.embed_id', 'chainer.links.connection.gru', 'chainer.links.connection.highway', 'chainer.links.connection.inception', 'chainer.links.connection.inceptionbn', 'chainer.links.normalization', 'chainer.links.normalization.batch_normalization', 'chainer.links.connection.local_convolution_2d', 'chainer.links.connection.lstm', 'chainer.links.connection.mgu', 'chainer.links.connection.mlp_convolution_2d', 'chainer.links.connection.n_step_gru', 'chainer.links.connection.n_step_rnn', 'chainer.links.connection.n_step_lstm', 'chainer.links.connection.parameter', 'chainer.links.connection.peephole', 'chainer.links.connection.scale', 'chainer.links.connection.tree_lstm', 'chainer.links.connection.zoneoutlstm', 'chainer.links.loss', 'chainer.links.loss.black_out', 'chainer.utils.walker_alias', 'chainer.links.loss.crf1d', 'chainer.links.loss.hierarchical_softmax', 'chainer.links.loss.negative_sampling', 'chainer.links.model', 'chainer.links.model.classifier', 'chainer.reporter', 'chainer.serializer', 'chainer.links.model.vision', 'chainer.links.model.vision.googlenet', 'chainer.serializers', 'chainer.serializers.hdf5', 'h5py', 'h5py._errors', 'h5py._hl', 'h5py._hl.compat', 'h5py._conv', 'h5py.h5r', 'h5py._objects', '_cython_0_29_2', 'h5py.defs', 'gc', 'h5py.h5t', 'h5py.utils', 'h5py.h5', 'h5py.h5py_warnings', 'h5py.h5z', 'h5py.h5a', 'h5py.h5s', 'h5py.h5p', 'h5py.h5ac', 'h5py._proxy', 'h5py.h5d', 'h5py.h5ds', 'h5py.h5f', 'h5py.h5g', 'h5py.h5i', 'h5py.h5fd', 'h5py._hl.filters', 'h5py._hl.base', 'h5py._hl.files', 'h5py._hl.group', 'h5py.h5o', 'h5py.h5l', 'h5py._hl.dataset', 'h5py._hl.selections', 'h5py._hl.selections2', 'h5py._hl.datatype', 'h5py._hl.vds', 'h5py.version', 'h5py._hl.attrs', 'uuid', 'chainer.serializers.npz', 'chainer.utils.imgproc', 'chainer.links.model.vision.resnet', 'chainer.links.model.vision.vgg', 'chainer.links.normalization.batch_renormalization', 'chainer.links.normalization.decorrelated_batch_normalization', 'chainer.links.normalization.group_normalization', 'chainer.links.normalization.layer_normalization', 'chainer.links.theano', 'chainer.links.theano.theano_function', 'chainer.functions.theano', 'chainer.functions.theano.theano_function', 'chainer.optimizers', 'chainer.optimizers.ada_delta', 'chainer.optimizer', 'chainer.optimizer_hooks', 'chainer.optimizer_hooks.gradient_clipping', 'chainer.cuda', 'chainer.optimizer_hooks.gradient_hard_clipping', 'chainer.optimizer_hooks.gradient_lars', 'chainer.optimizer_hooks.gradient_noise', 'chainer.optimizer_hooks.lasso', 'chainer.optimizer_hooks.weight_decay', 'chainer.optimizers.ada_grad', 'chainer.optimizers.adam', 'chainer.optimizers.corrected_momentum_sgd', 'chainer.optimizers.momentum_sgd', 'chainer.optimizers.msvag', 'chainer.optimizers.nesterov_ag', 'chainer.optimizers.rmsprop', 'chainer.optimizers.rmsprop_graves', 'chainer.optimizers.sgd', 'chainer.optimizers.smorms3', 'chainer.training', 'chainer.training.extensions', 'chainer.training.extensions._snapshot', 'chainer.training.extension', 'chainer.training.extensions.snapshot_writers', 'chainer.training.extensions.computational_graph', 'chainer.computational_graph', 'chainer.training.extensions.evaluator', 'chainer.training.extensions.exponential_shift', 'chainer.training.extensions.fail_on_nonnumber', 'chainer.training.extensions.inverse_shift', 'chainer.training.extensions.linear_shift', 'chainer.training.extensions.log_report', 'chainer.training.trigger', 'chainer.training.triggers', 'chainer.training.triggers.early_stopping_trigger', 'chainer.training.util', 'chainer.training.triggers.interval_trigger', 'chainer.training.triggers.manual_schedule_trigger', 'chainer.training.triggers.minmax_value_trigger', 'chainer.training.triggers.once_trigger', 'chainer.training.triggers.time_trigger', 'chainer.training.extensions.micro_average', 'chainer.training.extensions.multistep_shift', 'chainer.training.extensions.parameter_statistics', 'chainer.training.extensions.plot_report', 'chainer.training.extensions.polynomial_shift', 'chainer.training.extensions.print_report', 'chainer.training.extensions.util', 'chainer.training.extensions.progress_bar', 'chainer.training.extensions.step_shift', 'chainer.training.extensions.value_observation', 'chainer.training.extensions.variable_statistics_plot', 'chainer.training.extensions.variable_unchain', 'chainer.training.extensions.warmup_shift', 'chainer.training.updaters', 'chainer.training.updaters.multiprocess_parallel_updater', 'chainer.training.updaters.standard_updater', 'chainer.training._updater', 'chainer.training.updaters.parallel_updater', 'chainer.training.trainer', 'chainer.training.updater', 'chainer.warnings', 'chainer._runtime_info', 'chainer.graph_optimizations.static_graph', 'chainer.sequential', 'chainer._environment_check', 'numpy.distutils', 'numpy.distutils.ccompiler', 'shlex', 'distutils.ccompiler', 'distutils.file_util', 'distutils.dir_util', 'distutils.sysconfig', 'distutils.version', 'numpy.distutils.log', 'numpy.distutils.misc_util', 'numpy.distutils.exec_command', 'numpy.distutils.unixccompiler', 'distutils.unixccompiler', 'numpy.distutils.npy_pkg_config', 'configparser', 'numpy.distutils.__config__', 'numpy.distutils.system_info', 'distutils.dist', 'distutils.fancy_getopt', 'getopt', 'numpy.distutils.command', 'distutils.command', 'distutils.command.clean', 'distutils.core', 'distutils.cmd', 'distutils.archive_util', 'distutils.config', 'distutils.extension', 'distutils.command.install_scripts', 'distutils.command.bdist', 'distutils.command.bdist_dumb', 'distutils.command.bdist_wininst', 'numpy.distutils.command.config', 'distutils.command.config', 'numpy.distutils.mingw32ccompiler', 'distutils.cygwinccompiler', 'distutils.msvccompiler', 'numpy.distutils.command.autodist', 'numpy.distutils._shell_utils', '_sysconfigdata_m_linux_x86_64-linux-gnu', 'tensorboardX', 'tensorboardX.record_writer', 'tensorboardX.crc32c', 'tensorboardX.torchvis', 'tensorboardX.writer', 'tensorboardX.embedding', 'tensorboardX.event_file_writer', 'tensorboardX.proto', 'tensorboardX.proto.event_pb2', 'google.protobuf', 'google.protobuf.descriptor', 'google.protobuf.internal', 'google.protobuf.internal.api_implementation', 'google.protobuf.internal._api_implementation', 'google.protobuf.pyext', 'google.protobuf.internal.containers', 'google.protobuf.internal.enum_type_wrapper', 'google.protobuf.message', 'google.protobuf.pyext._message', 'google.protobuf.reflection', 'google.protobuf.message_factory', 'google.protobuf.descriptor_pool', 'google.protobuf.descriptor_database', 'google.protobuf.text_encoding', 'google.protobuf.pyext.cpp_message', 'google.protobuf.symbol_database', 'tensorboardX.proto.summary_pb2', 'tensorboardX.proto.tensor_pb2', 'tensorboardX.proto.resource_handle_pb2', 'google.protobuf.internal.well_known_types', 'tensorboardX.proto.tensor_shape_pb2', 'tensorboardX.proto.types_pb2', 'tensorboardX.onnx_graph', 'tensorboardX.proto.graph_pb2', 'tensorboardX.proto.node_def_pb2', 'tensorboardX.proto.attr_value_pb2', 'tensorboardX.proto.versions_pb2', 'tensorboardX.openvino_graph', 'tensorboardX.pytorch_graph', 'tensorboardX.proto.step_stats_pb2', 'tensorboardX.proto_graph', 'tensorboardX.utils', 'tensorboardX.summary', 'tensorboardX.proto.plugin_pr_curve_pb2', 'tensorboardX.proto.plugin_text_pb2', 'tensorboardX.proto.plugin_mesh_pb2', 'tensorboardX.proto.layout_pb2', 'tensorboardX.x2num', 'tensorboardX.visdom_writer', 'torch', 'torch._utils', 'torch._utils_internal', 'torch.version', 'torch._six', 'torch._C._onnx', 'torch._C._jit_tree_views', 'torch._C.cpp', 'torch._C.cpp.nn', 'torch._C', 'torch.random', 'torch.serialization', 'difflib', 'torch._tensor_str', 'torch.tensor', 'torch.utils', 'torch.utils.hooks', 'torch.storage', 'torch.cuda', 'torch.cuda._utils', 'torch.cuda.random', 'torch.cuda.sparse', 'torch.cuda.profiler', 'torch.cuda.nvtx', 'torch.cuda.streams', 'torch.sparse', 'torch.functional', 'torch.nn', 'torch.nn.modules', 'torch.nn.modules.module', 'torch.nn.backends', 'torch.nn.backends.thnn', 'torch.nn.backends.backend', 'torch.nn._functions', 'torch.nn._functions.thnn', 'torch.nn._functions.thnn.auto', 'torch._thnn', 'torch._thnn.utils', 'torch.autograd', 'torch.autograd.variable', 'torch.autograd.function', 'torch.autograd.gradcheck', 'torch.testing', 'torch.autograd.grad_mode', 'torch.autograd.anomaly_mode', 'torch.autograd.profiler', 'torch.nn._functions.thnn.auto_double_backwards', 'torch.nn._functions.thnn.auto_symbolic', 'torch.autograd._functions', 'torch.autograd._functions.tensor', 'torch.autograd._functions.utils', 'torch.nn._functions.thnn.normalization', 'torch.nn._functions.thnn.sparse', 'torch.nn.parameter', 'torch.nn.modules.linear', 'torch.nn.functional', 'torch.nn._reduction', 'torch._jit_internal', 'torch.nn.modules.utils', 'torch.nn._functions.vision', 'torch.backends', 'torch.backends.cudnn', 'torch.nn.grad', 'torch.nn._VF', 'torch.nn.init', 'torch.nn.modules.conv', 'torch.nn.modules.activation', 'torch.nn.modules.loss', 'torch.nn.modules.container', 'torch.nn.modules.pooling', 'torch.nn.modules.batchnorm', 'torch.nn.modules._functions', 'torch.nn.modules.instancenorm', 'torch.nn.modules.normalization', 'torch.nn.modules.dropout', 'torch.nn.modules.padding', 'torch.nn.modules.sparse', 'torch.nn.modules.rnn', 'torch.nn.utils', 'torch.nn.utils.rnn', 'torch.nn.utils.clip_grad', 'torch.nn.utils.weight_norm', 'torch.nn.utils.convert_parameters', 'torch.nn.utils.spectral_norm', 'torch.nn.modules.pixelshuffle', 'torch.nn.modules.upsampling', 'torch.nn.modules.distance', 'torch.nn.modules.fold', 'torch.nn.modules.adaptive', 'torch.nn.parallel', 'torch.nn.parallel.parallel_apply', 'torch.nn.parallel.replicate', 'torch.cuda.comm', 'torch.cuda.nccl', 'torch.nn.parallel.data_parallel', 'torch.nn.parallel.scatter_gather', 'torch.nn.parallel._functions', 'torch.nn.parallel.distributed', 'torch.distributed', 'torch.distributed.distributed_c10d', 'torch.distributed.rendezvous', 'torch.nn.parallel.distributed_cpu', 'torch.nn.parallel.deprecated', 'torch.nn.parallel.deprecated.distributed', 'torch.distributed.deprecated', 'torch.nn.parallel.deprecated.distributed_cpu', 'torch.optim', 'torch.optim.adadelta', 'torch.optim.optimizer', 'torch.optim.adagrad', 'torch.optim.adam', 'torch.optim.sparse_adam', 'torch.optim.adamax', 'torch.optim.asgd', 'torch.optim.sgd', 'torch.optim.rprop', 'torch.optim.rmsprop', 'torch.optim.lbfgs', 'torch.optim.lr_scheduler', 'torch.multiprocessing', 'torch.multiprocessing.reductions', 'multiprocessing.resource_sharer', 'torch.multiprocessing.spawn', 'multiprocessing.connection', '_multiprocessing', 'torch.utils.backcompat', 'torch.onnx', 'torch.jit', 'torch.jit.frontend', 'torch.jit.annotations', 'torch.hub', 'urllib.request', 'http', 'http.client', 'email.message', 'uu', 'email._encoded_words', 'email.iterators', 'ssl', '_ssl', 'urllib.error', 'urllib.response', 'tqdm', 'tqdm.std', 'tqdm.utils', 'unicodedata', 'tqdm._monitor', 'tqdm.gui', 'tqdm._tqdm_pandas', 'tqdm.cli', 'tqdm._version', 'torch.distributions', 'torch.distributions.bernoulli', 'torch.distributions.constraints', 'torch.distributions.exp_family', 'torch.distributions.distribution', 'torch.distributions.utils', 'torch.distributions.beta', 'torch.distributions.dirichlet', 'torch.distributions.binomial', 'torch.distributions.categorical', 'torch.distributions.cauchy', 'torch.distributions.chi2', 'torch.distributions.gamma', 'torch.distributions.constraint_registry', 'torch.distributions.transforms', 'torch.distributions.exponential', 'torch.distributions.fishersnedecor', 'torch.distributions.geometric', 'torch.distributions.gumbel', 'torch.distributions.uniform', 'torch.distributions.transformed_distribution', 'torch.distributions.half_cauchy', 'torch.distributions.half_normal', 'torch.distributions.normal', 'torch.distributions.independent', 'torch.distributions.kl', 'torch.distributions.laplace', 'torch.distributions.lowrank_multivariate_normal', 'torch.distributions.multivariate_normal', 'torch.distributions.one_hot_categorical', 'torch.distributions.pareto', 'torch.distributions.poisson', 'torch.distributions.log_normal', 'torch.distributions.logistic_normal', 'torch.distributions.multinomial', 'torch.distributions.negative_binomial', 'torch.distributions.relaxed_bernoulli', 'torch.distributions.relaxed_categorical', 'torch.distributions.studentT', 'torch.distributions.weibull', 'torch.backends.cuda', 'torch.backends.mkl', 'torch.backends.openmp', 'torch.__config__', 'torch._torch_docs', 'torch._tensor_docs', 'torch._storage_docs', 'torch._ops', 'torch.quasirandom', 'espnet.asr.asr_utils', 'matplotlib', 'matplotlib.cbook', 'matplotlib.cbook.deprecation', 'matplotlib.rcsetup', 'matplotlib.fontconfig_pattern', 'pyparsing', 'matplotlib.colors', 'matplotlib.docstring', 'matplotlib._color_data', 'cycler', 'matplotlib._version', 'matplotlib.ft2font', 'dateutil', 'dateutil._version', 'kiwisolver']
+2020-11-19 21:51:09,378 (__init__:278) DEBUG: CACHEDIR=/home/john/.cache/matplotlib
+2020-11-19 21:51:09,379 (font_manager:1348) DEBUG: Using fontManager instance from /home/john/.cache/matplotlib/fontlist-v310.json
+2020-11-19 21:51:09,589 (pyplot:225) DEBUG: Loaded backend agg version unknown.
+2020-11-19 21:51:09,591 (pyplot:225) DEBUG: Loaded backend agg version unknown.
+/home/john/anaconda3/lib/python3.7/site-packages/librosa/util/decorators.py:9: NumbaDeprecationWarning: An import was requested from a module that has moved location.
+Import requested from: 'numba.decorators', please update to use 'numba.core.decorators' or pin to Numba version 0.48.0. This alias will not be present in Numba version 0.50.0.
+  from numba.decorators import jit as optional_jit
+/home/john/anaconda3/lib/python3.7/site-packages/librosa/util/decorators.py:9: NumbaDeprecationWarning: An import was requested from a module that has moved location.
+Import of 'jit' requested from: 'numba.decorators', please update to use 'numba.core.decorators' or pin to Numba version 0.48.0. This alias will not be present in Numba version 0.50.0.
+  from numba.decorators import jit as optional_jit
+2020-11-19 21:51:10,752 (deterministic_utils:26) INFO: torch type check is disabled
+2020-11-19 21:51:10,752 (asr_utils:478) INFO: reading a config file from exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.json
+2020-11-19 21:51:10,752 (asr_init:169) WARNING: reading model parameters from exp/train_nodev_pytorch_train_mtlalpha1.0/results/model.loss.best
+2020-11-19 21:51:10,757 (nets_utils:423) INFO: subsample: 1 2 2 1 1
+2020-11-19 21:51:10,757 (e2e_asr:279) INFO: prescatter idim=63 
+2020-11-19 21:51:10,877 (encoders:294) INFO: BLSTM with every-layer projection for encoder
+2020-11-19 21:51:11,900 (asr:854) INFO:  Total parameter of the model = 8074951
+2020-11-19 21:51:11,900 (asr_utils:478) INFO: reading a config file from exp/train_rnnlm_pytorch_lm_word100/model.json
+2020-11-19 21:51:12,623 (nets_utils:52) INFO: padded = torch.Size([1, 1000, 63]) 
+2020-11-19 21:51:12,625 (encoders:65) DEBUG: RNNP input lengths: [1000]
+2020-11-19 21:51:15,898 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 250.
+2020-11-19 21:51:15,899 (decoders:692) INFO: max output length: 250
+2020-11-19 21:51:15,899 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:15,899 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:15,899 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:15,903 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:16,365 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:16,529 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:16,750 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:16,929 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:17,169 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:17,369 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:17,599 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:17,768 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:17,963 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:18,141 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:18,328 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:18,518 (decoders:776) DEBUG: position 12
+2020-11-19 21:51:18,693 (decoders:776) DEBUG: position 13
+2020-11-19 21:51:18,882 (decoders:776) DEBUG: position 14
+2020-11-19 21:51:19,067 (decoders:776) DEBUG: position 15
+2020-11-19 21:51:19,275 (decoders:776) DEBUG: position 16
+2020-11-19 21:51:19,448 (decoders:776) DEBUG: position 17
+2020-11-19 21:51:19,634 (decoders:776) DEBUG: position 18
+2020-11-19 21:51:19,842 (decoders:776) DEBUG: position 19
+2020-11-19 21:51:20,050 (decoders:776) DEBUG: position 20
+2020-11-19 21:51:20,218 (decoders:776) DEBUG: position 21
+2020-11-19 21:51:20,402 (decoders:776) DEBUG: position 22
+2020-11-19 21:51:20,618 (asr_utils:669) INFO: groundtruth: RUBOUT G M E F THREE NINE
+2020-11-19 21:51:20,618 (asr_utils:670) INFO: prediction : ENTER ONE ONE<eos>
+2020-11-19 21:51:20,647 (nets_utils:52) INFO: padded = torch.Size([1, 1025, 63]) 
+2020-11-19 21:51:20,647 (encoders:65) DEBUG: RNNP input lengths: [1025]
+2020-11-19 21:51:23,963 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 257.
+2020-11-19 21:51:23,963 (decoders:692) INFO: max output length: 257
+2020-11-19 21:51:23,963 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:23,963 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:23,963 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:23,966 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:24,427 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:24,588 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:24,833 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:24,994 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:25,260 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:25,440 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:25,678 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:25,831 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:26,033 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:26,216 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:26,419 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:26,603 (decoders:776) DEBUG: position 12
+2020-11-19 21:51:26,801 (decoders:776) DEBUG: position 13
+2020-11-19 21:51:26,984 (decoders:776) DEBUG: position 14
+2020-11-19 21:51:27,188 (decoders:776) DEBUG: position 15
+2020-11-19 21:51:27,381 (decoders:776) DEBUG: position 16
+2020-11-19 21:51:27,564 (decoders:776) DEBUG: position 17
+2020-11-19 21:51:27,769 (decoders:776) DEBUG: position 18
+2020-11-19 21:51:27,975 (decoders:776) DEBUG: position 19
+2020-11-19 21:51:28,182 (decoders:776) DEBUG: position 20
+2020-11-19 21:51:28,362 (decoders:776) DEBUG: position 21
+2020-11-19 21:51:28,550 (decoders:776) DEBUG: position 22
+2020-11-19 21:51:28,744 (decoders:776) DEBUG: position 23
+2020-11-19 21:51:28,948 (asr_utils:669) INFO: groundtruth: ERASE C Q Q F SEVEN
+2020-11-19 21:51:28,948 (asr_utils:670) INFO: prediction : ENTER ONE SEVEN<eos>
+2020-11-19 21:51:28,959 (nets_utils:52) INFO: padded = torch.Size([1, 825, 63]) 
+2020-11-19 21:51:28,959 (encoders:65) DEBUG: RNNP input lengths: [825]
+2020-11-19 21:51:31,444 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 207.
+2020-11-19 21:51:31,452 (decoders:692) INFO: max output length: 207
+2020-11-19 21:51:31,453 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:31,454 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:31,454 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:31,457 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:31,867 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:31,996 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:32,203 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:32,353 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:32,586 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:32,732 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:32,944 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:33,089 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:33,266 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:33,428 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:33,600 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:33,767 (decoders:776) DEBUG: position 12
+2020-11-19 21:51:33,943 (decoders:776) DEBUG: position 13
+2020-11-19 21:51:34,125 (decoders:776) DEBUG: position 14
+2020-11-19 21:51:34,304 (decoders:776) DEBUG: position 15
+2020-11-19 21:51:34,475 (decoders:776) DEBUG: position 16
+2020-11-19 21:51:34,642 (decoders:776) DEBUG: position 17
+2020-11-19 21:51:34,803 (decoders:776) DEBUG: position 18
+2020-11-19 21:51:34,988 (asr_utils:669) INFO: groundtruth: B A O Z FIVE THREE
+2020-11-19 21:51:34,996 (asr_utils:670) INFO: prediction : ENTER ONE<eos>
+2020-11-19 21:51:34,998 (nets_utils:52) INFO: padded = torch.Size([1, 200, 63]) 
+2020-11-19 21:51:34,998 (encoders:65) DEBUG: RNNP input lengths: [200]
+2020-11-19 21:51:35,611 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 50.
+2020-11-19 21:51:35,612 (decoders:692) INFO: max output length: 50
+2020-11-19 21:51:35,612 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:35,612 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:35,612 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:35,613 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:35,861 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:35,909 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:36,022 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:36,167 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:36,338 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:36,480 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:36,612 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:36,758 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:36,847 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:36,965 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:37,086 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:37,232 (asr_utils:669) INFO: groundtruth: GO
+2020-11-19 21:51:37,232 (asr_utils:670) INFO: prediction : NO<eos>
+2020-11-19 21:51:37,241 (nets_utils:52) INFO: padded = torch.Size([1, 900, 63]) 
+2020-11-19 21:51:37,241 (encoders:65) DEBUG: RNNP input lengths: [900]
+2020-11-19 21:51:39,948 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 225.
+2020-11-19 21:51:39,948 (decoders:692) INFO: max output length: 225
+2020-11-19 21:51:39,948 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:39,949 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:39,949 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:39,951 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:40,369 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:40,519 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:40,729 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:40,887 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:41,115 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:41,281 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:41,498 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:41,630 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:41,822 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:41,981 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:42,167 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:42,328 (decoders:776) DEBUG: position 12
+2020-11-19 21:51:42,504 (decoders:776) DEBUG: position 13
+2020-11-19 21:51:42,672 (decoders:776) DEBUG: position 14
+2020-11-19 21:51:42,864 (decoders:776) DEBUG: position 15
+2020-11-19 21:51:43,064 (decoders:776) DEBUG: position 16
+2020-11-19 21:51:43,245 (decoders:776) DEBUG: position 17
+2020-11-19 21:51:43,412 (decoders:776) DEBUG: position 18
+2020-11-19 21:51:43,583 (decoders:776) DEBUG: position 19
+2020-11-19 21:51:43,760 (decoders:776) DEBUG: position 20
+2020-11-19 21:51:43,934 (decoders:776) DEBUG: position 21
+2020-11-19 21:51:44,095 (asr_utils:669) INFO: groundtruth: RUBOUT N I M N ONE
+2020-11-19 21:51:44,095 (asr_utils:670) INFO: prediction : ONE NINETEEN<eos>
+2020-11-19 21:51:44,106 (nets_utils:52) INFO: padded = torch.Size([1, 575, 63]) 
+2020-11-19 21:51:44,107 (encoders:65) DEBUG: RNNP input lengths: [575]
+2020-11-19 21:51:45,752 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 144.
+2020-11-19 21:51:45,752 (decoders:692) INFO: max output length: 144
+2020-11-19 21:51:45,752 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:45,753 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:45,753 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:45,755 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:46,067 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:46,164 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:46,323 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:46,429 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:46,637 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:46,764 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:46,927 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:47,031 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:47,186 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:47,338 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:47,482 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:47,626 (decoders:776) DEBUG: position 12
+2020-11-19 21:51:47,771 (decoders:776) DEBUG: position 13
+2020-11-19 21:51:47,905 (decoders:776) DEBUG: position 14
+2020-11-19 21:51:48,054 (asr_utils:669) INFO: groundtruth: W O O D
+2020-11-19 21:51:48,054 (asr_utils:670) INFO: prediction : ENTER<eos>
+2020-11-19 21:51:48,063 (nets_utils:52) INFO: padded = torch.Size([1, 725, 63]) 
+2020-11-19 21:51:48,064 (encoders:65) DEBUG: RNNP input lengths: [725]
+2020-11-19 21:51:50,284 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 182.
+2020-11-19 21:51:50,301 (decoders:692) INFO: max output length: 182
+2020-11-19 21:51:50,301 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:50,301 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:50,301 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:50,303 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:50,668 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:50,787 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:50,970 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:51,095 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:51,333 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:51,477 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:51,669 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:51,784 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:51,944 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:52,116 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:52,282 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:52,427 (decoders:776) DEBUG: position 12
+2020-11-19 21:51:52,602 (decoders:776) DEBUG: position 13
+2020-11-19 21:51:52,755 (decoders:776) DEBUG: position 14
+2020-11-19 21:51:52,924 (decoders:776) DEBUG: position 15
+2020-11-19 21:51:53,094 (decoders:776) DEBUG: position 16
+2020-11-19 21:51:53,244 (decoders:776) DEBUG: position 17
+2020-11-19 21:51:53,396 (asr_utils:669) INFO: groundtruth: C I N D Y
+2020-11-19 21:51:53,396 (asr_utils:670) INFO: prediction : NINETEEN<eos>
+2020-11-19 21:51:53,425 (nets_utils:52) INFO: padded = torch.Size([1, 475, 63]) 
+2020-11-19 21:51:53,425 (encoders:65) DEBUG: RNNP input lengths: [475]
+2020-11-19 21:51:54,868 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 119.
+2020-11-19 21:51:54,868 (decoders:692) INFO: max output length: 119
+2020-11-19 21:51:54,876 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:54,880 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:54,880 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:54,881 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:55,183 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:55,266 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:55,416 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:55,520 (decoders:776) DEBUG: position 4
+2020-11-19 21:51:55,710 (decoders:776) DEBUG: position 5
+2020-11-19 21:51:55,818 (decoders:776) DEBUG: position 6
+2020-11-19 21:51:55,972 (decoders:776) DEBUG: position 7
+2020-11-19 21:51:56,097 (decoders:776) DEBUG: position 8
+2020-11-19 21:51:56,238 (decoders:776) DEBUG: position 9
+2020-11-19 21:51:56,389 (decoders:776) DEBUG: position 10
+2020-11-19 21:51:56,537 (decoders:776) DEBUG: position 11
+2020-11-19 21:51:56,652 (decoders:776) DEBUG: position 12
+2020-11-19 21:51:56,791 (asr_utils:669) INFO: groundtruth: ONE THREE SEVEN
+2020-11-19 21:51:56,791 (asr_utils:670) INFO: prediction : ONE<eos>
+2020-11-19 21:51:56,795 (nets_utils:52) INFO: padded = torch.Size([1, 750, 63]) 
+2020-11-19 21:51:56,795 (encoders:65) DEBUG: RNNP input lengths: [750]
+2020-11-19 21:51:58,998 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 188.
+2020-11-19 21:51:58,998 (decoders:692) INFO: max output length: 188
+2020-11-19 21:51:58,998 (decoders:693) INFO: min output length: 0
+2020-11-19 21:51:58,998 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:51:58,998 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:51:59,001 (decoders:776) DEBUG: position 0
+2020-11-19 21:51:59,378 (decoders:776) DEBUG: position 1
+2020-11-19 21:51:59,496 (decoders:776) DEBUG: position 2
+2020-11-19 21:51:59,698 (decoders:776) DEBUG: position 3
+2020-11-19 21:51:59,827 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:00,052 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:00,196 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:00,393 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:00,512 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:00,681 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:00,850 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:01,031 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:01,190 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:01,358 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:01,523 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:01,681 (decoders:776) DEBUG: position 15
+2020-11-19 21:52:01,844 (decoders:776) DEBUG: position 16
+2020-11-19 21:52:01,995 (decoders:776) DEBUG: position 17
+2020-11-19 21:52:02,156 (asr_utils:669) INFO: groundtruth: M E L V I N
+2020-11-19 21:52:02,156 (asr_utils:670) INFO: prediction : NINETEEN<eos>
+2020-11-19 21:52:02,180 (nets_utils:52) INFO: padded = torch.Size([1, 1550, 63]) 
+2020-11-19 21:52:02,181 (encoders:65) DEBUG: RNNP input lengths: [1550]
+2020-11-19 21:52:07,031 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 388.
+2020-11-19 21:52:07,032 (decoders:692) INFO: max output length: 388
+2020-11-19 21:52:07,032 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:07,032 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:07,032 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:07,044 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:07,640 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:07,906 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:08,224 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:08,490 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:08,832 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:09,101 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:09,424 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:09,674 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:09,964 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:10,230 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:10,516 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:10,794 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:11,068 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:11,343 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:11,634 (decoders:776) DEBUG: position 15
+2020-11-19 21:52:11,892 (decoders:776) DEBUG: position 16
+2020-11-19 21:52:12,170 (decoders:776) DEBUG: position 17
+2020-11-19 21:52:12,436 (decoders:776) DEBUG: position 18
+2020-11-19 21:52:12,725 (decoders:776) DEBUG: position 19
+2020-11-19 21:52:12,998 (decoders:776) DEBUG: position 20
+2020-11-19 21:52:13,269 (decoders:776) DEBUG: position 21
+2020-11-19 21:52:13,528 (decoders:776) DEBUG: position 22
+2020-11-19 21:52:13,787 (decoders:776) DEBUG: position 23
+2020-11-19 21:52:14,072 (decoders:776) DEBUG: position 24
+2020-11-19 21:52:14,353 (decoders:776) DEBUG: position 25
+2020-11-19 21:52:14,618 (decoders:776) DEBUG: position 26
+2020-11-19 21:52:14,885 (decoders:776) DEBUG: position 27
+2020-11-19 21:52:15,184 (decoders:776) DEBUG: position 28
+2020-11-19 21:52:15,484 (decoders:776) DEBUG: position 29
+2020-11-19 21:52:15,769 (decoders:776) DEBUG: position 30
+2020-11-19 21:52:16,032 (asr_utils:669) INFO: groundtruth: P L E A S A N T H I L L S
+2020-11-19 21:52:16,040 (asr_utils:670) INFO: prediction : ENTER ONE FIVE TWO ONE<eos>
+2020-11-19 21:52:16,116 (nets_utils:52) INFO: padded = torch.Size([1, 725, 63]) 
+2020-11-19 21:52:16,117 (encoders:65) DEBUG: RNNP input lengths: [725]
+2020-11-19 21:52:18,532 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 182.
+2020-11-19 21:52:18,533 (decoders:692) INFO: max output length: 182
+2020-11-19 21:52:18,533 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:18,533 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:18,533 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:18,536 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:18,907 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:19,024 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:19,205 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:19,333 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:19,553 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:19,683 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:19,870 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:19,986 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:20,149 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:20,293 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:20,456 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:20,613 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:20,773 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:20,938 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:21,094 (decoders:776) DEBUG: position 15
+2020-11-19 21:52:21,230 (decoders:776) DEBUG: position 16
+2020-11-19 21:52:21,382 (decoders:776) DEBUG: position 17
+2020-11-19 21:52:21,529 (asr_utils:669) INFO: groundtruth: ONE FIVE TWO THREE SIX
+2020-11-19 21:52:21,529 (asr_utils:670) INFO: prediction : NINETEEN<eos>
+2020-11-19 21:52:21,532 (nets_utils:52) INFO: padded = torch.Size([1, 925, 63]) 
+2020-11-19 21:52:21,533 (encoders:65) DEBUG: RNNP input lengths: [925]
+2020-11-19 21:52:24,492 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 232.
+2020-11-19 21:52:24,497 (decoders:692) INFO: max output length: 232
+2020-11-19 21:52:24,497 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:24,497 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:24,497 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:24,499 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:24,911 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:25,052 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:25,262 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:25,403 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:25,639 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:25,791 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:25,991 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:26,132 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:26,306 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:26,473 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:26,657 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:26,808 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:26,980 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:27,156 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:27,349 (decoders:776) DEBUG: position 15
+2020-11-19 21:52:27,526 (decoders:776) DEBUG: position 16
+2020-11-19 21:52:27,696 (decoders:776) DEBUG: position 17
+2020-11-19 21:52:27,882 (decoders:776) DEBUG: position 18
+2020-11-19 21:52:28,065 (decoders:776) DEBUG: position 19
+2020-11-19 21:52:28,246 (decoders:776) DEBUG: position 20
+2020-11-19 21:52:28,438 (decoders:776) DEBUG: position 21
+2020-11-19 21:52:28,568 (decoders:776) DEBUG: position 22
+2020-11-19 21:52:28,714 (asr_utils:669) INFO: groundtruth: SIX FIVE FIVE EIGHT SEVEN FOUR ZERO
+2020-11-19 21:52:28,715 (asr_utils:670) INFO: prediction : ENTER ONE ONE<eos>
+2020-11-19 21:52:28,750 (nets_utils:52) INFO: padded = torch.Size([1, 725, 63]) 
+2020-11-19 21:52:28,750 (encoders:65) DEBUG: RNNP input lengths: [725]
+2020-11-19 21:52:30,991 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 182.
+2020-11-19 21:52:30,991 (decoders:692) INFO: max output length: 182
+2020-11-19 21:52:30,991 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:30,991 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:30,991 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:30,997 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:31,361 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:31,478 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:31,656 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:31,775 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:31,984 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:32,123 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:32,305 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:32,412 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:32,566 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:32,718 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:32,894 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:33,026 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:33,171 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:33,330 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:33,489 (decoders:776) DEBUG: position 15
+2020-11-19 21:52:33,646 (decoders:776) DEBUG: position 16
+2020-11-19 21:52:33,800 (decoders:776) DEBUG: position 17
+2020-11-19 21:52:33,946 (asr_utils:669) INFO: groundtruth: ELEVEN TWENTY SEVEN FIFTY SEVEN
+2020-11-19 21:52:33,946 (asr_utils:670) INFO: prediction : NINETEEN<eos>
+2020-11-19 21:52:33,948 (nets_utils:52) INFO: padded = torch.Size([1, 200, 63]) 
+2020-11-19 21:52:33,948 (encoders:65) DEBUG: RNNP input lengths: [200]
+2020-11-19 21:52:34,515 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 50.
+2020-11-19 21:52:34,515 (decoders:692) INFO: max output length: 50
+2020-11-19 21:52:34,515 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:34,515 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:34,516 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:34,524 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:34,756 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:34,806 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:34,922 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:35,062 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:35,237 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:35,386 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:35,511 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:35,639 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:35,742 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:35,856 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:35,998 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:36,146 (asr_utils:669) INFO: groundtruth: NO
+2020-11-19 21:52:36,146 (asr_utils:670) INFO: prediction : NO<eos>
+2020-11-19 21:52:36,154 (nets_utils:52) INFO: padded = torch.Size([1, 625, 63]) 
+2020-11-19 21:52:36,155 (encoders:65) DEBUG: RNNP input lengths: [625]
+2020-11-19 21:52:38,112 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 157.
+2020-11-19 21:52:38,112 (decoders:692) INFO: max output length: 157
+2020-11-19 21:52:38,112 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:38,116 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:38,117 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:38,118 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:38,422 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:38,531 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:38,703 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:38,823 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:39,029 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:39,151 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:39,337 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:39,457 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:39,621 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:39,768 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:39,922 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:40,047 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:40,136 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:40,328 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:40,535 (decoders:776) DEBUG: position 15
+2020-11-19 21:52:40,731 (decoders:776) DEBUG: position 16
+2020-11-19 21:52:40,873 (asr_utils:669) INFO: groundtruth: ENTER NINE ONE SIX NINE
+2020-11-19 21:52:40,873 (asr_utils:670) INFO: prediction : ONE ONE<eos>
+2020-11-19 21:52:40,876 (nets_utils:52) INFO: padded = torch.Size([1, 550, 63]) 
+2020-11-19 21:52:40,876 (encoders:65) DEBUG: RNNP input lengths: [550]
+2020-11-19 21:52:42,422 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 138.
+2020-11-19 21:52:42,423 (decoders:692) INFO: max output length: 138
+2020-11-19 21:52:42,423 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:42,423 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:42,423 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:42,433 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:42,732 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:42,819 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:42,968 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:43,067 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:43,265 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:43,379 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:43,539 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:43,647 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:43,810 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:43,965 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:44,101 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:44,248 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:44,391 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:44,537 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:44,692 (asr_utils:669) INFO: groundtruth: ENTER EIGHT NINETY SEVEN
+2020-11-19 21:52:44,693 (asr_utils:670) INFO: prediction : ENTER<eos>
+2020-11-19 21:52:44,710 (nets_utils:52) INFO: padded = torch.Size([1, 600, 63]) 
+2020-11-19 21:52:44,711 (encoders:65) DEBUG: RNNP input lengths: [600]
+2020-11-19 21:52:46,536 (decoders:657) INFO: Number of Encoder:1; enc1: input lengths: 150.
+2020-11-19 21:52:46,536 (decoders:692) INFO: max output length: 150
+2020-11-19 21:52:46,537 (decoders:693) INFO: min output length: 0
+2020-11-19 21:52:46,537 (decoders:735) INFO: <sos> index: 29
+2020-11-19 21:52:46,537 (decoders:736) INFO: <sos> mark: <eos>
+2020-11-19 21:52:46,538 (decoders:776) DEBUG: position 0
+2020-11-19 21:52:46,875 (decoders:776) DEBUG: position 1
+2020-11-19 21:52:46,978 (decoders:776) DEBUG: position 2
+2020-11-19 21:52:47,141 (decoders:776) DEBUG: position 3
+2020-11-19 21:52:47,251 (decoders:776) DEBUG: position 4
+2020-11-19 21:52:47,440 (decoders:776) DEBUG: position 5
+2020-11-19 21:52:47,576 (decoders:776) DEBUG: position 6
+2020-11-19 21:52:47,753 (decoders:776) DEBUG: position 7
+2020-11-19 21:52:47,855 (decoders:776) DEBUG: position 8
+2020-11-19 21:52:48,022 (decoders:776) DEBUG: position 9
+2020-11-19 21:52:48,172 (decoders:776) DEBUG: position 10
+2020-11-19 21:52:48,336 (decoders:776) DEBUG: position 11
+2020-11-19 21:52:48,483 (decoders:776) DEBUG: position 12
+2020-11-19 21:52:48,631 (decoders:776) DEBUG: position 13
+2020-11-19 21:52:48,776 (decoders:776) DEBUG: position 14
+2020-11-19 21:52:48,932 (asr_utils:669) INFO: groundtruth: J P E G FOUR
+2020-11-19 21:52:48,932 (asr_utils:670) INFO: prediction : ENTER<eos>
+# Accounting: time=102 threads=1
+# Ended (code 0) at Thu Nov 19 21:52:49 GMT 2020, elapsed time 102 seconds

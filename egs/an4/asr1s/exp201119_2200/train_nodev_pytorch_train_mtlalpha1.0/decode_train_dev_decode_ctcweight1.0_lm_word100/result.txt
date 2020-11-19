@@ -1,0 +1,689 @@
+
+
+
+                     SYSTEM SUMMARY PERCENTAGES by SPEAKER                      
+
+,-------------------------------------------------------------------------------------------------.
+|exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/hyp.trn|
+|-------------------------------------------------------------------------------------------------|
+|   SPKR     |  # Snt     # Wrd   |   Corr       Sub        Del        Ins       Err      S.Err   |
+|------------+--------------------+---------------------------------------------------------------|
+|   fash     |     9        104   |   20.2      38.5       41.3        4.8      84.6      100.0   |
+|------------+--------------------+---------------------------------------------------------------|
+|   fbbh     |    13        256   |   21.1      18.8       60.2        3.5      82.4      100.0   |
+|------------+--------------------+---------------------------------------------------------------|
+|   fclc     |    13        289   |   20.1      18.3       61.6        3.8      83.7      100.0   |
+|------------+--------------------+---------------------------------------------------------------|
+|   fejs     |    13        246   |   19.9      28.5       51.6        2.4      82.5      100.0   |
+|------------+--------------------+---------------------------------------------------------------|
+|   ffmm     |    13        299   |   19.7      21.4       58.9        1.0      81.3      100.0   |
+|------------+--------------------+---------------------------------------------------------------|
+|   fjam     |    13        245   |   16.7      12.7       70.6        1.2      84.5      100.0   |
+|------------+--------------------+---------------------------------------------------------------|
+|   fjdn     |    13        242   |   12.0       7.0       81.0        0.4      88.4      100.0   |
+|------------+--------------------+---------------------------------------------------------------|
+|   fjmd     |    13        234   |   15.8       9.8       74.4        3.0      87.2      100.0   |
+|=================================================================================================|
+|   Sum/Avg  |   100       1915   |   18.2      18.1       63.8        2.3      84.2      100.0   |
+|=================================================================================================|
+|    Mean    |  12.5      239.4   |   18.2      19.4       62.4        2.5      84.3      100.0   |
+|    S.D.    |   1.4       59.4   |    3.1      10.3       12.7        1.5       2.4        0.0   |
+|   Median   |  13.0      245.5   |   19.8      18.5       60.9        2.7      84.1      100.0   |
+`-------------------------------------------------------------------------------------------------'
+
+
+
+                     SYSTEM SUMMARY PERCENTAGES by SPEAKER                      
+
+,-------------------------------------------------------------------------------------------------.
+|exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/hyp.trn|
+|-------------------------------------------------------------------------------------------------|
+|   SPKR   |   # Snt     # Wrd   |   Corr       Sub        Del        Ins        Err      S.Err   |
+|----------+---------------------+----------------------------------------------------------------|
+|   fash   |      9        104   |     21        40         43          5         88          9   |
+|----------+---------------------+----------------------------------------------------------------|
+|   fbbh   |     13        256   |     54        48        154          9        211         13   |
+|----------+---------------------+----------------------------------------------------------------|
+|   fclc   |     13        289   |     58        53        178         11        242         13   |
+|----------+---------------------+----------------------------------------------------------------|
+|   fejs   |     13        246   |     49        70        127          6        203         13   |
+|----------+---------------------+----------------------------------------------------------------|
+|   ffmm   |     13        299   |     59        64        176          3        243         13   |
+|----------+---------------------+----------------------------------------------------------------|
+|   fjam   |     13        245   |     41        31        173          3        207         13   |
+|----------+---------------------+----------------------------------------------------------------|
+|   fjdn   |     13        242   |     29        17        196          1        214         13   |
+|----------+---------------------+----------------------------------------------------------------|
+|   fjmd   |     13        234   |     37        23        174          7        204         13   |
+|=================================================================================================|
+|   Sum    |    100       1915   |    348       346       1221         45       1612        100   |
+|=================================================================================================|
+|   Mean   |   12.5      239.4   |   43.5      43.3      152.6        5.6      201.5       12.5   |
+|   S.D.   |    1.4       59.4   |   13.9      19.0       48.7        3.3       48.6        1.4   |
+|  Median  |   13.0      245.5   |   45.0      44.0      173.5        5.5      209.0       13.0   |
+`-------------------------------------------------------------------------------------------------'
+
+
+		DUMP OF SYSTEM ALIGNMENT STRUCTURE
+
+System name:   exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/hyp.trn
+
+Speakers: 
+    0:  fash
+    1:  fbbh
+    2:  fclc
+    3:  fejs
+    4:  ffmm
+    5:  fjam
+    6:  fjdn
+    7:  fjmd
+
+Speaker sentences   0:  fash   #utts: 9
+id: (fash-fash-an251-b)
+Scores: (#C #S #D #I) 1 1 1 1
+REF:  * Y e S 
+HYP:  O N e * 
+Eval: I S   D 
+
+id: (fash-fash-an253-b)
+Scores: (#C #S #D #I) 1 1 0 0
+REF:  G o 
+HYP:  N o 
+Eval: S   
+
+id: (fash-fash-an254-b)
+Scores: (#C #S #D #I) 1 1 1 1
+REF:  * Y e S 
+HYP:  O N e * 
+Eval: I S   D 
+
+id: (fash-fash-an255-b)
+Scores: (#C #S #D #I) 2 5 6 0
+REF:  U <SPACE> M <SPACE> n <SPACE> Y <SPACE> H <space> S I X 
+HYP:  * ******* * O       n ******* * ******* E <space> O N E 
+Eval: D D       D S         D       D D       S         S S S 
+
+id: (fash-fash-cen1-b)
+Scores: (#C #S #D #I) 3 7 1 2
+REF:  H <SPACE> I <space> n <SPACE> i * * <SPACE> C <SPACE> H 
+HYP:  O N       E <space> n ******* i N E T       E E       N 
+Eval: S S       S           D         I I S       S S       S 
+
+id: (fash-fash-cen2-b)
+Scores: (#C #S #D #I) 0 3 2 0
+REF:  A <SPACE> M <SPACE> Y 
+HYP:  * ******* O N       E 
+Eval: D D       S S       S 
+
+id: (fash-fash-cen4-b)
+Scores: (#C #S #D #I) 3 8 4 1
+REF:  M <SPACE> o <SPACE> R <SPACE> e <space> * W <SPACE> O <SPACE> O <SPACE> D 
+HYP:  * ******* o ******* * N       e <space> N I N       E T       E E       N 
+Eval: D D         D       D S                 I S S       S S       S S       S 
+
+id: (fash-fash-cen5-b)
+Scores: (#C #S #D #I) 4 13 2 0
+REF:  P <SPACE> I <SPACE> t <SPACE> T <space> S <SPACE> B <space> U <SPACE> R <space> G <SPACE> H 
+HYP:  * ******* E N       t E       R <space> O N       E <space> T W       O <space> O N       E 
+Eval: D D       S S         S       S         S S       S         S S       S         S S       S 
+
+id: (fash-fash-cen7-b)
+Scores: (#C #S #D #I) 6 1 26 0
+REF:  T W o <SPACE> S I X <SPACE> e I G H T <SPACE> F O U R <SPACE> F O U R <space> o n E <SPACE> e I G H T 
+HYP:  * * o ******* * * * N       e * * * * ******* * * * * ******* * * * * <space> o n * ******* e * * * * 
+Eval: D D   D       D D D S         D D D D D       D D D D D       D D D D             D D         D D D D 
+
+Speaker sentences   1:  fbbh   #utts: 13
+id: (fbbh-fbbh-an86-b)
+Scores: (#C #S #D #I) 2 7 6 0
+REF:  C <SPACE> Z <SPACE> D <SPACE> Z <space> W <SPACE> e I G H T 
+HYP:  * ******* E N       T E       R <space> O N       e * * * * 
+Eval: D D       S S       S S       S         S S         D D D D 
+
+id: (fbbh-fbbh-an87-b)
+Scores: (#C #S #D #I) 2 1 15 0
+REF:  E n T e R <SPACE> S I X <SPACE> T W O <SPACE> F O U R 
+HYP:  O n * e * ******* * * * ******* * * * ******* * * * * 
+Eval: S   D   D D       D D D D       D D D D       D D D D 
+
+id: (fbbh-fbbh-an88-b)
+Scores: (#C #S #D #I) 7 9 9 1
+REF:  e R A S e * <space> o <SPACE> T <SPACE> H <space> F <SPACE> I <space> F I V E <SPACE> Z e R O 
+HYP:  e * N T e R <space> o ******* * N       E <space> T W       O <space> * * * * O       N e * * 
+Eval:   D S S   I           D       D S       S         S S       S         D D D D S       S   D D 
+
+id: (fbbh-fbbh-an89-b)
+Scores: (#C #S #D #I) 13 5 22 4
+REF:  R U B O U T <SPACE> T <SPACE> G <SPACE> J <SPACE> W <SPACE> B <SPACE> S E V e n t * Y <space> N I n e <space> f i * * F       t * Y <space> N I n e 
+HYP:  * * * * * * ******* * ******* * ******* * ******* * ******* * ******* * * * e n t E R <space> * O n e <space> f i V E <SPACE> t W O <space> * O n e 
+Eval: D D D D D D D       D D       D D       D D       D D       D D       D D D       I S         D S                 I I S         I S         D S     
+
+id: (fbbh-fbbh-an90-b)
+Scores: (#C #S #D #I) 1 1 0 1
+REF:  * n O 
+HYP:  O n E 
+Eval: I   S 
+
+id: (fbbh-fbbh-cen1-b)
+Scores: (#C #S #D #I) 1 4 6 0
+REF:  H <SPACE> O <SPACE> W <SPACE> e <SPACE> L <SPACE> L 
+HYP:  * ******* * ******* * ******* e N       T E       R 
+Eval: D D       D D       D D         S       S S       S 
+
+id: (fbbh-fbbh-cen2-b)
+Scores: (#C #S #D #I) 2 5 6 1
+REF:  * B <SPACE> e <SPACE> V <SPACE> e <SPACE> R <SPACE> L <SPACE> Y 
+HYP:  N I N       e ******* * T       e ******* * ******* * E       N 
+Eval: I S S         D       D S         D       D D       D S       S 
+
+id: (fbbh-fbbh-cen3-b)
+Scores: (#C #S #D #I) 2 3 14 0
+REF:  F I F T Y <SPACE> O N e <SPACE> F I F t Y <SPACE> S I X 
+HYP:  * * * * * ******* * * e ******* * * N t * ******* * E R 
+Eval: D D D D D D       D D   D       D D S   D D       D S S 
+
+id: (fbbh-fbbh-cen4-b)
+Scores: (#C #S #D #I) 4 3 4 2
+REF:  * * P <SPACE> r <space> I <SPACE> n <SPACE> C <SPACE> e 
+HYP:  E N T E       r <space> * O       n ******* * ******* e 
+Eval: I I S S                 D S         D       D D         
+
+id: (fbbh-fbbh-cen5-b)
+Scores: (#C #S #D #I) 2 6 7 0
+REF:  G <SPACE> i <SPACE> B <SPACE> S <SPACE> O <SPACE> n <SPACE> I <SPACE> A 
+HYP:  * N       i ******* * N       E T       E E       n ******* * ******* * 
+Eval: D S         D       D S       S S       S S         D       D D       D 
+
+id: (fbbh-fbbh-cen6-b)
+Scores: (#C #S #D #I) 3 2 16 0
+REF:  O N e <SPACE> F I V e <SPACE> O H <SPACE> F O U R <SPACE> F O U r 
+HYP:  * * e ******* * N T e ******* * * ******* * * * * ******* * * * r 
+Eval: D D   D       D S S   D       D D D       D D D D D       D D D   
+
+id: (fbbh-fbbh-cen7-b)
+Scores: (#C #S #D #I) 7 2 24 0
+REF:  F O U R <SPACE> F O U R <SPACE> T H R E e <SPACE> S I X <SPACE> t H R e E <space> o n e <SPACE> T W O 
+HYP:  * * * * ******* * * * * ******* * * * * e ******* * * * N       t * * e R <space> o n e ******* * * * 
+Eval: D D D D D       D D D D D       D D D D   D       D D D S         D D   S               D       D D D 
+
+id: (fbbh-fbbh-cen8-b)
+Scores: (#C #S #D #I) 8 0 25 0
+REF:  M A R C H <SPACE> T H I R D <SPACE> n i n e t E e N <SPACE> T W e n T Y <SPACE> E I G H T 
+HYP:  * * * * * ******* * * * * * ******* n i n e t * e * ******* * * e n * * ******* * * * * * 
+Eval: D D D D D D       D D D D D D                 D   D D       D D     D D D       D D D D D 
+
+Speaker sentences   2:  fclc   #utts: 13
+id: (fclc-fclc-an146-b)
+Scores: (#C #S #D #I) 5 3 16 1
+REF:  N <SPACE> L <SPACE> N <SPACE> S <SPACE> O N E <SPACE> S E V e n t * Y <space> F I V e 
+HYP:  * ******* * ******* * ******* * ******* * * * ******* * * * e n t E R <space> * O N e 
+Eval: D D       D D       D D       D D       D D D D       D D D       I S         D S S   
+
+id: (fclc-fclc-an147-b)
+Scores: (#C #S #D #I) 2 5 4 1
+REF:  * Q <SPACE> e <SPACE> e <SPACE> A <SPACE> S I X 
+HYP:  N I N       e T       e ******* * ******* * E N 
+Eval: I S S         S         D       D D       D S S 
+
+id: (fclc-fclc-an148-b)
+Scores: (#C #S #D #I) 6 6 15 1
+REF:  e R A S e * <space> o <SPACE> J <SPACE> T <SPACE> K <SPACE> S <SPACE> T H I R T Y <space> F I V e 
+HYP:  e * N T e R <space> o ******* * ******* * ******* * ******* * ******* * * * * N E <space> * O N e 
+Eval:   D S S   I           D       D D       D D       D D       D D       D D D D S S         D S S   
+
+id: (fclc-fclc-an149-b)
+Scores: (#C #S #D #I) 5 0 17 0
+REF:  e n t e r <SPACE> N I N E <SPACE> E I G H T Y <SPACE> N I N E 
+HYP:  e n t e r ******* * * * * ******* * * * * * * ******* * * * * 
+Eval:           D       D D D D D       D D D D D D D       D D D D 
+
+id: (fclc-fclc-an150-b)
+Scores: (#C #S #D #I) 9 5 20 1
+REF:  e R A S e <SPACE> C <SPACE> K <SPACE> C <SPACE> W <space> F o U R T E E n <SPACE> e I G H T Y <space> F I v e * 
+HYP:  e * N T e ******* * ******* * ******* * ******* R <space> * o * * * * * n ******* e * * * * * <space> S E v e N 
+Eval:   D S S   D       D D       D D       D D       S         D   D D D D D   D         D D D D D         S S     I 
+
+id: (fclc-fclc-cen1-b)
+Scores: (#C #S #D #I) 6 6 3 4
+REF:  C <SPACE> o <SPACE> n * <space> * N <SPACE> e <space> * * L <space> L <SPACE> Y 
+HYP:  * ******* o ******* n E <space> F I V       e <space> T W O <space> O N       E 
+Eval: D D         D         I         I S S                 I I S         S S       S 
+
+id: (fclc-fclc-cen2-b)
+Scores: (#C #S #D #I) 2 4 3 1
+REF:  C <SPACE> I <SPACE> n * <space> D <SPACE> Y 
+HYP:  * ******* * O       n E <space> O N       E 
+Eval: D D       D S         I         S S       S 
+
+id: (fclc-fclc-cen3-b)
+Scores: (#C #S #D #I) 1 2 17 0
+REF:  F I V E <SPACE> F I V E <SPACE> T H R E E <SPACE> F I V e 
+HYP:  * * * * ******* * * * * ******* * * * * * ******* * O N e 
+Eval: D D D D D       D D D D D       D D D D D D       D S S   
+
+id: (fclc-fclc-cen4-b)
+Scores: (#C #S #D #I) 5 6 6 2
+REF:  A <SPACE> Y <SPACE> L <SPACE> e <SPACE> S <SPACE> B <space> o <SPACE> R <space> o * * 
+HYP:  * ******* * ******* * ******* e N       T E       R <space> o N       E <space> o N E 
+Eval: D D       D D       D D         S       S S       S           S       S           I I 
+
+id: (fclc-fclc-cen5-b)
+Scores: (#C #S #D #I) 3 12 4 0
+REF:  P <SPACE> I <SPACE> T <SPACE> t <SPACE> S <space> B <SPACE> U <space> R <SPACE> G <SPACE> H 
+HYP:  * ******* * ******* E N       t E       R <space> O N       E <space> S E       V E       N 
+Eval: D D       D D       S S         S       S         S S       S         S S       S S       S 
+
+id: (fclc-fclc-cen6-b)
+Scores: (#C #S #D #I) 3 0 19 0
+REF:  O N E <SPACE> F I V E <SPACE> T W O <SPACE> o n E <SPACE> S E V e N 
+HYP:  * * * ******* * * * * ******* * * * ******* o n * ******* * * * e * 
+Eval: D D D D       D D D D D       D D D D           D D       D D D   D 
+
+id: (fclc-fclc-cen7-b)
+Scores: (#C #S #D #I) 6 2 27 0
+REF:  S i X <SPACE> e I G H t <SPACE> S e V e n <SPACE> F I V E <SPACE> E I G H T <SPACE> O H <SPACE> E I G H T 
+HYP:  N i * N       e * * * t ******* * e * e n ******* * * * * ******* * * * * * ******* * * ******* * * * * * 
+Eval: S   D S         D D D   D       D   D     D       D D D D D       D D D D D D       D D D       D D D D D 
+
+id: (fclc-fclc-cen8-b)
+Scores: (#C #S #D #I) 5 2 27 0
+REF:  J U n E <SPACE> E L E V e N T H <space> N I N E T E E n <SPACE> S I X T Y <SPACE> S E V e N 
+HYP:  * O n * ******* * * * * e * * * <space> * * * * * * O n ******* * * * * * ******* * * * e * 
+Eval: D S   D D       D D D D   D D D         D D D D D D S   D       D D D D D D       D D D   D 
+
+Speaker sentences   3:  fejs   #utts: 13
+id: (fejs-fejs-an36-b)
+Scores: (#C #S #D #I) 6 7 13 0
+REF:  R U B O U t <SPACE> C <SPACE> Y <SPACE> r <space> B <SPACE> S e V       E n <SPACE> e I G H T 
+HYP:  * * * E N t ******* * ******* * E       r <space> * O       N e <SPACE> O n ******* e * * * * 
+Eval: D D D S S   D       D D       D S                 D S       S   S       S   D         D D D D 
+
+id: (fejs-fejs-an37-b)
+Scores: (#C #S #D #I) 9 8 10 0
+REF:  e R A S e <SPACE> J <SPACE> G <SPACE> Q <space> Y <SPACE> e I G H T <space> S I X <space> o n e 
+HYP:  e * N T e ******* * ******* * ******* R <space> O N       e * * * * <space> T W O <space> o n e 
+Eval:   D S S   D       D D       D D       S         S S         D D D D         S S S               
+
+id: (fejs-fejs-an38-b)
+Scores: (#C #S #D #I) 1 0 1 2
+REF:  G o * * 
+HYP:  * o N E 
+Eval: D   I I 
+
+id: (fejs-fejs-an39-b)
+Scores: (#C #S #D #I) 2 5 5 0
+REF:  G <SPACE> C <SPACE> D <SPACE> O <space> F o U R 
+HYP:  * ******* * ******* O N       E <space> * o N E 
+Eval: D D       D D       S S       S         D   S S 
+
+id: (fejs-fejs-an40-b)
+Scores: (#C #S #D #I) 3 6 12 0
+REF:  Z <SPACE> I <SPACE> R <SPACE> K <SPACE> S I X <SPACE> F O U r <space> F o U R 
+HYP:  * ******* * ******* * ******* * ******* * * * E       N T E r <space> * o N E 
+Eval: D D       D D       D D       D D       D D D S       S S S           D   S S 
+
+id: (fejs-fejs-cen1-b)
+Scores: (#C #S #D #I) 3 11 3 1
+REF:  S <SPACE> C <SPACE> A <SPACE> V <space> I <SPACE> n * <space> C <SPACE> K <SPACE> Y 
+HYP:  * ******* E N       T E       R <space> * O       n E <space> S E       V E       N 
+Eval: D D       S S       S S       S         D S         I         S S       S S       S 
+
+id: (fejs-fejs-cen2-b)
+Scores: (#C #S #D #I) 1 4 2 0
+REF:  J <SPACE> e <SPACE> A <SPACE> N 
+HYP:  * ******* e N       T E       R 
+Eval: D D         S       S S       S 
+
+id: (fejs-fejs-cen3-b)
+Scores: (#C #S #D #I) 4 2 11 2
+REF:  * O n e <SPACE> Z e R O <SPACE> S I X <SPACE> F I V e * 
+HYP:  N I n e ******* T e * * ******* * * * ******* * * * e N 
+Eval: I S     D       S   D D D       D D D D       D D D   I 
+
+id: (fejs-fejs-cen4-b)
+Scores: (#C #S #D #I) 6 12 5 1
+REF:  F <SPACE> I <SPACE> n * <SPACE> D <space> L <SPACE> e <SPACE> Y <space> D <SPACE> R <SPACE> I <space> V <SPACE> e 
+HYP:  * ******* * E       n T E       R <space> O N       e ******* * <space> S E       V E       N <space> O N       e 
+Eval: D D       D S         I S       S         S S         D       D         S S       S S       S         S S         
+
+id: (fejs-fejs-cen5-b)
+Scores: (#C #S #D #I) 3 10 6 0
+REF:  P <SPACE> I <SPACE> T <SPACE> t <SPACE> S <SPACE> B <space> U <SPACE> R <space> G <SPACE> H 
+HYP:  * ******* * ******* E N       t ******* * E       R <space> O N       E <space> O N       E 
+Eval: D D       D D       S S         D       D S       S         S S       S         S S       S 
+
+id: (fejs-fejs-cen6-b)
+Scores: (#C #S #D #I) 3 0 17 0
+REF:  O N E <SPACE> F I V E <SPACE> T W O <SPACE> T W O <SPACE> o n e 
+HYP:  * * * ******* * * * * ******* * * * ******* * * * ******* o n e 
+Eval: D D D D       D D D D D       D D D D       D D D D             
+
+id: (fejs-fejs-cen7-b)
+Scores: (#C #S #D #I) 5 3 26 0
+REF:  T W O <SPACE> S i X <SPACE> e I G H T <SPACE> t H R E E <SPACE> e I G H T <SPACE> Z e R O <SPACE> T W O 
+HYP:  * * * ******* N i * N       e * * * * ******* t * * * * ******* e * * * * ******* * e * * ******* * * N 
+Eval: D D D D       S   D S         D D D D D         D D D D D         D D D D D       D   D D D       D D S 
+
+id: (fejs-fejs-cen8-b)
+Scores: (#C #S #D #I) 3 2 16 0
+REF:  T W O <SPACE> F I F T E e n <SPACE> S I X T Y <SPACE> t W O 
+HYP:  * * * ******* * * * * * e n ******* * * * * * ******* t E R 
+Eval: D D D D       D D D D D     D       D D D D D D         S S 
+
+Speaker sentences   4:  ffmm   #utts: 13
+id: (ffmm-ffmm-an291-b)
+Scores: (#C #S #D #I) 2 1 7 0
+REF:  E n T E R <SPACE> F I V e 
+HYP:  O n * * * ******* * * * e 
+Eval: S   D D D D       D D D   
+
+id: (ffmm-ffmm-an292-b)
+Scores: (#C #S #D #I) 2 1 16 0
+REF:  E N T E R <SPACE> S E V E n T Y <SPACE> e I G H T 
+HYP:  * * * * * ******* * * * O n * * ******* e * * * * 
+Eval: D D D D D D       D D D S   D D D         D D D D 
+
+id: (ffmm-ffmm-an293-b)
+Scores: (#C #S #D #I) 8 3 16 0
+REF:  K <SPACE> L <SPACE> M <SPACE> U <SPACE> F I V e <SPACE> t W O <space> s e v e n <SPACE> F O U R 
+HYP:  * ******* * ******* * ******* * ******* * * * e N       t E R <space> s e v e n ******* * * * * 
+Eval: D D       D D       D D       D D       D D D   S         S S                   D       D D D D 
+
+id: (ffmm-ffmm-an294-b)
+Scores: (#C #S #D #I) 3 4 14 0
+REF:  H <SPACE> B <SPACE> G <SPACE> L <SPACE> S E V E n T Y <space> S E V e N 
+HYP:  * ******* * ******* * ******* * ******* * * * O n * E <space> * O N e * 
+Eval: D D       D D       D D       D D       D D D S   D S         D S S   D 
+
+id: (ffmm-ffmm-an295-b)
+Scores: (#C #S #D #I) 6 2 19 0
+REF:  V <SPACE> A <SPACE> D <SPACE> R <SPACE> T H i R T Y <SPACE> O n e <SPACE> O H <SPACE> S e V e n 
+HYP:  * ******* * ******* * ******* * ******* * N i * * * ******* * n e ******* * * ******* T e * e n 
+Eval: D D       D D       D D       D D       D S   D D D D       D     D       D D D       S   D     
+
+id: (ffmm-ffmm-cen1-b)
+Scores: (#C #S #D #I) 2 7 4 0
+REF:  M <SPACE> O <SPACE> D <SPACE> U <space> G <SPACE> n <SPACE> O 
+HYP:  * ******* E N       T E       R <space> * O       n ******* E 
+Eval: D D       S S       S S       S         D S         D       S 
+
+id: (ffmm-ffmm-cen2-b)
+Scores: (#C #S #D #I) 6 9 6 2
+REF:  * * F <SPACE> r <space> A <SPACE> n <SPACE> C <SPACE> e <SPACE> S <space> M <SPACE> A <space> R <SPACE> Y 
+HYP:  E N T E       r <space> * O       n ******* * ******* e ******* * <space> T W       O <space> O N       E 
+Eval: I I S S                 D S         D       D D         D       D         S S       S         S S       S 
+
+id: (ffmm-ffmm-cen3-b)
+Scores: (#C #S #D #I) 0 3 17 0
+REF:  F I F T Y <SPACE> S I X <SPACE> T H I R T Y <SPACE> T W O 
+HYP:  * * * * * ******* * * * ******* * * * * * * ******* O N E 
+Eval: D D D D D D       D D D D       D D D D D D D       S S S 
+
+id: (ffmm-ffmm-cen4-b)
+Scores: (#C #S #D #I) 2 13 0 0
+REF:  P <SPACE> H <SPACE> I <space> L <SPACE> L <space> I <SPACE> P <SPACE> S 
+HYP:  E N       T E       R <space> O N       E <space> S E       V E       N 
+Eval: S S       S S       S         S S       S         S S       S S       S 
+
+id: (ffmm-ffmm-cen5-b)
+Scores: (#C #S #D #I) 4 13 2 0
+REF:  P <SPACE> I <SPACE> t <SPACE> T <space> S <SPACE> B <space> U <SPACE> R <space> G <SPACE> H 
+HYP:  * ******* E N       t E       R <space> O N       E <space> T W       O <space> O N       E 
+Eval: D D       S S         S       S         S S       S         S S       S         S S       S 
+
+id: (ffmm-ffmm-cen6-b)
+Scores: (#C #S #D #I) 3 2 17 0
+REF:  O N E <SPACE> F I V e <SPACE> T W O <SPACE> O n E <SPACE> S E V e N 
+HYP:  * * * ******* * * * e ******* * * * ******* * n * ******* * * T e R 
+Eval: D D D D       D D D   D       D D D D       D   D D       D D S   S 
+
+id: (ffmm-ffmm-cen7-b)
+Scores: (#C #S #D #I) 13 3 30 1
+REF:  * F O U r <space> o n e <SPACE> T W O <SPACE> F O U R <space> t w o <space> o N E <SPACE> E I G H T <SPACE> E I G H T <SPACE> N I n e <SPACE> S I X 
+HYP:  E N T E r <space> o n e ******* * * * ******* * * * * <space> t w o <space> o * * ******* * * * * * ******* * * * * * ******* * * n e ******* * * * 
+Eval: I S S S                 D       D D D D       D D D D                         D D D       D D D D D D       D D D D D D       D D     D       D D D 
+
+id: (ffmm-ffmm-cen8-b)
+Scores: (#C #S #D #I) 8 3 28 0
+REF:  S e P t E M B e r <SPACE> F I F T E E N T H <space> N I N e T E e n <SPACE> S I X T Y <SPACE> F I V E 
+HYP:  * e N t * * * e r ******* * * * * * * * * * <space> * * S e * V e n ******* * * * * * ******* * * * * 
+Eval: D   S   D D D     D       D D D D D D D D D         D D S   D S     D       D D D D D D       D D D D 
+
+Speaker sentences   5:  fjam   #utts: 13
+id: (fjam-fjam-an76-b)
+Scores: (#C #S #D #I) 1 1 1 1
+REF:  * Y e S 
+HYP:  O N e * 
+Eval: I S   D 
+
+id: (fjam-fjam-an77-b)
+Scores: (#C #S #D #I) 6 3 23 0
+REF:  E R A S e <SPACE> V <SPACE> X <SPACE> S <SPACE> X <SPACE> t W O <SPACE> F O U r <SPACE> N I N E <space> N I n e 
+HYP:  * * * * e ******* * ******* * ******* * ******* * N       t * * ******* * * E r ******* * * * * <space> * O n e 
+Eval: D D D D   D       D D       D D       D D       D S         D D D       D D S   D       D D D D         D S     
+
+id: (fjam-fjam-an78-b)
+Scores: (#C #S #D #I) 1 2 9 0
+REF:  R <SPACE> Q <SPACE> Z <SPACE> H <SPACE> F o U R 
+HYP:  * ******* * ******* * ******* * ******* * o N E 
+Eval: D D       D D       D D       D D       D   S S 
+
+id: (fjam-fjam-an79-b)
+Scores: (#C #S #D #I) 5 4 21 0
+REF:  R U B O U T <SPACE> J <SPACE> U <SPACE> I <SPACE> P <SPACE> t H R e E <space> T W o <SPACE> e I G H T 
+HYP:  * * * * * * ******* * ******* * ******* * ******* E N       t * * e R <space> * * o N       e * * * * 
+Eval: D D D D D D D       D D       D D       D D       S S         D D   S         D D   S         D D D D 
+
+id: (fjam-fjam-an80-b)
+Scores: (#C #S #D #I) 1 1 2 1
+REF:  S T o * P 
+HYP:  * * o N E 
+Eval: D D   I S 
+
+id: (fjam-fjam-cen1-b)
+Scores: (#C #S #D #I) 2 3 8 0
+REF:  M <SPACE> A <SPACE> R <SPACE> n <SPACE> e <SPACE> L <SPACE> L 
+HYP:  * ******* * ******* * E       n T       e ******* * ******* R 
+Eval: D D       D D       D S         S         D       D D       S 
+
+id: (fjam-fjam-cen2-b)
+Scores: (#C #S #D #I) 1 2 6 0
+REF:  J <SPACE> U <SPACE> L <SPACE> I <SPACE> e 
+HYP:  * ******* * ******* * ******* O N       e 
+Eval: D D       D D       D D       S S         
+
+id: (fjam-fjam-cen3-b)
+Scores: (#C #S #D #I) 2 1 13 0
+REF:  S E V E n <SPACE> F I F T Y <SPACE> F I V e 
+HYP:  * * * O n ******* * * * * * ******* * * * e 
+Eval: D D D S   D       D D D D D D       D D D   
+
+id: (fjam-fjam-cen4-b)
+Scores: (#C #S #D #I) 5 4 10 0
+REF:  M <SPACE> e <SPACE> M <SPACE> O <SPACE> r <SPACE> Y <SPACE> L <space> A <SPACE> n <SPACE> e 
+HYP:  * ******* e ******* * N       T E       r ******* * ******* * <space> * O       n ******* e 
+Eval: D D         D       D S       S S         D       D D       D         D S         D         
+
+id: (fjam-fjam-cen5-b)
+Scores: (#C #S #D #I) 3 8 8 1
+REF:  M <SPACE> C <space> * K <SPACE> e <SPACE> e <SPACE> S <SPACE> P <SPACE> O <SPACE> R <SPACE> T 
+HYP:  O N       E <space> N I N       e T       e ******* * ******* * ******* * ******* * E       N 
+Eval: S S       S         I S S         S         D       D D       D D       D D       D S       S 
+
+id: (fjam-fjam-cen6-b)
+Scores: (#C #S #D #I) 7 1 16 0
+REF:  O n E <SPACE> F i V E <SPACE> O n e <SPACE> t H R E e <SPACE> T H R e E 
+HYP:  * n * ******* * i * * ******* * n e ******* t * * * e ******* * * * e N 
+Eval: D   D D       D   D D D       D     D         D D D   D       D D D   S 
+
+id: (fjam-fjam-cen7-b)
+Scores: (#C #S #D #I) 5 0 28 0
+REF:  S I X <SPACE> S I X <SPACE> F O U R <SPACE> S E V e n <SPACE> t W O <SPACE> N I N e <SPACE> T H r E E 
+HYP:  * * * ******* * * * ******* * * * * ******* * * * e n ******* t * * ******* * * * e ******* * * r * * 
+Eval: D D D D       D D D D       D D D D D       D D D     D         D D D       D D D   D       D D   D D 
+
+id: (fjam-fjam-cen8-b)
+Scores: (#C #S #D #I) 2 1 28 0
+REF:  M A Y <SPACE> T W E N T Y <SPACE> F I R S T <SPACE> N I n E T E e N <SPACE> S I X T Y 
+HYP:  * * * ******* * * * * * * ******* * * * * * ******* * O n * * * e * ******* * * * * * 
+Eval: D D D D       D D D D D D D       D D D D D D       D S   D D D   D D       D D D D D 
+
+Speaker sentences   6:  fjdn   #utts: 13
+id: (fjdn-fjdn-an121-b)
+Scores: (#C #S #D #I) 1 0 3 0
+REF:  H e L P 
+HYP:  * e * * 
+Eval: D   D D 
+
+id: (fjdn-fjdn-an122-b)
+Scores: (#C #S #D #I) 2 1 21 0
+REF:  E n T E R <SPACE> e I G H T <SPACE> T W O <SPACE> F O U R <SPACE> T W O 
+HYP:  O n * * * ******* e * * * * ******* * * * ******* * * * * ******* * * * 
+Eval: S   D D D D         D D D D D       D D D D       D D D D D       D D D 
+
+id: (fjdn-fjdn-an123-b)
+Scores: (#C #S #D #I) 2 1 13 0
+REF:  E n T e R <SPACE> F I F T Y <SPACE> F O U R 
+HYP:  O n * e * ******* * * * * * ******* * * * * 
+Eval: S   D   D D       D D D D D D       D D D D 
+
+id: (fjdn-fjdn-an124-b)
+Scores: (#C #S #D #I) 3 4 20 0
+REF:  R U B o U T <space> o <SPACE> Q <SPACE> I <SPACE> M <SPACE> I <SPACE> T H I R T Y <SPACE> T W O 
+HYP:  * * * o N E <space> o ******* * ******* * ******* * ******* * ******* * * * * * * ******* * N E 
+Eval: D D D   S S           D       D D       D D       D D       D D       D D D D D D D       D S S 
+
+id: (fjdn-fjdn-an125-b)
+Scores: (#C #S #D #I) 2 1 10 0
+REF:  E n T E R <SPACE> F I F T E e N 
+HYP:  O n * * * ******* * * * * * e * 
+Eval: S   D D D D       D D D D D   D 
+
+id: (fjdn-fjdn-cen1-b)
+Scores: (#C #S #D #I) 2 0 9 1
+REF:  N <SPACE> E <SPACE> L <SPACE> S <SPACE> o <SPACE> n * 
+HYP:  * ******* * ******* * ******* * ******* o ******* n E 
+Eval: D D       D D       D D       D D         D         I 
+
+id: (fjdn-fjdn-cen2-b)
+Scores: (#C #S #D #I) 2 1 12 0
+REF:  J <SPACE> E <SPACE> N <SPACE> n <SPACE> I <SPACE> F <SPACE> e <SPACE> R 
+HYP:  * ******* * ******* * O       n ******* * ******* * ******* e ******* * 
+Eval: D D       D D       D S         D       D D       D D         D       D 
+
+id: (fjdn-fjdn-cen3-b)
+Scores: (#C #S #D #I) 1 2 9 0
+REF:  T H I R T Y <SPACE> T H R E e 
+HYP:  * * * * * * ******* * * O N e 
+Eval: D D D D D D D       D D S S   
+
+id: (fjdn-fjdn-cen4-b)
+Scores: (#C #S #D #I) 1 2 6 0
+REF:  K <SPACE> U <SPACE> n <SPACE> T <SPACE> Z 
+HYP:  * ******* * O       n ******* * ******* E 
+Eval: D D       D S         D       D D       S 
+
+id: (fjdn-fjdn-cen5-b)
+Scores: (#C #S #D #I) 2 3 10 0
+REF:  B <SPACE> E <SPACE> R <SPACE> K <SPACE> e <SPACE> L <SPACE> e <SPACE> Y 
+HYP:  * ******* * ******* * ******* * ******* e ******* N T       e ******* R 
+Eval: D D       D D       D D       D D         D       S S         D       S 
+
+id: (fjdn-fjdn-cen6-b)
+Scores: (#C #S #D #I) 3 0 18 0
+REF:  o H <SPACE> S E V E N <SPACE> N I n e <SPACE> T W O <SPACE> T W O 
+HYP:  o * ******* * * * * * ******* * * n e ******* * * * ******* * * * 
+Eval:   D D       D D D D D D       D D     D       D D D D       D D D 
+
+id: (fjdn-fjdn-cen7-b)
+Scores: (#C #S #D #I) 6 1 36 0
+REF:  T W O <SPACE> O H <SPACE> o n e <SPACE> F O U R <SPACE> S I X <SPACE> F O U R <SPACE> S I X <space> o H <SPACE> E I G H T <SPACE> T H R E e 
+HYP:  * * * ******* * * ******* o n e ******* * * * * ******* * * * ******* * * * * ******* * * * <space> o * ******* * * * * * ******* * * * N e 
+Eval: D D D D       D D D             D       D D D D D       D D D D       D D D D D       D D D           D D       D D D D D D       D D D S   
+
+id: (fjdn-fjdn-cen8-b)
+Scores: (#C #S #D #I) 2 1 29 0
+REF:  M A R C H <SPACE> T W E N T I E T H <SPACE> N I N E T E E n <SPACE> S E V e N T Y 
+HYP:  * * * * * ******* * * * * * * * * * ******* * * * * * * O n ******* * * * e * * * 
+Eval: D D D D D D       D D D D D D D D D D       D D D D D D S   D       D D D   D D D 
+
+Speaker sentences   7:  fjmd   #utts: 13
+id: (fjmd-fjmd-an10-b)
+Scores: (#C #S #D #I) 3 0 14 0
+REF:  G <SPACE> T W o <SPACE> E I G H T Y <SPACE> N I n e 
+HYP:  * ******* * * o ******* * * * * * * ******* * * n e 
+Eval: D D       D D   D       D D D D D D D       D D     
+
+id: (fjmd-fjmd-an6-b)
+Scores: (#C #S #D #I) 1 1 0 1
+REF:  * n O 
+HYP:  O n E 
+Eval: I   S 
+
+id: (fjmd-fjmd-an7-b)
+Scores: (#C #S #D #I) 4 1 21 0
+REF:  O <SPACE> U <SPACE> F O U R <SPACE> S E V e n <SPACE> t W e N T Y <SPACE> N I N E 
+HYP:  * ******* * ******* * * * * ******* * * * e n ******* t * e * * * ******* * * * R 
+Eval: D D       D D       D D D D D       D D D     D         D   D D D D       D D D S 
+
+id: (fjmd-fjmd-an8-b)
+Scores: (#C #S #D #I) 2 1 16 0
+REF:  B <SPACE> S E V E N <SPACE> T W E n T Y <SPACE> F I V e 
+HYP:  * ******* * * * * * ******* * * O n * * ******* * * * e 
+Eval: D D       D D D D D D       D D S   D D D       D D D   
+
+id: (fjmd-fjmd-an9-b)
+Scores: (#C #S #D #I) 2 1 16 0
+REF:  J <SPACE> F o U R <SPACE> T H I R T Y <SPACE> T H R E e 
+HYP:  * ******* * o * * ******* * * * * * * ******* * * * N e 
+Eval: D D       D   D D D       D D D D D D D       D D D S   
+
+id: (fjmd-fjmd-cen1-b)
+Scores: (#C #S #D #I) 0 3 6 0
+REF:  D <SPACE> R <SPACE> A <SPACE> V <SPACE> K 
+HYP:  * ******* * ******* * ******* O N       E 
+Eval: D D       D D       D D       S S       S 
+
+id: (fjmd-fjmd-cen2-b)
+Scores: (#C #S #D #I) 4 3 8 1
+REF:  J <SPACE> E <SPACE> A <SPACE> n <SPACE> e <SPACE> T <SPACE> t <SPACE> e * 
+HYP:  * ******* * ******* N I       n ******* e ******* * ******* t E       e N 
+Eval: D D       D D       S S         D         D       D D         S         I 
+
+id: (fjmd-fjmd-cen3-b)
+Scores: (#C #S #D #I) 3 0 4 0
+REF:  o n E <SPACE> T e N 
+HYP:  o n * ******* * e * 
+Eval:     D D       D   D 
+
+id: (fjmd-fjmd-cen4-b)
+Scores: (#C #S #D #I) 4 5 12 2
+REF:  S <SPACE> P <SPACE> R <SPACE> I <SPACE> n <SPACE> G <SPACE> H <SPACE> O <SPACE> U <space> s * <SPACE> e * 
+HYP:  * ******* * ******* * ******* * E       n ******* * ******* * ******* T E       R <space> s E V       e N 
+Eval: D D       D D       D D       D S         D       D D       D D       S S       S           I S         I 
+
+id: (fjmd-fjmd-cen5-b)
+Scores: (#C #S #D #I) 4 6 13 2
+REF:  W <SPACE> R <space> * i <SPACE> G <SPACE> H <SPACE> t <SPACE> S <SPACE> V <SPACE> I <SPACE> L <SPACE> L <SPACE> e * 
+HYP:  O N       E <space> N i ******* * ******* N E       t ******* * ******* * ******* * ******* * ******* * E       e N 
+Eval: S S       S         I   D       D D       S S         D       D D       D D       D D       D D       D S         I 
+
+id: (fjmd-fjmd-cen6-b)
+Scores: (#C #S #D #I) 3 0 22 0
+REF:  o N E <SPACE> S E V E n <SPACE> T H R E E <SPACE> S I X <SPACE> e I G H T 
+HYP:  o * * ******* * * * * n ******* * * * * * ******* * * * ******* e * * * * 
+Eval:   D D D       D D D D   D       D D D D D D       D D D D         D D D D 
+
+id: (fjmd-fjmd-cen7-b)
+Scores: (#C #S #D #I) 3 1 24 1
+REF:  T W O <SPACE> F I V e <SPACE> T W O <SPACE> T W O <SPACE> O H <SPACE> T W O <SPACE> n I N e * 
+HYP:  * * * ******* * * * e ******* * * * ******* * * * ******* * * ******* * * * ******* n * T e R 
+Eval: D D D D       D D D   D       D D D D       D D D D       D D D       D D D D         D S   I 
+
+id: (fjmd-fjmd-cen8-b)
+Scores: (#C #S #D #I) 4 1 18 0
+REF:  E L E V e N <SPACE> N I n E <SPACE> S I X t Y <SPACE> e I G H T 
+HYP:  * * * * e * ******* * * n * ******* * * * t * ******* e * * * R 
+Eval: D D D D   D D       D D   D D       D D D   D D         D D D S 
+
+

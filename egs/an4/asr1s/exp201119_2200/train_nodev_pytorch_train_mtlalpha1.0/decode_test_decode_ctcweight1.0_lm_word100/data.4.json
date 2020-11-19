@@ -1,0 +1,308 @@
+{
+    "utts": {
+        "marh-cen7-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.591594696044922,
+                    "shape": [
+                        34,
+                        30
+                    ],
+                    "text": "SIX EIGHT THREE SIX ZERO TWO SEVEN",
+                    "token": "S I X <space> E I G H T <space> T H R E E <space> S I X <space> Z E R O <space> T W O <space> S E V E N",
+                    "tokenid": "21 11 26 2 7 11 9 10 22 2 22 10 20 7 7 2 21 11 26 2 28 7 20 17 2 22 25 17 2 21 7 24 7 16"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-cen8-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -22.464574813842773,
+                    "shape": [
+                        30,
+                        30
+                    ],
+                    "text": "MAY SECOND NINETEEN SIXTY FIVE",
+                    "token": "M A Y <space> S E C O N D <space> N I N E T E E N <space> S I X T Y <space> F I V E",
+                    "tokenid": "15 3 27 2 21 7 5 17 16 6 2 16 11 16 7 22 7 7 16 2 21 11 26 22 27 2 8 11 24 7"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "mdms2-an401-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 29",
+                    "score": -32.979278564453125,
+                    "shape": [
+                        25,
+                        30
+                    ],
+                    "text": "ENTER SEVEN ONE FIVE FOUR",
+                    "token": "E N T E R <space> S E V E N <space> O N E <space> F I V E <space> F O U R",
+                    "tokenid": "7 16 22 7 20 2 21 7 24 7 16 2 17 16 7 2 8 11 24 7 2 8 17 23 20"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-an402-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NO<eos>",
+                    "rec_token": "N O <eos>",
+                    "rec_tokenid": "16 17 29",
+                    "score": -13.45412540435791,
+                    "shape": [
+                        2,
+                        30
+                    ],
+                    "text": "NO",
+                    "token": "N O",
+                    "tokenid": "16 17"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-an403-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE NINETEEN<eos>",
+                    "rec_token": "O N E <space> N I N E T E E N <eos>",
+                    "rec_tokenid": "17 16 7 2 16 11 16 7 22 7 7 16 29",
+                    "score": -41.71124267578125,
+                    "shape": [
+                        27,
+                        30
+                    ],
+                    "text": "G F T U ONE THREE THREE TWO",
+                    "token": "G <space> F <space> T <space> U <space> O N E <space> T H R E E <space> T H R E E <space> T W O",
+                    "tokenid": "9 2 8 2 22 2 23 2 17 16 7 2 22 10 20 7 7 2 22 10 20 7 7 2 22 25 17"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-an404-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.46329116821289,
+                    "shape": [
+                        20,
+                        30
+                    ],
+                    "text": "L K K N THIRTY EIGHT",
+                    "token": "L <space> K <space> K <space> N <space> T H I R T Y <space> E I G H T",
+                    "tokenid": "14 2 13 2 13 2 16 2 22 10 11 20 22 27 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-an405-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE TWO ONE TWO<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> T W O <space> O N E <space> T W O <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 22 25 17 2 17 16 7 2 22 25 17 29",
+                    "score": -66.14167785644531,
+                    "shape": [
+                        33,
+                        30
+                    ],
+                    "text": "RUBOUT V Z J H P SEVEN THIRTY SIX",
+                    "token": "R U B O U T <space> V <space> Z <space> J <space> H <space> P <space> S E V E N <space> T H I R T Y <space> S I X",
+                    "tokenid": "20 23 4 17 23 22 2 24 2 28 2 12 2 10 2 18 2 21 7 24 7 16 2 22 10 11 20 22 27 2 21 11 26"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen1-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE SEVEN<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> S E V E N <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 21 7 24 7 16 29",
+                    "score": -48.96613311767578,
+                    "shape": [
+                        13,
+                        30
+                    ],
+                    "text": "S A N D L E R",
+                    "token": "S <space> A <space> N <space> D <space> L <space> E <space> R",
+                    "tokenid": "21 2 3 2 16 2 6 2 14 2 7 2 20"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen2-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.675325393676758,
+                    "shape": [
+                        9,
+                        30
+                    ],
+                    "text": "D A V I D",
+                    "token": "D <space> A <space> V <space> I <space> D",
+                    "tokenid": "6 2 3 2 24 2 11 2 6"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen3-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -14.587431907653809,
+                    "shape": [
+                        9,
+                        30
+                    ],
+                    "text": "TWO FORTY",
+                    "token": "T W O <space> F O R T Y",
+                    "tokenid": "22 25 17 2 8 17 20 22 27"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen4-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE ONE TWO ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> O N E <space> T W O <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 17 16 7 2 22 25 17 2 17 16 7 29",
+                    "score": -66.43318176269531,
+                    "shape": [
+                        19,
+                        30
+                    ],
+                    "text": "W I L L O W B E N D",
+                    "token": "W <space> I <space> L <space> L <space> O <space> W <space> B <space> E <space> N <space> D",
+                    "tokenid": "25 2 11 2 14 2 14 2 17 2 25 2 4 2 7 2 16 2 6"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen5-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE ONE TWO ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> O N E <space> T W O <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 17 16 7 2 22 25 17 2 17 16 7 29",
+                    "score": -65.91851043701172,
+                    "shape": [
+                        17,
+                        30
+                    ],
+                    "text": "R O C H E S T E R",
+                    "token": "R <space> O <space> C <space> H <space> E <space> S <space> T <space> E <space> R",
+                    "tokenid": "20 2 17 2 5 2 10 2 7 2 21 2 22 2 7 2 20"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen6-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 29",
+                    "score": -32.64771270751953,
+                    "shape": [
+                        22,
+                        30
+                    ],
+                    "text": "ONE FOUR SIX ONE EIGHT",
+                    "token": "O N E <space> F O U R <space> S I X <space> O N E <space> E I G H T",
+                    "tokenid": "17 16 7 2 8 17 23 20 2 21 11 26 2 17 16 7 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen7-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE TWO ONE ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> T W O <space> O N E <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 22 25 17 2 17 16 7 2 17 16 7 29",
+                    "score": -66.59249877929688,
+                    "shape": [
+                        46,
+                        30
+                    ],
+                    "text": "SEVEN ONE SIX TWO FOUR FOUR SIX SEVEN ONE FOUR",
+                    "token": "S E V E N <space> O N E <space> S I X <space> T W O <space> F O U R <space> F O U R <space> S I X <space> S E V E N <space> O N E <space> F O U R",
+                    "tokenid": "21 7 24 7 16 2 17 16 7 2 21 11 26 2 22 25 17 2 8 17 23 20 2 8 17 23 20 2 21 11 26 2 21 7 24 7 16 2 17 16 7 2 8 17 23 20"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "mdms2-cen8-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.3107967376709,
+                    "shape": [
+                        32,
+                        30
+                    ],
+                    "text": "MARCH SEVEN NINETEEN SIXTY SEVEN",
+                    "token": "M A R C H <space> S E V E N <space> N I N E T E E N <space> S I X T Y <space> S E V E N",
+                    "tokenid": "15 3 20 5 10 2 21 7 24 7 16 2 16 11 16 7 22 7 7 16 2 21 11 26 22 27 2 21 7 24 7 16"
+                }
+            ],
+            "utt2spk": "mdms2"
+        },
+        "menk-an421-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -15.65096378326416,
+                    "shape": [
+                        16,
+                        30
+                    ],
+                    "text": "ENTER TWENTY ONE",
+                    "token": "E N T E R <space> T W E N T Y <space> O N E",
+                    "tokenid": "7 16 22 7 20 2 22 25 7 16 22 27 2 17 16 7"
+                }
+            ],
+            "utt2spk": "menk"
+        }
+    }
+}

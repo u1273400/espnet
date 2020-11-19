@@ -1,0 +1,308 @@
+{
+    "utts": {
+        "fvap-cen4-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.473047256469727,
+                    "shape": [
+                        13,
+                        30
+                    ],
+                    "text": "W I L L E T T",
+                    "token": "W <space> I <space> L <space> L <space> E <space> T <space> T",
+                    "tokenid": "25 2 11 2 14 2 14 2 7 2 22 2 22"
+                }
+            ],
+            "utt2spk": "fvap"
+        },
+        "fvap-cen5-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 29",
+                    "score": -32.40481185913086,
+                    "shape": [
+                        17,
+                        30
+                    ],
+                    "text": "B R E N T W O O D",
+                    "token": "B <space> R <space> E <space> N <space> T <space> W <space> O <space> O <space> D",
+                    "tokenid": "4 2 20 2 7 2 16 2 22 2 25 2 17 2 17 2 6"
+                }
+            ],
+            "utt2spk": "fvap"
+        },
+        "fvap-cen6-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -15.886954307556152,
+                    "shape": [
+                        22,
+                        30
+                    ],
+                    "text": "ONE FIVE TWO TWO SEVEN",
+                    "token": "O N E <space> F I V E <space> T W O <space> T W O <space> S E V E N",
+                    "tokenid": "17 16 7 2 8 11 24 7 2 22 25 17 2 22 25 17 2 21 7 24 7 16"
+                }
+            ],
+            "utt2spk": "fvap"
+        },
+        "fvap-cen7-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -21.98514175415039,
+                    "shape": [
+                        37,
+                        30
+                    ],
+                    "text": "EIGHT EIGHT FOUR THREE SIX FOUR EIGHT",
+                    "token": "E I G H T <space> E I G H T <space> F O U R <space> T H R E E <space> S I X <space> F O U R <space> E I G H T",
+                    "tokenid": "7 11 9 10 22 2 7 11 9 10 22 2 8 17 23 20 2 22 10 20 7 7 2 21 11 26 2 8 17 23 20 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "fvap"
+        },
+        "fvap-cen8-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -21.950218200683594,
+                    "shape": [
+                        26,
+                        30
+                    ],
+                    "text": "TEN TWENTY SEVEN SIXTY TWO",
+                    "token": "T E N <space> T W E N T Y <space> S E V E N <space> S I X T Y <space> T W O",
+                    "tokenid": "22 7 16 2 22 25 7 16 22 27 2 21 7 24 7 16 2 21 11 26 22 27 2 22 25 17"
+                }
+            ],
+            "utt2spk": "fvap"
+        },
+        "marh-an431-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE NINETEEN<eos>",
+                    "rec_token": "O N E <space> N I N E T E E N <eos>",
+                    "rec_tokenid": "17 16 7 2 16 11 16 7 22 7 7 16 29",
+                    "score": -41.308433532714844,
+                    "shape": [
+                        31,
+                        30
+                    ],
+                    "text": "RUBOUT N S V H T SIX FORTY NINE",
+                    "token": "R U B O U T <space> N <space> S <space> V <space> H <space> T <space> S I X <space> F O R T Y <space> N I N E",
+                    "tokenid": "20 23 4 17 23 22 2 16 2 21 2 24 2 10 2 22 2 21 11 26 2 8 17 20 22 27 2 16 11 16 7"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-an432-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -18.096677780151367,
+                    "shape": [
+                        13,
+                        30
+                    ],
+                    "text": "X N K U EIGHT",
+                    "token": "X <space> N <space> K <space> U <space> E I G H T",
+                    "tokenid": "26 2 16 2 13 2 23 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-an433-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.29338264465332,
+                    "shape": [
+                        29,
+                        30
+                    ],
+                    "text": "ENTER FOUR FIVE EIGHT TWO ONE",
+                    "token": "E N T E R <space> F O U R <space> F I V E <space> E I G H T <space> T W O <space> O N E",
+                    "tokenid": "7 16 22 7 20 2 8 17 23 20 2 8 11 24 7 2 7 11 9 10 22 2 22 25 17 2 17 16 7"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-an434-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE SEVEN<eos>",
+                    "rec_token": "E N T E R <space> O N E <space> S E V E N <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 2 21 7 24 7 16 29",
+                    "score": -49.004859924316406,
+                    "shape": [
+                        33,
+                        30
+                    ],
+                    "text": "ERASE P Q Y V T FIVE NINETY EIGHT",
+                    "token": "E R A S E <space> P <space> Q <space> Y <space> V <space> T <space> F I V E <space> N I N E T Y <space> E I G H T",
+                    "tokenid": "7 20 3 21 7 2 18 2 19 2 27 2 24 2 22 2 8 11 24 7 2 16 11 16 7 22 27 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-an435-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -16.75766372680664,
+                    "shape": [
+                        18,
+                        30
+                    ],
+                    "text": "ENTER TWO EIGHTEEN",
+                    "token": "E N T E R <space> T W O <space> E I G H T E E N",
+                    "tokenid": "7 16 22 7 20 2 22 25 17 2 7 11 9 10 22 7 7 16"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-cen1-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -21.88883399963379,
+                    "shape": [
+                        11,
+                        30
+                    ],
+                    "text": "H O U S E R",
+                    "token": "H <space> O <space> U <space> S <space> E <space> R",
+                    "tokenid": "10 2 17 2 23 2 21 2 7 2 20"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-cen2-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -15.56367015838623,
+                    "shape": [
+                        7,
+                        30
+                    ],
+                    "text": "A L A N",
+                    "token": "A <space> L <space> A <space> N",
+                    "tokenid": "3 2 14 2 3 2 16"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-cen3-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -15.860322952270508,
+                    "shape": [
+                        18,
+                        30
+                    ],
+                    "text": "FIFTY TWO NINETEEN",
+                    "token": "F I F T Y <space> T W O <space> N I N E T E E N",
+                    "tokenid": "8 11 8 22 27 2 22 25 17 2 16 11 16 7 22 7 7 16"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-cen4-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -21.905040740966797,
+                    "shape": [
+                        11,
+                        30
+                    ],
+                    "text": "C E N T R E",
+                    "token": "C <space> E <space> N <space> T <space> R <space> E",
+                    "tokenid": "5 2 7 2 16 2 22 2 20 2 7"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-cen5-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER SEVEN<eos>",
+                    "rec_token": "E N T E R <space> S E V E N <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 21 7 24 7 16 29",
+                    "score": -38.20261764526367,
+                    "shape": [
+                        19,
+                        30
+                    ],
+                    "text": "P I T T S B U R G H",
+                    "token": "P <space> I <space> T <space> T <space> S <space> B <space> U <space> R <space> G <space> H",
+                    "tokenid": "18 2 11 2 22 2 22 2 21 2 4 2 23 2 20 2 9 2 10"
+                }
+            ],
+            "utt2spk": "marh"
+        },
+        "marh-cen6-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -17.89341163635254,
+                    "shape": [
+                        22,
+                        30
+                    ],
+                    "text": "ONE FIVE TWO THREE TWO",
+                    "token": "O N E <space> F I V E <space> T W O <space> T H R E E <space> T W O",
+                    "tokenid": "17 16 7 2 8 11 24 7 2 22 25 17 2 22 10 20 7 7 2 22 25 17"
+                }
+            ],
+            "utt2spk": "marh"
+        }
+    }
+}

@@ -55,17 +55,17 @@ set -u
 set -o pipefail
 
 #do-scatter
-if [ ${do_scatter} = true ]; then
-  echo 'getting scatter data'
-  cp dump/test/deltafalse/scat.json dump/test/deltafalse/data.json
-  cp dump/train_nodev/deltafalse/scat.json dump/train_nodev/deltafalse/data.json
-  cp dump/train_dev/deltafalse/scat.json dump/train_dev/deltafalse/data.json
-else
-  echo 'using original data'
-  cp dump/test/deltafalse/prev.json dump/test/deltafalse/data.json
-  cp dump/train_nodev/deltafalse/prev.json dump/train_nodev/deltafalse/data.json
-  cp dump/train_dev/deltafalse/prev.json dump/train_dev/deltafalse/data.json
-fi
+#if [ ${do_scatter} = true ]; then
+#  echo 'getting scatter data'
+#  cp dump/test/deltafalse/scat.json dump/test/deltafalse/data.json
+#  cp dump/train_nodev/deltafalse/scat.json dump/train_nodev/deltafalse/data.json
+#  cp dump/train_dev/deltafalse/scat.json dump/train_dev/deltafalse/data.json
+#else
+#  echo 'using original data'
+#  cp dump/test/deltafalse/prev.json dump/test/deltafalse/data.json
+#  cp dump/train_nodev/deltafalse/prev.json dump/train_nodev/deltafalse/data.json
+#  cp dump/train_dev/deltafalse/prev.json dump/train_dev/deltafalse/data.json
+#fi
 
 
 train_set="train_nodev"

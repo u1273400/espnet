@@ -1,0 +1,18 @@
+[
+    {
+        "main/loss_ctc": 72.07614743232728,
+        "main/cer_ctc": 1.003312566812133,
+        "main/cer": 0.0,
+        "main/wer": 0.0,
+        "main/loss": 72.07614743232728,
+        "validation/main/loss_ctc": 65.37204246520996,
+        "validation/main/cer_ctc": 0.9752551114358167,
+        "validation/main/cer": 0.0,
+        "validation/main/wer": 0.0,
+        "validation/main/loss": 65.37204246520996,
+        "eps": 1e-08,
+        "epoch": 2,
+        "iteration": 100,
+        "elapsed_time": 40.78389803878963
+    }
+]

@@ -22,10 +22,7 @@ from kaldiio import WriteHelper
 from scipy.fftpack import fft
 import sys
 import torch
-from torch_complex import ComplexTensor
-
 import json
-# import matplotlib.pyplot as plt
 import kaldiio
 
 if len(sys.argv) != 3:

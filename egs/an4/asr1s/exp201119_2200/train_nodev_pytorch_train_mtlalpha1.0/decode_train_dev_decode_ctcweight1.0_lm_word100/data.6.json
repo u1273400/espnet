@@ -1,0 +1,232 @@
+{
+    "utts": {
+        "fjam-an79-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 29",
+                    "score": -32.51700210571289,
+                    "shape": [
+                        30,
+                        30
+                    ],
+                    "text": "RUBOUT J U I P THREE TWO EIGHT",
+                    "token": "R U B O U T <space> J <space> U <space> I <space> P <space> T H R E E <space> T W O <space> E I G H T",
+                    "tokenid": "20 23 4 17 23 22 2 12 2 23 2 11 2 18 2 22 10 20 7 7 2 22 25 17 2 7 11 9 10 22"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-an80-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -13.813508033752441,
+                    "shape": [
+                        4,
+                        30
+                    ],
+                    "text": "STOP",
+                    "token": "S T O P",
+                    "tokenid": "21 22 17 18"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen1-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -22.454944610595703,
+                    "shape": [
+                        13,
+                        30
+                    ],
+                    "text": "M A R N E L L",
+                    "token": "M <space> A <space> R <space> N <space> E <space> L <space> L",
+                    "tokenid": "15 2 3 2 20 2 16 2 7 2 14 2 14"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen2-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -15.627007484436035,
+                    "shape": [
+                        9,
+                        30
+                    ],
+                    "text": "J U L I E",
+                    "token": "J <space> U <space> L <space> I <space> E",
+                    "tokenid": "12 2 23 2 14 2 11 2 7"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen3-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -16.720548629760742,
+                    "shape": [
+                        16,
+                        30
+                    ],
+                    "text": "SEVEN FIFTY FIVE",
+                    "token": "S E V E N <space> F I F T Y <space> F I V E",
+                    "tokenid": "21 7 24 7 16 2 8 11 8 22 27 2 8 11 24 7"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen4-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER ONE<eos>",
+                    "rec_token": "E N T E R <space> O N E <eos>",
+                    "rec_tokenid": "7 16 22 7 20 2 17 16 7 29",
+                    "score": -33.03739929199219,
+                    "shape": [
+                        19,
+                        30
+                    ],
+                    "text": "M E M O R Y L A N E",
+                    "token": "M <space> E <space> M <space> O <space> R <space> Y <space> L <space> A <space> N <space> E",
+                    "tokenid": "15 2 7 2 15 2 17 2 20 2 27 2 14 2 3 2 16 2 7"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen5-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE NINETEEN<eos>",
+                    "rec_token": "O N E <space> N I N E T E E N <eos>",
+                    "rec_tokenid": "17 16 7 2 16 11 16 7 22 7 7 16 29",
+                    "score": -41.480743408203125,
+                    "shape": [
+                        19,
+                        30
+                    ],
+                    "text": "M C K E E S P O R T",
+                    "token": "M <space> C <space> K <space> E <space> E <space> S <space> P <space> O <space> R <space> T",
+                    "tokenid": "15 2 5 2 13 2 7 2 7 2 21 2 18 2 17 2 20 2 22"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen6-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "NINETEEN<eos>",
+                    "rec_token": "N I N E T E E N <eos>",
+                    "rec_tokenid": "16 11 16 7 22 7 7 16 29",
+                    "score": -30.269485473632812,
+                    "shape": [
+                        24,
+                        30
+                    ],
+                    "text": "ONE FIVE ONE THREE THREE",
+                    "token": "O N E <space> F I V E <space> O N E <space> T H R E E <space> T H R E E",
+                    "tokenid": "17 16 7 2 8 11 24 7 2 17 16 7 2 22 10 20 7 7 2 22 10 20 7 7"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen7-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ENTER<eos>",
+                    "rec_token": "E N T E R <eos>",
+                    "rec_tokenid": "7 16 22 7 20 29",
+                    "score": -22.601600646972656,
+                    "shape": [
+                        33,
+                        30
+                    ],
+                    "text": "SIX SIX FOUR SEVEN TWO NINE THREE",
+                    "token": "S I X <space> S I X <space> F O U R <space> S E V E N <space> T W O <space> N I N E <space> T H R E E",
+                    "tokenid": "21 11 26 2 21 11 26 2 8 17 23 20 2 21 7 24 7 16 2 22 25 17 2 16 11 16 7 2 22 10 20 7 7"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjam-cen8-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -17.849712371826172,
+                    "shape": [
+                        31,
+                        30
+                    ],
+                    "text": "MAY TWENTY FIRST NINETEEN SIXTY",
+                    "token": "M A Y <space> T W E N T Y <space> F I R S T <space> N I N E T E E N <space> S I X T Y",
+                    "tokenid": "15 3 27 2 22 25 7 16 22 27 2 8 11 20 21 22 2 16 11 16 7 22 7 7 16 2 21 11 26 22 27"
+                }
+            ],
+            "utt2spk": "fjam"
+        },
+        "fjdn-an121-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "E<eos>",
+                    "rec_token": "E <eos>",
+                    "rec_tokenid": "7 29",
+                    "score": -12.126479148864746,
+                    "shape": [
+                        4,
+                        30
+                    ],
+                    "text": "HELP",
+                    "token": "H E L P",
+                    "tokenid": "10 7 14 18"
+                }
+            ],
+            "utt2spk": "fjdn"
+        },
+        "fjdn-an122-b": {
+            "output": [
+                {
+                    "name": "target1[1]",
+                    "rec_text": "ONE<eos>",
+                    "rec_token": "O N E <eos>",
+                    "rec_tokenid": "17 16 7 29",
+                    "score": -15.94580364227295,
+                    "shape": [
+                        24,
+                        30
+                    ],
+                    "text": "ENTER EIGHT TWO FOUR TWO",
+                    "token": "E N T E R <space> E I G H T <space> T W O <space> F O U R <space> T W O",
+                    "tokenid": "7 16 22 7 20 2 7 11 9 10 22 2 22 25 17 2 8 17 23 20 2 22 25 17"
+                }
+            ],
+            "utt2spk": "fjdn"
+        }
+    }
+}
