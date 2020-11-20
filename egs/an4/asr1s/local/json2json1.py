@@ -64,7 +64,7 @@ for i, utt in enumerate(js_items):
     mat = Sx[order1].transpose()
     jso['utts'][key]["input"][0]["shape"] = mat.shape
     jso['utts'][key]["input"][0]["feat"] = wav
-    truncated[key]=jso['utts'][key]
+    truncated[key] = jso['utts'][key]
     pickle.dump(mat, open(wav, "wb"))
 
 jso['utts'] = truncated
