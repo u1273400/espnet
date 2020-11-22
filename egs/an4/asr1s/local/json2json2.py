@@ -47,7 +47,8 @@ with open("data/%s/wav.scp" % in_target, "r") as f:
         ar = l.split(' ')
         d[ar[0]] = ' '.join(ar[1:len(ar) - 1])
 
-truncated={}
+truncated = {}
+
 with open(infile, "r") as f:
     jso = json.load(f)
     js_items = list(jso['utts'].items())

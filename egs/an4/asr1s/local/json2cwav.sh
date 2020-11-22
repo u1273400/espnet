@@ -39,7 +39,7 @@ if [ ! -f ${an4_root}/README ]; then
 fi
 
 for x in $test_set $dev_set $train_set; do
-  local/json2json2.py $x ${dumpdir}/${x}/deltafalse/scat.json
+  local/json2json1.py $x ${dumpdir}/${x}/deltafalse/scat.json
 done
 
 echo 'Complete!'
