@@ -10,14 +10,51 @@ from kymatio.torch import Scattering1D
 import pickle
 from collections import namedtuple
 import logging
+#from recordclass import recordclass, RecordClass
+from types import SimpleNamespace
 
-ScatterStruct = namedtuple('ScatterStruct', 'feat, key, shape, mat, root, scat, data')
+
+scl = SimpleNamespace(ScatterStruct='ScatterStruct')
+
+# class ScatterStruct(RecordClass):
+#    feat: str
+#    key: str
+#    shape: tuple
+#    mat: list
+#    root: str
+#    scat: np.ndarray
+#    data: torch.Tensor
+
+ScatterStruct = namedtuple('ScatterStruct', 'feat, key, shape, mat, root, data')
+
+
+def load_func(sc):
+    s = ScatterStruct(feat=sc.feat if hasattr(sc, 'feat') else 'None',
+                      key=sc.key if hasattr(sc, 'key') else 'None',
+                      mat=sc.mat if hasattr(sc, 'mat') else np.zeros(2**16),
+                      root=sc.root if hasattr(sc, 'root') else 'None',
+                      shape=sc.shape if hasattr(sc, 'shape') else [],
+                      # scat=sc.scat if hasattr(sc, 'scat') else torch.zeros(2**16),
+                      data=sc.data if hasattr(sc, 'data') else torch.zeros(2**16)
+                      )
+    return s # you can return a tuple or whatever you want it to
+
+
+def load_scl(feat, key, mat, root, shape, data):
+    scl.feat = feat
+    scl.key = key
+    scl.mat = mat
+    scl.root = root
+    scl.shape = shape
+    scl.data = data
+    return scl
+
 
 class ScatterSaveDataset(Dataset):
     """Face Landmarks dataset."""
 
     def __init__(self, in_target, root_dir="/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/data" \
-                                           "/wavs/", transform=None):
+                                           "/wavs/", transform=None, load_func=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -29,6 +66,7 @@ class ScatterSaveDataset(Dataset):
         self.d = {}
         infile = 'dump/%s/deltafalse/data.json' % in_target
         self.transform = transform
+        self.load_func = load_func
 
         assert os.path.isfile(infile), f'ScatterSaveDataset: {infile} does not exist. Regenerate features'
         source_files = "data/%s/wav.scp" % in_target
@@ -45,6 +83,7 @@ class ScatterSaveDataset(Dataset):
         with open(infile, "r") as f:
             jso = json.load(f)
             self.js_items = list(jso['utts'].items())
+            self.json = jso['utts']
 
     def __len__(self):
         return len(self.js_items)
@@ -56,6 +95,8 @@ class ScatterSaveDataset(Dataset):
             sample = self.transform(k, self.d, self.root_dir)
             pad = PadLastDimTo()
             sample = pad([sample])[0]
+        if self.load_func:
+            sample = load_func(sample)
         return sample
 
 
@@ -71,11 +112,11 @@ class Json2Obj:
         assert os.path.isfile(path), f'Json2Obj: {path} does not exist'
         assert os.path.isdir(root), f'Json2Obj: {root} does not exist'
         _, x = kaldiio.load_mat(path)
-        s = ScatterStruct(feat=f'{root}{k}.mat',
-                          key=k,
-                          mat=x,
-                          root=root)
-        return s
+        scl.feat = f'{root}{k}.mat'
+        scl.key = k
+        scl.mat = x
+        scl.root = root
+        return scl
 
 
 class PSerialize:
@@ -94,10 +135,10 @@ class PSerialize:
         Returns:
             Tensor: Tensorized Tensor.
         """
-        assert type(tensor) is list and tensor[0].data.dim() == 2 and len(tensor[0]) == 7 and type(tensor[0]) is ScatterStruct, \
+        assert type(tensor) is ScatterStruct and len(tensor.shape[0]) == 2 and tensor.data[0].dim() == 2 and len(tensor) == 6 and type(tensor[0]) is tuple, \
             f'PSerialise: tensor has invalid data format: {tensor}'
-        for i in tensor:
-            pickle.dump(i.data, i.feat)
+        for i, data in enumerate(tensor.data):
+            pickle.dump(data, open(tensor.feat[i], "wb"))
         return tensor
 
 
@@ -111,7 +152,7 @@ class PadLastDimTo:
 
     def __call__(self, sslist):
         x_all = torch.zeros(len(sslist), self.T, dtype=torch.float32)
-        logging.debug(f'sslist[0].mat is {type(sslist[0].mat)}')
+        #logging.debug(f'sslist[0] is {type(sslist[0])}')
         assert type(sslist) is list and type(sslist[0].mat) is np.ndarray, f'PadLastDimTo: input list has an invalid format: {sslist}'
 
         for k, f in enumerate(sslist):
@@ -133,7 +174,7 @@ class PadLastDimTo:
             start = (self.T - x.numel()) // 2
 
             x_all[k, start: start + x.numel()] = x
-            sslist[k].scat = x_all
+            sslist[k].mat = x_all
 
             return sslist
 
@@ -145,7 +186,7 @@ class ToScatter:
     # def __init__(self):
     #     self.max = 255
 
-    def __call__(self, tensor):
+    def __call__(self, t):
         """
         Args:
             tensor (Tensor): Tensor of size (B, F, L) to be tensorized.
@@ -153,40 +194,43 @@ class ToScatter:
         Returns:
             Tensor: Tensorized Tensor.
         """
-        assert type(tensor) is list and len(tensor)>0 and type(tensor[0]) is ScatterStruct \
-               and type(tensor[0].scat) is torch.Tensor, \
-            f'ToScatter: error in input tensor format {tensor}'
-        for i, mat in enumerate(scatter_for(tensor)):
-            tensor[i].data = mat.transpose()
-            tensor[i].shape = tensor[i].shape
+        assert type(t) is ScatterStruct and len(t.mat[0]) > 0 and type(t[0]) is tuple \
+               and type(t.mat[0]) is torch.Tensor, \
+            f'ToScatter: error in input tensor format {t}'
+        result = scatter_for(t.mat)
+        data = [torch.transpose(mat, 0, 1) for mat in result]
+        shape = [mat.shape for mat in data]
+        logging.debug(f'ToScatter: data shape={shape[0]}')
+        ss = load_func(load_scl(t.feat, t.key, t.mat, t.root, shape, data))
+        return ss
 
-        return tensor
 
+def scatter_for(x_all):
 
-def scatter_for(tensor, size=2 ** 16):
-    sslist = [i.scat for i in tensor]
-
-    T = size
+    T = x_all.size(-1)
     J = 8
     Q = 12
-    use_cuda = torch.cuda.is_available()
-    # x_all = torch.zeros(len(list),T, dtype=torch.float32)
-    x_all = torch.Tensor(len(sslist), T)
-    torch.stack(sslist, out=x_all)
+
+    # x_all = torch.Tensor(len(tensor.mat), T)
+    # torch.stack(sslist, out=x_all)
 
     log_eps = 1e-6
 
     scattering = Scattering1D(J, T, Q)
-    use_cuda = torch.cuda.is_available()
 
-    if use_cuda:
+    if torch.cuda.is_available():
         scattering.cuda()
-        x_all = tensor.cuda()
+        x_all = x_all.mat.cuda()
 
+    # logging.debug(f'scatter_for: mat shape bef={x_all.shape}')
     sx_all = scattering.forward(x_all)
-    sx_all = sx_all[:, 1:, :]
-    sx_all = torch.log(torch.abs(sx_all) + log_eps)
-    sx_tr = torch.mean(sx_all, dim=-1)
+    # sx_all = sx_all[:, 1:, :]
+    logging.debug(f'scatter_for: scatter transform aft={sx_all.shape}')
+    sx_all = sx_all[:, :, np.where(scattering.meta()['order'] == 2)]
+    sx_all = sx_all.squeeze()
+    sx_tr = torch.log(torch.abs(sx_all) + log_eps)
+    # sx_tr = torch.mean(sx_all, dim=-1)
+    logging.debug(f'scatter_for: scatter transform d-1={sx_tr.shape}')
 
     mu_tr = sx_tr.mean(dim=0)
     std_tr = sx_tr.std(dim=0)

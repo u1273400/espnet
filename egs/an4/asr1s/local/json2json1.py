@@ -23,12 +23,16 @@ import sys
 import torch
 from torchvision import transforms
 
-from egs.an4.asr1s.local.batch_transforms import ScatterSaveDataset, ToScatter, Json2Obj
+from batch_transforms import ScatterSaveDataset, ToScatter, Json2Obj, load_func, PSerialize
 
 
+'''
+   Stage 0 Initialisation
+'''
 level = os.getenv('log_level', 'info').upper()
 
-logging.basicConfig(level=(logging.DEBUG if level == 'DEBUG' else logging.INFO))  # filename='example.log', encoding='utf-8',
+logging.basicConfig(
+    level=(logging.DEBUG if level == 'DEBUG' else logging.INFO))  # filename='example.log', encoding='utf-8',
 
 if len(sys.argv) != 3:
     print("Usage: python json2json1.py [target] [outfile]")
@@ -38,34 +42,49 @@ outfile = sys.argv[2]
 root_dir = "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/data" \
            "/wavs/"
 
+
+'''
+   Stage 1 Batchifying
+'''
 logging.info("Stage 1: Batchifying..")
 scatter = ScatterSaveDataset(in_target
                              , root_dir=root_dir
                              , transform=Json2Obj()
+                             , load_func=load_func
                              )
-dataloader = torch.utils.data.DataLoader(scatter, batch_size=40,
-                                    shuffle=True, num_workers=2)
+dataloader = torch.utils.data.DataLoader(scatter, batch_size=50,
+                                         shuffle=False, num_workers=16)
+
+'''
+    Stage 2: Scatter Computation
+'''
 transform_batch = transforms.Compose([
-    # PadLastDimTo(),
-    ToScatter()])
+    ToScatter(),
+    PSerialize()])
 
-logging.info("Stage 2: Scatter Comptation..")
+logging.info(f"Stage 2: Scatter Comptation..")  # {[i.mat.size for i in scatter]}
 for i, sslist in enumerate(dataloader):
-    logging.info('computing scatter coefficients for batch %d of %d' % (i, len(dataloader)), flush=True)
-    output = transform_batch(sslist)
+    logging.info('computing scatter coefficients for batch %d of %d' % (i + 1, len(dataloader)))
+    transform_batch(sslist)
 
+
+'''
+    Stage 3: Export to Json
+'''
+logging.info("Stage 3: Exporting to json..")
 truncated = {}
-logging.info("Stage 3: Exporting to json..", flush=True)
-for i, utt in enumerate(output):
-    if i % 100 == 0:
-        print("total processed = %d of %d " % (i, len(scatter.js_items)))
-    scatter.js_items[utt.key]["input"][0]["shape"] = utt.shape
-    scatter.js_items[utt.key]["input"][0]["feat"] = utt.feat
 
-truncated['utts'] = scatter.js_items
+for i, utt in enumerate(scatter):
+    if i % 100 == 0:
+        logging.info(f"total processed = %d of %d " % (i, len(scatter)))
+        logging.info(f"sample data ={utt.key} {len(utt.shape)} {utt.feat}" )
+    scatter.json[utt.key]["input"][0]["shape"] = utt.shape[0]
+    scatter.json[utt.key]["input"][0]["feat"] = utt.feat
+
+truncated['utts'] = scatter.json
 with open(outfile, "w") as f:
     json.dump(truncated, f)
 
 
 def start_log():
-    logging.basicConfig(encoding='utf-8', level=logging.DEBUG) #filename='example.log',
+    logging.basicConfig(encoding='utf-8', level=logging.DEBUG)  # filename='example.log',
