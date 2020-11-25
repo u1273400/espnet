@@ -50,3 +50,4 @@ stage 4: Network Training
 getting scatter data
 dictionary: data/lang_1char/train_nodev_units.txt
 stage 4: Network Training
+bash: ./run: No such file or directory

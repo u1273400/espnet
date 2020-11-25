@@ -38,11 +38,17 @@ if [ ! -f ${an4_root}/README ]; then
   exit 1
 fi
 
+SECONDS=0
+a=$SECONDS
+diff=0
 for x in $test_set $dev_set $train_set; do
   local/json2json1.py $x ${dumpdir}/${x}/deltafalse/scat.json
+  diff=$(( SECONDS - a ))
+  echo "$(($diff / 3600)) hours, $((($diff / 60) % 60)) minutes and $(($diff % 60)) seconds elapsed."
 done
 
-echo 'Complete!'
+diff=$(( SECONDS - a ))
+echo "Completed in $(($diff / 3600)) hours, $((($diff / 60) % 60)) minutes and $(($diff % 60)) seconds."
 
 #for x in test train; do
 #    for f in text wav.scp utt2spk; do

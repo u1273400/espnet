@@ -1,36 +1,50 @@
-#!/usr/bin/env python3
-import time
-import os
-from subprocess import Popen, PIPE
-import urllib.request
-import json
+import email, smtplib, ssl
 
-body = {'ids': [12, 14, 50]}
-myurl = "http://www.testmycode.com"
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
-req = urllib.request.Request(myurl)
-req.add_header('Content-Type', 'application/json; charset=utf-8')
-jsondata = json.dumps(body)
-jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
-req.add_header('Content-Length', len(jsondataasbytes))
-response = urllib.request.urlopen(req, jsondataasbytes)
+subject = "An email with attachment from Python"
+body = "This is an email with attachment sent from Python"
+sender_email = "my@gmail.com"
+receiver_email = "your@gmail.com"
+password = input("Type your password and press enter:")
 
-x={'channel': "@jesusluvsu",
-   'username': 'espnet  research',
-   'text': 'test'
-   }
-curl = '''
-curl -X POST --data-urlencode 'payload={"channel": "@jesusluvsu", "username": "espnet research", "text": "'"${m}"'"}' https://hooks.slack.com/services/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
-'''
-# % json.dumps(x)
-#print(curl)
+# Create a multipart message and set headers
+message = MIMEMultipart()
+message["From"] = sender_email
+message["To"] = receiver_email
+message["Subject"] = subject
+message["Bcc"] = receiver_email  # Recommended for mass emails
 
+# Add body to email
+message.attach(MIMEText(body, "plain"))
 
-process = Popen(["ls", "-la", "."], stdout=PIPE)
-(output, err) = process.communicate()
-exit_code = process.wait()
+filename = "document.pdf"  # In same directory as script
 
-while True:
-    #os.system('tail -n 2 exp/train_nodev_pytorch_train_mtlalpha1.0/train.log')
-    os.system('''m=$(tail -n 2 exp/train_nodev_pytorch_train_mtlalpha1.0/train.log| gawk '{ gsub(/"/,"\\\"") } 1');echo ${m};''' + curl )
-    time.sleep(60 * 60 * 2)
+# Open PDF file in binary mode
+with open(filename, "rb") as attachment:
+    # Add file as application/octet-stream
+    # Email client can usually download this automatically as attachment
+    part = MIMEBase("application", "octet-stream")
+    part.set_payload(attachment.read())
+
+# Encode file in ASCII characters to send by email    
+encoders.encode_base64(part)
+
+# Add header as key/value pair to attachment part
+part.add_header(
+    "Content-Disposition",
+    f"attachment; filename= {filename}",
+)
+
+# Add attachment to message and convert message to string
+message.attach(part)
+text = message.as_string()
+
+# Log in to server using secure context and send email
+context = ssl.create_default_context()
+with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, text)
