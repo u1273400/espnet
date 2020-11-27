@@ -280,8 +280,7 @@ class E2E(ASRInterface, torch.nn.Module):
 
         if getattr(args, "use_frontend", False):  # use getattr to keep compatibility
             self.frontend = frontend_for(args, idim)
-            # self.feature_transform = feature_transform_for(args, (idim - 1) * 2)
-            self.feature_transform = scatter_for()
+            self.feature_transform = feature_transform_for(args, (idim - 1) * 2)
             idim = args.n_mels
         else:
             self.frontend = None

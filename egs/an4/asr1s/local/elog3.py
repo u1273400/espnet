@@ -68,11 +68,12 @@ SCOPES = ['https://mail.google.com/']
 service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
 interval_hrs = 4
-
+dint_min = 5
 log_lines = 50
+display_lines = 5
 
 root = '/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/exp/train_nodev_pytorch_train_mtlalpha1.0/'
-
+log = f'{root}train.log'
 myurl = "https://hooks.slack.com/services/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"
 
 pngfiles = ['loss.png', 'cer.png']
@@ -99,7 +100,7 @@ def create_message(sender, to, subject, message_text):
       An object containing a base64url encoded email object.
     """
     output, err = message_text
-    message_text = output + f"\nerror: {err}" if err is not None else ""
+    message_text = output + (f"\nerror: {err}" if err is not None else "")
 
     message = MIMEText(message_text)
     message['to'] = to
@@ -188,7 +189,7 @@ def send_message(service, user_id, message):
 
 
 def tail(n):
-    process = Popen(["tail", f"-n {n}", f"{root}train.log"], stdout=PIPE)
+    process = Popen(["tail", f"-n {n}", f"{log}"], stdout=PIPE)
     (output, err) = process.communicate()
     exit_code = process.wait()
     return '' if output is None else output.decode('utf-8'), None if err is None else err.decode('utf-8')
@@ -202,8 +203,8 @@ def main():
     c = 0
     while c > -1:
         time.sleep(1)
-        if c % 30 == 0:
-            output, err = tail(2)
+        if c % (60 * dint_min) == 0:
+            output, err = tail(display_lines)
             print(output)
             if err is not None:
                 print(f'error:{err}')

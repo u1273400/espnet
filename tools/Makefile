@@ -3,7 +3,7 @@
 PYTHON :=
 # The python version installed in the conda setup
 # NOTE(kan-bayashi): Use 3.7.3 to avoid sentencepiece installation error
-PYTHON_VERSION := 3.6.3
+PYTHON_VERSION := 3.7.3
 CUPY_VERSION := 6.0.0
 CUDA_VERSION := 10.1
 # PyTorch version: 0.4.1, 1.0.0, 1.0.1, 1.1.0, 1.2.0, 1.3.0, 1.3.1, 1.4.0, 1.5.0, 1.5.1
@@ -54,7 +54,7 @@ venv:
 espnet.done: venv
 	. venv/bin/activate; pip install pip --upgrade
 #	. venv/bin/activate; conda install torch==$(TH_VERSION)
-	. venv/bin/activate; conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+	. venv/bin/activate; conda install pytorch==$(TH_VERSION) torchvision cudatoolkit=10.1 -c pytorch
 #conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 	. venv/bin/activate; pip install -e ..
 	touch espnet.done
@@ -63,7 +63,7 @@ venv:
 	./install_anaconda.sh $(PYTHON_VERSION) venv
 espnet.done: venv
 #	. venv/bin/activate && conda install -y $(CONDA_PYTORCH) -c pytorch
-	. venv/bin/activate; conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+	. venv/bin/activate; conda install pytorch==$(TH_VERSION) torchvision cudatoolkit=10.1 -c pytorch
 	. venv/bin/activate && pip install -e ..
 	touch espnet.done
 endif
