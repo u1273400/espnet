@@ -48,7 +48,7 @@ root_dir = "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/a
    Stage 1 Batchifying
 '''
 logging.info("Stage 1: Batchifying..")
-scatter = ScatterSaveDataset(in_target
+scatter = ScatterSaveDataset(in_target=in_target
                              , root_dir=root_dir
                              , transform=Json2Obj()
                              , load_func=load_func
@@ -67,16 +67,16 @@ transform_batch = transforms.Compose([
 logging.info(f"Stage 2: Scatter Comptation..")  # {[i.mat.size for i in scatter]}
 start_time = time.time()
 total=len(dataloader)
-for i, sslist in enumerate(dataloader)
+for i, sslist in enumerate(dataloader):
     logging.info('computing scatter coefficients for batch %d of %d' % (i + 1, total))
     transform_batch(sslist)
     elapsed_time = time.time() - start_time
     if i > 0:
-        speed=int(i/elapsed_time)
-        eta=int(total/speed)
-        sspeed=speed*60
-        seta=str(datetime.timedelta(seconds=eta))
-        logging.info(f'average batch rate per minute = {sspeed}, dataset eta {seta}')
+        speed = i/elapsed_time
+        eta = (total-i)/speed
+        sspeed = speed*60
+        seta = str(datetime.timedelta(seconds=int(eta)))
+        logging.info(f'average batch rate per minute = %3.2f, {in_target} eta {seta}', sspeed)
 
 '''
     Stage 3: Export to Json

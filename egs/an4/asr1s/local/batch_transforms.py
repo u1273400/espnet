@@ -1,7 +1,9 @@
 # https://github.com/pratogab/batch-transforms
 
+from subprocess import Popen, PIPE
+from scipy.io import wavfile
 from torch.utils.data import Dataset, DataLoader
-import os
+import os, io
 import numpy as np
 import kaldiio
 import torch
@@ -107,11 +109,11 @@ class Json2Obj:
     def __call__(self, k, d, root):
         os.system('[ -f "/usr/bin/wine" ] && mkdir -p %s ' % root[:len(root) - 1])
         path = d[k]
-        if not os.path.isfile(path):
-            path = f'{root}{k}.wav'
-        assert os.path.isfile(path), f'Json2Obj: {path} does not exist'
         assert os.path.isdir(root), f'Json2Obj: {root} does not exist'
-        _, x = kaldiio.load_mat(path)
+        if not os.path.isfile(path):
+            x = read_wav(path)
+        else:
+            _, x = kaldiio.load_mat(path)
         scl.feat = f'{root}{k}.mat'
         scl.key = k
         scl.mat = x
@@ -377,3 +379,15 @@ class RandomCrop:
 def str2var(st, v):
     x = st
     exec("%s = %d" % (x, v))
+
+
+def read_wav(cmd):
+    ar = cmd.split(' ')
+    process = Popen(ar, stdout=PIPE)
+    (output, err) = process.communicate()
+    exit_code = process.wait()
+    if err is not None:
+        raise IOError(f"{cmd}, returned {err}")
+    f = io.BytesIO(output)
+    _, wav = wavfile.read(f)
+    return wav
