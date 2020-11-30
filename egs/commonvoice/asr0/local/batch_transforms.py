@@ -1,7 +1,9 @@
 # https://github.com/pratogab/batch-transforms
 
+from subprocess import Popen, PIPE
+from scipy.io import wavfile
 from torch.utils.data import Dataset, DataLoader
-import os
+import os, io
 import numpy as np
 import kaldiio
 import torch
@@ -54,7 +56,7 @@ class ScatterSaveDataset(Dataset):
     """Face Landmarks dataset."""
 
     def __init__(self, in_target, root_dir="/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/data" \
-                                           "/wavs/", transform=None, load_func=None):
+                                           "/wavs/", json_file='data', transform=None, load_func=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -64,11 +66,11 @@ class ScatterSaveDataset(Dataset):
         """
         self.root_dir = root_dir
         self.d = {}
-        infile = 'dump/%s/deltafalse/data.json' % in_target
+        infile = f'dump/{in_target}/deltafalse/{json_file}.json'
         self.transform = transform
         self.load_func = load_func
 
-        assert os.path.isfile(infile), f'ScatterSaveDataset: {infile} does not exist. Regenerate features'
+        assert os.path.isfile(infile), f'ScatterSaveDataset: {infile} does not exist. in Regenerate features'
         source_files = "data/%s/wav.scp" % in_target
         assert os.path.isfile(source_files), f'ScatterSaveDataset: {source_files} does not exist. Regenerate features'
 
@@ -107,11 +109,11 @@ class Json2Obj:
     def __call__(self, k, d, root):
         os.system('[ -f "/usr/bin/wine" ] && mkdir -p %s ' % root[:len(root) - 1])
         path = d[k]
-        if not os.path.isfile(path):
-            path = f'{root}{k}.wav'
-        assert os.path.isfile(path), f'Json2Obj: {path} does not exist'
         assert os.path.isdir(root), f'Json2Obj: {root} does not exist'
-        _, x = kaldiio.load_mat(path)
+        if not os.path.isfile(path):
+            x = read_wav(path)
+        else:
+            _, x = kaldiio.load_mat(path)
         scl.feat = f'{root}{k}.mat'
         scl.key = k
         scl.mat = x
@@ -138,6 +140,8 @@ class PSerialize:
         assert type(tensor) is ScatterStruct and len(tensor.shape[0]) == 2 and tensor.data[0].dim() == 2 and len(tensor) == 6 and type(tensor[0]) is tuple, \
             f'PSerialise: tensor has invalid data format: {tensor}'
         for i, data in enumerate(tensor.data):
+            if data.is_cuda:
+                data = data.cpu()
             pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
         return tensor
 
@@ -220,7 +224,7 @@ def scatter_for(x_all):
 
     if torch.cuda.is_available():
         scattering.cuda()
-        x_all = x_all.mat.cuda()
+        x_all = x_all.cuda()
 
     # logging.debug(f'scatter_for: mat shape bef={x_all.shape}')
     sx_all = scattering.forward(x_all)
@@ -377,3 +381,15 @@ class RandomCrop:
 def str2var(st, v):
     x = st
     exec("%s = %d" % (x, v))
+
+
+def read_wav(cmd):
+    ar = cmd.split(' ')
+    process = Popen(ar, stdout=PIPE)
+    (output, err) = process.communicate()
+    exit_code = process.wait()
+    if err is not None:
+        raise IOError(f"{cmd}, returned {err}")
+    f = io.BytesIO(output)
+    _, wav = wavfile.read(f)
+    return wav
