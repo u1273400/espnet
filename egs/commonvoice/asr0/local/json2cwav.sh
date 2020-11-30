@@ -13,17 +13,10 @@ dumpdir=./dump   # directory to dump full features
 verbose=1      # verbose option
 
 # json folders
-test_set="test"
-train_set="train_nodev"
-dev_set="train_dev"
+test_set="valid_test_en"
+train_set="valid_train_en"
+dev_set="valid_dev_en"
 
-# data
-datadir=./downloads
-an4_root=${datadir}/an4
-data_url=http://www.speech.cs.cmu.edu/databases/an4/
-
-# exp tag
-tag="" # tag for managing experiments.
 
 # Set bash to 'debug' mode, it will exit on :
 # -e 'error', -u 'undefined variable', -o ... 'error in pipeline', -x 'print commands',
@@ -33,16 +26,18 @@ set -o pipefail
 
 echo "stage 0: Initialising.. "
 
-if [ ! -f ${an4_root}/README ]; then
-  echo Cannot find an4 root! Exiting...
+if [ ! -d "./data" ]; then
+  echo Cannot find data dir! Exiting...
   exit 1
 fi
+
+[ ! -d "./data/wavs" ] && mkdir -p data/wavs
 
 SECONDS=0
 a=$SECONDS
 diff=0
 for x in $test_set $dev_set $train_set; do
-  local/json2json1.py $x ${dumpdir}/${x}/deltafalse/scat.json
+  python local/json2json1.py $x ${dumpdir}/${x}/deltafalse/scat.json
   diff=$(( SECONDS - a ))
   echo "$(($diff / 3600)) hours, $((($diff / 60) % 60)) minutes and $(($diff % 60)) seconds elapsed."
 done

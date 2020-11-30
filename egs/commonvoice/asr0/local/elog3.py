@@ -69,11 +69,15 @@ service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
 interval_hrs = 4
 
-log_lines = 50
+disp_mins = 1
+
+log_lines = 1250
+
+display_lines = 25
 
 root = '/home/john/src/espnet/egs/commonvoice/asr0/' # exp/valid_train_en_pytorch_train/'
 
-log = f'{root}cv201126_2000.log'
+log = f'{root}cv201129_1030.log'
 
 myurl = "https://hooks.slack.com/services/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"
 
@@ -185,7 +189,7 @@ def send_message(service, user_id, message):
                    .execute())
         print('Sent. Message Id: %s' % message['id'])
         return message
-    except errors.HttpError as error:
+    except (errors.HttpError,Exception) as error:
         print('An error occurred: %s' % error)
 
 
@@ -204,8 +208,8 @@ def main():
     c = 0
     while c > -1:
         time.sleep(1)
-        if c % 300 == 0:
-            output, err = tail(2)
+        if c % 60 * disp_mins == 0:
+            output, err = tail(display_lines)
             print(output)
             if err is not None:
                 print(f'error:{err}')
