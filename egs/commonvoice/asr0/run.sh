@@ -143,15 +143,15 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
         data2json.sh --feat ${feat_recog_dir}/feats.scp --bpecode ${bpemodel}.model \
                      data/${rtask} ${dict} > ${feat_recog_dir}/data_${bpemode}${nbpe}.json
     done
+    # generate scatter features
+
+    . local/json2cwav.sh
+
+    # copy scatter features
+    echo 'Copying scatter featuers..'
+    . local/copyscats.sh
 fi
 
-# generate scatter features
-
-. local/json2cwav.sh
-
-# copy scatter features
-
-. local/copyscats.sh
 
 # you can skip this and remove --rnnlm option in the recognition (stage 5)
 if [ -z ${lmtag} ]; then

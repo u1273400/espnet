@@ -142,12 +142,12 @@ class PSerialize:
         assert type(tensor) is ScatterStruct and len(tensor.shape[0]) == 2 and tensor.data[0].dim() == 2 and len(tensor) == 6 and type(tensor[0]) is tuple, \
             f'PSerialise: tensor has invalid data format: {tensor}'
         for i, data in enumerate(tensor.data):
-            if data.is_cuda():
+            if data.is_cuda:
                 data = data.cpu()
             # pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
             file = tensor.feat[i].split(':')[0]
             with WriteHelper(f'ark,t:{file}') as writer:
-                writer('1', data)
+                writer('1', data.numpy())
             return tensor
 
 

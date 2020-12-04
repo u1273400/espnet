@@ -28,7 +28,7 @@ from batch_transforms import ScatterSaveDataset, ToScatter, Json2Obj, load_func,
 import time, datetime
 
 '''
-   Stage 0 Initialisation
+   Scatter Data Stage 0 Initialisation
 '''
 level = os.getenv('log_level', 'info').upper()
 
@@ -45,9 +45,9 @@ root_dir = "/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/a
 
 
 '''
-   Stage 1 Batchifying
+  Scatter Data Stage 1 Batchifying
 '''
-logging.info("Stage 1: Batchifying..")
+logging.info("Scatter Data Stage 1: Batchifying..")
 scatter = ScatterSaveDataset(in_target=in_target
                              , root_dir=root_dir
                              , transform=Json2Obj()
@@ -64,7 +64,7 @@ transform_batch = transforms.Compose([
     ToScatter(),
     PSerialize()])
 
-logging.info(f"Stage 2: Scatter Comptation..")  # {[i.mat.size for i in scatter]}
+logging.info(f"Scatter Data Stage 2: Scatter Computation..")  # {[i.mat.size for i in scatter]}
 start_time = time.time()
 total = len(dataloader)
 for i, sslist in enumerate(dataloader):
@@ -76,12 +76,12 @@ for i, sslist in enumerate(dataloader):
         eta = (total-i)/speed
         sspeed = speed*60
         seta = str(datetime.timedelta(seconds=int(eta)))
-        logging.info(f'average batch rate per minute = %3.2f, {in_target} eta {seta}', sspeed)
-
+        logging.info(f'average batch rate per 5 minutes = %3.2f, {in_target} eta {seta}', (sspeed * 5))
+logging.info(f'total time for dataset = {str(datetime.timedelta(seconds=(time.time()-start_time)))}')
 '''
     Stage 3: Export to Json
 '''
-logging.info("Stage 3: Exporting to json..")
+logging.info("Scatter Data Stage 3: Exporting to json..")
 truncated = {}
 
 for i, utt in enumerate(scatter):

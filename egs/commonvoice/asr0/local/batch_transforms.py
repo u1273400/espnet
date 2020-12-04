@@ -2,7 +2,7 @@
 
 from subprocess import Popen, PIPE
 from scipy.io import wavfile
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset #, DataLoader
 import os, io
 import numpy as np
 import kaldiio
@@ -14,6 +14,7 @@ from collections import namedtuple
 import logging
 #from recordclass import recordclass, RecordClass
 from types import SimpleNamespace
+from kaldiio import WriteHelper
 
 
 scl = SimpleNamespace(ScatterStruct='ScatterStruct')
@@ -56,7 +57,7 @@ class ScatterSaveDataset(Dataset):
     """Face Landmarks dataset."""
 
     def __init__(self, in_target, root_dir="/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/data" \
-                                           "/wavs/", json_file='data', transform=None, load_func=None):
+                                           "/wavs/", j_file='data', transform=None, load_func=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -66,21 +67,22 @@ class ScatterSaveDataset(Dataset):
         """
         self.root_dir = root_dir
         self.d = {}
-        infile = f'dump/{in_target}/deltafalse/{json_file}.json'
+        infile = f'dump/%s/deltafalse/{j_file}.json' % in_target
         self.transform = transform
         self.load_func = load_func
 
-        assert os.path.isfile(infile), f'ScatterSaveDataset: {infile} does not exist. in Regenerate features'
+        assert os.path.isfile(infile), f'ScatterSaveDataset: {infile} does not exist. Regenerate features'
         source_files = "data/%s/wav.scp" % in_target
         assert os.path.isfile(source_files), f'ScatterSaveDataset: {source_files} does not exist. Regenerate features'
 
         with open(source_files, "r") as f:
             for l in f.read().splitlines():
                 ar = l.split(' ')
-                # assert len(ar) == 2, f"defaulting array is {ar}"
-                assert len(' '.join(ar[1:len(ar) - 1])) > 0, f"ScatterSaveDataset: defaulting array is {ar}"
-                # self.d[ar[0]] = ar[1]
-                self.d[ar[0]] = ' '.join(ar[1:len(ar) - 1])
+                if len(ar) == 2:  # assert len(ar) == 2, f"defaulting array is {ar}"
+                    self.d[ar[0]] = ar[1]
+                else:
+                    assert len(' '.join(ar[1:len(ar) - 1])) > 0, f"ScatterSaveDataset: defaulting array is {ar}"
+                    self.d[ar[0]] = ' '.join(ar[1:len(ar) - 1])
 
         with open(infile, "r") as f:
             jso = json.load(f)
@@ -107,14 +109,14 @@ class Json2Obj:
     # s = MyStruct(a=1, b={'c': 2}, d=['hi'])
 
     def __call__(self, k, d, root):
-        os.system('[ -f "/usr/bin/wine" ] && mkdir -p %s ' % root[:len(root) - 1])
+        os.system(f'[ ! -d {root} ] && mkdir -p {root} ')
         path = d[k]
         assert os.path.isdir(root), f'Json2Obj: {root} does not exist'
         if not os.path.isfile(path):
             x = read_wav(path)
         else:
             _, x = kaldiio.load_mat(path)
-        scl.feat = f'{root}{k}.mat'
+        scl.feat = f'{root}{k}.ark:1'
         scl.key = k
         scl.mat = x
         scl.root = root
@@ -142,8 +144,11 @@ class PSerialize:
         for i, data in enumerate(tensor.data):
             if data.is_cuda:
                 data = data.cpu()
-            pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
-        return tensor
+            # pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
+            file = tensor.feat[i].split(':')[0]
+            with WriteHelper(f'ark,t:{file}') as writer:
+                writer('1', data.numpy())
+            return tensor
 
 
 class PadLastDimTo:

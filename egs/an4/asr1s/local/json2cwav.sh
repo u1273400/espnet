@@ -31,7 +31,7 @@ set -e
 set -u
 set -o pipefail
 
-echo "stage 0: Initialising.. "
+echo "Scatter data stage 0: Initialising.. "
 
 if [ ! -f ${an4_root}/README ]; then
   echo Cannot find an4 root! Exiting...

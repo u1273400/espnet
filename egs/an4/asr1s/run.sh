@@ -158,6 +158,12 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
     done
 fi
 
+# generate scatter stransform
+. local/json2cwav.sh
+
+echo ' Copying scatter features..'
+# replace data.json with scat.json
+. local/copyscats.sh
 
 # It takes about one day. If you just want to do end-to-end ASR without LM,
 # you can skip this and remove --rnnlm option in the recognition (stage 5)

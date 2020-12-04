@@ -451,9 +451,9 @@ class LoadInputsAndTargets(object):
             # load_mat can load both matrix and vector
             if not self.keep_all_data_on_mem:
                 # logging.info('mine chosen***************')
-                try:
-                    return pickle.load(open(filepath, 'rb'))
-                except:
+                # try:
+                #     return pickle.load(open(filepath, 'rb'))
+                # except:
                     return kaldiio.load_mat(filepath)
 
             if filepath not in self._loaders:
