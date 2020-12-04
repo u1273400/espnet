@@ -28,33 +28,39 @@ from batch_transforms import ScatterSaveDataset, ToScatter, Json2Obj, load_func,
 import time, datetime
 
 '''
-   Stage 0 Initialisation
+   Scatter Data Stage 0 Initialisation
 '''
 level = os.getenv('log_level', 'info').upper()
 
 logging.basicConfig(
     level=(logging.DEBUG if level == 'DEBUG' else logging.INFO))  # filename='example.log', encoding='utf-8',
 
+if level == 'DEBUG':
+    logging.info('DEBUG MODE')
+
 if len(sys.argv) != 3:
     print("Usage: python json2json1.py [target] [outfile]")
     sys.exit(1)
 in_target = sys.argv[1]
 outfile = sys.argv[2]
-root_dir = "/home/john/src/espnet/egs/commonvoice/asr0/data/wavs/"
-json_file = "data_unigram150"
+root_dir = "data/wavs/"
+
 
 '''
-   Stage 1 Batchifying
+  Scatter Data Stage 1 Batchifying
 '''
 logging.info("Scatter Data Stage 1: Batchifying..")
+
+batch_size = 1
+workers = 1
+
 scatter = ScatterSaveDataset(in_target=in_target
                              , root_dir=root_dir
-                             , json_file=json_file
                              , transform=Json2Obj()
                              , load_func=load_func
                              )
-dataloader = torch.utils.data.DataLoader(scatter, batch_size=50,
-                                         shuffle=False, num_workers=16)
+dataloader = torch.utils.data.DataLoader(scatter, batch_size=batch_size,
+                                         shuffle=False, num_workers=workers)
 
 '''
     Stage 2: Scatter Computation
@@ -66,9 +72,9 @@ transform_batch = transforms.Compose([
 
 logging.info(f"Scatter Data Stage 2: Scatter Computation..")  # {[i.mat.size for i in scatter]}
 start_time = time.time()
-total=len(dataloader)
+total = len(dataloader)
 for i, sslist in enumerate(dataloader):
-    logging.info('computing scatter coefficients for batch %d of %d' % (i + 1, total))
+    logging.info(f'computing {batch_size} coefficient sets in {workers} threads for batch %d of %d' % (i + 1, total))
     transform_batch(sslist)
     elapsed_time = time.time() - start_time
     if i > 0:
@@ -78,7 +84,6 @@ for i, sslist in enumerate(dataloader):
         seta = str(datetime.timedelta(seconds=int(eta)))
         logging.info(f'average batch rate per 5 minutes = %3.2f, {in_target} eta {seta}', (sspeed * 5))
 logging.info(f'total time for dataset = {str(datetime.timedelta(seconds=(time.time()-start_time)))}')
-
 '''
     Stage 3: Export to Json
 '''
