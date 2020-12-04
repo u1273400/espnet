@@ -141,12 +141,15 @@ class PSerialize:
         """
         assert type(tensor) is ScatterStruct and len(tensor.shape[0]) == 2 and tensor.data[0].dim() == 2 and len(tensor) == 6 and type(tensor[0]) is tuple, \
             f'PSerialise: tensor has invalid data format: {tensor}'
+        logging.debug(f'tensor.data size = {len(tensor.data)}')
         for i, data in enumerate(tensor.data):
+            logging.debug(f'i, feat = {i}, {tensor.feat[i]}, {len(tensor.data)}')
             if data.is_cuda:
                 data = data.cpu()
-            # pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
             file = tensor.feat[i].split(':')[0]
+            # pickle.dump(data.numpy(), open(file, "wb"))
             with WriteHelper(f'ark,t:{file}') as writer:
+                logging.debug(f'writing to {file} ..')
                 writer('1', data.numpy())
             return tensor
 
@@ -207,6 +210,8 @@ class ToScatter:
                and type(t.mat[0]) is torch.Tensor, \
             f'ToScatter: error in input tensor format {t}'
         result = scatter_for(t.mat)
+        if result.dim()==2:
+            result = result.unsqueeze(0)
         data = [torch.transpose(mat, 0, 1) for mat in result]
         shape = [mat.shape for mat in data]
         logging.debug(f'ToScatter: data shape={shape[0]}')
