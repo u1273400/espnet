@@ -29,7 +29,7 @@ n_average=10
 
 # data
 voxforge=downloads # original data directory to be stored
-lang=it # de, en, es, fr, it, nl, pt, ru
+lang=en # de, it, es, fr, it, nl, pt, ru
 
 # exp tag
 tag="" # tag for managing experiments.
