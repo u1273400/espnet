@@ -56,7 +56,7 @@ class ScatterSaveDataset(Dataset):
     """Face Landmarks dataset."""
 
     def __init__(self, in_target, root_dir="/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/data" \
-                                           "/wavs/", transform=None, load_func=None):
+                                           "/wavs/", j_file='data', transform=None, load_func=None):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
@@ -66,7 +66,7 @@ class ScatterSaveDataset(Dataset):
         """
         self.root_dir = root_dir
         self.d = {}
-        infile = 'dump/%s/deltafalse/data.json' % in_target
+        infile = f'dump/%s/deltafalse/{j_file}.json' % in_target
         self.transform = transform
         self.load_func = load_func
 
@@ -107,7 +107,7 @@ class Json2Obj:
     # s = MyStruct(a=1, b={'c': 2}, d=['hi'])
 
     def __call__(self, k, d, root):
-        os.system('[ -f "/usr/bin/wine" ] && mkdir -p %s ' % root[:len(root) - 1])
+        os.system(f'[ ! -d {root} ] && mkdir -p {root} ')
         path = d[k]
         assert os.path.isdir(root), f'Json2Obj: {root} does not exist'
         if not os.path.isfile(path):
@@ -140,6 +140,8 @@ class PSerialize:
         assert type(tensor) is ScatterStruct and len(tensor.shape[0]) == 2 and tensor.data[0].dim() == 2 and len(tensor) == 6 and type(tensor[0]) is tuple, \
             f'PSerialise: tensor has invalid data format: {tensor}'
         for i, data in enumerate(tensor.data):
+            if data.is_cuda():
+                data = data.cpu()
             pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
         return tensor
 
@@ -222,7 +224,7 @@ def scatter_for(x_all):
 
     if torch.cuda.is_available():
         scattering.cuda()
-        x_all = x_all.mat.cuda()
+        x_all = x_all.cuda()
 
     # logging.debug(f'scatter_for: mat shape bef={x_all.shape}')
     sx_all = scattering.forward(x_all)
