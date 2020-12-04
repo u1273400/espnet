@@ -145,6 +145,14 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
     done
 fi
 
+# generate scatter features
+
+. local/json2cwav.sh
+
+# copy scatter features
+
+. local/copyscats.sh
+
 # you can skip this and remove --rnnlm option in the recognition (stage 5)
 if [ -z ${lmtag} ]; then
     lmtag=$(basename ${lm_config%.*})

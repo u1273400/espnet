@@ -1,0 +1,28 @@
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training
+stage 5: Decoding
+2020-11-29 15:29:15,491 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/../../../utils/splitjson.py --parts 8 dump/train_dev/deltafalse/data.json
+2020-11-29 15:29:15,491 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/../../../utils/splitjson.py --parts 8 dump/test/deltafalse/data.json
+2020-11-29 15:29:15,494 (splitjson:55) INFO: number of utterances = 100
+2020-11-29 15:29:15,494 (splitjson:55) INFO: number of utterances = 130
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_test_decode_ctcweight1.0_lm_word100/log/decode.*.log
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/log/decode.*.log
+/bin/bash: 2 background jobs are failed.
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 5: Decoding
+2020-11-29 17:18:26,970 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/../../../utils/splitjson.py --parts 8 dump/test/deltafalse/data.json
+2020-11-29 17:18:26,972 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/../../../utils/splitjson.py --parts 8 dump/train_dev/deltafalse/data.json
+2020-11-29 17:18:26,972 (splitjson:55) INFO: number of utterances = 130
+2020-11-29 17:18:26,974 (splitjson:55) INFO: number of utterances = 100
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_test_decode_ctcweight1.0_lm_word100/log/decode.*.log
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/log/decode.*.log
+/bin/bash: 2 background jobs are failed.
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 5: Decoding
+2020-11-29 17:48:15,850 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/../../../utils/splitjson.py --parts 8 dump/test/deltafalse/data.json
+2020-11-29 17:48:15,850 (splitjson:43) INFO: /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/tools/venv/bin/python3 /mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/../../../utils/splitjson.py --parts 8 dump/train_dev/deltafalse/data.json
+2020-11-29 17:48:15,853 (splitjson:55) INFO: number of utterances = 100
+2020-11-29 17:48:15,853 (splitjson:55) INFO: number of utterances = 130
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_test_decode_ctcweight1.0_lm_word100/log/decode.*.log
+run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/log/decode.*.log
+/bin/bash: 2 background jobs are failed.

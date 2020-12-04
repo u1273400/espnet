@@ -66,7 +66,7 @@ transform_batch = transforms.Compose([
 
 logging.info(f"Stage 2: Scatter Comptation..")  # {[i.mat.size for i in scatter]}
 start_time = time.time()
-total=len(dataloader)
+total = len(dataloader)
 for i, sslist in enumerate(dataloader):
     logging.info('computing scatter coefficients for batch %d of %d' % (i + 1, total))
     transform_batch(sslist)

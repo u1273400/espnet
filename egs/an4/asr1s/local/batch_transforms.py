@@ -2,7 +2,7 @@
 
 from subprocess import Popen, PIPE
 from scipy.io import wavfile
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset #, DataLoader
 import os, io
 import numpy as np
 import kaldiio
@@ -14,6 +14,7 @@ from collections import namedtuple
 import logging
 #from recordclass import recordclass, RecordClass
 from types import SimpleNamespace
+from kaldiio import WriteHelper
 
 
 scl = SimpleNamespace(ScatterStruct='ScatterStruct')
@@ -77,10 +78,11 @@ class ScatterSaveDataset(Dataset):
         with open(source_files, "r") as f:
             for l in f.read().splitlines():
                 ar = l.split(' ')
-                # assert len(ar) == 2, f"defaulting array is {ar}"
-                assert len(' '.join(ar[1:len(ar) - 1])) > 0, f"ScatterSaveDataset: defaulting array is {ar}"
-                # self.d[ar[0]] = ar[1]
-                self.d[ar[0]] = ' '.join(ar[1:len(ar) - 1])
+                if len(ar) == 2:  # assert len(ar) == 2, f"defaulting array is {ar}"
+                    self.d[ar[0]] = ar[1]
+                else:
+                    assert len(' '.join(ar[1:len(ar) - 1])) > 0, f"ScatterSaveDataset: defaulting array is {ar}"
+                    self.d[ar[0]] = ' '.join(ar[1:len(ar) - 1])
 
         with open(infile, "r") as f:
             jso = json.load(f)
@@ -114,7 +116,7 @@ class Json2Obj:
             x = read_wav(path)
         else:
             _, x = kaldiio.load_mat(path)
-        scl.feat = f'{root}{k}.mat'
+        scl.feat = f'{root}{k}.ark:1'
         scl.key = k
         scl.mat = x
         scl.root = root
@@ -142,8 +144,11 @@ class PSerialize:
         for i, data in enumerate(tensor.data):
             if data.is_cuda():
                 data = data.cpu()
-            pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
-        return tensor
+            # pickle.dump(data.numpy(), open(tensor.feat[i], "wb"))
+            file = tensor.feat[i].split(':')[0]
+            with WriteHelper(f'ark,t:{file}') as writer:
+                writer('1', data)
+            return tensor
 
 
 class PadLastDimTo:

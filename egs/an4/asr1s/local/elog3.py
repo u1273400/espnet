@@ -3,8 +3,10 @@ import time, datetime
 from subprocess import Popen, PIPE
 import urllib.request
 import json, pickle, os, base64
-from slack_webhook import Slack
-
+# from slack_webhook import Slack
+'''
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+'''
 from email.mime.image import MIMEImage
 import mimetypes
 from email.mime.base import MIMEBase
@@ -68,9 +70,9 @@ SCOPES = ['https://mail.google.com/']
 service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
 interval_hrs = 4
-dint_min = 5
-log_lines = 50
-display_lines = 5
+dint_min = 2
+log_lines = 75
+display_lines = 15
 
 root = '/mnt/c/Users/User/Dropbox/rtmp/src/python/notebooks/espnet/egs/an4/asr1s/exp/train_nodev_pytorch_train_mtlalpha1.0/'
 log = f'{root}train.log'
@@ -81,7 +83,7 @@ pngfiles = ['loss.png', 'cer.png']
 sender, to, subject, message_text, file = (
     'ESPNet Research',
     'john.alamina@hud.ac.uk',
-    'ESPNet Research: AN4 250 feat 200 epochs',
+    'ESPNet Research: AN4 250 feat 4 epochs',
     '',
     [f'{root}results/{file}' for file in pngfiles]
 )
@@ -184,7 +186,7 @@ def send_message(service, user_id, message):
                    .execute())
         print('Sent. Message Id: %s' % message['id'])
         return message
-    except errors.HttpError as error:
+    except (errors.HttpError, Exception) as error:
         print('An error occurred: %s' % error)
 
 

@@ -196,7 +196,7 @@ def send_message(service, user_id, message):
 def tail(n):
     process = Popen(["tail", f"-n {n}", f"{log}"], stdout=PIPE)
     (output, err) = process.communicate()
-    exit_code = process.wait()
+    _ = process.wait()
     return '' if output is None else output.decode('utf-8'), None if err is None else err.decode('utf-8')
 
 
