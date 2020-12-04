@@ -43,19 +43,20 @@ if len(sys.argv) != 3:
     sys.exit(1)
 in_target = sys.argv[1]
 outfile = sys.argv[2]
-root_dir = "data/wavs/"
-
+root_dir = "/data/wavs/"
+json_file = "data_unigram150"
 
 '''
   Scatter Data Stage 1 Batchifying
 '''
 logging.info("Scatter Data Stage 1: Batchifying..")
 
-batch_size = 1
-workers = 1
+batch_size = 16
+workers = 32
 
 scatter = ScatterSaveDataset(in_target=in_target
                              , root_dir=root_dir
+                             , json_file=json_file
                              , transform=Json2Obj()
                              , load_func=load_func
                              )
