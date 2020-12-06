@@ -143,13 +143,14 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
         data2json.sh --feat ${feat_recog_dir}/feats.scp --bpecode ${bpemodel}.model \
                      data/${rtask} ${dict} > ${feat_recog_dir}/data_${bpemode}${nbpe}.json
     done
-    # generate scatter features
+    json_file = "data_unigram150"
+   # generate scatter features
 
     . local/json2cwav.sh
 
     # copy scatter features
     echo 'Copying scatter featuers..'
-    . local/copyscats.sh
+    . local/copyscats.sh $json_file
 fi
 
 

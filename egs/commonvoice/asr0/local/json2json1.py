@@ -51,8 +51,8 @@ json_file = "data_unigram150"
 '''
 logging.info("Scatter Data Stage 1: Batchifying..")
 
-batch_size = 16
-workers = 32
+batch_size = 1
+workers = 1
 
 scatter = ScatterSaveDataset(in_target=in_target
                              , root_dir=root_dir
@@ -71,7 +71,7 @@ transform_batch = transforms.Compose([
     ToScatter(),
     PSerialize()])
 
-logging.info(f"Scatter Data Stage 2: Scatter Computation..")  # {[i.mat.size for i in scatter]}
+logging.info(f"Scatter Data Stage 2: Scatter Computation..")  
 start_time = time.time()
 total = len(dataloader)
 for i, sslist in enumerate(dataloader):

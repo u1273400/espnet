@@ -101,8 +101,6 @@ def create_message(sender, to, subject, message_text):
     Returns:
       An object containing a base64url encoded email object.
     """
-    output, err = message_text
-    message_text = output + (f"\nerror: {err}" if err is not None else "")
 
     message = MIMEText(message_text)
     message['to'] = to
@@ -130,8 +128,6 @@ def create_message_with_attachment(
     message['from'] = sender
     message['subject'] = subject
 
-    output, err = message_text
-    message_text = output + (f"\nerror: {err}" if err is not None else "")
     msg = MIMEText(message_text)
     message.attach(msg)
 
@@ -193,8 +189,15 @@ def send_message(service, user_id, message):
 def tail(n):
     process = Popen(["tail", f"-n {n}", f"{log}"], stdout=PIPE)
     (output, err) = process.communicate()
-    exit_code = process.wait()
-    return '' if output is None else output.decode('utf-8'), None if err is None else err.decode('utf-8')
+    _ = process.wait()
+    return err.decode('utf-8') if err is not None else output.decode('utf-8')
+
+
+def df(n):
+    process = Popen(["df", "-h"], stdout=PIPE)
+    (output, err) = process.communicate()
+    _ = process.wait()
+    return err.decode('utf-8') if err is not None else output.decode('utf-8')
 
 
 #slack = Slack(url=myurl)
@@ -206,12 +209,10 @@ def main():
     while c > -1:
         time.sleep(1)
         if c % (60 * dint_min) == 0:
-            output, err = tail(display_lines)
+            output = tail(display_lines)
             print(output)
-            if err is not None:
-                print(f'error:{err}')
         if c % (60 * 60 * interval_hrs) == 0:
-            msg = tail(log_lines)
+            msg = df() + '\n' + tail(log_lines)
             dayx = int(c/(60 * 60 * 24))
             msg = create_message_with_attachment(sender, to, f'{subject} (Day {dayx})', msg, file)
             send_message(service, 'me', msg)

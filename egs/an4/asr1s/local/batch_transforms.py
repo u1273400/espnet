@@ -124,11 +124,8 @@ class Json2Obj:
 
 
 class PSerialize:
-    """Applies the :class:`~torchvision.transforms.ToTensor` transform to a batch of images.
+    """Saves scatter tensor to disk.
     """
-
-    # def __init__(self):
-    #     self.max = 255
 
     def __call__(self, tensor):
         """
@@ -137,11 +134,12 @@ class PSerialize:
             path (str): location to be saved.
 
         Returns:
-            Tensor: Tensorized Tensor.
+            Tensor
         """
-        assert type(tensor) is ScatterStruct and len(tensor.shape[0]) == 2 and tensor.data[0].dim() == 2 and len(tensor) == 6 and type(tensor[0]) is tuple, \
+        assert type(tensor) is ScatterStruct and len(tensor.shape[0]) == 2 and tensor.data[0].dim() == 2 and len(tensor) == 6, \
             f'PSerialise: tensor has invalid data format: {tensor}'
         logging.debug(f'tensor.data size = {len(tensor.data)}')
+        logging.debug(f'tensor[0] = {tensor[0]}')
         for i, data in enumerate(tensor.data):
             logging.debug(f'i, feat = {i}, {tensor.feat[i]}, {len(tensor.data)}')
             if data.is_cuda:
@@ -149,7 +147,7 @@ class PSerialize:
             file = tensor.feat[i].split(':')[0]
             # pickle.dump(data.numpy(), open(file, "wb"))
             with WriteHelper(f'ark,t:{file}') as writer:
-                logging.debug(f'writing to {file} ..')
+                logging.info(f'writing to {file} ..')
                 writer('1', data.numpy())
             return tensor
 

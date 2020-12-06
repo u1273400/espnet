@@ -100,13 +100,13 @@ class ScatterSaveDataset(Dataset):
             pad = PadLastDimTo()
             sample = pad([sample])[0]
         if self.load_func:
-            sample = load_func(sample)
+            sample = self.load_func(sample)
         return sample
 
 
 class Json2Obj:
-    # MyStruct = namedtuple('MyStruct', 'a b d')
-    # s = MyStruct(a=1, b={'c': 2}, d=['hi'])
+    """Transforms json map object to python object (Simple namespace).
+    """
 
     def __call__(self, k, d, root):
         os.system(f'[ ! -d {root} ] && mkdir -p {root} ')
@@ -124,16 +124,11 @@ class Json2Obj:
 
 
 class PSerialize:
-    """Applies the :class:`~torchvision.transforms.ToTensor` transform to a batch of images.
-    """
-
-    # def __init__(self):
-    #     self.max = 255
 
     def __call__(self, tensor):
         """
         Args:
-            tensor (Tensor): Tensor of size (B, F, L) to be tensorized.
+            tensor (Tensor): Tensor of size (B, F, L) to be serialised.
             path (str): location to be saved.
 
         Returns:
