@@ -19,9 +19,9 @@ mtlalpha: 0.3
 lsm-weight: 0.1
 
 # minibatch related
-batch-size: 16
-maxlen-in: 512  # if input length  > maxlen_in, batchsize is automatically reduced
-maxlen-out: 150 # if output length > maxlen_out, batchsize is automatically reduced
+batch-size: 40
+maxlen-in: 128  # if input length  > maxlen_in, batchsize is automatically reduced
+maxlen-out: 37  # if output length > maxlen_out, batchsize is automatically reduced
 
 # optimization related
 sortagrad: 0 # Feed samples from shortest to longest ; -1: enabled for all epochs, 0: disabled, other: enabled for 'other' epochs
