@@ -26,3 +26,5 @@ stage 5: Decoding
 run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_test_decode_ctcweight1.0_lm_word100/log/decode.*.log
 run.pl: 8 / 8 failed, log is in exp/train_nodev_pytorch_train_mtlalpha1.0/decode_train_dev_decode_ctcweight1.0_lm_word100/log/decode.*.log
 /bin/bash: 2 background jobs are failed.
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training

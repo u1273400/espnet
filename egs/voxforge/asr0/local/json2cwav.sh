@@ -1,3 +1,4 @@
+<<<<<<< HEAD:egs/voxforge/asr0/local/json2cwav.sh
 #!/bin/bash
 
 # Copyright 2017 Johns Hopkins University (Shinji Watanabe)

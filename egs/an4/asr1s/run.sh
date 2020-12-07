@@ -162,7 +162,7 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
 
     echo ' Copying scatter features..'
     # replace data.json with scat.json
-    . local/copyscats.sh $jsonfile
+    . local/copyscats.sh $jsonfile $train_set $train_dev $recog_set
 fi
 
 # It takes about one day. If you just want to do end-to-end ASR without LM,
