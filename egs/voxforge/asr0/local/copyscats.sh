@@ -3,6 +3,10 @@
 do_scatter=true
 do_prev=false
 
+if [$# -ne 4];
+    then echo "usage: local/copyscats.sh <json_file> <train_set> <dev_set> <test_set>"
+    exit 1
+fi
 
 utils/parse_options.sh || exit 1
 

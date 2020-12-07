@@ -477,9 +477,9 @@ def train(args):
         if args.batch_size != 0:
             logging.warning(
                 "batch size is automatically increased (%d -> %d)"
-                % (args.batch_size, args.batch_size * args.ngpu)
+                % (args.batch_size, args.batch_size * args.ngpu // 2)
             )
-            args.batch_size *= args.ngpu
+            args.batch_size *= args.ngpu // 2
         if args.num_encs > 1:
             # TODO(ruizhili): implement data parallel for multi-encoder setup.
             raise NotImplementedError(
