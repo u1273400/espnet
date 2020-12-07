@@ -1,0 +1,2 @@
+dictionary: data/lang_1char/train_nodev_units.txt
+stage 4: Network Training

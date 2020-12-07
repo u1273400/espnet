@@ -19,8 +19,6 @@ dev_set="train_dev"
 
 # data
 datadir=./downloads
-an4_root=${datadir}/an4
-data_url=http://www.speech.cs.cmu.edu/databases/an4/
 
 # exp tag
 tag="" # tag for managing experiments.
@@ -33,8 +31,8 @@ set -o pipefail
 
 echo "Scatter data stage 0: Initialising.. "
 
-if [ ! -f ${an4_root}/README ]; then
-  echo Cannot find an4 root! Exiting...
+if [ ! -d ${datadir} ]; then
+  echo Cannot find data root! Exiting...
   exit 1
 fi
 

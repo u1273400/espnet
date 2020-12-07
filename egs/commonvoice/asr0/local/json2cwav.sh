@@ -24,7 +24,7 @@ set -e
 set -u
 set -o pipefail
 
-echo "stage 0: Initialising.. "
+echo "Scatter Data stage 0: Initialising.. "
 
 if [ ! -d "./data" ]; then
   echo Cannot find data dir! Exiting...

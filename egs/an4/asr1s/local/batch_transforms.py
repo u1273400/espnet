@@ -149,7 +149,7 @@ class PSerialize:
             with WriteHelper(f'ark,t:{file}') as writer:
                 logging.info(f'writing to {file} ..')
                 writer('1', data.numpy())
-            return tensor
+        return tensor
 
 
 class PadLastDimTo:

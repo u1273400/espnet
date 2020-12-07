@@ -71,13 +71,13 @@ interval_hrs = 4
 
 disp_mins = 1
 
-log_lines = 1250
+log_lines = 750
 
 display_lines = 25
 
-root = '/home/john/src/espnet/egs/commonvoice/asr0/' # exp/valid_train_en_pytorch_train/'
+root = './' # exp/valid_train_en_pytorch_train/'
 
-log = f'{root}cv201129_1030.log'
+log = f'{root}cv201206_0400.log'
 
 myurl = "https://hooks.slack.com/services/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"
 

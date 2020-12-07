@@ -83,7 +83,7 @@ pngfiles = ['loss.png', 'cer.png']
 sender, to, subject, message_text, file = (
     'ESPNet Research',
     'john.alamina@hud.ac.uk',
-    'ESPNet Research: AN4 250 feat 4 epochs',
+    'ESPNet Research: AN4 250 feat 100 epochs',
     '',
     [f'{root}results/{file}' for file in pngfiles]
 )
@@ -193,7 +193,7 @@ def tail(n):
     return err.decode('utf-8') if err is not None else output.decode('utf-8')
 
 
-def df(n):
+def df():
     process = Popen(["df", "-h"], stdout=PIPE)
     (output, err) = process.communicate()
     _ = process.wait()
