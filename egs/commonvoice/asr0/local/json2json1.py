@@ -43,8 +43,8 @@ if len(sys.argv) != 3:
     sys.exit(1)
 in_target = sys.argv[1]
 outfile = sys.argv[2]
-root_dir = "/data/wavs/"
-json_file = "data_unigram150"
+root_dir = "data/wavs/"
+
 
 '''
   Scatter Data Stage 1 Batchifying
@@ -56,7 +56,6 @@ workers = 1
 
 scatter = ScatterSaveDataset(in_target=in_target
                              , root_dir=root_dir
-                             , json_file=json_file
                              , transform=Json2Obj()
                              , load_func=load_func
                              )
@@ -71,7 +70,7 @@ transform_batch = transforms.Compose([
     ToScatter(),
     PSerialize()])
 
-logging.info(f"Scatter Data Stage 2: Scatter Computation..")  
+logging.info(f"Scatter Data Stage 2: Scatter Computation..")  # {[i.mat.size for i in scatter]}
 start_time = time.time()
 total = len(dataloader)
 for i, sslist in enumerate(dataloader):
@@ -93,7 +92,7 @@ truncated = {}
 
 for i, utt in enumerate(scatter):
     if i % 100 == 0:
-        logging.info(f"total processed = %d of %d " % (i, len(scatter)))
+        logging.info(f"total processed = %d of %d,  %2.2f \% complete " % (i, len(scatter),i/len(scatter)*100))
         #logging.info(f"sample data ={utt.key} {len(utt.shape)} {utt.feat}" )
     scatter.json[utt.key]["input"][0]["shape"] = utt.shape[0]
     scatter.json[utt.key]["input"][0]["feat"] = utt.feat
