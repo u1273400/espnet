@@ -150,7 +150,7 @@ if [ ${stage} -le 2 ] && [ ${stop_stage} -ge 2 ]; then
 
     # copy scatter features
     echo 'Copying scatter featuers..'
-    . local/copyscats.sh $jsonfile $train_set $train_dev $test_set
+    . local/copyscats.sh $json_file $train_set $train_dev $test_set
 fi
 
 
