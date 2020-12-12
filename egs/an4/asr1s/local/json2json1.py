@@ -92,7 +92,7 @@ truncated = {}
 
 for i, utt in enumerate(scatter):
     if i % 100 == 0:
-        logging.info(f"total processed = %d of %d,  %2.2f \% complete " % (i, len(scatter),i/len(scatter)*100))
+        logging.info(f"total processed = %d of %d,  %2.2f \% complete " % (i, len(scatter), i/len(scatter)*100))
         #logging.info(f"sample data ={utt.key} {len(utt.shape)} {utt.feat}" )
     scatter.json[utt.key]["input"][0]["shape"] = utt.shape[0]
     scatter.json[utt.key]["input"][0]["feat"] = utt.feat
