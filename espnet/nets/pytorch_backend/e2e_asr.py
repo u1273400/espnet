@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# encoding: utf-8
-
 # Copyright 2017 Johns Hopkins University (Shinji Watanabe)
 #  Apache 2.0  (http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -25,7 +22,6 @@ from espnet.nets.pytorch_backend.ctc import ctc_for
 from espnet.nets.pytorch_backend.frontends.feature_transform import (
     feature_transform_for,  # noqa: H301
 )
-from espnet.nets.pytorch_backend.frontends.scatter_transform import scatter_for
 from espnet.nets.pytorch_backend.frontends.frontend import frontend_for
 from espnet.nets.pytorch_backend.initialization import lecun_normal_init_parameters
 from espnet.nets.pytorch_backend.initialization import set_forget_bias_to_one
@@ -33,12 +29,17 @@ from espnet.nets.pytorch_backend.nets_utils import get_subsample
 from espnet.nets.pytorch_backend.nets_utils import pad_list
 from espnet.nets.pytorch_backend.nets_utils import to_device
 from espnet.nets.pytorch_backend.nets_utils import to_torch_tensor
+from espnet.nets.pytorch_backend.rnn.argument import (
+    add_arguments_rnn_encoder_common,  # noqa: H301
+    add_arguments_rnn_decoder_common,  # noqa: H301
+    add_arguments_rnn_attention_common,  # noqa: H301
+)
 from espnet.nets.pytorch_backend.rnn.attentions import att_for
 from espnet.nets.pytorch_backend.rnn.decoders import decoder_for
 from espnet.nets.pytorch_backend.rnn.encoders import encoder_for
 from espnet.nets.scorers.ctc import CTCPrefixScorer
 from espnet.utils.fill_missing_args import fill_missing_args
-from espnet.nets.pytorch_backend.frontends.scatter_transform import ScatterTransform
+
 CTC_LOSS_THRESHOLD = 10000
 
 
@@ -78,158 +79,21 @@ class E2E(ASRInterface, torch.nn.Module):
     def encoder_add_arguments(parser):
         """Add arguments for the encoder."""
         group = parser.add_argument_group("E2E encoder setting")
-        # encoder
-        group.add_argument(
-            "--etype",
-            default="blstmp",
-            type=str,
-            choices=[
-                "lstm",
-                "blstm",
-                "lstmp",
-                "blstmp",
-                "vgglstmp",
-                "vggblstmp",
-                "vgglstm",
-                "vggblstm",
-                "gru",
-                "bgru",
-                "grup",
-                "bgrup",
-                "vgggrup",
-                "vggbgrup",
-                "vgggru",
-                "vggbgru",
-            ],
-            help="Type of encoder network architecture",
-        )
-        group.add_argument(
-            "--elayers",
-            default=4,
-            type=int,
-            help="Number of encoder layers "
-            "(for shared recognition part in multi-speaker asr mode)",
-        )
-        group.add_argument(
-            "--eunits",
-            "-u",
-            default=300,
-            type=int,
-            help="Number of encoder hidden units",
-        )
-        group.add_argument(
-            "--eprojs", default=320, type=int, help="Number of encoder projection units"
-        )
-        group.add_argument(
-            "--subsample",
-            default="1",
-            type=str,
-            help="Subsample input frames x_y_z means "
-            "subsample every x frame at 1st layer, "
-            "every y frame at 2nd layer etc.",
-        )
+        group = add_arguments_rnn_encoder_common(group)
         return parser
 
     @staticmethod
     def attention_add_arguments(parser):
         """Add arguments for the attention."""
         group = parser.add_argument_group("E2E attention setting")
-        # attention
-        group.add_argument(
-            "--atype",
-            default="dot",
-            type=str,
-            choices=[
-                "noatt",
-                "dot",
-                "add",
-                "location",
-                "coverage",
-                "coverage_location",
-                "location2d",
-                "location_recurrent",
-                "multi_head_dot",
-                "multi_head_add",
-                "multi_head_loc",
-                "multi_head_multi_res_loc",
-            ],
-            help="Type of attention architecture",
-        )
-        group.add_argument(
-            "--adim",
-            default=320,
-            type=int,
-            help="Number of attention transformation dimensions",
-        )
-        group.add_argument(
-            "--awin", default=5, type=int, help="Window size for location2d attention"
-        )
-        group.add_argument(
-            "--aheads",
-            default=4,
-            type=int,
-            help="Number of heads for multi head attention",
-        )
-        group.add_argument(
-            "--aconv-chans",
-            default=-1,
-            type=int,
-            help="Number of attention convolution channels \
-                           (negative value indicates no location-aware attention)",
-        )
-        group.add_argument(
-            "--aconv-filts",
-            default=100,
-            type=int,
-            help="Number of attention convolution filters \
-                           (negative value indicates no location-aware attention)",
-        )
-        group.add_argument(
-            "--dropout-rate",
-            default=0.0,
-            type=float,
-            help="Dropout rate for the encoder",
-        )
+        group = add_arguments_rnn_attention_common(group)
         return parser
 
     @staticmethod
     def decoder_add_arguments(parser):
         """Add arguments for the decoder."""
         group = parser.add_argument_group("E2E decoder setting")
-        group.add_argument(
-            "--dtype",
-            default="lstm",
-            type=str,
-            choices=["lstm", "gru"],
-            help="Type of decoder network architecture",
-        )
-        group.add_argument(
-            "--dlayers", default=1, type=int, help="Number of decoder layers"
-        )
-        group.add_argument(
-            "--dunits", default=320, type=int, help="Number of decoder hidden units"
-        )
-        group.add_argument(
-            "--dropout-rate-decoder",
-            default=0.0,
-            type=float,
-            help="Dropout rate for the decoder",
-        )
-        group.add_argument(
-            "--sampling-probability",
-            default=0.0,
-            type=float,
-            help="Ratio of predicted labels fed back to decoder",
-        )
-        group.add_argument(
-            "--lsm-type",
-            const="",
-            default="",
-            type=str,
-            nargs="?",
-            choices=["", "unigram"],
-            help="Apply label smoothing with a specified distribution type",
-        )
+        group = add_arguments_rnn_decoder_common(group)
         return parser
 
     def __init__(self, idim, odim, args):
@@ -265,8 +129,6 @@ class E2E(ASRInterface, torch.nn.Module):
         # subsample info
         self.subsample = get_subsample(args, mode="asr", arch="rnn")
 
-        self.args=args
-
         # label smoothing info
         if args.lsm_type and os.path.isfile(args.train_json):
             logging.info("Use label smoothing with " + args.lsm_type)
@@ -275,8 +137,6 @@ class E2E(ASRInterface, torch.nn.Module):
             )
         else:
             labeldist = None
-
-        logging.info("prescatter idim={} ".format(idim.shape if torch.is_tensor(idim) else idim))
 
         if getattr(args, "use_frontend", False):  # use getattr to keep compatibility
             self.frontend = frontend_for(args, idim)
@@ -287,7 +147,6 @@ class E2E(ASRInterface, torch.nn.Module):
 
         # encoder
         self.enc = encoder_for(args, idim, self.subsample)
-
         # ctc
         self.ctc = ctc_for(args, odim)
         # attention
@@ -359,12 +218,8 @@ class E2E(ASRInterface, torch.nn.Module):
         else:
             hs_pad, hlens = xs_pad, ilens
 
-        logging.info("preprocess hlens,ilens (shape)= {} {} hlens,ilens={} {}".format(hlens.shape, ilens.shape, hlens, ilens))
-
         # 1. Encoder
         hs_pad, hlens, _ = self.enc(hs_pad, hlens)
-
-        logging.info("encoder ilens={} {}".format(hlens.shape, hlens))
 
         # 2. CTC loss
         if self.mtlalpha == 0:
@@ -537,7 +392,7 @@ class E2E(ASRInterface, torch.nn.Module):
         return y
 
     def recognize_batch(self, xs, recog_args, char_list, rnnlm=None):
-        """E2E beam search.
+        """E2E batch beam search.
 
         :param list xs: list of input acoustic feature arrays [(T_1, D), (T_2, D), ...]
         :param Namespace recog_args: argument Namespace containing options
@@ -622,6 +477,7 @@ class E2E(ASRInterface, torch.nn.Module):
             2) other case => attention weights (B, Lmax, Tmax).
         :rtype: float ndarray
         """
+        self.eval()
         with torch.no_grad():
             # 0. Frontend
             if self.frontend is not None:
@@ -635,8 +491,38 @@ class E2E(ASRInterface, torch.nn.Module):
 
             # 2. Decoder
             att_ws = self.dec.calculate_all_attentions(hpad, hlens, ys_pad)
-
+        self.train()
         return att_ws
+
+    def calculate_all_ctc_probs(self, xs_pad, ilens, ys_pad):
+        """E2E CTC probability calculation.
+
+        :param torch.Tensor xs_pad: batch of padded input sequences (B, Tmax)
+        :param torch.Tensor ilens: batch of lengths of input sequences (B)
+        :param torch.Tensor ys_pad: batch of padded token id sequence tensor (B, Lmax)
+        :return: CTC probability (B, Tmax, vocab)
+        :rtype: float ndarray
+        """
+        probs = None
+        if self.mtlalpha == 0:
+            return probs
+
+        self.eval()
+        with torch.no_grad():
+            # 0. Frontend
+            if self.frontend is not None:
+                hs_pad, hlens, mask = self.frontend(to_torch_tensor(xs_pad), ilens)
+                hs_pad, hlens = self.feature_transform(hs_pad, hlens)
+            else:
+                hs_pad, hlens = xs_pad, ilens
+
+            # 1. Encoder
+            hpad, hlens, _ = self.enc(hs_pad, hlens)
+
+            # 2. CTC probs
+            probs = self.ctc.softmax(hpad).cpu().numpy()
+        self.train()
+        return probs
 
     def subsample_frames(self, x):
         """Subsample speeh frames in the encoder."""

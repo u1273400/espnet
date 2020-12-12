@@ -20,8 +20,14 @@ def to_device(m, x):
         Tensor: Torch tensor located in the same place as torch module.
 
     """
-    assert isinstance(m, torch.nn.Module)
-    device = next(m.parameters()).device
+    if isinstance(m, torch.nn.Module):
+        device = next(m.parameters()).device
+    elif isinstance(m, torch.Tensor):
+        device = m.device
+    else:
+        raise TypeError(
+            "Expected torch.nn.Module or torch.tensor, " f"bot got: {type(m)}"
+        )
     return x.to(device)
 
 
@@ -49,10 +55,7 @@ def pad_list(xs, pad_value):
     max_len = max(x.size(0) for x in xs)
     pad = xs[0].new(n_batch, max_len, *xs[0].size()[1:]).fill_(pad_value)
 
-    #logging.info(f'padded = {pad.shape} ')
     for i in range(n_batch):
-        # logging.info(f'padding arr {i} = {xs[i].shape}')
-        # logging.info(f'pad[i, : xs[i].size(0)].shape = {pad[i, : xs[i].size(0)].shape}')
         pad[i, : xs[i].size(0)] = xs[i]
 
     return pad
@@ -477,3 +480,19 @@ def rename_state_dict(
         v = state_dict.pop(k)
         new_k = k.replace(old_prefix, new_prefix)
         state_dict[new_k] = v
+
+
+def get_activation(act):
+    """Return activation function."""
+    # Lazy load to avoid unused import
+    from espnet.nets.pytorch_backend.conformer.swish import Swish
+
+    activation_funcs = {
+        "hardtanh": torch.nn.Hardtanh,
+        "tanh": torch.nn.Tanh,
+        "relu": torch.nn.ReLU,
+        "selu": torch.nn.SELU,
+        "swish": Swish,
+    }
+
+    return activation_funcs[act]()

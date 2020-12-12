@@ -38,6 +38,7 @@ from espnet.asr.pytorch_backend.asr_init import load_trained_model
 from espnet.asr.pytorch_backend.asr_init import load_trained_modules
 import espnet.lm.pytorch_backend.extlm as extlm_pytorch
 from espnet.nets.asr_interface import ASRInterface
+from espnet.nets.beam_search_transducer import BeamSearchTransducer
 from espnet.nets.pytorch_backend.e2e_asr import pad_list
 import espnet.nets.pytorch_backend.lm.default as lm_pytorch
 from espnet.nets.pytorch_backend.streaming.segment import SegmentStreamingE2E
@@ -276,16 +277,12 @@ class CustomConverter(object):
         assert len(batch) == 1
         xs, ys = batch[0]
 
-        logging.info('xs, xs[0] lengths in custom converter before sub sampling = {} {}'.format(len(xs), xs[0].shape))
         # perform subsampling
         if self.subsampling_factor > 1:
             xs = [x[:: self.subsampling_factor, :] for x in xs]
 
         # get batch of lengths of input sequences
         ilens = np.array([x.shape[0] for x in xs])
-
-        logging.info('xs, xs[0] in custom converter after sub sampling= {} {}'.format(len(xs), xs[0].shape))
-        logging.info('ilens in custom converter = {} {}'.format(len(ilens), ilens))
 
         # perform padding and convert to tensor
         # currently only support real number
@@ -418,10 +415,15 @@ def train(args):
 
     # specify attention, CTC, hybrid mode
     if "transducer" in args.model_module:
-        assert args.mtlalpha == 1.0
-        mtl_mode = "transducer"
+        if (
+            getattr(args, "etype", False) == "transformer"
+            or getattr(args, "dtype", False) == "transformer"
+        ):
+            mtl_mode = "transformer_transducer"
+        else:
+            mtl_mode = "transducer"
         logging.info("Pure transducer mode")
-    if args.mtlalpha == 1.0:
+    elif args.mtlalpha == 1.0:
         mtl_mode = "ctc"
         logging.info("Pure CTC mode")
     elif args.mtlalpha == 0.0:
@@ -509,8 +511,15 @@ def train(args):
     elif args.opt == "noam":
         from espnet.nets.pytorch_backend.transformer.optimizer import get_std_opt
 
+        # For transformer-transducer, adim declaration is within the block definition.
+        # Thus, we need retrieve the most dominant value (d_hidden) for Noam scheduler.
+        if hasattr(args, "enc_block_arch") or hasattr(args, "dec_block_arch"):
+            adim = model.most_dom_dim
+        else:
+            adim = args.adim
+
         optimizer = get_std_opt(
-            model_params, args.adim, args.transformer_warmup_steps, args.transformer_lr
+            model_params, adim, args.transformer_warmup_steps, args.transformer_lr
         )
     else:
         raise NotImplementedError("unknown optimizer: " + args.opt)
@@ -562,7 +571,7 @@ def train(args):
         valid_json = json.load(f)["utts"]
 
     use_sortagrad = args.sortagrad == -1 or args.sortagrad > 0
-    # make minibatch list (variable length)*******this is important*
+    # make minibatch list (variable length)
     train = make_batchset(
         train_json,
         args.batch_size,
@@ -663,9 +672,19 @@ def train(args):
         )
 
     # Save attention weight each epoch
-    if args.num_save_attention > 0 and (
-        mtl_mode == "transducer" and getattr(args, "rnnt_mode", False) == "rnnt"
-    ):
+    is_attn_plot = (
+        (
+            "transformer" in args.model_module
+            or "conformer" in args.model_module
+            or mtl_mode in ["att", "mtl"]
+        )
+        or (
+            mtl_mode == "transducer" and getattr(args, "rnnt_mode", False) == "rnnt-att"
+        )
+        or mtl_mode == "transformer_transducer"
+    )
+
+    if args.num_save_attention > 0 and is_attn_plot:
         data = sorted(
             list(valid_json.items())[: args.num_save_attention],
             key=lambda x: int(x[1]["input"][0]["shape"][1]),
@@ -688,6 +707,34 @@ def train(args):
         trainer.extend(att_reporter, trigger=(1, "epoch"))
     else:
         att_reporter = None
+
+    # Save CTC prob at each epoch
+    if mtl_mode in ["ctc", "mtl"] and args.num_save_ctc > 0:
+        # NOTE: sort it by output lengths
+        data = sorted(
+            list(valid_json.items())[: args.num_save_ctc],
+            key=lambda x: int(x[1]["output"][0]["shape"][0]),
+            reverse=True,
+        )
+        if hasattr(model, "module"):
+            ctc_vis_fn = model.module.calculate_all_ctc_probs
+            plot_class = model.module.ctc_plot_class
+        else:
+            ctc_vis_fn = model.calculate_all_ctc_probs
+            plot_class = model.ctc_plot_class
+        ctc_reporter = plot_class(
+            ctc_vis_fn,
+            data,
+            args.outdir + "/ctc_prob",
+            converter=converter,
+            transform=load_cv,
+            device=device,
+            ikey="output",
+            iaxis=1,
+        )
+        trainer.extend(ctc_reporter, trigger=(1, "epoch"))
+    else:
+        ctc_reporter = None
 
     # Make a plot for training and validation values
     if args.num_encs > 1:
@@ -731,7 +778,7 @@ def train(args):
         snapshot_object(model, "model.loss.best"),
         trigger=training.triggers.MinValueTrigger("validation/main/loss"),
     )
-    if mtl_mode not in ["ctc", "transducer"]:
+    if mtl_mode not in ["ctc", "transducer", "transformer_transducer"]:
         trainer.extend(
             snapshot_object(model, "model.acc.best"),
             trigger=training.triggers.MaxValueTrigger("validation/main/acc"),
@@ -743,8 +790,9 @@ def train(args):
             torch_snapshot(filename="snapshot.iter.{.updater.iteration}"),
             trigger=(args.save_interval_iters, "iteration"),
         )
-    else:
-        trainer.extend(torch_snapshot(), trigger=(1, "epoch"))
+
+    # save snapshot at every epoch - for model averaging
+    trainer.extend(torch_snapshot(), trigger=(1, "epoch"))
 
     # epsilon decay in the optimizer
     if args.opt == "adadelta":
@@ -775,6 +823,18 @@ def train(args):
                     lambda best_value, current_value: best_value < current_value,
                 ),
             )
+            trainer.extend(
+                adadelta_eps_decay(args.eps_decay),
+                trigger=CompareValueTrigger(
+                    "validation/main/loss",
+                    lambda best_value, current_value: best_value < current_value,
+                ),
+            )
+        # NOTE: In some cases, it may take more than one epoch for the model's loss
+        # to escape from a local minimum.
+        # Thus, restore_snapshot extension is not used here.
+        # see details in https://github.com/espnet/espnet/pull/2171
+        elif args.criterion == "loss_eps_decay_only":
             trainer.extend(
                 adadelta_eps_decay(args.eps_decay),
                 trigger=CompareValueTrigger(
@@ -827,7 +887,11 @@ def train(args):
 
     if args.tensorboard_dir is not None and args.tensorboard_dir != "":
         trainer.extend(
-            TensorboardLogger(SummaryWriter(args.tensorboard_dir), att_reporter),
+            TensorboardLogger(
+                SummaryWriter(args.tensorboard_dir),
+                att_reporter=att_reporter,
+                ctc_reporter=ctc_reporter,
+            ),
             trigger=(args.report_interval_iters, "iteration"),
         )
     # Run the training
@@ -925,6 +989,26 @@ def recog(args):
         preprocess_args={"train": False},
     )
 
+    # load transducer beam search
+    if hasattr(model, "rnnt_mode"):
+        if hasattr(model, "dec"):
+            trans_decoder = model.dec
+        else:
+            trans_decoder = model.decoder
+
+        beam_search_transducer = BeamSearchTransducer(
+            decoder=trans_decoder,
+            beam_size=args.beam_size,
+            lm=rnnlm,
+            lm_weight=args.lm_weight,
+            search_type=args.search_type,
+            max_sym_exp=args.max_sym_exp,
+            u_max=args.u_max,
+            nstep=args.nstep,
+            prefix_alpha=args.prefix_alpha,
+            score_norm=args.score_norm,
+        )
+
     if args.batchsize == 0:
         with torch.no_grad():
             for idx, name in enumerate(js.keys(), 1):
@@ -980,6 +1064,8 @@ def recog(args):
                             for n in range(args.nbest):
                                 nbest_hyps[n]["yseq"].extend(hyps[n]["yseq"])
                                 nbest_hyps[n]["score"] += hyps[n]["score"]
+                elif hasattr(model, "rnnt_mode"):
+                    nbest_hyps = model.recognize(feat, beam_search_transducer)
                 else:
                     nbest_hyps = model.recognize(
                         feat, args, train_args.char_list, rnnlm
@@ -1277,3 +1363,88 @@ def enhance(args):
             if num_images >= args.num_images and enh_writer is None:
                 logging.info("Breaking the process.")
                 break
+
+
+def ctc_align(args):
+    """CTC forced alignments with the given args.
+
+    Args:
+        args (namespace): The program arguments.
+    """
+
+    def add_alignment_to_json(js, alignment, char_list):
+        """Add N-best results to json.
+
+        Args:
+            js (dict[str, Any]): Groundtruth utterance dict.
+            alignment (list[int]): List of alignment.
+            char_list (list[str]): List of characters.
+
+        Returns:
+            dict[str, Any]: N-best results added utterance dict.
+
+        """
+        # copy old json info
+        new_js = dict()
+        new_js["ctc_alignment"] = []
+
+        alignment_tokens = []
+        for idx, a in enumerate(alignment):
+            alignment_tokens.append(char_list[a])
+        alignment_tokens = " ".join(alignment_tokens)
+
+        new_js["ctc_alignment"] = alignment_tokens
+
+        return new_js
+
+    set_deterministic_pytorch(args)
+    model, train_args = load_trained_model(args.model)
+    assert isinstance(model, ASRInterface)
+    model.eval()
+
+    load_inputs_and_targets = LoadInputsAndTargets(
+        mode="asr",
+        load_output=True,
+        sort_in_input_length=False,
+        preprocess_conf=train_args.preprocess_conf
+        if args.preprocess_conf is None
+        else args.preprocess_conf,
+        preprocess_args={"train": False},
+    )
+
+    if args.ngpu > 1:
+        raise NotImplementedError("only single GPU decoding is supported")
+    if args.ngpu == 1:
+        device = "cuda"
+    else:
+        device = "cpu"
+    dtype = getattr(torch, args.dtype)
+    logging.info(f"Decoding device={device}, dtype={dtype}")
+    model.to(device=device, dtype=dtype).eval()
+
+    # read json data
+    with open(args.align_json, "rb") as f:
+        js = json.load(f)["utts"]
+    new_js = {}
+    if args.batchsize == 0:
+        with torch.no_grad():
+            for idx, name in enumerate(js.keys(), 1):
+                logging.info("(%d/%d) aligning " + name, idx, len(js.keys()))
+                batch = [(name, js[name])]
+                feat, label = load_inputs_and_targets(batch)
+                feat = feat[0]
+                label = label[0]
+                enc = model.encode(torch.as_tensor(feat).to(device)).unsqueeze(0)
+                alignment = model.ctc.forced_align(enc, label)
+                new_js[name] = add_alignment_to_json(
+                    js[name], alignment, train_args.char_list
+                )
+    else:
+        raise NotImplementedError("Align_batch is not implemented.")
+
+    with open(args.result_label, "wb") as f:
+        f.write(
+            json.dumps(
+                {"utts": new_js}, indent=4, ensure_ascii=False, sort_keys=True
+            ).encode("utf_8")
+        )
